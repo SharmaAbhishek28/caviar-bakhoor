@@ -2687,6 +2687,438 @@ html {
   }
 }
 
+/* --- /about: opener --------------------------------------------------------
+   Copy first, then the photograph full-bleed. The headline lines sit in
+   masks so GSAP can raise them; at rest they are simply visible.
+   ------------------------------------------------------------------------ */
+.ab-opener {
+  padding-top: clamp(8rem, 16vh, 11rem);
+}
+
+.ab-opener-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.ab-h1 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: var(--text-display-xl);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ab-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+.ab-line-inner {
+  display: block;
+  will-change: transform;
+}
+
+.ab-line--italic .ab-line-inner {
+  font-style: italic;
+}
+
+.ab-lede {
+  max-width: 44ch;
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+}
+
+.ab-opener-media {
+  overflow: hidden;
+  height: clamp(20rem, 70vh, 44rem);
+  background: var(--ash);
+}
+
+.ab-opener-img {
+  display: block;
+  width: 100%;
+  height: 115%;
+  object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* --- /about: the house ------------------------------------------------------ */
+.ab-house {
+  padding-block: var(--section-y);
+}
+
+.ab-house-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.ab-h2 {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ab-statement {
+  max-width: none;
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.ab-statement strong {
+  font-weight: 600;
+}
+
+.ab-ledger {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--ink);
+}
+
+.ab-ledger-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 35%) 1fr;
+  gap: 1rem;
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-switzer-stack);
+  font-size: 0.9375rem;
+}
+
+.ab-ledger-row dt {
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  padding-top: 0.2em;
+}
+
+.ab-ledger-row dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.ab-ledger-row[data-confirm] dd {
+  color: var(--smoke);
+}
+
+@media (min-width: 1024px) {
+  .ab-house-grid {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* --- /about: the shoot -------------------------------------------------- */
+.ab-gallery {
+  position: relative;
+  overflow: hidden;
+  background: var(--ash);
+  color: var(--paper);
+}
+
+.ab-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  width: max-content;
+  padding: clamp(2rem, 6vh, 4rem) var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.ab-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ab-track-title {
+  flex: 0 0 auto;
+  padding-right: clamp(1rem, 4vw, 4rem);
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-on-ash);
+  font-weight: var(--bodoni-wght);
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 1;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--paper);
+  opacity: 0.9;
+}
+
+.ab-frame {
+  flex: 0 0 auto;
+  margin: 0;
+  height: 60svh;
+  overflow: hidden;
+  scroll-snap-align: center;
+  background: #000;
+}
+
+.ab-frame--1 {
+  aspect-ratio: 3 / 2;
+}
+
+.ab-frame--2 {
+  aspect-ratio: 4 / 5;
+  height: 68svh;
+}
+
+.ab-frame--3 {
+  aspect-ratio: 1 / 1;
+  height: 52svh;
+}
+
+.ab-frame img {
+  display: block;
+  width: 116%;
+  height: 100%;
+  margin-left: -8%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+@media (min-width: 1024px) {
+  .ab-gallery {
+    height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .ab-track {
+    overflow: visible;
+    max-width: none;
+    scroll-snap-type: none;
+    padding-inline: var(--gutter) 20vw;
+    will-change: transform;
+  }
+}
+
+/* --- /about: the people ---------------------------------------------------- */
+.ab-people {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--rule);
+}
+
+.ab-people-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.ab-people-title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ab-people-title .four-title-the {
+  font-size: clamp(2rem, 3.2vw, 3.2rem);
+}
+
+.ab-people-title .four-title-epithet {
+  font-size: clamp(2.6rem, 4.4vw, 4.4rem);
+}
+
+/* The empty portrait: the mesh field in a frame, the aspect of a portrait. */
+.people-portrait {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: var(--paper-raised);
+  background-image: var(--mesh);
+  background-size: var(--mesh-size);
+  border: 1px solid var(--rule);
+  font-family: var(--font-switzer-stack);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+.people-entry .four-signature {
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.people-role {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+.people-bio-empty {
+  color: var(--smoke);
+}
+
+/* --- /about: what we make ------------------------------------------------- */
+.ab-make {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--rule);
+}
+
+.ab-circles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 4rem) var(--gutter);
+}
+
+.ab-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.ab-circle-img {
+  display: block;
+  width: min(70vw, 18rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: transform 700ms var(--ease);
+}
+
+.ab-circle-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease);
+}
+
+.ab-circle:hover .ab-circle-img {
+  transform: rotate(-4deg);
+}
+
+.ab-circle:hover .ab-circle-img img {
+  transform: scale(1.06);
+}
+
+.ab-circle-kicker {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+.ab-circle-title {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ab-circle-body {
+  max-width: 34ch;
+  font-size: 0.9375rem;
+}
+
+.ab-circle-link {
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+@media (min-width: 768px) {
+  .ab-circles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- /about: close ----------------------------------------------------------- */
+.ab-close {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--rule);
+}
+
+.ab-close-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.ab-close-h {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ab-close-lead {
+  font-size: calc(var(--text-display-xl) * 0.42);
+  margin-bottom: 0.15em;
+  margin-left: 0.1em;
+}
+
+.ab-close-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cta-button.cta-button--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.cta-button.cta-button--ghost:hover,
+.cta-button.cta-button--ghost:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 /* --- Trust strip ---------------------------------------------------------
    The band under the hero. Light ground, dark type, smaller and lighter than
    the display marquee so it reads as a quiet index rather than a headline.
