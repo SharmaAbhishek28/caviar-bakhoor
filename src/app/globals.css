@@ -4245,6 +4245,294 @@ html {
   }
 }
 
+/* --- Policies: /shipping /returns /privacy /terms --------------------------- */
+.pol {
+  position: relative;
+  padding-top: clamp(7rem, 14vh, 9rem);
+  padding-bottom: var(--section-y);
+}
+
+/* Reading progress, along the very top of the page. */
+.pol-progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 60;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.pol-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.pol-title {
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: var(--text-display-xl);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.pol-title-inner {
+  display: block;
+  will-change: transform;
+}
+
+.pol-lede {
+  margin: 0;
+  max-width: 52ch;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--smoke);
+}
+
+.pol-updated {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+.pol-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.pol-index ol,
+.pol-index ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pol-index ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pol-index li a {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.15rem;
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  text-decoration: none;
+  transition: color 200ms var(--ease);
+}
+
+.pol-index li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms var(--ease);
+}
+
+.pol-index li[data-current] a,
+.pol-index li a:hover {
+  color: var(--ink);
+}
+
+.pol-index li[data-current] a::after {
+  transform: scaleX(1);
+}
+
+.pol-others {
+  margin-top: 2rem !important;
+  padding-top: 1.5rem !important;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.pol-others a {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  text-decoration: none;
+}
+
+.pol-others a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.pol-body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.pol-section {
+  position: relative;
+  padding-top: 1.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.pol-rule {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transform-origin: left;
+}
+
+.pol-section-title {
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.pol-section-no {
+  font-family: var(--font-bodoni-stack);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.95em;
+  color: var(--smoke);
+}
+
+.pol-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pol-section-body .type-body {
+  max-width: 62ch;
+}
+
+.pol-confirm {
+  color: var(--smoke);
+}
+
+@media (min-width: 1024px) {
+  .pol-grid {
+    grid-template-columns: 16rem 1fr;
+    align-items: start;
+  }
+
+  .pol-index {
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+/* --- 404 --------------------------------------------------------------------- */
+.nf {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(7rem, 14vh, 9rem) var(--section-y);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.nf-figure {
+  display: flex;
+  align-items: center;
+  gap: 0.04em;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: clamp(6rem, 22vw, 20rem);
+  line-height: 1;
+  color: var(--ink);
+  user-select: none;
+}
+
+.nf-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+.nf-four {
+  display: inline-block;
+  will-change: transform;
+}
+
+.nf-pearl {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-inline: 0.06em;
+  border-radius: 50%;
+  background: var(--ash);
+  box-shadow: inset -0.08em -0.1em 0.18em rgb(239 238 235 / 0.12);
+  will-change: transform;
+}
+
+.nf-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.nf-title {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 2.4vw, 2.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.nf-lede {
+  max-width: 44ch;
+}
+
+.nf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
 /* --- Trust strip ---------------------------------------------------------
    The band under the hero. Light ground, dark type, smaller and lighter than
    the display marquee so it reads as a quiet index rather than a headline.
