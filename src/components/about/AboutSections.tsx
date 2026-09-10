@@ -48,6 +48,8 @@ function PersonCard({ person }: { person: Person }) {
             <span>[CONFIRM] portrait</span>
           </div>
         )}
+        {/* On a stand-in photograph the signature reads on dark; on a real
+            portrait it will too — the reference signs its portraits. */}
         <figcaption className="four-signature">{person.name ?? "[CONFIRM] name"}</figcaption>
       </figure>
       <p className="people-role">{person.role ?? "[CONFIRM] role"}</p>
@@ -130,7 +132,6 @@ export function AboutClose() {
           </div>
         </Reveal>
       </Container>
-      <hr className="pdp-rule" />
     </section>
   );
 }

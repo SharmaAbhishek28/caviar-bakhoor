@@ -2970,11 +2970,6 @@ html {
   color: var(--smoke);
 }
 
-.people-entry .four-signature {
-  color: var(--ink);
-  text-shadow: none;
-}
-
 .people-role {
   margin: 0;
   font-family: var(--font-switzer-stack);
