@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw shoot and video source — kept locally, never in the repo (278 MB + 1.1 GB)
+/public/images/_raw/
+/docs/video-source/
