@@ -2030,10 +2030,14 @@ html {
    ------------------------------------------------------------------------ */
 .pdp-hero {
   position: relative;
+  background: var(--paper);
+}
+
+/* The pinned wrapper carries the layout; the section is just the mount. */
+.pdp-hero-pin {
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100svh;
-  background: var(--paper);
 }
 
 .pdp-stage-wrap {
@@ -2328,7 +2332,7 @@ html {
 }
 
 @media (min-width: 1024px) {
-  .pdp-hero {
+  .pdp-hero-pin {
     grid-template-columns: 1fr minmax(24rem, 34%);
     align-items: center;
   }
@@ -2898,7 +2902,7 @@ html {
 }
 
 @media (min-width: 1024px) {
-  .ab-gallery {
+  .ab-gallery-pin {
     height: 100svh;
     display: flex;
     align-items: center;

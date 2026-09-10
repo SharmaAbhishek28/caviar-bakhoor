@@ -25,6 +25,12 @@ import { ProductPanel } from "./ProductPanel";
  */
 export function ProductHero({ product }: { product: Product }) {
   const rootRef = useRef<HTMLDivElement>(null);
+  /* The pinned node is this inner wrapper, never the section itself.
+     ScrollTrigger wraps whatever it pins in a spacer, re-parenting it; if
+     that were the section, React's own removeChild on navigation would
+     find the section no longer a child of <main> and throw. The section
+     stays untouched, and the spacer lives inside it. */
+  const pinRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -40,9 +46,10 @@ export function ProductHero({ product }: { product: Product }) {
 
   useEffect(() => {
     const root = rootRef.current;
+    const pin = pinRef.current;
     const stage = stageRef.current;
     const panel = panelRef.current;
-    if (!root || !stage || !panel || last < 1) return;
+    if (!root || !pin || !stage || !panel || last < 1) return;
 
     initScroll();
     const mm = gsap.matchMedia(root);
@@ -98,7 +105,7 @@ export function ProductHero({ product }: { product: Product }) {
             trigger: root,
             start: "top top",
             end: () => "+=" + window.innerHeight * last,
-            pin: true,
+            pin,
             scrub: 0.5,
             invalidateOnRefresh: true,
             onRefresh: layout,
@@ -132,6 +139,7 @@ export function ProductHero({ product }: { product: Product }) {
 
   return (
     <section ref={rootRef} className="pdp-hero" data-label="Collection">
+      <div ref={pinRef} className="pdp-hero-pin">
       <div className="pdp-stage-wrap">
         <div className="pdp-rail" aria-label="Product images">
           <button type="button" className="pdp-rail-btn" onClick={() => goTo(index - 1)} aria-label="Previous image" disabled={index === 0}>
@@ -166,6 +174,7 @@ export function ProductHero({ product }: { product: Product }) {
 
       <div ref={panelRef} className="pdp-panel-slot">
         <ProductPanel product={product} />
+      </div>
       </div>
     </section>
   );

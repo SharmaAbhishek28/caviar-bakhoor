@@ -17,12 +17,15 @@ import { gsap, initScroll, ScrollTrigger } from "@/lib/scroll";
  */
 export function ShootGallery() {
   const rootRef = useRef<HTMLElement>(null);
+  /* Pinned inner wrapper, not the section — see ProductHero for why. */
+  const pinRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = rootRef.current;
+    const pin = pinRef.current;
     const track = trackRef.current;
-    if (!root || !track) return;
+    if (!root || !pin || !track) return;
     initScroll();
 
     const mm = gsap.matchMedia(root);
@@ -42,7 +45,7 @@ export function ShootGallery() {
             trigger: root,
             start: "top top",
             end: () => "+=" + travel(),
-            pin: true,
+            pin,
             scrub: 0.8,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
@@ -92,6 +95,7 @@ export function ShootGallery() {
 
   return (
     <section ref={rootRef} className="ab-gallery" data-label="Shoot" aria-label={ABOUT.gallery.title}>
+      <div ref={pinRef} className="ab-gallery-pin">
       <div ref={trackRef} className="ab-track">
         <div className="ab-track-title" aria-hidden>
           <span>{ABOUT.gallery.title}</span>
@@ -101,6 +105,7 @@ export function ShootGallery() {
             <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(max-width: 1023px) 80vw, 45vw" loading={i < 2 ? "eager" : "lazy"} />
           </figure>
         ))}
+      </div>
       </div>
     </section>
   );
