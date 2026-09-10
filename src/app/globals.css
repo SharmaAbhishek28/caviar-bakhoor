@@ -3118,6 +3118,590 @@ html {
   color: var(--paper);
 }
 
+/* --- /for-business ------------------------------------------------------- */
+.biz-h2 {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.biz-note {
+  margin: 0;
+  max-width: 48ch;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--smoke);
+}
+
+/* 1 — opener */
+.biz-opener {
+  padding-top: clamp(8rem, 16vh, 11rem);
+}
+
+.biz-opener-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.biz-h1 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: var(--text-display-xl);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.biz-h1-line {
+  display: block;
+}
+
+/* INNOVATION. is 7.8x the font size wide; at the phone display size it
+   overran the column by 14px — measured. */
+@media (max-width: 767px) {
+  .biz-h1 {
+    font-size: 10.5vw;
+  }
+}
+
+.biz-h1-line--italic {
+  font-style: italic;
+}
+
+.biz-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.biz-word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.biz-lede {
+  max-width: 44ch;
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+}
+
+.biz-frame {
+  overflow: hidden;
+  height: clamp(18rem, 64vh, 40rem);
+  background: var(--ash);
+  clip-path: inset(0 0 0 0);
+}
+
+.biz-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* 2 — statement */
+.biz-statement {
+  padding-block: var(--section-y);
+}
+
+.biz-statement-p {
+  margin: 0 auto;
+  max-width: 34ch;
+  text-align: center;
+  font-family: var(--font-switzer-stack);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.6vw, 2.6rem);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.biz-sw {
+  display: inline;
+}
+
+/* 3 — clients */
+.biz-clients {
+  padding-block: var(--section-y) 0;
+  border-top: 1px solid var(--rule);
+  /* Rows enter from off-screen on both sides: clip, or the page gains a
+     horizontal scroll — measured 1682px wide on a 1425px viewport. */
+  overflow-x: clip;
+}
+
+.biz-rows {
+  list-style: none;
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.biz-row {
+  border-bottom: 1px solid var(--ink);
+  transition: background-color 240ms var(--ease), color 240ms var(--ease);
+  will-change: transform, opacity;
+}
+
+.biz-row:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.biz-row-inner {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 4vw, 4rem);
+  padding-block: clamp(1rem, 2.4vw, 2rem);
+}
+
+.biz-row-no {
+  font-family: var(--font-bodoni-stack);
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  min-width: 2.5rem;
+}
+
+.biz-row-label {
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 4.2vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* 4 — offer */
+.biz-offer {
+  padding-block: var(--section-y);
+  /* Cards mid-flip project past the viewport edge under perspective;
+     clipped, or the phone gains 14px of horizontal scroll — measured. */
+  overflow-x: clip;
+}
+
+.biz-offer-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem 2rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.biz-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gutter);
+  perspective: 1200px;
+}
+
+.biz-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  min-height: 14rem;
+  padding: 1.5rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.biz-card-no {
+  font-family: var(--font-bodoni-stack);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.biz-card-title {
+  margin-top: auto;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.biz-card-confirm {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--smoke);
+}
+
+/* 5 — process */
+.biz-process {
+  position: relative;
+  background: var(--ash);
+  color: var(--paper);
+}
+
+.biz-process-pin {
+  padding-block: var(--section-y);
+}
+
+.biz-process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.biz-process .biz-h2 {
+  color: var(--paper);
+}
+
+.biz-process-head .type-body {
+  color: rgb(239 238 235 / 0.7);
+  margin-top: 0.75rem;
+}
+
+.biz-steps {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.biz-line {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: rgb(239 238 235 / 0.18);
+}
+
+.biz-line-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.biz-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1rem;
+  opacity: 0.35;
+  transform: translateX(0);
+  transition: opacity 320ms var(--ease), transform 480ms var(--ease);
+}
+
+.biz-step[data-active] {
+  opacity: 1;
+}
+
+.biz-step[data-current] {
+  transform: translateX(0.75rem);
+}
+
+.biz-step::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 0.55rem;
+  width: 10px;
+  height: 10px;
+  margin-left: 0.5rem;
+  transform: translateX(-4px);
+  border-radius: 50%;
+  background: rgb(239 238 235 / 0.35);
+  transition: background-color 320ms var(--ease);
+}
+
+.biz-step[data-active]::before {
+  background: var(--paper);
+}
+
+.biz-step-no {
+  grid-row: 1 / 3;
+  font-family: var(--font-bodoni-stack);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.biz-step-name {
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 2.6vw, 2.6rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.biz-step-body {
+  font-family: var(--font-switzer-stack);
+  font-size: 1rem;
+  color: rgb(239 238 235 / 0.75);
+  margin-top: 0.35rem;
+}
+
+/* 6 — made for your brand */
+.biz-made {
+  padding-block: var(--section-y);
+}
+
+.biz-made-head {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.biz-made-h {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.biz-made-lead {
+  font-size: calc(var(--text-display-xl) * 0.42);
+  margin-bottom: 0.15em;
+  margin-left: 0.1em;
+}
+
+.biz-made-p {
+  max-width: 58ch;
+}
+
+.biz-made-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.biz-made-sticky {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--ash);
+}
+
+.biz-made-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 700ms var(--ease), transform 1200ms var(--ease);
+}
+
+.biz-made-img[data-active] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.biz-made-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.biz-made-row {
+  padding-block: clamp(2.5rem, 12vh, 8rem);
+  border-top: 1px solid var(--rule);
+  opacity: 0.4;
+  transition: opacity 400ms var(--ease);
+}
+
+.biz-made-row[data-active] {
+  opacity: 1;
+}
+
+.biz-made-no {
+  font-family: var(--font-bodoni-stack);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--smoke);
+}
+
+.biz-made-title {
+  margin: 0.5rem 0 0.75rem;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 2.4vw, 2.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* 7 — collaborations */
+.biz-collabs {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--rule);
+}
+
+.biz-cases {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 7vw, 6rem);
+}
+
+.biz-case {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  clip-path: inset(0 0 0 0);
+}
+
+.biz-case-media {
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--ash);
+}
+
+.biz-case-media img {
+  display: block;
+  width: 100%;
+  height: 124%;
+  margin-top: -12%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.biz-case-meta {
+  margin: 0 0 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.biz-case-brand {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: clamp(1.75rem, 2.6vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.biz-case-copy {
+  max-width: 44ch;
+}
+
+/* 8 — enquiry */
+.biz-enquiry {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--rule);
+}
+
+.biz-enquiry-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.biz-enquiry-title {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3vw, 3rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .biz-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .biz-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .biz-process-pin {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .biz-process-grid {
+    grid-template-columns: 1fr 1.4fr;
+    width: 100%;
+  }
+
+  .biz-made-grid {
+    grid-template-columns: 1fr 1fr;
+    /* Stretch, not start: the sticky image needs its column to be as tall
+       as the rows beside it, or it has nothing to stick within. */
+    align-items: stretch;
+  }
+
+  .biz-made-sticky {
+    position: sticky;
+    top: 12vh;
+    height: 76vh;
+    aspect-ratio: auto;
+  }
+
+  /* Each row a good part of a viewport, so the sticky image has a column
+     of ~180vh to hold within — three short rows exhausted it in 390px. */
+  .biz-made-row {
+    min-height: 58vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .biz-case {
+    grid-template-columns: 3fr 2fr;
+    align-items: end;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+
+  .biz-case:nth-child(even) .biz-case-media {
+    order: 2;
+  }
+}
+
 /* --- Trust strip ---------------------------------------------------------
    The band under the hero. Light ground, dark type, smaller and lighter than
    the display marquee so it reads as a quiet index rather than a headline.
