@@ -40,17 +40,15 @@ export function RitualOpener() {
         .from(".rt-eyebrow", { opacity: 0, y: 10, duration: 0.7 })
         .from(".rt-char", { yPercent: 110, opacity: 0, duration: 0.9, stagger: 0.018 }, "-=0.4")
         .from(".rt-lede", { opacity: 0, y: 12, duration: 0.8 }, "-=0.5");
-      // The pearl: a 40px dot that grows to cover the viewport over the
-      // section's scroll, and the copy inverts once it is under the dot.
-      gsap.fromTo(".rt-pearl", { scale: 1 }, {
-        scale: () => (Math.hypot(window.innerWidth, window.innerHeight) / 40) * 1.05,
+      // The pearl: an ash layer revealed through a circle that grows from a
+      // 20px dot to past the viewport's corners. A clip-path, not a scaled
+      // element, so the edge is crisp at every size; the copy sits on it
+      // with mix-blend-mode: difference, so it inverts exactly where the
+      // circle covers it and nowhere else.
+      gsap.fromTo(".rt-pearl", { clipPath: "circle(20px at 50% 50%)" }, {
+        clipPath: () => "circle(" + Math.hypot(window.innerWidth, window.innerHeight) * 0.52 + "px at 50% 50%)",
         ease: "power2.in",
-        scrollTrigger: {
-          trigger: root, start: "top top", end: "bottom bottom", scrub: true, invalidateOnRefresh: true,
-          /* The dot is 40px; at scale ~9 it is ~360px across and sits behind
-             the headline's middle — invert the copy from there. */
-          onUpdate: (self) => root.toggleAttribute("data-dark", self.progress > 0.42),
-        },
+        scrollTrigger: { trigger: root, start: "top top", end: "bottom bottom", scrub: true, invalidateOnRefresh: true },
       });
     }, root);
     return () => ctx.revert();

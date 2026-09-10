@@ -3746,15 +3746,9 @@ html {
 
 .rt-pearl {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
-  border-radius: 50%;
+  inset: 0;
   background: var(--ash);
-  transform-origin: center;
-  will-change: transform;
+  clip-path: circle(20px at 50% 50%);
 }
 
 .rt-opener-copy {
@@ -3765,14 +3759,13 @@ html {
   justify-content: center;
   gap: clamp(1.25rem, 2.5vw, 2rem);
   padding-block: clamp(6rem, 12vh, 8rem) clamp(3rem, 6vh, 5rem);
-  transition: color 500ms var(--ease);
-}
-
-.rt-opener[data-dark] .rt-opener-copy {
+  /* Paper type in difference mode: ink where it sits on paper, paper where
+     the pearl has covered it — the inversion follows the circle's edge. */
   color: var(--paper);
+  mix-blend-mode: difference;
 }
 
-.rt-opener[data-dark] .type-eyebrow {
+.rt-opener-copy .type-eyebrow {
   color: rgb(239 238 235 / 0.7);
 }
 
