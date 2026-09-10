@@ -3737,11 +3737,19 @@ html {
   top: 0;
   height: 100svh;
   overflow: hidden;
+  /* overflow isolates blending to this box, so it must paint the paper
+     itself — or difference has a transparent backdrop outside the circle
+     and the copy vanishes there. */
+  background: var(--paper);
 }
 
+/* The Container is a stacking context (z-index), so the blend must sit on
+   it — an element blends only within its parent's context, and this one's
+   parent is the sticky wrapper that paints the paper. */
 .rt-opener-sticky > div {
   position: relative;
   z-index: 1;
+  mix-blend-mode: difference;
 }
 
 .rt-pearl {
@@ -3759,10 +3767,10 @@ html {
   justify-content: center;
   gap: clamp(1.25rem, 2.5vw, 2rem);
   padding-block: clamp(6rem, 12vh, 8rem) clamp(3rem, 6vh, 5rem);
-  /* Paper type in difference mode: ink where it sits on paper, paper where
-     the pearl has covered it — the inversion follows the circle's edge. */
+  /* Paper type under the Container's difference blend: ink where it sits
+     on paper, paper where the pearl has covered it — the inversion follows
+     the circle's edge. */
   color: var(--paper);
-  mix-blend-mode: difference;
 }
 
 .rt-opener-copy .type-eyebrow {
