@@ -42,6 +42,11 @@ export function Ritual() {
           width={RITUAL_IMAGE.width}
           height={RITUAL_IMAGE.height}
           sizes="100vw"
+          /* The layer is position: fixed, so this sits in the first viewport
+             and the browser scores it as the home page's LCP element even
+             though the section is far down the page. Lazy-loading it cost
+             the LCP budget in CLAUDE.md. */
+          priority
         />
         {/* Darkens toward the edges, where the text sits. */}
         <div className="ritual-scrim" aria-hidden />

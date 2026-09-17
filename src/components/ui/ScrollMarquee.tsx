@@ -101,9 +101,10 @@ export function ScrollMarquee({
             /* The second run is decorative repetition. */
             aria-hidden={i === 1 || undefined}
           >
-            {items.map((item) => (
+            {/* Keyed by position: a band may repeat one phrase to fill its width. */}
+            {items.map((item, j) => (
               <li
-                key={item}
+                key={j}
                 className="type-marquee flex items-center whitespace-nowrap"
               >
                 <span>{item}</span>

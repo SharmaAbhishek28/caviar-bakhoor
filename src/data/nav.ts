@@ -36,10 +36,10 @@ export const LEGAL: NavItem[] = [
 /** Category keywords for the marquee. */
 export const KEYWORDS = [
   "Caviar Bakhoor",
-  "Encapsulation",
+  "Encapsulated Technology",
   "24 Karat Gold",
   "Oud",
   "Bakhoor Reimagined",
   "Private Label",
-  "Caviar Bakhoor",
+  "Scented Bakhoor",
 ];
