@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Container,
   Eyebrow,
@@ -34,7 +35,7 @@ export function Projects() {
             gap: "clamp(1.5rem, 3vw, 2.5rem)",
           }}
         >
-          <Eyebrow>Caviar de Parfum</Eyebrow>
+          <Eyebrow>Caviar Bakhoor</Eyebrow>
 
           <DisplayHeadline lines={["Creative", "Feature"]} italicLine={1} />
 
@@ -59,24 +60,24 @@ export function Projects() {
           }}
         >
           <DisplayHeadline
-            lines={["Beyond", "The tin"]}
+            lines={["Tailored collection", "Development"]}
             italicLine={0}
-            style={{ maxWidth: "16ch", fontSize: "var(--text-display-md)" }}
+            style={{ maxWidth: "18ch", fontSize: "var(--text-display-md)" }}
           />
 
           <p className="type-body" style={{ maxWidth: "58ch" }}>
-            Beyond the four we sell, Elixir builds Caviar Bakhoor for other
-            names — <strong>custom fragrance</strong>, custom tin, custom box.
-            Development, sampling, refinement and production, in sequence, with
-            one point of contact throughout.
+            Elixir creates Caviar Bakhoor collections for your brand{" "}
+            <strong>from start to finish</strong>. We develop and refine your
+            scent, create custom tins and boxes, and manage production with{" "}
+            <strong>one point of contact</strong> throughout.
           </p>
 
-          <a href="/for-business" className="cta-button">
+          <Link href="/for-business" className="cta-button">
             <span>Start a project</span>
             <span aria-hidden className="cta-arrow">
               ↗
             </span>
-          </a>
+          </Link>
         </Reveal>
       </Container>
 

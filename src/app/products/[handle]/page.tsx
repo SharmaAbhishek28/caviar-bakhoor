@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const product = getProduct(handle);
   if (!product) return {};
   return {
-    title: `${product.title} — Caviar de Parfum | Caviar Bakhoor`,
+    title: `${product.title} | Caviar Bakhoor`,
     description: `${product.title}: scented bakhoor, encapsulated in pearls with 24-karat gold. ${product.fiveWords.join(", ")}.`,
   };
 }

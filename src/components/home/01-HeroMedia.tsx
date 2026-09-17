@@ -59,7 +59,7 @@ export function HeroMedia({
       ) : (
         <Image
           src={posterSrc}
-          alt="Macro of Caviar de Parfum pearls — dark spheres of encapsulated bakhoor scattered with flakes of 24-karat gold leaf"
+          alt="Macro of Caviar Bakhoor pearls — dark spheres of encapsulated bakhoor scattered with flakes of 24-karat gold leaf"
           width={2400}
           height={1600}
           sizes="100vw"
@@ -106,7 +106,9 @@ export function HeroMedia({
           textShadow: "0 1px 24px rgb(8 7 10 / 0.45)",
         }}
       >
-        Held in a pearl. Released by heat.
+        An innovation in bakhoor.
+        <br />
+        Caviar Bakhoor.
       </h1>
 
       {hasVideo ? (

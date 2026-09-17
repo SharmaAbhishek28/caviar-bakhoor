@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Caviar Bakhoor",
-  description: "Elixir Signature Scents — Caviar de Parfum",
+  description: "Elixir Signature Scents — Caviar Bakhoor",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

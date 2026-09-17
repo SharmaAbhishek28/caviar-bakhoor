@@ -9,7 +9,7 @@ import {
 } from "@/components/ui";
 
 /**
- * 03 — Held in a Pearl (approach).
+ * 03 — Encapsulated Technology (approach).
  *
  * Stacks over 02 on a lifted surface, so the boundary between the two sections
  * is visible as the new one slides up — that plus the hairline is the whole
@@ -37,22 +37,21 @@ export function Approach() {
         >
           <Eyebrow>The innovation</Eyebrow>
 
-          <DisplayHeadline lines={["Held", "In a pearl"]} />
+          <DisplayHeadline lines={["Encapsulated", "Technology"]} />
 
-          <CapsSubhead style={{ maxWidth: "34ch" }}>
-            Nothing escapes until you want it to.
+          <CapsSubhead style={{ maxWidth: "40ch" }}>
+            Reinventing the bakhoor ritual like never before.
           </CapsSubhead>
 
           <p
             className="type-body prose-justified"
             style={{ marginTop: "clamp(0.5rem, 1.5vw, 1rem)" }}
           >
-            Traditional bakhoor releases <strong>everything at once</strong>.
-            Elixir&rsquo;s <strong>encapsulation</strong> holds the fragrance oil
-            inside a sphere that stays <strong>closed at room temperature</strong>.
-            On the burner the pearl opens and the oil lifts through the gold.
-            What you notice is <strong>not smoke but scent</strong> — and how
-            long it holds.
+            Caviar Bakhoor reimagines traditional bakhoor in a{" "}
+            <strong>long-lasting, highly diffusive</strong> form. Our{" "}
+            <strong>patent-pending encapsulation technology</strong> transforms
+            its scent into <strong>pearls that release their aroma as they
+            burn</strong>.
           </p>
         </Reveal>
       </Container>
@@ -60,7 +59,7 @@ export function Approach() {
       <Container>
         <Image
           src="/images/texture/pearl-macro.jpg"
-          alt="Macro of Caviar de Parfum pearls, dark spheres scattered with flakes of 24-karat gold leaf"
+          alt="Macro of Caviar Bakhoor pearls, dark spheres scattered with flakes of 24-karat gold leaf"
           width={2400}
           height={1600}
           sizes="(max-width: 1023px) 100vw, 1440px"
@@ -72,7 +71,7 @@ export function Approach() {
         <div className="approach-row">
           <Image
             src="/images/packaging/spoon-01.jpg"
-            alt="An open Caviar de Parfum box on black, the Noir tin and its gold spoon inside"
+            alt="An open Caviar Bakhoor box on black, the Noir tin and its gold spoon inside"
             width={1200}
             height={1905}
             sizes="(max-width: 1023px) 100vw, 40vw"
@@ -82,18 +81,15 @@ export function Approach() {
           {/* Subhead pinned top, paragraph pinned bottom, empty between. */}
           <div className="approach-copy">
             <CapsSubhead className="approach-subhead">
-              Elixir × Caviar de Parfum
+              Elixir × Caviar Bakhoor
             </CapsSubhead>
 
             <p className="type-body prose-justified" style={{ margin: 0 }}>
-              Every tin carries <strong>pure 24-karat gold flakes</strong> set
-              among the pearls. Gold has been Elixir&rsquo;s{" "}
-              <strong>signature</strong> across its parfum collections for
-              years; here it is in the fragrance you{" "}
-              <strong>burn</strong> rather than the one you{" "}
-              <strong>wear</strong>. <strong>Four compositions</strong> to
-              start — one dark, one rose, one saffron, one amber — each built to
-              be <strong>heated, not sprayed</strong>.
+              Each tin holds a collection of{" "}
+              <strong>fragrant caviar pearls</strong>.{" "}
+              <strong>Four compositions</strong> open the collection: dark,
+              rose, saffron and amber. Each reveals its character{" "}
+              <strong>slowly as they are warmed</strong>.
             </p>
           </div>
         </div>

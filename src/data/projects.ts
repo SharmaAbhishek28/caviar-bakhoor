@@ -9,12 +9,9 @@
  * index shown on the card, the crop used on the wheel, and which words in the
  * blurb are weighted.
  *
- * `blurb` is the product description verbatim. It carries the perfumer's
- * "PROPOSAL — perfumer to approve." prefix on purpose. The card no longer
- * shows it as a badge (removed at the client's request) but strips it for
- * display and keeps it as `data-confirm` on the paragraph, so unapproved copy
- * is still findable. Remove the prefix in products.ts only on the perfumer's
- * sign-off (CLAUDE.md, content rules).
+ * `blurb` is the product description verbatim from products.ts. The copy is
+ * the client's own (BAKHOOR WEBSITE.pdf), so it no longer carries the
+ * perfumer's PROPOSAL prefix and MarkedProse finds nothing to flag.
  *
  * `no` is the card's position in the set, not a project number. The reference
  * shows "( PROJECT NO. 141 )" — an Elixir equivalent would be a real internal
@@ -59,10 +56,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     handle: "noir",
     title: "Noir",
     no: "01",
-    meta: "Noir / Caviar de Parfum",
+    meta: "Noir / Caviar Bakhoor",
     words: "Dark. Resinous. Still. Unsweetened. Late.",
     blurb: blurbOf("noir"),
-    keywords: ["darkest of the four", "Smoke and resin", "feel still"],
+    keywords: ["natural, aged Assamese oud", "saffron", "dark, seductive blend"],
     cta: "View Noir",
     image: {
       src: "/images/products/noir-tin-overhead.jpg",
@@ -75,10 +72,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     handle: "ward-baccarat",
     title: "Ward Baccarat",
     no: "02",
-    meta: "Ward Baccarat / Caviar de Parfum",
+    meta: "Ward Baccarat / Caviar Bakhoor",
     words: "Rose. Heated. Crystalline. Sweet. Lasting.",
     blurb: blurbOf("ward-baccarat"),
-    keywords: ["heated rather than fresh", "crystalline and sweet", "holds long"],
+    keywords: ["rare, aged Cambodian oud", "dark truffle rose", "deep, regal aroma"],
     cta: "View Ward Baccarat",
     image: {
       src: "/images/products/ward-baccarat-tin-overhead.jpg",
@@ -91,10 +88,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     handle: "imperial-zafran",
     title: "Imperial Zafran",
     no: "03",
-    meta: "Imperial Zafran / Caviar de Parfum",
+    meta: "Imperial Zafran / Caviar Bakhoor",
     words: "Saffron. Warm. Leathery. Dry. Regal.",
     blurb: blurbOf("imperial-zafran"),
-    keywords: ["Saffron carries the whole composition", "faintly leathery", "Middle Eastern"],
+    keywords: ["natural, aged Assamese oud", "precious saffron", "rich, spiced warmth"],
     cta: "View Imperial Zafran",
     image: {
       src: "/images/products/imperial-zafran-tin-overhead.jpg",
@@ -107,10 +104,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     handle: "amber-blanc",
     title: "Amber Blanc",
     no: "04",
-    meta: "Amber Blanc / Caviar de Parfum",
+    meta: "Amber Blanc / Caviar Bakhoor",
     words: "White amber. Clean. Musky. Soft. Light.",
     blurb: blurbOf("amber-blanc"),
-    keywords: ["lightest in the range", "White amber and clean musk", "start with"],
+    keywords: ["rare, aged Cambodian oud", "luminous amber", "warm play of light and dark"],
     cta: "View Amber Blanc",
     image: {
       src: "/images/products/amber-blanc-tin-overhead.jpg",
@@ -122,4 +119,4 @@ export const PROJECT_WHEEL: ProjectCard[] = [
 ];
 
 /** The word that runs behind the wheel, in one continuous band. */
-export const WHEEL_MARQUEE = "Caviar de Parfum";
+export const WHEEL_MARQUEE = "Caviar Bakhoor";

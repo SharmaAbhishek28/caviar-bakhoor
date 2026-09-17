@@ -8,10 +8,11 @@ export const PROPOSAL = "PROPOSAL — perfumer to approve.";
  * reference's "wisdom and balance ... everything he does" device. Used by the
  * section 04 cards and the section 06 entries.
  *
- * `text` may carry the PROPOSAL prefix from products.ts. It is stripped for
- * display and kept as `data-confirm` on the paragraph, so unapproved copy is
- * still findable. The visible badge was removed at the client's request; the
- * marker itself stays in the data until the perfumer signs off.
+ * `text` may carry the PROPOSAL prefix used for copy awaiting the perfumer.
+ * It is stripped for display and kept as `data-confirm` on the paragraph, so
+ * unapproved copy stays findable. The four fragrance descriptions no longer
+ * carry it — the client supplied final copy — but the mechanism remains for
+ * any future draft.
  *
  * Phrases must appear verbatim in `text`. Each is wrapped at its first
  * occurrence; longer phrases are wrapped first so a shorter one can never

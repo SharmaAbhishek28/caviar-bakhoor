@@ -29,7 +29,7 @@ import {
  */
 
 const PRODUCT_BAND = [
-  "Four Fragrances",
+  "Four Caviar’s",
   "One New Category",
   "Noir",
   "Ward Baccarat",
@@ -58,7 +58,7 @@ export function Innovation() {
           <DisplayHeadline lines={["Bakhoor", "Reimagined"]} />
 
           <CapsSubhead style={{ maxWidth: "28ch" }}>
-            Four fragrances. One new category.
+            Four Caviar&rsquo;s. One new category.
           </CapsSubhead>
         </Reveal>
       </Container>
@@ -81,12 +81,12 @@ export function Innovation() {
 
           <Link
             href="/collection"
-            aria-label="View the Caviar de Parfum collection"
+            aria-label="View the Caviar Bakhoor collection"
             style={{ display: "block", lineHeight: 0 }}
           >
             <Image
               src="/images/collection/all-four-01.jpg"
-              alt="The four Caviar de Parfum tins — Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — arranged on marble"
+              alt="The four Caviar Bakhoor tins — Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — arranged on marble"
               width={2400}
               height={1350}
               sizes="(max-width: 1023px) 100vw, 1440px"
@@ -111,11 +111,10 @@ export function Innovation() {
               marginBottom: "var(--section-y)",
             }}
           >
-            Bakhoor has been burned the same way for a thousand years. Wood,
-            resin and oil — lit, and gone. Caviar Bakhoor holds the same
-            fragrance inside a pearl. Sealed at room temperature, opened only by
-            heat, and set with pure 24-karat gold. The scent arrives slowly, and
-            it stays.
+            Caviar Bakhoor reimagines traditional bakhoor in a long-lasting,
+            highly diffusive form. Our patent-pending encapsulation technology
+            transforms its scent into pearls that release their aroma as they
+            burn.
           </p>
         </div>
       </Container>

@@ -5,7 +5,7 @@ import { Story } from "@/components/collection/Story";
 import { products } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "The Collection — Caviar de Parfum | Caviar Bakhoor",
+  title: "The Collection | Caviar Bakhoor",
   description:
     "Four fragrances. One new category. Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — scented bakhoor, encapsulated in pearls with 24-karat gold.",
 };

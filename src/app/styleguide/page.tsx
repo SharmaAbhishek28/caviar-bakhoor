@@ -208,7 +208,7 @@ const TYPE: Specimen[] = [
     spec: "Switzer Medium · 0.8125rem · uppercase · tracking 0.08em",
     use: "Price, product weight, form labels",
     className: "type-meta",
-    sample: "Caviar de Parfum · Shop the collection",
+    sample: "Caviar Bakhoor · Shop the collection",
   },
 ];
 
@@ -242,7 +242,7 @@ const COMPOSITIONS: {
     note: "Bodoni caps carry the noun; Switzer Black Italic cuts into the second word. Monochrome — the size and weight break does the work.",
     headline: (
       <span className="flex flex-col" style={{ lineHeight: 1 }}>
-        <span className="type-counter-sm">Caviar de Parfum</span>
+        <span className="type-counter-sm">Caviar Bakhoor</span>
         <span className="type-display-xl">Bakhoor,</span>
         <span style={{ textTransform: "uppercase" }}>
           <Shift by="-0.05em">
@@ -303,7 +303,7 @@ const KEYWORDS = [
   "Oud",
   "Bakhoor Reimagined",
   "Private Label",
-  "Caviar de Parfum",
+  "Caviar Bakhoor",
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -521,7 +521,7 @@ export default function StyleguidePage() {
 
         <DarkPanel
           src="/images/collection-tins-dark.jpg"
-          alt="The four Caviar de Parfum tins — Ward Baccarat, Amber Blanc, Imperial Zafran and Noir — lit against black"
+          alt="The four Caviar Bakhoor tins — Ward Baccarat, Amber Blanc, Imperial Zafran and Noir — lit against black"
           width={2400}
           height={1302}
         >

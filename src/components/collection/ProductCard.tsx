@@ -5,7 +5,7 @@ import type { Product } from "@/data/products";
 /**
  * One catalogue card: the fragrance's portrait shot as the whole card, a
  * scrim, and centred over the foot of it the name in Bodoni caps, the line
- * "Scented Bakhoor · Caviar de Parfum", and a paper button.
+ * "Scented Bakhoor · Caviar Bakhoor", and a paper button.
  *
  * Takes a Product, never imports one — CLAUDE.md. The portrait is whichever
  * of the product's images is taller than it is wide; the overhead crop is

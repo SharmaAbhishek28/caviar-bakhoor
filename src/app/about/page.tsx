@@ -7,7 +7,7 @@ import { Credentials } from "@/components/home/08-Credentials";
 export const metadata: Metadata = {
   title: "About Elixir — A perfume house that builds what it sells | Caviar Bakhoor",
   description:
-    "Elixir Signature Scents makes Caviar de Parfum: scented bakhoor encapsulated into pearls with 24-karat gold. Four fragrances, one new category.",
+    "Elixir Signature Scents makes Caviar Bakhoor: scented bakhoor encapsulated into pearls with 24-karat gold. Four fragrances, one new category.",
 };
 
 /**

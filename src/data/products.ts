@@ -43,7 +43,7 @@ export type Product = {
   weightGrams: number | null;
   /** Per-product accent, taken from the physical lid colour. */
   accent: string;
-  /** Two or three sentences. PROPOSAL ONLY — perfumer must approve. */
+  /** Two or three sentences. Client-approved copy (BAKHOOR WEBSITE.pdf). */
   description: string;
   /** Five words, shown on /collection. PROPOSAL ONLY — CONFIRM with the perfumer. */
   fiveWords: string[];
@@ -54,7 +54,7 @@ export type Product = {
 };
 
 const IN_THE_BOX = [
-  'Caviar de Parfum tin',
+  'Caviar Bakhoor tin',
   'Charcoal block',
   'Gold mesh disc',
   'Gold serving spoon',
@@ -65,16 +65,15 @@ export const products: Product[] = [
   {
     handle: 'noir',
     title: 'Noir',
-    subtitle: 'Scented Bakhoor · Caviar de Parfum',
+    subtitle: 'Scented Bakhoor · Caviar Bakhoor',
     priceMinor: null, // CONFIRM
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
     accent: '#1A1614',
     description:
-      'PROPOSAL — perfumer to approve. The darkest of the four. Smoke and resin held ' +
-      'close, with none of the sweetness that usually softens an oud. Built for a room ' +
-      'you want to feel still.',
+      'Noir brings natural, aged Assamese oud and saffron together in a dark, ' +
+      'seductive blend.',
     fiveWords: ['Dark', 'Resinous', 'Still', 'Unsweetened', 'Late'],
     notes: {
       top: [], // CONFIRM
@@ -84,7 +83,7 @@ export const products: Product[] = [
     images: [
       {
         src: '/images/products/noir-tin-overhead.jpg',
-        alt: 'Open tin of Noir Caviar de Parfum, black pearls flecked with gold',
+        alt: 'Open tin of Noir Caviar Bakhoor, black pearls flecked with gold',
         width: 1536,
         height: 816,
       },
@@ -112,16 +111,15 @@ export const products: Product[] = [
   {
     handle: 'ward-baccarat',
     title: 'Ward Baccarat',
-    subtitle: 'Scented Bakhoor · Caviar de Parfum',
+    subtitle: 'Scented Bakhoor · Caviar Bakhoor',
     priceMinor: null, // CONFIRM
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
     accent: '#6B2230',
     description:
-      'PROPOSAL — perfumer to approve. Rose, but heated rather than fresh. The floral ' +
-      'sits over something crystalline and sweet that holds long after the charcoal ' +
-      'has cooled.',
+      'Ward Baccarat blends rare, aged Cambodian oud with dark truffle rose for a ' +
+      'deep, regal aroma.',
     fiveWords: ['Rose', 'Heated', 'Crystalline', 'Sweet', 'Lasting'],
     notes: {
       top: [], // CONFIRM
@@ -131,7 +129,7 @@ export const products: Product[] = [
     images: [
       {
         src: '/images/products/ward-baccarat-tin-overhead.jpg',
-        alt: 'Open tin of Ward Baccarat Caviar de Parfum with burgundy lid',
+        alt: 'Open tin of Ward Baccarat Caviar Bakhoor with burgundy lid',
         width: 1536,
         height: 816,
       },
@@ -159,16 +157,15 @@ export const products: Product[] = [
   {
     handle: 'imperial-zafran',
     title: 'Imperial Zafran',
-    subtitle: 'Scented Bakhoor · Caviar de Parfum',
+    subtitle: 'Scented Bakhoor · Caviar Bakhoor',
     priceMinor: null, // CONFIRM
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
     accent: '#B9762A',
     description:
-      'PROPOSAL — perfumer to approve. Saffron carries the whole composition: warm, ' +
-      'faintly leathery, with the dry sweetness of the thread itself. The most ' +
-      'recognisably Middle Eastern of the four.',
+      'Imperial Zafran pairs natural, aged Assamese oud with precious saffron for a ' +
+      'rich, spiced warmth.',
     fiveWords: ['Saffron', 'Warm', 'Leathery', 'Dry', 'Regal'],
     notes: {
       top: [], // CONFIRM
@@ -178,7 +175,7 @@ export const products: Product[] = [
     images: [
       {
         src: '/images/products/imperial-zafran-tin-overhead.jpg',
-        alt: 'Open tin of Imperial Zafran Caviar de Parfum, black and gold pearls',
+        alt: 'Open tin of Imperial Zafran Caviar Bakhoor, black and gold pearls',
         width: 1536,
         height: 816,
       },
@@ -206,16 +203,15 @@ export const products: Product[] = [
   {
     handle: 'amber-blanc',
     title: 'Amber Blanc',
-    subtitle: 'Scented Bakhoor · Caviar de Parfum',
+    subtitle: 'Scented Bakhoor · Caviar Bakhoor',
     priceMinor: null, // CONFIRM
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
     accent: '#EDE7DA',
     description:
-      'PROPOSAL — perfumer to approve. The lightest in the range. White amber and ' +
-      'clean musk, closer to a fine fragrance than to incense. The one to start with ' +
-      'if bakhoor is new to you.',
+      'Amber Blanc unites rare, aged Cambodian oud with luminous amber in a warm ' +
+      'play of light and dark.',
     fiveWords: ['White amber', 'Clean', 'Musky', 'Soft', 'Light'],
     notes: {
       top: [], // CONFIRM
@@ -225,7 +221,7 @@ export const products: Product[] = [
     images: [
       {
         src: '/images/products/amber-blanc-tin-overhead.jpg',
-        alt: 'Open tin of Amber Blanc Caviar de Parfum with bone white lid',
+        alt: 'Open tin of Amber Blanc Caviar Bakhoor with bone white lid',
         width: 1536,
         height: 816,
       },

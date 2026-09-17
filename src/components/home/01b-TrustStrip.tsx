@@ -20,11 +20,11 @@ import { ScrollMarquee } from "@/components/ui";
  */
 const ITEMS = [
   "Caviar Bakhoor",
-  "Encapsulated Fragrance",
+  "Encapsulated Technology",
   "24 Karat Gold",
   "Oud",
   "Private Label",
-  "Caviar de Parfum",
+  "Caviar Bakhoor",
   "Handmade",
   "Scented Bakhoor",
 ];

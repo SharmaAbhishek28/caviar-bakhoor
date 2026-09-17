@@ -27,8 +27,8 @@ export const CREDENTIALS_LABEL = "Elixir";
 export const CREDENTIALS: Credential[] = [
   { label: "Handmade" },
   { label: "24 Karat Gold" },
-  { label: "Encapsulated Fragrance" },
+  { label: "Encapsulated Technology" },
   { label: "Private Label" },
-  { label: "Caviar de Parfum" },
+  { label: "Caviar Bakhoor" },
   { label: "Scented Bakhoor" },
 ];

@@ -41,5 +41,5 @@ export const KEYWORDS = [
   "Oud",
   "Bakhoor Reimagined",
   "Private Label",
-  "Caviar de Parfum",
+  "Caviar Bakhoor",
 ];

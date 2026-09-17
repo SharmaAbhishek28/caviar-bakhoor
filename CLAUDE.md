@@ -1,6 +1,6 @@
 # CaviarBakhoor.com
 
-Frontend for **Elixir Signature Scents — Caviar de Parfum**. Built to be handed to a
+Frontend for **Elixir Signature Scents — Caviar Bakhoor**. Built to be handed to a
 Shopify developer who will wire it to a real store. Read this file before every task.
 
 ## What this is
@@ -17,9 +17,13 @@ The site's real job is **category creation**. Four SKUs are the proof, not the p
 
 | Term | What it means | Where it appears |
 |---|---|---|
-| Caviar Bakhoor | The **category**. The thing being invented. | SEO, education, headlines, domain |
-| Caviar de Parfum | Elixir's **product line** within that category | Packaging, product pages, collection |
+| Caviar Bakhoor | The **category** and the **product line**. Both. | SEO, education, headlines, domain, packaging, product pages |
 | Elixir Signature Scents | The **house** | Brand mark, About, B2B |
+
+**Caviar de Parfum is retired.** The client collapsed the two names into one on
+2026-09-17 (BAKHOOR WEBSITE.pdf): "NO CAVIAR DE PARFUM CHANGE TO CAVIAR BAKHOOR".
+Do not reintroduce it. Likewise "Encapsulated Fragrance" is now **Encapsulated
+Technology**.
 
 The four fragrances are **Noir**, **Ward Baccarat**, **Imperial Zafran**, **Amber Blanc**.
 
@@ -48,9 +52,13 @@ A different developer connects this to Shopify later. Build so that swap is one 
 
 ## Content rules
 
-- **Never invent factual claims.** Not about the patent, the technology, the
-  facility, certifications, years in business, or client names.
-- Real copy is in `docs/content.md`. Use it verbatim.
+- **Never invent factual claims.** Not about the facility, certifications, years in
+  business, or client names.
+- Real copy is in `docs/content.md`, plus the client's own `BAKHOOR WEBSITE.pdf`
+  (2026-09-17), which supersedes it where the two disagree. Use both verbatim.
+- **Confirmed by the client in that PDF**, so these may now be stated: the
+  encapsulation technology is **patent-pending**; the fragrance descriptions and
+  their oud origins (aged Assamese, aged Cambodian) are final, not proposals.
 - Anything marked `[CONFIRM]` is awaiting the client. Leave the marker visible in the
   UI during development so it cannot ship by accident. Do not write around it with
   something plausible.

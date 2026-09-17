@@ -31,7 +31,7 @@ export const RITUAL_PAGE = {
   box: {
     title: "In the box",
     items: [
-      { name: "Caviar de Parfum tin", image: { src: "/images/products/noir-front.jpg", alt: "The Noir tin, front on", width: 1200, height: 1200 } },
+      { name: "Caviar Bakhoor tin", image: { src: "/images/products/noir-front.jpg", alt: "The Noir tin, front on", width: 1200, height: 1200 } },
       { name: "Charcoal block", image: null, note: "[CONFIRM] no photograph in the shoot" },
       { name: "Gold mesh disc", image: { src: "/images/ritual/ritual-01.jpg", alt: "The mesh packet beside the tin and spoon", width: 2400, height: 1600 }, confirm: "[CONFIRM] mesh disc / gold foil" },
       { name: "Gold serving spoon", image: { src: "/images/packaging/spoon-01.jpg", alt: "The gold spoon over the open tin", width: 1200, height: 1905 } },
@@ -66,7 +66,7 @@ export const RITUAL_PAGE = {
       [
         { src: "/images/about/gallery-05.jpg", alt: "Oud boxes with the gold holder", width: 1600, height: 1067 },
         { src: "/images/products/amber-blanc-front.jpg", alt: "The Amber Blanc box and tin", width: 1200, height: 1200 },
-        { src: "/images/about/gallery-08.jpg", alt: "Caviar de Parfum boxes on a shelf", width: 1600, height: 877 },
+        { src: "/images/about/gallery-08.jpg", alt: "Caviar Bakhoor boxes on a shelf", width: 1600, height: 877 },
       ],
     ],
   },

@@ -343,7 +343,7 @@ names join this strip and the strip label changes to `TRUSTED BY`.
 - Paragraph:
   > From the first pearl to the finished tin, Elixir makes what it sells —
   > fragrance, encapsulation and packaging, under one roof, since 1937.
-- Legal: © Jiyo Fragrances · Caviar de Parfum is a product of Elixir Signature
+- Legal: © Jiyo Fragrances · Caviar Bakhoor is a product of Elixir Signature
   Scents · Privacy · Terms
 
 `[CONFIRM "under one roof" — only true if packaging is in-house.]`

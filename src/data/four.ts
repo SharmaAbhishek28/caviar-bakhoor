@@ -49,10 +49,10 @@ export const FOUR: FourEntry[] = [
   {
     handle: "noir",
     title: "Noir",
-    epithet: "Darkest",
+    epithet: "Assamese",
     blurb: blurbOf("noir"),
-    strong: ["darkest of the four", "Smoke and resin"],
-    em: ["feel still"],
+    strong: ["natural, aged Assamese oud", "saffron"],
+    em: ["dark, seductive blend"],
     image: {
       src: "/images/products/noir-portrait.jpg",
       alt: "The Noir box open on black, the tin of pearls beside it and a gold spoon lifting a measure",
@@ -63,10 +63,10 @@ export const FOUR: FourEntry[] = [
   {
     handle: "ward-baccarat",
     title: "Ward Baccarat",
-    epithet: "Rose",
+    epithet: "Truffle rose",
     blurb: blurbOf("ward-baccarat"),
-    strong: ["heated rather than fresh", "crystalline and sweet"],
-    em: ["holds long"],
+    strong: ["rare, aged Cambodian oud", "dark truffle rose"],
+    em: ["deep, regal aroma"],
     image: {
       src: "/images/products/ward-baccarat-portrait.jpg",
       alt: "The Ward Baccarat box open on black, its burgundy-lidded tin and a spoon of pearls",
@@ -79,8 +79,8 @@ export const FOUR: FourEntry[] = [
     title: "Imperial Zafran",
     epithet: "Saffron",
     blurb: blurbOf("imperial-zafran"),
-    strong: ["Saffron carries the whole composition", "faintly leathery"],
-    em: ["Middle Eastern"],
+    strong: ["natural, aged Assamese oud", "precious saffron"],
+    em: ["rich, spiced warmth"],
     image: {
       src: "/images/products/imperial-zafran-portrait.jpg",
       alt: "The Imperial Zafran box open on black, its green-lidded tin and a spoon of pearls",
@@ -91,10 +91,10 @@ export const FOUR: FourEntry[] = [
   {
     handle: "amber-blanc",
     title: "Amber Blanc",
-    epithet: "Lightest",
+    epithet: "Amber",
     blurb: blurbOf("amber-blanc"),
-    strong: ["lightest in the range", "White amber and clean musk"],
-    em: ["start with"],
+    strong: ["rare, aged Cambodian oud", "luminous amber"],
+    em: ["warm play of light and dark"],
     image: {
       src: "/images/products/amber-blanc-portrait.jpg",
       alt: "The Amber Blanc box open on black, its white-lidded tin and a spoon of pearls",

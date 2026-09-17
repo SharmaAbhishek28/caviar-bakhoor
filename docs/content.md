@@ -13,7 +13,7 @@ like never before".
 
 - Site name — Caviar Bakhoor by Elixir
 - House — Elixir Signature Scents
-- Product line — Caviar de Parfum
+- Product line — Caviar Bakhoor
 - Primary CTA — Shop the collection
 - Secondary CTA — Create with us
 
@@ -21,7 +21,7 @@ like never before".
 
 **Marquee keywords** (category SEO doing quiet visual work):
 Caviar Bakhoor · Encapsulation · 24 Karat Gold · Oud · Bakhoor Reimagined ·
-Private Label · Caviar de Parfum · Made in India `[CONFIRM manufacturing location]`
+Private Label · Caviar Bakhoor · Made in India `[CONFIRM manufacturing location]`
 
 ---
 
@@ -118,7 +118,7 @@ private label. Your scent, your packaging, our technology.
 Structure follows the same order for all four.
 
 - Circular tin image, then three supporting shots
-- Fragrance name (Gambetta), "Scented Bakhoor · Caviar de Parfum"
+- Fragrance name (Gambetta), "Scented Bakhoor · Caviar Bakhoor"
 - Weight `[CONFIRM]` and price
 - Add to cart, sticky past the fold
 - **The scent** — two or three sentences. Written, not listed.
