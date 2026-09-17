@@ -41,12 +41,12 @@ export const RITUAL_PAGE = {
 
   heat: {
     title: "No smoke until you want it.",
-    lede: "The pearls are made by suspending fragrance oil inside a sphere that stays sealed at room temperature and opens under heat.",
+    lede: "Our patent-pending encapsulation technology transforms scent into pearls that release their aroma as they burn — long-lasting, highly diffusive.",
     states: [
       { name: "Sealed", body: "Closed at room temperature." },
       { name: "On the burner", body: "Rest the gold mesh disc over the heat." },
       { name: "The pearl opens", body: "Heat opens it slowly." },
-      { name: "The scent lifts", body: "A scent that unfolds instead of erupting — and lasts." },
+      { name: "The scent lifts", body: "Long-lasting and highly diffusive — the aroma released as the pearls burn." },
     ],
   },
 

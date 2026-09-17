@@ -56,11 +56,11 @@ export const BUSINESS = {
   },
 
   made: {
-    headline: { first: "Made for", second: "your brand" },
+    headline: { first: "Tailored collection", second: "development" },
     paragraph:
-      "Beyond the four we sell, we build Caviar Bakhoor for other names — custom fragrance, custom tin, custom box. Development, sampling, refinement and production, in sequence, with one point of contact throughout.",
+      "Elixir creates Caviar Bakhoor collections for your brand from start to finish. We develop and refine your scent, create custom tins and boxes, and manage production with one point of contact throughout.",
     rows: [
-      { title: "Custom fragrance", body: "Your scent, encapsulated into pearls and set with 24-karat gold.", image: { src: "/images/about/circle-pearls.jpg", alt: "Pearls and gold leaf", width: 1000, height: 1000 } },
+      { title: "Custom fragrance", body: "Your scent, transformed into pearls by our patent-pending encapsulation technology.", image: { src: "/images/about/circle-pearls.jpg", alt: "Pearls and gold leaf", width: 1000, height: 1000 } },
       { title: "Custom tin", body: "The tin, its lid and its label — yours.", image: { src: "/images/about/gallery-03.jpg", alt: "The four tins fanned on their boxes", width: 1600, height: 1067 } },
       { title: "Custom box", body: "The box and everything in it: charcoal, mesh disc, spoon, card.", image: { src: "/images/about/gallery-02.jpg", alt: "Tins and boxes, stacked", width: 1600, height: 913 } },
     ],

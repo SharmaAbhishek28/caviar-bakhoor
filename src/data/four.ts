@@ -113,7 +113,7 @@ export const FOUR: FourEntry[] = [
 export const FOUR_CLOSE = {
   marquee: "Ready to try the new bakhoor?",
   paragraph:
-    "Four compositions to start — one dark, one rose, one saffron, one amber — each built to be heated, not sprayed. Every box arrives with the charcoal, the mesh disc and the spoon.",
-  strong: ["heated, not sprayed"],
+    "Four compositions open the collection: dark, rose, saffron and amber. Each reveals its character slowly as they are warmed. Every box arrives with the charcoal, the mesh disc and the spoon.",
+  strong: ["reveals its character slowly"],
   cta: { label: "Shop Caviar Bakhoor", href: "/collection" },
 };

@@ -111,7 +111,7 @@ That is the whole hero. Nothing else.
   PRIVATE LABEL · CAVIAR DE PARFUM · SINCE 1937
 - CTA bar: SHOP THE COLLECTION
 - Paragraph:
-  > Bakhoor has been burned the same way for a thousand years. Wood, resin and
+  > Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly
   > oil — lit, and gone. Caviar Bakhoor holds the same fragrance inside a pearl.
   > Sealed at room temperature, opened only by heat, and set with pure 24-karat
   > gold. The scent arrives slowly, and it stays.
@@ -150,7 +150,7 @@ the tins-in-a-row frame from the raw set).
   > Every tin carries pure 24-karat gold flakes set among the pearls. Gold has been
   > Elixir's signature across its parfum collections for years; here it is in the
   > fragrance you burn rather than the one you wear. Four compositions to start —
-  > one dark, one rose, one saffron, one amber — each built to be heated, not sprayed.
+  > dark, rose, saffron and amber — each reveals its character slowly as warmed.
 
 `[CONFIRM: is the gold decorative, or does it affect the burn? Adjust the first
 sentence if it does something.]`
@@ -193,7 +193,7 @@ sentence if it does something.]`
 - Case CTA: EXPLORE THE COLLABORATION
 - Second headline: MADE FOR / YOUR BRAND
 - Second paragraph:
-  > Beyond the four we sell, we build Caviar Bakhoor for other names — custom
+  > Elixir creates Caviar Bakhoor collections for your brand from start to
   > fragrance, custom tin, custom box. Development, sampling, refinement and
   > production, in sequence, with one point of contact throughout.
 - Second CTA: START A PROJECT

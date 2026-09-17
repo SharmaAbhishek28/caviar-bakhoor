@@ -28,25 +28,26 @@ Private Label · Caviar Bakhoor · Made in India `[CONFIRM manufacturing locatio
 ## Home
 
 ### Hero
-> **BAKHOOR,**
-> **REIMAGINED.**
+> **AN INNOVATION IN BAKHOOR.**
+> **CAVIAR BAKHOOR.**
 
-Traditional bakhoor, encapsulated into pearls — each one holding fragrance and pure
-24-karat gold until heat releases it.
+Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive
+form. Our patent-pending encapsulation technology transforms its scent into pearls
+that release their aroma as they burn.
 
 `Shop the collection` · `See how it works`
 
 ### What is Caviar Bakhoor
 
-> **Bakhoor has been burned the same way for a thousand years.**
+> **What is Caviar Bakhoor?**
 
-Wood chips, resin, oil. Smoke that arrives all at once and fades just as fast.
+Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive
+form. Our patent-pending encapsulation technology transforms its scent into pearls
+that release their aroma as they burn.
 
-Elixir's encapsulation technology holds the fragrance inside a pearl. Heat opens it
-slowly. What you get is a scent that unfolds instead of erupting — and lasts.
-
-`[CONFIRM: how long does the scent hold vs traditional bakhoor? A real number here is
-worth more than any adjective.]`
+Each tin holds a collection of fragrant caviar pearls. Four compositions open the
+collection: dark, rose, saffron and amber. Each reveals its character slowly as they
+are warmed.
 
 ### The innovation
 
@@ -56,8 +57,9 @@ The pearls are made by suspending fragrance oil inside a sphere that stays seale
 room temperature and opens under heat. Pure 24-karat gold flakes are set into every
 batch.
 
-`[CONFIRM: patent status — filed, pending, granted? Number and jurisdiction if
-shareable. Do not publish anything about process specifics.]`
+Patent status: **pending** — confirmed by the client (BAKHOOR WEBSITE.pdf,
+2026-09-17). `[CONFIRM: number and jurisdiction, if shareable. Still do not publish
+process specifics.]`
 
 `Read about the innovation`
 
@@ -76,7 +78,7 @@ Every box arrives with the charcoal, the mesh disc and the spoon.
 
 ### The collection
 
-> **Four fragrances.**
+> **Four Caviar's.**
 
 Names in Gambetta, prices from `products.ts`, circular tins. No descriptions on the
 card — the tin does the work.
@@ -201,8 +203,9 @@ Success state: "Enquiry received. Elixir will reply within `[CONFIRM]` working d
 
 ```
 /            Caviar Bakhoor by Elixir — Bakhoor, Reimagined
-             Traditional bakhoor encapsulated into pearls with 24-karat gold.
-             Four fragrances from Elixir Signature Scents.
+             A patent-pending encapsulation technology that transforms scent
+             into pearls.
+             Four Caviar's from Elixir Signature Scents.
 
 /innovation  What is Caviar Bakhoor? | Elixir Signature Scents
              Caviar Bakhoor is bakhoor encapsulated into pearls that release

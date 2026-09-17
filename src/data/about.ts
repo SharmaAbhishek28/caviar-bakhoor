@@ -26,8 +26,8 @@ export const ABOUT = {
   house: {
     title: "The house",
     statement:
-      "Elixir Signature Scents makes Caviar Bakhoor: scented bakhoor, encapsulated into pearls and set with pure 24-karat gold. Handmade. Four fragrances to start — Noir, Ward Baccarat, Imperial Zafran and Amber Blanc.",
-    strong: ["Caviar Bakhoor", "24-karat gold", "Handmade"],
+      "Elixir Signature Scents makes Caviar Bakhoor: a patent-pending encapsulation technology that transforms scent into pearls, set with pure 24-karat gold. Handmade. Four Caviar’s to start — Noir, Ward Baccarat, Imperial Zafran and Amber Blanc.",
+    strong: ["patent-pending encapsulation technology", "24-karat gold", "Handmade"],
   },
   /** The ledger. A null value renders the visible [CONFIRM] marker. */
   facts: [
@@ -66,7 +66,7 @@ export const ABOUT = {
     {
       title: "The collection",
       kicker: "Four Caviar’s",
-      body: "Four Caviar’s. One new category. Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — each built to be heated, not sprayed.",
+      body: "Four Caviar’s. One new category. Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — each reveals its character slowly as they are warmed.",
       href: "/collection",
       cta: "Shop the collection",
       image: { src: "/images/about/circle-tins.jpg", alt: "The four tins", width: 1000, height: 1000 },
@@ -74,7 +74,7 @@ export const ABOUT = {
     {
       title: "The ritual",
       kicker: "Four steps",
-      body: "Light, place, spoon, release. Every box arrives with the charcoal, the mesh disc and the spoon.",
+      body: "Light, place, spoon, release. Each tin holds a collection of fragrant caviar pearls that reveal their character slowly as they are warmed.",
       href: "/ritual",
       cta: "See the full ritual",
       image: { src: "/images/products/noir-open.jpg", alt: "The Noir box open, tin and spoon inside", width: 1200, height: 1200 },

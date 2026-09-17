@@ -7,7 +7,7 @@ import type { Product } from "@/data/products";
  * photograph — the cards below are the photography. Like the reference's
  * "ZEUS | PHARAON", a row of the four names jumps to each card below.
  *
- * Copy is docs/content.md § The collection, verbatim: "Four fragrances." and
+ * Copy is the client’s own (BAKHOOR WEBSITE.pdf): "Four Caviar’s." and
  * the category line. The headline is one thought across two lines.
  */
 export function CollectionHero({ products }: { products: Product[] }) {
@@ -16,7 +16,7 @@ export function CollectionHero({ products }: { products: Product[] }) {
       <Container>
         <div className="chero-body">
           <Eyebrow>The collection</Eyebrow>
-          <DisplayHeadline as="h1" lines={["Four", "Fragrances"]} />
+          <DisplayHeadline as="h1" lines={["Four", "Caviar’s"]} />
           <CapsSubhead>One new category.</CapsSubhead>
 
           <nav aria-label="Jump to a fragrance" className="chero-jump">

@@ -144,7 +144,7 @@ const TYPE: Specimen[] = [
     spec: "Switzer Black · 1.55vw · uppercase · tracking 0",
     use: "The caps subhead under a display line",
     className: "type-display-sub",
-    sample: "Four fragrances. One category.",
+    sample: "Four Caviar’s. One category.",
   },
   {
     token: "display-italic",
@@ -506,7 +506,7 @@ export default function StyleguidePage() {
           />
 
           <CapsSubhead style={{ maxWidth: "28ch" }}>
-            Four fragrances. One category.
+            Four Caviar’s. One category.
           </CapsSubhead>
         </div>
 
@@ -526,7 +526,7 @@ export default function StyleguidePage() {
           height={1302}
         >
           <Eyebrow>The collection</Eyebrow>
-          <CapsSubhead>Four fragrances. No filters.</CapsSubhead>
+          <CapsSubhead>Four Caviar’s. No filters.</CapsSubhead>
         </DarkPanel>
       </div>
     </div>

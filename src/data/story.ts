@@ -6,15 +6,14 @@
  * verbatim from docs/content.md § What is Caviar Bakhoor, and puts the four
  * fragrances on the line instead of dates — nothing here is invented.
  *
- * The [CONFIRM] in that section (how long the scent holds) is not quoted:
- * it is a question to the client, not copy.
+ * Copy is the client's own (BAKHOOR WEBSITE.pdf, 2026-09-17).
  */
 
 export const STORY = {
   title: "The story",
-  lede: "Bakhoor has been burned the same way for a thousand years.",
+  lede: "What is Caviar Bakhoor?",
   paragraphs: [
-    "Wood chips, resin, oil. Smoke that arrives all at once and fades just as fast.",
-    "Elixir's encapsulation technology holds the fragrance inside a pearl. Heat opens it slowly. What you get is a scent that unfolds instead of erupting — and lasts.",
+    "Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive form. Our patent-pending encapsulation technology transforms its scent into pearls that release their aroma as they burn.",
+    "Each tin holds a collection of fragrant caviar pearls. Four compositions open the collection: dark, rose, saffron and amber. Each reveals its character slowly as they are warmed.",
   ],
 };
