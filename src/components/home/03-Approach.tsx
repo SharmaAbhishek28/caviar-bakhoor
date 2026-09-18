@@ -81,6 +81,10 @@ export function Approach() {
 
           {/* Subhead pinned top, paragraph pinned bottom, empty between. */}
           <div className="approach-copy">
+            <CapsSubhead className="approach-subhead">
+              Elixir × Caviar Bakhoor
+            </CapsSubhead>
+
             <p className="type-body prose-justified" style={{ margin: 0 }}>
               EACH TIN HOLDS A COLLECTION OF FRAGRANT CAVIAR PEARLS. FOUR
               COMPOSITIONS OPEN THE COLLECTION: DARK, ROSE, SAFFRON AND AMBER.
