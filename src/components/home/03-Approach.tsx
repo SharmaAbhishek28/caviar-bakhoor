@@ -37,21 +37,22 @@ export function Approach() {
         >
           <Eyebrow>The innovation</Eyebrow>
 
-          <DisplayHeadline lines={["Encapsulated", "Technology"]} />
+          <DisplayHeadline lines={["What is", "Caviar Bakhoor?"]} />
 
-          <CapsSubhead style={{ maxWidth: "40ch" }}>
-            Reinventing the bakhoor ritual like never before.
+          <CapsSubhead style={{ maxWidth: "60ch" }}>
+            CAVIAR BAKHOOR REIMAGINES TRADITIONAL BAKHOOR IN A LONG-LASTING,
+            HIGHLY DIFFUSIVE FORM. OUR PATENT-PENDING ENCAPSULATION TECHNOLOGY
+            TRANSFORMS ITS SCENT INTO PEARLS THAT RELEASE THEIR AROMA AS THEY
+            BURN
           </CapsSubhead>
 
           <p
             className="type-body prose-justified"
             style={{ marginTop: "clamp(0.5rem, 1.5vw, 1rem)" }}
           >
-            Caviar Bakhoor reimagines traditional bakhoor in a{" "}
-            <strong>long-lasting, highly diffusive</strong> form. Our{" "}
-            <strong>patent-pending encapsulation technology</strong> transforms
-            its scent into <strong>pearls that release their aroma as they
-            burn</strong>.
+            NO HELD IN A PEARL CHANGE TO A PATENT PENDING ENCAPSULATED
+            TECHNOLOGY REMOVE NOTHING TO TO AND CHANGE IT TO REINVENTING THE
+            BAKHROOR RITUAL LIKE NEVER BEFORE
           </p>
         </Reveal>
       </Container>
@@ -80,16 +81,10 @@ export function Approach() {
 
           {/* Subhead pinned top, paragraph pinned bottom, empty between. */}
           <div className="approach-copy">
-            <CapsSubhead className="approach-subhead">
-              Elixir × Caviar Bakhoor
-            </CapsSubhead>
-
             <p className="type-body prose-justified" style={{ margin: 0 }}>
-              Each tin holds a collection of{" "}
-              <strong>fragrant caviar pearls</strong>.{" "}
-              <strong>Four compositions</strong> open the collection: dark,
-              rose, saffron and amber. Each reveals its character{" "}
-              <strong>slowly as they are warmed</strong>.
+              EACH TIN HOLDS A COLLECTION OF FRAGRANT CAVIAR PEARLS. FOUR
+              COMPOSITIONS OPEN THE COLLECTION: DARK, ROSE, SAFFRON AND AMBER.
+              EACH REVEALS ITS CHARACTER SLOWLY AS THEY ARE WARMED.
             </p>
           </div>
         </div>
