@@ -106,9 +106,9 @@ That is the whole hero. Nothing else.
 **Copy**
 - Eyebrow: THE INNOVATION
 - Headline: BAKHOOR / REIMAGINED
-- Subhead: FOUR FRAGRANCES. ONE NEW CATEGORY.
+- Subhead: FOUR CAVIAR'S. ONE NEW CATEGORY. (client, BAKHOOR WEBSITE.pdf 2026-09-17)
 - Marquee: CAVIAR BAKHOOR · SPHERIFIED · 24 KARAT GOLD · OUD · ENCAPSULATION ·
-  PRIVATE LABEL · CAVIAR DE PARFUM · SINCE 1937
+  PRIVATE LABEL · SINCE 1937
 - CTA bar: SHOP THE COLLECTION
 - Paragraph:
   > Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly

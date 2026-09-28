@@ -21,7 +21,8 @@ import {
  * scroll-linked variant lives on in ScrollMarquee for the credentials strip
  * and section 04's giant background band.
  *
- * Copy verbatim from docs/homepage.md § 02.
+ * Copy verbatim from the client's BAKHOOR WEBSITE.pdf (2026-09-17), which
+ * supersedes docs/homepage.md § 02.
  *
  * SINCE 1937 is held back from the band: the founding year comes from Elixir's
  * own site and third-party coverage, not the client, and carries a [CONFIRM]
@@ -58,9 +59,7 @@ export function Innovation() {
           <DisplayHeadline lines={["Bakhoor", "Reimagined"]} />
 
           <CapsSubhead style={{ maxWidth: "48ch" }}>
-            NO ENCAPSULATED FRAGRANCE CHANGE TO ENCAPSULATED TECHNOLOGY NO
-            CAVIAR DE PARFUM CHANGE TO CAVIAR BAKHOOR FOUR CAVIARS&rsquo;S . ONE
-            NEW CATEGORY
+            Four Caviar&rsquo;s. One new category.
           </CapsSubhead>
         </Reveal>
       </Container>
