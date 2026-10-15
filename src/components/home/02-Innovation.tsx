@@ -59,7 +59,7 @@ export function Innovation() {
           <DisplayHeadline lines={["Bakhoor", "Reimagined"]} />
 
           <CapsSubhead style={{ maxWidth: "48ch" }}>
-            Four Caviars&rsquo;s . One new category
+            A new category
           </CapsSubhead>
         </Reveal>
       </Container>
