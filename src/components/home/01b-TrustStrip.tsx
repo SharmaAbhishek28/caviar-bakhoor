@@ -24,7 +24,6 @@ const ITEMS = [
   "24 Karat Gold",
   "Oud",
   "Private Label",
-  "Handmade",
   "Scented Bakhoor",
 ];
 
