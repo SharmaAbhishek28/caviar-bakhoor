@@ -191,6 +191,22 @@
   --mesh-size: 3px 3px;
 }
 
+/* --- Pearl rule ----------------------------------------------------------
+   A row of caviar pearls as a section divider. One element, two repeating
+   gradients: a dark pearl per tile and a small highlight up and to the left
+   of its centre, so each reads as a sphere rather than a dot.
+   ------------------------------------------------------------------------ */
+.pearl-rule {
+  height: 14px;
+  background-image:
+    radial-gradient(circle at 5px 5px, rgb(239 238 235 / 0.35) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 7px 7px, var(--ash) 0 5.5px, transparent 6px);
+  background-size: 20px 14px;
+  /* Whole pearls only — `space` spreads the leftover width between them
+     rather than cutting the last one in half. */
+  background-repeat: space no-repeat;
+}
+
 /* --- Expose tokens to Tailwind ------------------------------------------- */
 @theme inline {
   --color-ink: var(--ink);

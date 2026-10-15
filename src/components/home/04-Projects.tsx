@@ -47,13 +47,19 @@ export function Projects() {
 
       {/* The closing block: left-aligned, as the reference's section ends.
           A step down from the section opener — display-md, and the block's
-          own rhythm tighter than the opener's, so it reads as a coda. */}
+          own rhythm tighter than the opener's, so it reads as a coda. A row
+          of pearls separates it from the wheel. */}
       <Container>
+        <div
+          className="pearl-rule"
+          aria-hidden
+          style={{ marginTop: "clamp(3rem, 7vw, 6rem)" }}
+        />
         <Reveal
           stagger
           className="flex flex-col"
           style={{
-            paddingTop: "clamp(2.5rem, 5vw, 4rem)",
+            paddingTop: "clamp(3rem, 7vw, 6rem)",
             paddingBottom: "var(--section-y)",
             gap: "clamp(1rem, 1.5vw, 1.5rem)",
             alignItems: "flex-start",
