@@ -77,9 +77,12 @@ export function Approach() {
             </CapsSubhead>
 
             <p className="type-body prose-justified" style={{ margin: 0 }}>
-              EACH TIN HOLDS A COLLECTION OF FRAGRANT CAVIAR PEARLS. FOUR
-              COMPOSITIONS OPEN THE COLLECTION: DARK, ROSE, SAFFRON AND AMBER.
-              EACH REVEALS ITS CHARACTER SLOWLY AS THEY ARE WARMED.
+              Everything the ritual needs is in the box. 75 grams of Caviar
+              Bakhoor pearls. A spoon, so every measure is right and the pearls
+              never touch your hands. A two-layer mesh that sits over the
+              charcoal and tempers the heat, for a slow, even release. And a
+              sheet of thick aluminium foil, for when you want the scent to
+              arrive with more force.
             </p>
           </div>
         </div>
