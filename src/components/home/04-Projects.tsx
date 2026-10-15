@@ -37,7 +37,7 @@ export function Projects() {
         >
           <Eyebrow>Caviar Bakhoor</Eyebrow>
 
-          <DisplayHeadline lines={["Creative", "Feature"]} italicLine={1} />
+          <DisplayHeadline lines={["In four original", "signatures"]} italicLine={1} />
 
           <CapsSubhead>Crafted in-house</CapsSubhead>
         </Reveal>
