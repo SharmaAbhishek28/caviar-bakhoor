@@ -1512,15 +1512,6 @@ html {
   color: var(--paper);
 }
 
-.pcard-sub {
-  margin: 0;
-  font-family: var(--font-switzer-stack);
-  font-weight: 500;
-  font-size: 0.8125rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgb(239 238 235 / 0.85);
-}
 
 /* Paper button on photography; inverts to ash on hover. Two classes:
    .cta-button is declared later in this file and won on cascade order —
@@ -4878,6 +4869,17 @@ html {
 
 /* :not(.sr-only) — the visually-hidden label is a span too, and must keep its
    own 1px clip box rather than being painted as a third bar. */
+.bag-chip {
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 0.875rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
 .hamburger span:not(.sr-only) {
   display: block;
   width: 20px;

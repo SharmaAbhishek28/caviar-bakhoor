@@ -97,12 +97,13 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
           </Link>
 
           <div
-            className="flex items-center gap-4"
+            className="flex items-center gap-2"
             style={{ pointerEvents: "auto" }}
           >
+            {/* On the hamburger's paper tile, so it reads over dark heroes
+                as well as the paper canvas. */}
             <span
-              className="type-meta"
-              style={{ color: "var(--ink)" }}
+              className="type-meta bag-chip"
               aria-label={`Bag, ${cartCount} item${cartCount === 1 ? "" : "s"}`}
             >
               Bag ({cartCount})

@@ -4,8 +4,8 @@ import type { Product } from "@/data/products";
 
 /**
  * One catalogue card: the fragrance's portrait shot as the whole card, a
- * scrim, and centred over the foot of it the name in Bodoni caps, the line
- * "Scented Bakhoor · Caviar Bakhoor", and a paper button.
+ * scrim, and centred over the foot of it the name in Bodoni caps and a paper
+ * button.
  *
  * Takes a Product, never imports one — CLAUDE.md. The portrait is whichever
  * of the product's images is taller than it is wide; the overhead crop is
@@ -39,7 +39,6 @@ export function ProductCard({
 
       <div className="pcard-body">
         <h2 className="pcard-title">{product.title}</h2>
-        <p className="pcard-sub">{product.subtitle}</p>
         <Link
           href={`/products/${product.handle}`}
           className="cta-button cta-button--paper"
