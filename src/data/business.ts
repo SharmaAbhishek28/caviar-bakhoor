@@ -43,15 +43,17 @@ export const BUSINESS = {
     ],
   },
 
+  // Steps 01 and 03 and their durations are the site owner's (2026-10-15).
+  // Step 02, step 05 and the packaging duration are awaiting the client.
   process: {
-    title: "Process",
+    title: "Timeline",
     lead: "Genuinely sequential, so numbered.",
     steps: [
-      { name: "Discover", body: "the brand, the brief, the market" },
-      { name: "Develop", body: "the fragrance and the format" },
-      { name: "Sample", body: "prototypes in your hands" },
-      { name: "Refine", body: "product and packaging locked" },
-      { name: "Produce", body: "into production" },
+      { name: "Discover or create a scent with us", body: "7 days" },
+      { name: "[CONFIRM] Step 02", body: "[CONFIRM] Duration" },
+      { name: "Caviar approval", body: "14 days" },
+      { name: "Packaging approval", body: "[CONFIRM] Duration" },
+      { name: "[CONFIRM] Step 05", body: "[CONFIRM] Duration" },
     ],
   },
 

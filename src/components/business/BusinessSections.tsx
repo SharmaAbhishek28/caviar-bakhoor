@@ -212,7 +212,7 @@ export function BizProcess() {
             <ol className="biz-steps">
               <span className="biz-line" aria-hidden><span className="biz-line-fill" /></span>
               {BUSINESS.process.steps.map((s, i) => (
-                <li key={s.name} className="biz-step" data-active={i <= active || undefined} data-current={i === active || undefined}>
+                <li key={i} className="biz-step" data-active={i <= active || undefined} data-current={i === active || undefined}>
                   <span className="biz-step-no">{String(i + 1).padStart(2, "0")}</span>
                   <span className="biz-step-name">{s.name}</span>
                   <span className="biz-step-body">{s.body}</span>
