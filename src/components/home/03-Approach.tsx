@@ -45,15 +45,6 @@ export function Approach() {
             TRANSFORMS ITS SCENT INTO PEARLS THAT RELEASE THEIR AROMA AS THEY
             BURN
           </CapsSubhead>
-
-          <p
-            className="type-body prose-justified"
-            style={{ marginTop: "clamp(0.5rem, 1.5vw, 1rem)" }}
-          >
-            NO HELD IN A PEARL CHANGE TO A PATENT PENDING ENCAPSULATED
-            TECHNOLOGY REMOVE NOTHING TO TO AND CHANGE IT TO REINVENTING THE
-            BAKHROOR RITUAL LIKE NEVER BEFORE
-          </p>
         </Reveal>
       </Container>
 
