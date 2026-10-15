@@ -791,16 +791,6 @@ html {
   font-size: clamp(0.875rem, 1.55vw, 1.4rem);
 }
 
-/* Visible until the client settles the wording. See data/ritual.ts. */
-.ritual-confirm {
-  margin: 0;
-  max-width: 48ch;
-  font-family: var(--font-switzer-stack);
-  font-size: 0.6875rem;
-  letter-spacing: 0.04em;
-  color: rgb(239 238 235 / 0.6);
-}
-
 .ritual-steps {
   list-style: none;
   margin: 0;

@@ -8,10 +8,10 @@
  * each step's line is capitalised and given a full stop, because it stands
  * alone under its heading here rather than after an em dash in a list.
  *
- * CONFIRM: content.md says "gold mesh disc"; Elixir's own Scodix
- * "Directions of use" card says "gold foil". docs/homepage.md § 05 says
- * Elixir's wording wins, so the client should settle this before launch.
- * The marker is rendered in the section until they do.
+ * Open question: content.md says "gold mesh disc"; Elixir's own Scodix
+ * "Directions of use" card says "gold foil". The on-page [CONFIRM] marker
+ * was removed at the site owner's request (2026-10-15); the step 02 wording
+ * below is still unconfirmed by the client.
  */
 
 export type RitualStep = {
@@ -23,7 +23,7 @@ export type RitualStep = {
   body: string;
 };
 
-export const RITUAL_HEADLINE = "Four steps. No smoke until you want it.";
+export const RITUAL_HEADLINE = "Four steps. No aroma until you want it.";
 
 export const RITUAL_STEPS: RitualStep[] = [
   { no: "01", name: "Light", body: "Set the charcoal and let it settle." },
@@ -31,9 +31,6 @@ export const RITUAL_STEPS: RitualStep[] = [
   { no: "03", name: "Spoon", body: "A small measure of pearls onto the mesh." },
   { no: "04", name: "Release", body: "The pearls open, and the fragrance lifts." },
 ];
-
-export const RITUAL_CONFIRM =
-  "[CONFIRM] Step 02 — content.md says “gold mesh disc”; Elixir’s Directions of use card says “gold foil”.";
 
 export const RITUAL_CTA = { label: "View the ritual", href: "/ritual" };
 

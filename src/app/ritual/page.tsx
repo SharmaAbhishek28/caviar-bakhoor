@@ -3,7 +3,7 @@ import { Credentials } from "@/components/home/08-Credentials";
 import { RitualBox, RitualClose, RitualHeat, RitualObjects, RitualOpener, RitualSteps } from "@/components/ritual/RitualSections";
 
 export const metadata: Metadata = {
-  title: "The Ritual — Four steps. No smoke until you want it. | Caviar Bakhoor",
+  title: "The Ritual — Four steps. No aroma until you want it. | Caviar Bakhoor",
   description:
     "Light, place, spoon, release. How Caviar Bakhoor is burned: the charcoal, the gold mesh disc, a measure of pearls, and a scent that unfolds instead of erupting.",
 };

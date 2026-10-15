@@ -15,7 +15,7 @@
 
 export const RITUAL_PAGE = {
   eyebrow: "The ritual",
-  headline: ["Four steps.", "No smoke", "until you want it."],
+  headline: ["Four steps.", "No aroma", "until you want it."],
   lede: "Every box arrives with the charcoal, the mesh disc and the spoon.",
 
   /** One photograph per step, in step order. */
@@ -40,7 +40,7 @@ export const RITUAL_PAGE = {
   },
 
   heat: {
-    title: "No smoke until you want it.",
+    title: "No aroma until you want it.",
     lede: "Our patent-pending encapsulation technology transforms scent into pearls that release their aroma as they burn — long-lasting, highly diffusive.",
     states: [
       { name: "Sealed", body: "Closed at room temperature." },

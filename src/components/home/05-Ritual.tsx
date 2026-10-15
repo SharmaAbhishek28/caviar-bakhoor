@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, StackSection } from "@/components/ui";
 import {
-  RITUAL_CONFIRM,
   RITUAL_CTA,
   RITUAL_HEADLINE,
   RITUAL_IMAGE,
@@ -56,9 +55,6 @@ export function Ritual() {
         <div className="ritual-head">
           <Eyebrow>The ritual</Eyebrow>
           <p className="type-display-sub">{RITUAL_HEADLINE}</p>
-          <p className="ritual-confirm" role="note">
-            {RITUAL_CONFIRM}
-          </p>
         </div>
 
         <ol className="ritual-steps">
