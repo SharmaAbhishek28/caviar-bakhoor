@@ -17,17 +17,17 @@
 
 export const BUSINESS = {
   eyebrow: "For business",
-  headline: { first: "Your fragrance.", second: "Our innovation." },
+  headline: { first: "Your brand.", second: "Our innovation." },
   line: "Create your own Caviar Bakhoor with Elixir.",
   cta: "Start a project",
   opener: { src: "/images/texture/pearl-macro.jpg", alt: "Pearls and gold leaf, close", width: 2400, height: 1600 },
 
   statement:
-    "Elixir develops and manufactures Caviar Bakhoor for perfume houses, luxury brands, hotels and private label. Your scent, your packaging, our encapsulation. From the first brief to the finished tin, the work is done by the same hands that make Elixir's own.",
+    "Elixir develops and manufactures Caviar Bakhoor for perfume houses, luxury brands and private label. Your idea, your brand, your vision. Our execution.",
 
   clients: {
     title: "Who we work with",
-    items: ["Perfume houses", "Luxury brands", "Hotels and hospitality", "Retailers", "Private label", "Corporate gifting"],
+    items: ["Perfume houses", "Luxury brands", "Retailers", "Private label", "Corporate gifting"],
   },
 
   offer: {
