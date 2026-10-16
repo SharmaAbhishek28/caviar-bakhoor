@@ -1373,6 +1373,29 @@ html {
   will-change: transform;
 }
 
+/* Caviar pearls scattered from the pointer over the wordmark. Each is a dark
+   sphere with a soft highlight, like the macro shot. */
+.footer-pearls {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.footer-pearl {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 34% 30%,
+    rgb(255 244 225 / 0.9) 0 9%,
+    #7a5232 22%,
+    #3a2414 55%,
+    #120a05 100%
+  );
+  box-shadow: 0 0 0 1px rgb(239 238 235 / 0.08);
+  will-change: transform, opacity;
+}
+
 @media (min-width: 1024px) {
   .footer-top {
     flex-direction: row;
