@@ -33,6 +33,7 @@ const MEDIA = "img, video";
    section animates the heading itself; text and media also skip <Reveal>
    blocks, which fade their children already. */
 const SKIP_COMMON = [
+  "[data-reveal-load]",
   "header",
   "footer",
   "[data-no-reveal]",
@@ -105,7 +106,32 @@ export function RevealAll() {
       animated = [];
     };
 
+    const riseIn = (lines: HTMLElement[], delay = 0) =>
+      gsap.to(lines, { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.1, delay, overwrite: true });
+
     const build = () => {
+      // [data-reveal-load]: first-screen headings (the hero caption). They
+      // rise as the page loads, hide once scrolled fully out of view, and
+      // rise again when scrolled back to.
+      main.querySelectorAll<HTMLElement>("[data-reveal-load]").forEach((h) => {
+        const split = SplitText.create(h, { type: "lines", mask: "lines" });
+        splits.push(split);
+        const lines = split.lines as HTMLElement[];
+        animated.push(...lines, h);
+        gsap.set(lines, { yPercent: 110 });
+        gsap.set(h, { opacity: 1 });
+        riseIn(lines, 0.25);
+        triggers.push(
+          ScrollTrigger.create({
+            trigger: h,
+            start: "top bottom",
+            end: "bottom top",
+            onLeave: () => gsap.set(lines, { yPercent: 110, overwrite: true }),
+            onEnterBack: () => riseIn(lines),
+          }),
+        );
+      });
+
       const headings = pick(main, HEADINGS, SKIP_HEADINGS);
       const text = pick(main, TEXT, SKIP_OTHER);
       const media = pick(main, MEDIA, SKIP_OTHER);
@@ -121,8 +147,7 @@ export function RevealAll() {
           ScrollTrigger.create({
             trigger: h,
             start: "top 92%",
-            onEnter: () =>
-              gsap.to(lines, { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.1, overwrite: true }),
+            onEnter: () => riseIn(lines),
             onLeaveBack: () => gsap.set(lines, { yPercent: 110, overwrite: true }),
           }),
         );

@@ -88,6 +88,7 @@ export function HeroMedia({
 
       <h1
         className="hero-caption"
+        data-reveal-load
         style={{
           position: "absolute",
           left: 0,
