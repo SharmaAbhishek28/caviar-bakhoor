@@ -10,5 +10,6 @@ export { Cursor } from "./Cursor";
 export { SectionLabel } from "./SectionLabel";
 export { StackSection } from "./StackSection";
 export { Reveal } from "./Reveal";
+export { RevealAll } from "./RevealAll";
 export { SmoothScroll } from "./SmoothScroll";
 export { MarkedProse } from "./MarkedProse";

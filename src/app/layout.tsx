@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { switzer, bodoni } from "./fonts";
-import { Cursor, SmoothScroll, SectionLabel } from "@/components/ui";
+import { Cursor, RevealAll, SmoothScroll, SectionLabel } from "@/components/ui";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -18,6 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <SmoothScroll />
+        <RevealAll />
         <Cursor />
         <SectionLabel />
         <Header />

@@ -86,6 +86,10 @@ Full system in `docs/design-system.md`. The short version:
 - **One orchestrated motion moment** — the hero. Elsewhere, motion answers an action
   (opening, expanding, adding to cart). Do not put a fade-and-slide-up on every
   section; it is slow and it looks generated.
+  **Overridden by the site owner on 2026-10-16:** every headline, paragraph,
+  image and button now reveals on scroll and replays, via
+  `src/components/ui/RevealAll.tsx`. It skips anything on screen at load and
+  sections with their own GSAP; keep that list (`SKIP`) current when adding one.
 - Mobile first. Every section is built at 375px before it is built at 1440px.
 
 ## Performance budget

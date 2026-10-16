@@ -63,7 +63,9 @@ export function Reveal({
             /* Fires when the block is a fifth into the viewport, so it is
                already moving before the reader's eye arrives. */
             start: "top 85%",
-            once: true,
+            /* Replays: resets when scrolled back above, plays again on the
+               way down — as RevealAll does for everything else. */
+            toggleActions: "play none none reset",
           },
         },
       );
@@ -73,7 +75,7 @@ export function Reveal({
   }, [stagger, delay]);
 
   return (
-    <div ref={ref} className={className} style={style}>
+    <div ref={ref} data-reveal className={className} style={style}>
       {children}
     </div>
   );
