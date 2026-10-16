@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
+import { HEADINGS } from "./RevealAll";
 
 /**
  * Reveals its children as they enter the viewport: a short rise and fade,
@@ -42,8 +43,9 @@ export function Reveal({
 
     initScroll();
 
+    // Headings are left to RevealAll's line-by-line rise.
     const targets = stagger
-      ? (Array.from(el.children) as HTMLElement[])
+      ? (Array.from(el.children) as HTMLElement[]).filter((c) => !c.matches(HEADINGS))
       : [el];
     if (!targets.length) return;
 
