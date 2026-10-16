@@ -1223,13 +1223,6 @@ html {
 /* --- Section 09: footer ---------------------------------------------------
    Headline and nav, a paragraph, the legal line, then the clipped wordmark.
    ------------------------------------------------------------------------ */
-/* The break above the footer: a row of pearls on the paper. */
-.footer-break {
-  width: var(--nav-width);
-  margin-inline: auto;
-  padding-block: clamp(3rem, 6vw, 5rem);
-}
-
 .footer {
   position: relative;
   overflow: hidden;
