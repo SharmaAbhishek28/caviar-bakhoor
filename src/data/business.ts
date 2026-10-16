@@ -80,4 +80,13 @@ export const BUSINESS = {
   },
 
   enquiry: { title: "Start a project", line: "Tell us about the brand, the brief and the market." },
+
+  // The enquiry is a WhatsApp chat rather than a form (site owner, 2026-10-16).
+  // The number is +91 98864 78926 from data/enquiry.ts; it lives only in the
+  // link and is never displayed.
+  whatsapp: {
+    label: "Chat on WhatsApp",
+    number: "919886478926",
+    message: "Hello Elixir, I'd like to start a Caviar Bakhoor project for my brand.",
+  },
 };

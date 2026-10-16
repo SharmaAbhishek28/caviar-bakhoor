@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { BizClients, BizCollabs, BizMade, BizOffer, BizOpener, BizProcess, BizStatement } from "@/components/business/BusinessSections";
-import { EnquiryForm } from "@/components/contact/EnquiryForm";
 import { Credentials } from "@/components/home/08-Credentials";
 import { Container, Reveal } from "@/components/ui";
 import { BUSINESS } from "@/data/business";
@@ -32,9 +31,17 @@ export default function ForBusinessPage() {
           <Reveal className="biz-enquiry-head">
             <h2 className="biz-enquiry-title">{BUSINESS.enquiry.title}</h2>
             <p className="type-body">{BUSINESS.enquiry.line}</p>
-          </Reveal>
-          <Reveal className="contact-form">
-            <EnquiryForm />
+            <a
+              href={`https://wa.me/${BUSINESS.whatsapp.number}?text=${encodeURIComponent(BUSINESS.whatsapp.message)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-button"
+            >
+              <span>{BUSINESS.whatsapp.label}</span>
+              <span aria-hidden className="cta-arrow">
+                ↗
+              </span>
+            </a>
           </Reveal>
         </Container>
       </section>

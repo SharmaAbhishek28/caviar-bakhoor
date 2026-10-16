@@ -3632,6 +3632,12 @@ html {
   gap: 0.75rem;
 }
 
+/* .cta-button sets align-self: flex-start; centred here with the title. */
+.biz-enquiry-head .cta-button {
+  align-self: center;
+  margin-top: 1rem;
+}
+
 .biz-enquiry-title {
   margin: 0;
   font-family: var(--font-switzer-stack);
