@@ -16,8 +16,9 @@ import { FOOTER } from "@/data/footer";
  * footer's bottom edge so the top two-thirds of the letters show and the
  * rest is clipped.
  *
- * Light, on --paper, like the reference; the mesh-disc dot texture sits
- * behind it at low opacity. The legal links sit beside the paragraph rather
+ * Dark, on --ash (design-system.md: ash is for photography panels and the
+ * footer), with a row of pearls on the paper above it as the break; the
+ * mesh-disc dot texture sits behind it at low opacity. The legal links sit beside the paragraph rather
  * than beneath the wordmark — the brief puts them beneath, but the wordmark
  * is clipped at the page's bottom edge and nothing can sit below it.
  *
@@ -26,7 +27,12 @@ import { FOOTER } from "@/data/footer";
  */
 export function Footer() {
   return (
-    <footer className="footer">
+    <>
+    {/* A row of pearls on the paper, then the footer goes dark. */}
+    <div className="footer-break" aria-hidden>
+      <div className="pearl-rule" />
+    </div>
+    <footer className="footer on-ash">
       <div className="footer-inner">
         <div className="footer-top">
           <h2 className="footer-headline">
@@ -80,5 +86,6 @@ export function Footer() {
         {FOOTER.wordmark}
       </div>
     </footer>
+    </>
   );
 }

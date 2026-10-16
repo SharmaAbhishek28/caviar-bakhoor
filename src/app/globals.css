@@ -1223,14 +1223,23 @@ html {
 /* --- Section 09: footer ---------------------------------------------------
    Headline and nav, a paragraph, the legal line, then the clipped wordmark.
    ------------------------------------------------------------------------ */
+/* The break above the footer: a row of pearls on the paper. */
+.footer-break {
+  width: var(--nav-width);
+  margin-inline: auto;
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
 .footer {
   position: relative;
   overflow: hidden;
   padding-top: clamp(4rem, 8vw, 6rem);
-  background-color: var(--paper);
+  background-color: var(--ash);
   background-image: var(--mesh);
   background-size: var(--mesh-size);
   color: var(--ink);
+  /* .on-ash flips --ink and --smoke; the paragraph's tone needs the same. */
+  --ink-prose: rgb(239 238 235 / 0.75);
 }
 
 /* The header's width, not the content column's. */
