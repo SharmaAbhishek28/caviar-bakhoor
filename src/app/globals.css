@@ -3553,73 +3553,92 @@ html {
   color: var(--ink);
 }
 
-/* 7 — collaborations */
+/* 7 — collaborations: full-viewport brand cards that stack as they scroll.
+   Each card is sticky and exactly one viewport tall; the next, a z-index
+   higher, slides up over it. Colours and font come from the card's theme. */
 .biz-collabs {
-  padding-block: var(--section-y);
+  padding-top: var(--section-y);
   border-top: 1px solid var(--rule);
 }
 
-.biz-cases {
+.biz-collabs .biz-offer-head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.biz-stack {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.biz-slide {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  /* The seam stays visible when two dark cards meet. */
+  border-top: 1px solid rgb(255 255 255 / 0.14);
+}
+
+.biz-slide-img {
+  object-fit: cover;
+}
+
+.biz-slide-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.2), rgb(0 0 0 / 0.6));
+}
+
+.biz-slide-body {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 56rem;
+  padding-inline: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 7vw, 6rem);
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-.biz-case {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  clip-path: inset(0 0 0 0);
-}
-
-.biz-case-media {
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  background: var(--ash);
-}
-
-.biz-case-media img {
-  display: block;
-  width: 100%;
-  height: 124%;
-  margin-top: -12%;
-  object-fit: cover;
-  will-change: transform;
-}
-
-.biz-case-meta {
-  margin: 0 0 0.75rem;
-  display: flex;
-  justify-content: space-between;
+.biz-slide-meta {
+  margin: 0;
   font-family: var(--font-switzer-stack);
   font-weight: 900;
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--collab-accent, currentColor);
 }
 
-.biz-case-brand {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-bodoni-stack);
+.biz-slide-brand {
+  margin: 0;
+  font-family: var(--collab-font, var(--font-bodoni-stack));
   font-variation-settings: "opsz" var(--opsz-display);
   font-weight: var(--bodoni-wght);
-  font-size: clamp(1.75rem, 2.6vw, 2.6rem);
+  font-size: clamp(2.5rem, 8vw, 7rem);
   line-height: 1;
-  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--ink);
+  overflow-wrap: anywhere;
 }
 
-.biz-case-copy {
+.biz-slide-copy {
+  margin: 0;
   max-width: 44ch;
+  color: inherit;
 }
 
 /* 8 — enquiry */
 .biz-enquiry {
+  /* Above the collaboration stack, so it slides over the last card. */
+  position: relative;
+  z-index: 10;
+  background: var(--paper);
   padding-block: var(--section-y);
   border-top: 1px solid var(--rule);
 }
@@ -3694,15 +3713,6 @@ html {
     justify-content: center;
   }
 
-  .biz-case {
-    grid-template-columns: 3fr 2fr;
-    align-items: end;
-    gap: clamp(2rem, 4vw, 4rem);
-  }
-
-  .biz-case:nth-child(even) .biz-case-media {
-    order: 2;
-  }
 }
 
 /* --- /ritual ------------------------------------------------------------- */

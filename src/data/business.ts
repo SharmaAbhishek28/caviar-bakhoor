@@ -15,6 +15,18 @@
  * "worldwide" is a claim nobody has confirmed.
  */
 
+/** A collaboration card's look, in the brand's own identity. */
+export type CollabTheme = {
+  /** Card background, under the photograph. */
+  bg: string;
+  /** Brand name and copy. */
+  fg: string;
+  /** The meta line. Defaults to `fg`. */
+  accent?: string;
+  /** Font-family stack for the brand name. Defaults to Bodoni. */
+  font?: string;
+};
+
 export const BUSINESS = {
   eyebrow: "For business",
   headline: { first: "Your brand.", second: "Our innovation." },
@@ -71,11 +83,16 @@ export const BUSINESS = {
   collabs: {
     title: "Collaborations",
     note: "[CONFIRM] All four, with written permission to name each one. Until then: slots, with stand-in photography.",
+    // Each card is themed in the brand's own colours and font. Until the
+    // client supplies them, every card uses the site's ash and paper and
+    // falls back to Bodoni. `font` is a CSS font-family stack: add the
+    // brand's face to app/fonts.ts (self-hosted) and reference its variable.
     items: [1, 2, 3, 4].map((i) => ({
       id: `collab-${i}`,
       brand: null as string | null,
       copy: null as string | null,
       image: { src: `/images/about/gallery-0${i + 4}.jpg`, alt: "Stand-in photograph until the collaboration is confirmed", width: 1600, height: 1067 },
+      theme: { bg: "#08070A", fg: "#EFEEEB" } as CollabTheme,
     })),
   },
 

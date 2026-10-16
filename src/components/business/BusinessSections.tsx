@@ -275,43 +275,43 @@ export function BizMade() {
 }
 
 /* 7 — Collaborations ------------------------------------------------------ */
+/* Full-viewport cards, one per brand, each in that brand's colours and font.
+   Every card is sticky and exactly one viewport tall, with a rising z-index,
+   so the next card slides up from below and covers the one before. Plain
+   CSS: it is ordinary scrolling, so there is nothing to switch off under
+   reduced motion. */
 export function BizCollabs() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const root = ref.current;
-    if (!root || motionOff()) return;
-    initScroll();
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(".biz-case", root).forEach((card, i) => {
-        const img = card.querySelector("img");
-        gsap.fromTo(card, { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: card, start: "top 85%", once: true } });
-        if (img) gsap.fromTo(img, { yPercent: i % 2 ? -12 : -4 }, { yPercent: i % 2 ? 4 : 12, ease: "none", scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true } });
-      });
-    }, root);
-    return () => ctx.revert();
-  }, []);
   return (
-    <section ref={ref} className="biz-collabs" data-label="Collaborations">
+    <section className="biz-collabs" data-label="Collaborations">
       <Container>
         <div className="biz-offer-head">
           <h2 className="biz-h2">{BUSINESS.collabs.title}</h2>
           <p className="biz-note" role="note">{BUSINESS.collabs.note}</p>
         </div>
-        <ol className="biz-cases">
-          {BUSINESS.collabs.items.map((c, i) => (
-            <li key={c.id} className="biz-case">
-              <div className="biz-case-media">
-                <Image src={c.image.src} alt={c.image.alt} width={c.image.width} height={c.image.height} sizes="(max-width: 1023px) 100vw, 60vw" />
-              </div>
-              <div className="biz-case-body">
-                <p className="biz-case-meta"><span>( Collaboration {String(i + 1).padStart(2, "0")} )</span><span>Elixir</span></p>
-                <h3 className="biz-case-brand">{c.brand ?? "[CONFIRM] Brand"}</h3>
-                <p className="type-body biz-case-copy">{c.copy ?? "[CONFIRM] Two or three sentences on what Elixir built, with the brand's permission."}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
       </Container>
+      <ol className="biz-stack">
+        {BUSINESS.collabs.items.map((c, i) => (
+          <li
+            key={c.id}
+            className="biz-slide"
+            style={{
+              zIndex: i + 1,
+              background: c.theme.bg,
+              color: c.theme.fg,
+              ["--collab-font" as string]: c.theme.font,
+              ["--collab-accent" as string]: c.theme.accent,
+            }}
+          >
+            <Image src={c.image.src} alt={c.image.alt} fill sizes="100vw" className="biz-slide-img" />
+            <div className="biz-slide-scrim" aria-hidden />
+            <div className="biz-slide-body">
+              <p className="biz-slide-meta">( Collaboration {String(i + 1).padStart(2, "0")} )</p>
+              <h3 className="biz-slide-brand">{c.brand ?? "[CONFIRM] Brand"}</h3>
+              <p className="type-body biz-slide-copy">{c.copy ?? "[CONFIRM] Two or three sentences on what Elixir built, with the brand's permission."}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
