@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MarkedProse } from "@/components/ui";
 import { LEGAL, MENU_NAV } from "@/data/nav";
 import { FOOTER } from "@/data/footer";
+import { FooterWordmark } from "./FooterWordmark";
 
 /**
  * 09 — Footer, per docs/homepage.md § 09 and the reference.
@@ -75,10 +76,7 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Decorative: the site name is in the header and the page title. */}
-      <div className="footer-wordmark" aria-hidden>
-        {FOOTER.wordmark}
-      </div>
+      <FooterWordmark text={FOOTER.wordmark} />
     </footer>
   );
 }

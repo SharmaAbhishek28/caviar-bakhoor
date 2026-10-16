@@ -1367,6 +1367,12 @@ html {
   user-select: none;
 }
 
+/* One span per letter so each can rise on its own; see FooterWordmark. */
+.footer-letter {
+  display: inline-block;
+  will-change: transform;
+}
+
 @media (min-width: 1024px) {
   .footer-top {
     flex-direction: row;
