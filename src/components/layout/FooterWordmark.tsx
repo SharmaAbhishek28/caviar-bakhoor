@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, prefersReducedMotion } from "@/lib/scroll";
+import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 /**
  * The footer's giant wordmark, one span per letter.
@@ -25,6 +25,39 @@ const SPAWN_EVERY_PX = 22;
 export function FooterWordmark({ text }: { text: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const layerRef = useRef<HTMLDivElement>(null);
+
+  // Reveal: the letters fade and rise into place as the footer scrolls in,
+  // staggered left to right, and replay every time it is scrolled to again.
+  // Animates `y` and opacity; the hover wave uses `yPercent` and colour, so
+  // the two compose rather than fight. Off under reduced motion.
+  useEffect(() => {
+    const root = ref.current;
+    if (!root || prefersReducedMotion()) return;
+    initScroll();
+    const letters = root.querySelectorAll<HTMLElement>(".footer-letter");
+    const ctx = gsap.context(() => {
+      // Hide every letter up front: a staggered fromTo only renders the first
+      // letter's start state, and the rest flashed before the reveal.
+      gsap.set(letters, { opacity: 0, y: () => root.offsetHeight * 0.6 });
+      gsap.to(
+        letters,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "expo.out",
+          stagger: 0.045,
+          scrollTrigger: {
+            trigger: root,
+            start: "top 95%",
+            toggleActions: "restart none none reset",
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+    }, root);
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     const root = ref.current;
@@ -120,7 +153,7 @@ export function FooterWordmark({ text }: { text: string }) {
       root.removeEventListener("pointermove", onMove);
       root.removeEventListener("pointerleave", onLeave);
       window.removeEventListener("resize", measure);
-      gsap.killTweensOf(letters);
+      gsap.killTweensOf(letters, "yPercent,color");
       layer.replaceChildren();
     };
   }, []);
