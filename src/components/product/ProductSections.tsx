@@ -1,6 +1,8 @@
 import { Container } from "@/components/ui";
 import { ProductCard } from "@/components/collection/ProductCard";
 import type { Product } from "@/data/products";
+import { PDP_FILM } from "@/data/film";
+import { ProductFilm } from "./ProductFilm";
 
 /**
  * The PDP below the hero, kept short (site owner, 2026-10-17): the
@@ -9,12 +11,13 @@ import type { Product } from "@/data/products";
  * so they are not repeated here. No side labels on this page.
  */
 
-/** The fragrance's composition from the client's booklet, set on its own. */
+/** The fragrance's composition from the client's booklet, then the ritual film. */
 export function NotesSection({ product }: { product: Product }) {
   return (
     <section className="pdp-notes-section">
       <Container>
         <p className="pdp-notes-line">{product.accord}</p>
+        <ProductFilm {...PDP_FILM} />
       </Container>
     </section>
   );
