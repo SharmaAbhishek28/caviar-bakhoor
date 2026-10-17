@@ -6,9 +6,11 @@ import {
   CapsSubhead,
   StackSection,
   Reveal,
+  MarkedProse,
 } from "@/components/ui";
-import { BOX_INTRO, BOX_ITEMS, BOX_VIDEO } from "@/data/box";
+import { BOX_ITEMS, BOX_PARAGRAPH, BOX_STRONG, BOX_VIDEO } from "@/data/box";
 import { ApproachVideo } from "./03-ApproachVideo";
+import { BoxCollage } from "./03-BoxCollage";
 
 /**
  * 03 — Encapsulated Technology (approach).
@@ -64,55 +66,38 @@ export function Approach() {
         />
       </Container>
 
-      <Container>
-        <ApproachVideo
-          {...BOX_VIDEO}
-          slot={
-            <Image
-              src="/images/packaging/spoon-01.jpg"
-              alt="An open Caviar Bakhoor box on black, the Noir tin and its gold spoon inside"
-              width={1200}
-              height={1905}
-              sizes="(max-width: 1023px) 100vw, 40vw"
-              className="media-portrait"
+      {/* Full-bleed: the film opens out to the whole viewport. The row inside
+          sits in its own Container. */}
+      <ApproachVideo
+        {...BOX_VIDEO}
+        slot={
+          <Image
+            src="/images/packaging/spoon-01.jpg"
+            alt="An open Caviar Bakhoor box on black, the Noir tin and its gold spoon inside"
+            width={1200}
+            height={1905}
+            sizes="(max-width: 1023px) 100vw, 40vw"
+            className="media-portrait"
+          />
+        }
+        copy={
+          /* Subhead top, the collage of the three tools, the paragraph at
+             the foot. */
+          <div className="approach-copy">
+            <CapsSubhead className="approach-subhead">
+              Elixir × Caviar Bakhoor
+            </CapsSubhead>
+
+            <BoxCollage items={BOX_ITEMS} />
+
+            <MarkedProse
+              className="type-body prose-justified approach-paragraph"
+              text={BOX_PARAGRAPH}
+              strong={BOX_STRONG}
             />
-          }
-          copy={
-            /* Subhead pinned top, the box's contents pinned bottom. */
-            <div className="approach-copy">
-              <CapsSubhead className="approach-subhead">
-                Elixir × Caviar Bakhoor
-              </CapsSubhead>
-
-              <div className="box-contents">
-                <p className="type-body" style={{ margin: 0 }}>
-                  {BOX_INTRO}
-                </p>
-                <ul className="box-items">
-                  {BOX_ITEMS.map((item) => (
-                    <li key={item.name} className="box-item">
-                      <Image
-                        src={item.image.src}
-                        alt={item.image.alt}
-                        width={item.image.width}
-                        height={item.image.height}
-                        sizes="120px"
-                        className="box-item-img"
-                      />
-                      <div>
-                        <h3 className="box-item-name">{item.name}</h3>
-                        <p className="type-body box-item-body">{item.body}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          }
-        />
-
-        <div style={{ height: "var(--section-y)" }} />
-      </Container>
+          </div>
+        }
+      />
 
       <hr style={{ border: 0, borderTop: "1px solid var(--rule)", margin: 0 }} />
     </StackSection>

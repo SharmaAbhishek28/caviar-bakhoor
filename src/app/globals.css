@@ -4792,12 +4792,24 @@ html {
 }
 
 /* --- Section 03: the film and the box's contents ------------------------
-   .av-land is the landscape frame below the row, laid out empty; .av-frame
-   sits exactly on it and is moved, scaled and clipped onto .av-slot by
-   03-ApproachVideo, via the custom properties below.
+   .av-stage is full-bleed and at least a viewport tall; the row sits in it.
+   .av-frame is laid out at the stage's foot, exactly the viewport's size —
+   the film's final, full-screen place — and 03-ApproachVideo moves, scales
+   and clips it onto the visible box through the custom properties below.
    ------------------------------------------------------------------------ */
 .av-stage {
   position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-block: clamp(5rem, 11vh, 7rem) clamp(2.5rem, 7vh, 4.5rem);
+  overflow: hidden;
+}
+
+.av-stage > * {
+  width: 100%;
 }
 
 .av-slot {
@@ -4812,9 +4824,8 @@ html {
   object-fit: cover;
 }
 
-/* While the film runs its scroll animation it starts in the slot and leaves
-   it, so the slot is just a place: no photograph left behind. The photo is
-   the fallback when the animation is off (reduced motion, no JS). */
+/* Once the film runs it covers the slot, then leaves it: no photograph
+   behind. The photo is the fallback with no JavaScript. */
 .av-stage[data-animated] .av-slot {
   background: transparent;
 }
@@ -4823,18 +4834,11 @@ html {
   visibility: hidden;
 }
 
-/* One column: the copy first, then the portrait film, so the film's drop
-   to the landscape frame below never passes over text. */
+/* One column: the copy first, then the portrait film. */
 @media (max-width: 767px) {
   .av-slot {
     order: 2;
   }
-}
-
-.av-land {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-top: clamp(3rem, 7vw, 6rem);
 }
 
 .av-frame {
@@ -4845,15 +4849,23 @@ html {
   --iy: 0px;
   position: absolute;
   left: 0;
-  right: 0;
   bottom: 0;
-  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
   z-index: 2;
   overflow: hidden;
   background: var(--ash);
+  /* Hidden until the script has placed it: without JS the slot's photo
+     stands in, and nothing covers the row. */
+  visibility: hidden;
   transform: translate(var(--x), var(--y)) scale(var(--s));
   clip-path: inset(var(--iy) var(--ix));
   will-change: transform, clip-path;
+}
+
+.av-stage[data-animated] .av-frame {
+  visibility: visible;
 }
 
 .av-video {
@@ -4863,7 +4875,7 @@ html {
   object-fit: cover;
 }
 
-/* The mute button follows the visible frame's bottom-right corner, and is
+/* The mute button follows the visible box's bottom-right corner, and is
    counter-scaled so it stays 48px while the frame grows. */
 .sound-toggle.av-sound {
   right: calc(var(--ix) + 16px);
@@ -4877,51 +4889,89 @@ html {
   transform: scale(calc(1.08 / var(--s)));
 }
 
-.box-contents {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.25rem, 2.5vw, 2rem);
-}
-
-.box-items {
-  list-style: none;
+.approach-paragraph {
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-.box-item {
-  display: grid;
-  grid-template-columns: clamp(76px, 8vw, 112px) 1fr;
-  gap: clamp(1rem, 2vw, 1.5rem);
-  align-items: center;
-  padding-top: clamp(1rem, 2vw, 1.5rem);
-  border-top: 1px solid var(--rule);
+.approach-paragraph strong {
+  color: var(--ink);
+  font-weight: 500;
 }
 
-.box-item-img {
+/* --- The collage of the box's three tools -------------------------------
+   Three prints, overlapping, each slightly turned, with a paper border and
+   a soft shadow so they sit up off the page. Positions are percentages of
+   the collage's box, so the composition holds at every width. */
+.box-collage {
+  position: relative;
+  /* Keeps the prints' z-order to themselves, under the film. */
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  margin-block: clamp(0.5rem, 2vh, 1.5rem);
+}
+
+.bc-print {
+  position: absolute;
+  margin: 0;
+  aspect-ratio: 1;
+  padding: clamp(4px, 0.5vw, 7px);
+  background: var(--paper);
+  box-shadow:
+    0 1px 2px rgb(8 7 10 / 0.12),
+    0 18px 40px -12px rgb(8 7 10 / 0.35);
+  transition:
+    translate 420ms var(--ease-elastic),
+    scale 420ms var(--ease-elastic),
+    box-shadow 420ms var(--ease);
+}
+
+.bc-print img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1;
+  height: 100%;
   object-fit: cover;
 }
 
-.box-item-name {
-  margin: 0 0 0.35rem;
-  font-family: var(--font-switzer-stack);
-  font-weight: 900;
-  font-size: 0.875rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink);
+.bc-print--1 {
+  left: 0;
+  top: 8%;
+  width: 44%;
+  rotate: -3deg;
+  z-index: 1;
 }
 
-.box-item-body {
-  margin: 0;
+.bc-print--2 {
+  left: 36%;
+  top: 0;
+  width: 33%;
+  rotate: 2.5deg;
+  z-index: 3;
 }
+
+.bc-print--3 {
+  left: 63%;
+  top: 22%;
+  width: 37%;
+  rotate: -1.5deg;
+  z-index: 2;
+}
+
+.bc-print:hover {
+  translate: 0 -8px;
+  scale: 1.04;
+  z-index: 4;
+  box-shadow:
+    0 2px 4px rgb(8 7 10 / 0.14),
+    0 28px 56px -14px rgb(8 7 10 / 0.42);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-print {
+    transition: none;
+  }
+}
+
 
 @media (min-width: 768px) {
   .approach-row {
