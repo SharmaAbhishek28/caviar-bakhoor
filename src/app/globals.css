@@ -5410,17 +5410,25 @@ html {
   overflow: clip;
 }
 
+/* The line over the logotype: Bodoni Moda italic in sentence case, the
+   house's display face set as a quiet, editorial line rather than a shout,
+   so it leads into the gold mark below instead of competing with it. opsz
+   stays low so the hairlines hold on the moving video. */
 .hero-line {
   display: block;
-  font-family: var(--font-switzer-stack);
-  font-weight: 900;
-  font-size: clamp(1.1rem, 2.2vw, 1.9rem);
+  padding-bottom: 0.08em;
+  font-family: var(--font-bodoni-stack);
+  font-style: italic;
+  font-weight: 500;
+  font-variation-settings: "opsz" 11;
+  font-size: clamp(1.35rem, 2.6vw, 2.35rem);
   line-height: 1.15;
   letter-spacing: 0.01em;
-  text-transform: uppercase;
   text-align: center;
-  color: #fff;
-  text-shadow: 0 1px 24px rgb(8 7 10 / 0.45);
+  color: #f4efe6;
+  text-shadow:
+    0 1px 2px rgb(8 7 10 / 0.5),
+    0 2px 28px rgb(8 7 10 / 0.55);
 }
 
 /* The Caviar Bakhoor logotype (a trace of the client's artwork, gold

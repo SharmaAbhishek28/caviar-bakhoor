@@ -12,19 +12,18 @@ import { HeroMedia } from "./01-HeroMedia";
  * Without it, it renders the spec's own stated fallback: a slow 1.06 → 1.0
  * settle on the pearl macro still (docs/homepage.md § 01, Assets).
  *
- * The video is docs/video-source/VE Project 5-2 (1).mp4 (10.2MB, 38s,
- * 720p), compressed with the spec's § 01 recipe, keeping the audio for the
- * sound toggle — CLAUDE.md caps the hero at 3MB:
- *   hero.mp4         720p  -crf 30 -maxrate 560k, AAC 64k   ~1.9MB
- *   hero-mobile.mp4  540p  -crf 31 -maxrate 380k, AAC 48k   ~1.1MB
+ * The video is docs/video-source/CAVIAR DE PARFUM.mp4 (9.6MB, 47s, 1080p),
+ * uncut, compressed with the spec's § 01 recipe and keeping the audio for
+ * the sound toggle — CLAUDE.md caps the hero at 3MB:
+ *   hero.mp4         720p  -crf 30 -maxrate 420k, AAC 56k   ~2.2MB
+ *   hero-mobile.mp4  540p  -crf 31 -maxrate 260k, AAC 48k   ~1.4MB
  *   hero-poster.jpg  the frame at 1s (the Elixir mark), so the poster
  *                    and the video's first frames match.
  * All with -preset slow -movflags +faststart.
  *
- * NOTE: the clip's title card (≈2.5–4s) reads "Presenting CAVIAR DE PARFUM",
+ * NOTE: the clip's title card (≈2–4s) reads "Presenting CAVIAR DE PARFUM",
  * the name the client retired on 2026-09-17. The site owner chose to ship
- * the video uncut (2026-10-17). Trimming from ≈7.5s removes it and the
- * other title cards if that changes.
+ * the video exactly as supplied (2026-10-17).
  */
 const VIDEO_PUBLIC_PATH = "/video/hero.mp4";
 const MOBILE_VIDEO_PUBLIC_PATH = "/video/hero-mobile.mp4";
