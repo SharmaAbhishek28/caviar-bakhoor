@@ -63,12 +63,17 @@ export function ProductPanel({ product }: { product: Product }) {
 
       <details className="pdp-acc" name="pdp-accordion" onToggle={onToggle} open>
         <summary>The scent</summary>
-        <MarkedProse className="pdp-acc-body" text={product.description} />
+        <MarkedProse className="pdp-acc-body" text={product.longDescription ?? product.description} />
       </details>
 
       <details className="pdp-acc" name="pdp-accordion" onToggle={onToggle}>
         <summary>Notes</summary>
         <dl className="pdp-notes">
+          {/* The booklet gives the composition, not a pyramid: the composition
+              is stated, and the pyramid rows keep their markers until the
+              perfumer supplies them. */}
+          <dt>Composition</dt>
+          <dd>{product.accord}</dd>
           <dt>Top</dt>
           <dd>{formatNotes(product.notes.top)}</dd>
           <dt>Heart</dt>

@@ -50,9 +50,7 @@ export function Story({ products }: { products: Product[] }) {
                 </div>
                 <h3 className="story-name">{product.title}</h3>
                 <span className="story-marker" aria-hidden />
-                <p className="story-words" data-confirm="perfumer">
-                  {product.fiveWords.join(" · ")}
-                </p>
+                <p className="story-words">{product.accord}</p>
                 <MarkedProse
                   className="type-body story-desc"
                   text={product.description}

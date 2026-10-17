@@ -13,16 +13,14 @@ import { formatWeight } from "./format";
  * Server components: nothing here needs state.
  */
 
-/** The reference sets its top notes in display type; ours are [CONFIRM], so
-    the five words stand in, marked as the perfumer's proposal. */
+/** The reference sets its top notes in display type; ours is the booklet's
+    one-line composition for the fragrance. */
 export function NotesSection({ product }: { product: Product }) {
   const wide = product.images.find((i) => i.width > i.height) ?? product.images[0];
   return (
     <section className="pdp-notes-section" data-label="Notes">
       <Container>
-        <p className="pdp-notes-line" data-confirm="perfumer">
-          {product.fiveWords.join(", ")}
-        </p>
+        <p className="pdp-notes-line">{product.accord}</p>
         <Image
           src={wide.src}
           alt={wide.alt}
@@ -83,7 +81,7 @@ export function StorySection({ product }: { product: Product }) {
   return (
     <section className="pdp-story" data-label="Story">
       <Container>
-        <MarkedProse className="type-body pdp-story-copy" text={product.description} />
+        <MarkedProse className="type-body pdp-story-copy" text={product.longDescription ?? product.description} />
         <div className="pdp-squares">
           {squares.map((img) => (
             <Image

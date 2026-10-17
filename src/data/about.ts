@@ -59,6 +59,27 @@ export const ABOUT = {
       { src: "/images/shoot/imperial-zafran-set.jpg", alt: "The Imperial Zafran box, the open tin, the spoon and a disc of foil", width: 2400, height: 1600 },
     ],
   },
+  /** The booklet's second spread, recreated: three gold-framed photographs
+   *  with its captions, verbatim ("complimenting" corrected to
+   *  "complementing"). The photographs are the same shots the booklet uses,
+   *  from the raw shoot. */
+  booklet: {
+    lead: "Using our patent-pending encapsulation technology, we have blended rare, natural, sustainably sourced, aged oud with expertly crafted natural fragrances.",
+    items: [
+      {
+        caption: "The caviar is enriched with pure 24k gold, enhancing its royalty.",
+        image: { src: "/images/about/gallery-01.jpg", alt: "Caviar Bakhoor pearls scattered with flakes of 24-karat gold", width: 1600, height: 1067 },
+      },
+      {
+        caption: "A groundbreaking and luxurious way of Bakhoor, in the avatar of Caviar.",
+        image: { src: "/images/shoot/noir-open-overhead.jpg", alt: "The Noir box open, from above, the tin seated in its gold frame", width: 2400, height: 1600 },
+      },
+      {
+        caption: "This seamless experience kit comes with the Caviar, Foil, and a complementing golden spoon.",
+        image: { src: "/images/shoot/ward-baccarat-set.jpg", alt: "The Ward Baccarat kit: the box, the open tin, the golden spoon and the foil", width: 2400, height: 1600 },
+      },
+    ],
+  },
   circles: [
     {
       title: "Caviar Bakhoor",

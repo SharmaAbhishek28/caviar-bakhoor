@@ -45,7 +45,17 @@ export type Product = {
   accent: string;
   /** Two or three sentences. Client-approved copy (BAKHOOR WEBSITE.pdf). */
   description: string;
-  /** Five words, shown on /collection. PROPOSAL ONLY — CONFIRM with the perfumer. */
+  /** The composition in one line, as the client's booklet captions each tin
+      ("Natural, Aged Assamese Oud with Saffron"). Shown wherever the five
+      words used to stand in. Ward Baccarat has no booklet page: its line is
+      taken from its client-approved description above. */
+  accord: string;
+  /** The booklet's long description, verbatim. Null where the booklet has no
+      page for the fragrance (Ward Baccarat); the PDP falls back to
+      `description`. */
+  longDescription: string | null;
+  /** Five words. PROPOSAL ONLY, never confirmed by the perfumer — no longer
+      displayed now the booklet supplies `accord`. Kept for the record. */
   fiveWords: string[];
   notes: FragranceNotes;
   images: ProductImage[];
@@ -74,6 +84,9 @@ export const products: Product[] = [
     description:
       'Noir brings natural, aged Assamese oud and saffron together in a dark, ' +
       'seductive blend.',
+    accord: 'Natural, aged Assamese oud with saffron',
+    longDescription: 
+      "Step into the darkness with Noir, where the natural, aged Assamese oud collides with the luxurious aroma of saffron, creating a sense of mystery and intrigue. The scent is seductive, yet refined, evoking feelings of sensuality and sophistication. Close your eyes, inhale deeply, and let the Noir experience transport you to another world.",
     fiveWords: ['Dark', 'Resinous', 'Still', 'Unsweetened', 'Late'],
     notes: {
       top: [], // CONFIRM
@@ -126,6 +139,8 @@ export const products: Product[] = [
     description:
       'Ward Baccarat blends rare, aged Cambodian oud with dark truffle rose for a ' +
       'deep, regal aroma.',
+    accord: 'Rare, aged Cambodian oud with dark truffle rose',
+    longDescription: null,
     fiveWords: ['Rose', 'Heated', 'Crystalline', 'Sweet', 'Lasting'],
     notes: {
       top: [], // CONFIRM
@@ -178,6 +193,9 @@ export const products: Product[] = [
     description:
       'Imperial Zafran pairs natural, aged Assamese oud with precious saffron for a ' +
       'rich, spiced warmth.',
+    accord: 'Natural, aged Assamese oud with saffron',
+    longDescription: 
+      "Imperial Zafran is the perfect combination of spicy saffron and exotic oud. The natural, aged Assamese oud and the precious saffron blend together to create a heady aroma that will awaken your senses. The smoky notes of the oud enhance the spicy fragrance of saffron, making this scent perfect for those who love a touch of heat.",
     fiveWords: ['Saffron', 'Warm', 'Leathery', 'Dry', 'Regal'],
     notes: {
       top: [], // CONFIRM
@@ -230,6 +248,9 @@ export const products: Product[] = [
     description:
       'Amber Blanc unites rare, aged Cambodian oud with luminous amber in a warm ' +
       'play of light and dark.',
+    accord: 'Rare, aged Cambodian oud with amber',
+    longDescription: 
+      "Enter a world of contrasts with Amber Blanc, where the sharp and luminous facets of amber and oud are pitted against each other. The rare, aged Cambodian oud is blended perfectly with the warm and inviting scent of amber, creating a fragrance that is both bold and beautiful. Each spray of Amber Blanc will transport you to a world of contrasts, where light and dark mingle in perfect harmony.",
     fiveWords: ['White amber', 'Clean', 'Musky', 'Soft', 'Light'],
     notes: {
       top: [], // CONFIRM

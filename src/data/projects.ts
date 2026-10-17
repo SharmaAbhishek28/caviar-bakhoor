@@ -28,7 +28,7 @@ export type ProjectCard = {
   no: string;
   /** Right-hand meta line on the card. */
   meta: string;
-  /** Five words, from the perfumer. CONFIRM before shipping. */
+  /** The composition line, from the product record (the client's booklet). */
   words: string;
   /** The card paragraph. Verbatim from products.ts, marker included. */
   blurb: string;
@@ -44,6 +44,13 @@ export type ProjectCard = {
   };
 };
 
+/** The booklet's one-line composition, from the product record. */
+const accordOf = (handle: string): string => {
+  const p = getProduct(handle);
+  if (!p) throw new Error(`projects.ts: no product with handle "${handle}"`);
+  return p.accord;
+};
+
 /** Pulls the description straight from the product record, never a copy. */
 const blurbOf = (handle: string): string => {
   const p = getProduct(handle);
@@ -57,7 +64,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     title: "Noir",
     no: "01",
     meta: "Noir / Caviar Bakhoor",
-    words: "Dark. Resinous. Still. Unsweetened. Late.",
+    words: accordOf("noir"),
     blurb: blurbOf("noir"),
     keywords: ["natural, aged Assamese oud", "saffron", "dark, seductive blend"],
     cta: "View Noir",
@@ -73,7 +80,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     title: "Ward Baccarat",
     no: "02",
     meta: "Ward Baccarat / Caviar Bakhoor",
-    words: "Rose. Heated. Crystalline. Sweet. Lasting.",
+    words: accordOf("ward-baccarat"),
     blurb: blurbOf("ward-baccarat"),
     keywords: ["rare, aged Cambodian oud", "dark truffle rose", "deep, regal aroma"],
     cta: "View Ward Baccarat",
@@ -89,7 +96,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     title: "Imperial Zafran",
     no: "03",
     meta: "Imperial Zafran / Caviar Bakhoor",
-    words: "Saffron. Warm. Leathery. Dry. Regal.",
+    words: accordOf("imperial-zafran"),
     blurb: blurbOf("imperial-zafran"),
     keywords: ["natural, aged Assamese oud", "precious saffron", "rich, spiced warmth"],
     cta: "View Imperial Zafran",
@@ -105,7 +112,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     title: "Amber Blanc",
     no: "04",
     meta: "Amber Blanc / Caviar Bakhoor",
-    words: "White amber. Clean. Musky. Soft. Light.",
+    words: accordOf("amber-blanc"),
     blurb: blurbOf("amber-blanc"),
     keywords: ["rare, aged Cambodian oud", "luminous amber", "warm play of light and dark"],
     cta: "View Amber Blanc",

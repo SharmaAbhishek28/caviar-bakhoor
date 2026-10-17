@@ -4,6 +4,36 @@ import { Container, MarkedProse, Reveal } from "@/components/ui";
 import { ABOUT } from "@/data/about";
 import { PEOPLE, PEOPLE_SUBHEAD, PEOPLE_TITLE, type Person } from "@/data/people";
 
+/** The booklet's second spread, recreated on the dark panel: the lead line,
+ *  then three gold-framed photographs, each with its caption, laid out as the
+ *  printed page has them. One column on a phone. */
+export function BookletSpread() {
+  const { lead, items } = ABOUT.booklet;
+  return (
+    <section className="ab-booklet on-ash" data-label="Booklet">
+      <Container>
+        <div className="bk-grid">
+          <p className="bk-lead">{lead}</p>
+          {items.map((item, i) => (
+            <figure key={item.image.src} className={`bk-item bk-item--${i + 1}`}>
+              <div className="bk-frame">
+                <Image
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  width={item.image.width}
+                  height={item.image.height}
+                  sizes="(max-width: 767px) 100vw, 45vw"
+                />
+              </div>
+              <figcaption className="bk-caption">{item.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 /** The house: a statement, and the facts ledger with its markers showing. */
 export function HouseFacts() {
   return (

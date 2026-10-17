@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!product) return {};
   return {
     title: `${product.title} | Caviar Bakhoor`,
-    description: `${product.title}: scented bakhoor, encapsulated in pearls with 24-karat gold. ${product.fiveWords.join(", ")}.`,
+    description: `${product.title}: scented bakhoor, encapsulated in pearls with 24-karat gold. ${product.accord}.`,
   };
 }
 
