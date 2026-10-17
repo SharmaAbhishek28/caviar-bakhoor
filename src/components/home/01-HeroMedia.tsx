@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { preload } from "react-dom";
 import { useEffect, useRef, useState } from "react";
+import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 /**
  * The hero's media layer and its sound control.
  *
  * `hasVideo` comes from the server wrapper, which checks whether
- * public/video/hero.mp4 is actually on disk — so the video branch and the
+ * public/video/hero-1080.mp4 is actually on disk — so the video branch and the
  * sound toggle appear together, and neither can exist without the other.
  *
  * LOADING: the poster is preloaded at high priority, so the first frame is
@@ -23,16 +24,46 @@ import { useEffect, useRef, useState } from "react";
  */
 export function HeroMedia({
   hasVideo,
-  videoSrc,
-  mobileVideoSrc,
+  sources,
   posterSrc,
 }: {
   hasVideo: boolean;
-  videoSrc: string;
-  mobileVideoSrc?: string;
+  /** In preference order: the browser plays the first it can. */
+  sources: { src: string; type: string; media?: string }[];
   posterSrc: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
+
+  // The strip: drawn up out of the foot of the hero by the first scroll,
+  // with the hero pinned so it plays in full view. Scrubbed, so scrolling
+  // back lowers it again. Under reduced motion it is simply there.
+  useEffect(() => {
+    const section = sectionRef.current;
+    const strip = stripRef.current;
+    if (!section || !strip || prefersReducedMotion()) return;
+    initScroll();
+    const ctx = gsap.context(() => {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${window.innerHeight * 0.7}`,
+            pin: true,
+            scrub: 0.6,
+            invalidateOnRefresh: true,
+          },
+        })
+        // y: 0 takes over the CSS translateY(100%) that hides the strip
+        // before hydration, so the two offsets never stack.
+        .fromTo(strip, { y: 0, yPercent: 100 }, { y: 0, yPercent: 0, ease: "power3.out", duration: 1 })
+        .fromTo(".hero-line", { yPercent: 110 }, { yPercent: 0, ease: "power3.out", duration: 0.7 }, 0.35)
+        .fromTo(".hero-logo, .hero-logo-split", { yPercent: 110 }, { yPercent: 0, ease: "power3.out", duration: 0.8 }, 0.5);
+    }, section);
+    return () => ctx.revert();
+  }, []);
   const [muted, setMuted] = useState(true);
 
   if (hasVideo) preload(posterSrc, { as: "image", fetchPriority: "high" });
@@ -64,6 +95,7 @@ export function HeroMedia({
 
   return (
     <section
+      ref={sectionRef}
       className="on-ash"
       style={{ position: "relative", height: "100svh", overflow: "hidden" }}
     >
@@ -86,10 +118,9 @@ export function HeroMedia({
             objectFit: "cover",
           }}
         >
-          {mobileVideoSrc ? (
-            <source src={mobileVideoSrc} type="video/mp4" media="(max-width: 767px)" />
-          ) : null}
-          <source src={videoSrc} type="video/mp4" />
+          {sources.map((s) => (
+            <source key={s.src} src={s.src} type={s.type} media={s.media} />
+          ))}
         </video>
       ) : (
         <Image
@@ -121,37 +152,32 @@ export function HeroMedia({
         }}
       />
 
-      {/* "An innovation in bakhoor." over the Caviar Bakhoor logotype. The
-          logotype's words stay in the h1 for search and screen readers; each
-          part rises out of its own mask in turn (RevealAll,
-          [data-reveal-part]). */}
-      <h1 className="hero-caption" data-reveal-load>
-        <span className="hero-line-mask">
-          <span className="hero-line" data-reveal-part>
-            An innovation in bakhoor.
+      {/* The strip: a band of paper at the foot of the hero carrying the
+          line and the Caviar Bakhoor logotype. Hidden on load — the film
+          alone fills the screen — and drawn up by the first scroll, the
+          line and then the mark rising after it. The logotype's words stay
+          in the h1 for search and screen readers. */}
+      <div ref={stripRef} className="hero-strip">
+        <h1 className="hero-caption" data-no-reveal>
+          <span className="hero-line-mask">
+            <span className="hero-line">An innovation in bakhoor.</span>
           </span>
-        </span>
-        <span className="sr-only"> Caviar Bakhoor.</span>
-        <span className="hero-logo-mask" aria-hidden>
-          {/* eslint-disable-next-line @next/next/no-img-element -- an SVG
-              logotype: next/image would only pass it through unoptimised. */}
-          <img
-            src="/images/brand/caviar-bakhoor.svg"
-            alt=""
-            width={4176}
-            height={312}
-            fetchPriority="high"
-            className="hero-logo"
-            data-reveal-part
-          />
-        </span>
-      </h1>
+          <span className="sr-only"> Caviar Bakhoor.</span>
+          <span className="hero-logo-mask" aria-hidden>
+            <span className="hero-logo" />
+            <span className="hero-logo-split">
+              <span className="hero-logo-word hero-logo-word--1" />
+              <span className="hero-logo-word hero-logo-word--2" />
+            </span>
+          </span>
+        </h1>
+      </div>
 
       {hasVideo ? (
         <button
           type="button"
           onClick={() => setMuted((m) => !m)}
-          className="sound-toggle"
+          className="sound-toggle hero-sound"
           aria-pressed={!muted}
           aria-label={muted ? "Turn sound on" : "Turn sound off"}
         >

@@ -5355,34 +5355,38 @@ html {
   }
 }
 
-/* The caption's lines rise out of masks (RevealAll, [data-reveal-load]).
-   Held invisible until that takes over, so the unsplit text never flashes;
-   if the script never runs, the fallback fades it in after 2.5s. */
-.hero-caption {
+/* --- Hero strip -----------------------------------------------------------
+   A band of paper across the foot of the hero, carrying the line and the
+   Caviar Bakhoor logotype. Hidden below the hero's edge on load; the first
+   scroll draws it up (01-HeroMedia). Under reduced motion it is in place.
+   ------------------------------------------------------------------------ */
+.hero-strip {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 8vh;
+  bottom: 0;
+  z-index: 1;
+  background: var(--paper);
+  padding: clamp(1.75rem, 4vh, 3rem) var(--gutter) clamp(1.5rem, 3.5vh, 2.75rem);
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.hero-caption {
   margin: 0;
-  padding-inline: var(--gutter);
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  animation: hero-caption-fallback 600ms ease 2.5s forwards;
+  gap: clamp(0.5rem, 1.5vh, 1rem);
 }
 
-/* The line over the logotype: Switzer Black caps, white, as the caption
-   was before the logo. */
-.hero-line-mask {
+.hero-line-mask,
+.hero-logo-mask {
   display: block;
   overflow: clip;
 }
 
-/* The line over the logotype: Bodoni Moda italic in sentence case, the
-   house's display face set as a quiet, editorial line rather than a shout,
-   so it leads into the gold mark below instead of competing with it. opsz
-   stays low so the hairlines hold on the moving video. */
+/* The line: Bodoni Moda italic, sentence case, in ink on the paper. */
 .hero-line {
   display: block;
   padding-bottom: 0.08em;
@@ -5390,57 +5394,90 @@ html {
   font-style: italic;
   font-weight: 500;
   font-variation-settings: "opsz" 11;
-  font-size: clamp(1.35rem, 2.6vw, 2.35rem);
+  font-size: clamp(1.25rem, 2.2vw, 2.1rem);
   line-height: 1.15;
   letter-spacing: 0.01em;
   text-align: center;
-  color: #f4efe6;
-  text-shadow:
-    0 1px 2px rgb(8 7 10 / 0.5),
-    0 2px 28px rgb(8 7 10 / 0.55);
+  /* The hero is .on-ash, which turns --ink light; the strip is paper, so
+     the line takes the canvas ink directly. */
+  color: #101012;
 }
 
-/* The Caviar Bakhoor logotype (a trace of the client's artwork, gold
-   #D2AC68). The mask clips it so it can rise into place; the shadow holds
-   it on the white-marble frames of the video. */
+/* Phones: the mark on two lines, CAVIAR over BAKHOOR, each a slice of the
+   same traced SVG (CAVIAR is its left 42%, BAKHOOR its right 52%) — so each
+   word can run the full width and stand taller than section 02's headline. */
+.hero-logo-split {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hero-logo-mask > .hero-logo {
+    display: none;
+  }
+
+  .hero-logo-split {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  .hero-logo-word {
+    display: block;
+    width: 100%;
+    background: var(--gold-deep);
+    -webkit-mask-image: url("/images/brand/caviar-bakhoor.svg");
+    mask-image: url("/images/brand/caviar-bakhoor.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .hero-logo-word--1 {
+    aspect-ratio: calc(4176 * 0.42) / 312;
+    -webkit-mask-size: calc(100% / 0.42) 100%;
+    mask-size: calc(100% / 0.42) 100%;
+    -webkit-mask-position: left center;
+    mask-position: left center;
+  }
+
+  .hero-logo-word--2 {
+    aspect-ratio: calc(4176 * 0.52) / 312;
+    -webkit-mask-size: calc(100% / 0.52) 100%;
+    mask-size: calc(100% / 0.52) 100%;
+    -webkit-mask-position: right center;
+    mask-position: right center;
+  }
+}
+
+/* The logotype, drawn in --gold-deep through the traced SVG as a mask, so
+   the client's mark reads in the site's one gold on the paper. Sized to
+   the strip's width: its capitals stand taller than the 6.48vw display
+   headline in section 02. */
 .hero-logo-mask {
-  display: block;
-  overflow: clip;
-  /* Room for the whole shadow inside the clip, or its edge shows as a band
-     on the light frames. */
-  padding: clamp(14px, 2vw, 28px);
-  width: min(760px, 86vw);
+  width: min(100%, 1600px);
 }
 
 .hero-logo {
   display: block;
   width: 100%;
-  height: auto;
-  filter: drop-shadow(0 1px 10px rgb(8 7 10 / 0.45));
+  aspect-ratio: 4176 / 312;
+  background: var(--gold-deep);
+  -webkit-mask: url("/images/brand/caviar-bakhoor.svg") center / contain no-repeat;
+  mask: url("/images/brand/caviar-bakhoor.svg") center / contain no-repeat;
 }
 
-/* Phones: clear of the sound button in the corner. */
-@media (max-width: 767px) {
-  .hero-caption {
-    bottom: calc(clamp(1.25rem, 4vh, 2.5rem) + 56px);
-  }
+/* The hero's sound toggle moves to the top-right, under the header, so
+   the strip and the full-width mark have the foot of the hero to
+   themselves. */
+.sound-toggle.hero-sound {
+  top: clamp(5.5rem, 12vh, 7rem);
+  bottom: auto;
+  z-index: 2;
 }
 
-@keyframes hero-caption-fallback {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Everything renders at rest. */
 @media (prefers-reduced-motion: reduce) {
-  .hero-still,
-  .hero-caption {
-    animation: none;
-  }
-
-  .hero-caption {
-    opacity: 1;
+  .hero-strip {
+    transform: none;
   }
 }
 
