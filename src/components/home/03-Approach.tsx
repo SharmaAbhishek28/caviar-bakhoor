@@ -8,9 +8,9 @@ import {
   Reveal,
   MarkedProse,
 } from "@/components/ui";
-import { BOX_ITEMS, BOX_PARAGRAPH, BOX_STRONG, BOX_VIDEO } from "@/data/box";
+import { BOX_INTRO, BOX_INTRO_STRONG, BOX_ITEMS, BOX_VIDEO } from "@/data/box";
 import { FilmReveal } from "./03-FilmReveal";
-import { BoxCollage } from "./03-BoxCollage";
+import { BoxRows } from "./03-BoxRows";
 
 /**
  * 03 — Encapsulated Technology (approach).
@@ -66,22 +66,14 @@ export function Approach() {
         />
       </Container>
 
-      {/* The row: the three tools as a collage on the left, what they are on
-          the right. */}
+      {/* What is in the box: the subhead and the line, then the three tools,
+          one row each, alternating sides. */}
       <Container>
-        <div className="approach-row approach-row--box">
-          <BoxCollage items={BOX_ITEMS} />
-          <div className="approach-copy">
-            <CapsSubhead className="approach-subhead">
-              Elixir × Caviar Bakhoor
-            </CapsSubhead>
-            <MarkedProse
-              className="type-body prose-justified approach-paragraph"
-              text={BOX_PARAGRAPH}
-              strong={BOX_STRONG}
-            />
-          </div>
+        <div className="br-head">
+          <CapsSubhead>Elixir × Caviar Bakhoor</CapsSubhead>
+          <MarkedProse className="type-body br-intro" text={BOX_INTRO} strong={BOX_INTRO_STRONG} />
         </div>
+        <BoxRows items={BOX_ITEMS} />
       </Container>
 
       {/* Then the film, full width, opening through a pearl. */}

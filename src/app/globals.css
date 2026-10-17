@@ -4796,23 +4796,6 @@ html {
    paragraph on the right, centred on each other. Then the film, full
    width, opening through a pearl (03-FilmReveal).
    ------------------------------------------------------------------------ */
-.approach-row--box {
-  align-items: center;
-  margin-bottom: var(--section-y);
-}
-
-.approach-row--box .approach-copy {
-  justify-content: center;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-}
-
-@media (min-width: 768px) {
-  .approach-row.approach-row--box {
-    grid-template-columns: 1fr 1fr;
-    column-gap: clamp(2.5rem, 5vw, 5rem);
-  }
-}
-
 .fr-stage {
   position: relative;
   height: 100vh;
@@ -4851,79 +4834,6 @@ html {
   font-weight: 500;
 }
 
-/* --- The collage of the box's three tools -------------------------------
-   Three prints, overlapping, each slightly turned, with a paper border and
-   a soft shadow so they sit up off the page. Positions are percentages of
-   the collage's box, so the composition holds at every width. */
-.box-collage {
-  position: relative;
-  /* Keeps the prints' z-order to themselves, under the film. */
-  isolation: isolate;
-  width: 100%;
-  aspect-ratio: 2 / 1;
-  margin-block: clamp(0.5rem, 2vh, 1.5rem);
-}
-
-.bc-print {
-  position: absolute;
-  margin: 0;
-  aspect-ratio: 1;
-  padding: clamp(4px, 0.5vw, 7px);
-  background: var(--paper);
-  box-shadow:
-    0 1px 2px rgb(8 7 10 / 0.12),
-    0 18px 40px -12px rgb(8 7 10 / 0.35);
-  transition:
-    translate 420ms var(--ease-elastic),
-    scale 420ms var(--ease-elastic),
-    box-shadow 420ms var(--ease);
-}
-
-.bc-print img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.bc-print--1 {
-  left: 0;
-  top: 8%;
-  width: 44%;
-  rotate: -3deg;
-  z-index: 1;
-}
-
-.bc-print--2 {
-  left: 36%;
-  top: 0;
-  width: 33%;
-  rotate: 2.5deg;
-  z-index: 3;
-}
-
-.bc-print--3 {
-  left: 63%;
-  top: 22%;
-  width: 37%;
-  rotate: -1.5deg;
-  z-index: 2;
-}
-
-.bc-print:hover {
-  translate: 0 -8px;
-  scale: 1.04;
-  z-index: 4;
-  box-shadow:
-    0 2px 4px rgb(8 7 10 / 0.14),
-    0 28px 56px -14px rgb(8 7 10 / 0.42);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bc-print {
-    transition: none;
-  }
-}
 
 
 @media (min-width: 768px) {
@@ -5599,12 +5509,151 @@ html {
   bottom: clamp(0.75rem, 2vw, 1.25rem);
 }
 
-/* In the half-width column the collage is taller, so the prints read larger. */
-.approach-row--box .box-collage {
-  aspect-ratio: 4 / 3;
-  margin-block: 0;
+/* --- Section 03: the box's three tools -----------------------------------
+   The subhead and the intro line, then one row per tool, alternating sides.
+   03-BoxRows animates the curtain, the numeral, the name, the rule and the
+   copy as each row scrolls in.
+   ------------------------------------------------------------------------ */
+.br-head {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  max-width: 44rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
 }
 
-.approach-row--box .bc-print--1 { top: 10%; width: 48%; }
-.approach-row--box .bc-print--2 { left: 38%; top: 0; width: 36%; }
-.approach-row--box .bc-print--3 { left: 58%; top: 38%; width: 42%; }
+.br-intro {
+  margin: 0;
+}
+
+.br-intro strong,
+.br-body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.br-list {
+  list-style: none;
+  margin: clamp(3rem, 7vw, 6rem) 0 var(--section-y);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 10vw, 9rem);
+}
+
+.br-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.br-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  isolation: isolate;
+}
+
+/* The giant outlined numeral behind the copy. */
+.br-no {
+  position: absolute;
+  top: -0.42em;
+  left: -0.06em;
+  z-index: -1;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 6;
+  font-weight: 700;
+  font-size: clamp(7rem, 16vw, 15rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(16 16 18 / 0.18);
+  user-select: none;
+}
+
+.br-name-mask {
+  margin: 0;
+  overflow: clip;
+}
+
+.br-name {
+  display: block;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.br-rule {
+  display: block;
+  width: clamp(4rem, 8vw, 7rem);
+  height: 1px;
+  background: var(--ink);
+  transform-origin: left center;
+}
+
+.br-body {
+  margin: 0;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+}
+
+.br-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.br-img {
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: var(--ash);
+}
+
+.br-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The ink curtain that sweeps across and uncovers the photograph. */
+.br-curtain {
+  position: absolute;
+  inset: 0;
+  background: var(--ash);
+  transform: translateX(-101%);
+  pointer-events: none;
+}
+
+/* Phones: the photograph first, then the copy. */
+@media (max-width: 767px) {
+  .br-media {
+    order: -1;
+  }
+}
+
+@media (min-width: 768px) {
+  .br-row {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(3rem, 7vw, 7rem);
+  }
+
+  /* The middle row: photograph left, copy right. */
+  .br-row--flip .br-media {
+    order: -1;
+  }
+
+  .br-row--flip .br-copy {
+    padding-left: clamp(0rem, 2vw, 2rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .br-curtain {
+    display: none;
+  }
+}
