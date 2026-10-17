@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Menu } from "./Menu";
 
 /**
- * Fixed header. Wordmark top-left; top-right a 44px rounded-square hamburger
+ * Fixed header. A home icon top-left (no house logo, at the client's request); top-right a 44px rounded-square hamburger
  * on --paper at 90%, then BAG (n) in meta caps. No inline nav — everything
  * lives behind the hamburger.
  *
@@ -81,19 +80,30 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
             boxSizing: "border-box",
           }}
         >
+          {/* Home, as an icon on the hamburger's paper tile. The Elixir logo
+              was removed from the header at the client's request
+              (2026-10-17): they do not want the house mark showcased. */}
           <Link
             href="/"
-            aria-label="Elixir Signature Scents — home"
-            style={{ pointerEvents: "auto", display: "block", lineHeight: 0 }}
+            aria-label="Caviar Bakhoor — home"
+            className="home-tile"
+            style={{ pointerEvents: "auto" }}
           >
-            <Image
-              src="/images/Frame_90.avif"
-              alt="Elixir Signature Scents"
-              width={270}
-              height={94}
-              priority
-              style={{ width: "clamp(108px, 9vw, 148px)", height: "auto" }}
-            />
+            <svg
+              aria-hidden
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M3.5 10.5 12 3.5l8.5 7" />
+              <path d="M5.5 9v11h13V9" />
+              <path d="M10 20v-5.5h4V20" />
+            </svg>
           </Link>
 
           <div
