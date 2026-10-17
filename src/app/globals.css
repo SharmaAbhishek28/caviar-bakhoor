@@ -902,80 +902,49 @@ html {
 .four-opener {
   margin: 0;
   padding-block: var(--section-y) clamp(3rem, 7vw, 6rem);
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-areas:
-    "lead ."
-    "anchor link"
-    ". close";
-  justify-content: center;
-  align-items: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1em;
+  text-align: center;
   line-height: 1;
+}
+
+/* Each line: a small word and a big one, on one baseline. */
+.four-opener-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 0.4em;
+}
+
+/* WHERE, BECOMES: Switzer Black caps, small. */
+.four-opener-small {
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: calc(var(--text-display-xl) * 0.32);
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--ink);
 }
 
-.four-opener-lead {
-  grid-area: lead;
-  justify-self: start;
-  margin-left: 18%;
-  margin-bottom: 0.1em;
-  font-size: calc(var(--text-display-xl) * 0.38);
-  letter-spacing: 0;
-}
-
-.four-opener-anchor {
-  grid-area: anchor;
-}
-
-.four-opener-link {
-  grid-area: link;
-  align-self: start;
-  padding-top: 0.2em;
-  padding-left: 0.4em;
-  font-size: calc(var(--text-display-xl) * 0.28);
-  font-style: normal;
-  letter-spacing: 0;
-}
-
-.four-opener-close {
-  grid-area: close;
-  justify-self: end;
-  margin-right: -8%;
-  margin-top: -0.12em;
-  font-size: calc(var(--text-display-xl) * 0.8);
+/* CAVIAR: Switzer Black italic, the counterpoint face. */
+.four-opener-caviar {
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-style: italic;
+  font-size: calc(var(--text-display-xl) * 0.85);
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
-/* Below 1024 the four words stack: lead and anchor ranged left, link and
-   close ranged right. Side by side, BAKHOOR and BECOMES overran a 327px
-   column and CAVIAR's negative margin pushed past the screen edge — measured
-   as a 13px horizontal overflow at 375px. */
-@media (max-width: 1023px) {
-  .four-opener {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "lead"
-      "anchor"
-      "link"
-      "close";
-    justify-content: stretch;
-  }
-
-  .four-opener-lead {
-    margin-left: 0;
-  }
-
-  .four-opener-link {
-    justify-self: end;
-    padding: 0.35em 0 0;
-    font-size: calc(var(--text-display-xl) * 0.3);
-  }
-
-  .four-opener-close {
-    margin-right: 0;
-    margin-top: 0;
-  }
+/* BAKHOOR: the Bodoni display. */
+.four-opener-bakhoor {
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: var(--text-display-xl);
+  text-transform: uppercase;
 }
 
 /* The run. One column below 1024; two above, the right one dropped so the

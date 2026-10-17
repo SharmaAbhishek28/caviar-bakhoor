@@ -21,21 +21,17 @@ export function Four() {
   return (
     <StackSection index={6} label="Collection" surface="paper" className="four">
       <Container>
-        {/* WHERE / BAKHOOR / BECOMES / CAVIAR — the reference's four-word
-            composition, three faces, staggered baselines. The visible words
-            are presentational; the heading's name is the sentence. */}
-        <h2 className="four-opener" aria-label="Where bakhoor becomes caviar">
-          <span aria-hidden className="four-opener-lead type-counter-xl">
-            {FOUR_OPENER.lead}
-          </span>
-          <span aria-hidden className="four-opener-anchor type-display-xl">
-            {FOUR_OPENER.anchor}
-          </span>
-          <span aria-hidden className="four-opener-link type-counter-sm">
-            {FOUR_OPENER.link}
-          </span>
-          <span aria-hidden className="four-opener-close type-counter-xl">
-            {FOUR_OPENER.close}
+        {/* WHERE CAVIAR / BECOMES BAKHOOR — two lines in reading order,
+            three faces sharing a baseline. data-no-reveal: the line-splitting
+            reveal would break the composition. */}
+        <h2 className="four-opener" data-no-reveal>
+          <span className="four-opener-row">
+            <span className="four-opener-small">{FOUR_OPENER.lead}</span>{" "}
+            <span className="four-opener-caviar">{FOUR_OPENER.first}</span>
+          </span>{" "}
+          <span className="four-opener-row">
+            <span className="four-opener-small">{FOUR_OPENER.link}</span>{" "}
+            <span className="four-opener-bakhoor">{FOUR_OPENER.second}</span>
           </span>
         </h2>
 

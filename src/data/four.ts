@@ -37,12 +37,13 @@ const blurbOf = (handle: string): string => {
   return p.description;
 };
 
-/** The opener composition: WHERE / BAKHOOR / BECOMES / CAVIAR. */
+/** The opener, in reading order: WHERE CAVIAR / BECOMES BAKHOOR (site
+ *  owner, 2026-10-17). */
 export const FOUR_OPENER = {
   lead: "Where",
-  anchor: "Bakhoor",
+  first: "Caviar",
   link: "Becomes",
-  close: "Caviar",
+  second: "Bakhoor",
 };
 
 export const FOUR: FourEntry[] = [
