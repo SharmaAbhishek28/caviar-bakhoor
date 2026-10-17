@@ -121,11 +121,17 @@ export function HeroMedia({
         }}
       />
 
-      {/* The Caviar Bakhoor logotype is the headline. The words stay in the
-          h1 for search and screen readers; the mark rises out of its mask
-          (RevealAll, [data-reveal-part]). */}
+      {/* "An innovation in bakhoor." over the Caviar Bakhoor logotype. The
+          logotype's words stay in the h1 for search and screen readers; each
+          part rises out of its own mask in turn (RevealAll,
+          [data-reveal-part]). */}
       <h1 className="hero-caption" data-reveal-load>
-        <span className="sr-only">Caviar Bakhoor — an innovation in bakhoor</span>
+        <span className="hero-line-mask">
+          <span className="hero-line" data-reveal-part>
+            An innovation in bakhoor.
+          </span>
+        </span>
+        <span className="sr-only"> Caviar Bakhoor.</span>
         <span className="hero-logo-mask" aria-hidden>
           {/* eslint-disable-next-line @next/next/no-img-element -- an SVG
               logotype: next/image would only pass it through unoptimised. */}

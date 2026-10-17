@@ -5163,9 +5163,30 @@ html {
   margin: 0;
   padding-inline: var(--gutter);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   opacity: 0;
   animation: hero-caption-fallback 600ms ease 2.5s forwards;
+}
+
+/* The line over the logotype: Switzer Black caps, white, as the caption
+   was before the logo. */
+.hero-line-mask {
+  display: block;
+  overflow: clip;
+}
+
+.hero-line {
+  display: block;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1.1rem, 2.2vw, 1.9rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 24px rgb(8 7 10 / 0.45);
 }
 
 /* The Caviar Bakhoor logotype (a trace of the client's artwork, gold
