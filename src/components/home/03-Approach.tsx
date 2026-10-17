@@ -7,6 +7,8 @@ import {
   StackSection,
   Reveal,
 } from "@/components/ui";
+import { BOX_INTRO, BOX_ITEMS, BOX_VIDEO } from "@/data/box";
+import { ApproachVideo } from "./03-ApproachVideo";
 
 /**
  * 03 — Encapsulated Technology (approach).
@@ -20,7 +22,10 @@ import {
  * space above it deliberately empty. Its caps subhead is top-aligned in the
  * same column, so the emptiness sits between them.
  *
- * Copy verbatim from docs/homepage.md § 03.
+ * Copy verbatim from docs/homepage.md § 03. The row's right column is the
+ * box's contents (src/data/box.ts); its left column is a film that opens
+ * from the portrait slot into a landscape frame below as the page scrolls
+ * (03-ApproachVideo).
  */
 export function Approach() {
   return (
@@ -60,32 +65,51 @@ export function Approach() {
       </Container>
 
       <Container>
-        <div className="approach-row">
-          <Image
-            src="/images/packaging/spoon-01.jpg"
-            alt="An open Caviar Bakhoor box on black, the Noir tin and its gold spoon inside"
-            width={1200}
-            height={1905}
-            sizes="(max-width: 1023px) 100vw, 40vw"
-            className="media-portrait"
-          />
+        <ApproachVideo
+          {...BOX_VIDEO}
+          slot={
+            <Image
+              src="/images/packaging/spoon-01.jpg"
+              alt="An open Caviar Bakhoor box on black, the Noir tin and its gold spoon inside"
+              width={1200}
+              height={1905}
+              sizes="(max-width: 1023px) 100vw, 40vw"
+              className="media-portrait"
+            />
+          }
+          copy={
+            /* Subhead pinned top, the box's contents pinned bottom. */
+            <div className="approach-copy">
+              <CapsSubhead className="approach-subhead">
+                Elixir × Caviar Bakhoor
+              </CapsSubhead>
 
-          {/* Subhead pinned top, paragraph pinned bottom, empty between. */}
-          <div className="approach-copy">
-            <CapsSubhead className="approach-subhead">
-              Elixir × Caviar Bakhoor
-            </CapsSubhead>
-
-            <p className="type-body prose-justified" style={{ margin: 0 }}>
-              Everything the ritual needs is in the box. 75 grams of Caviar
-              Bakhoor pearls. A spoon, so every measure is right and the pearls
-              never touch your hands. A two-layer mesh that sits over the
-              charcoal and tempers the heat, for a slow, even release. And a
-              sheet of thick aluminium foil, for when you want the scent to
-              arrive with more force.
-            </p>
-          </div>
-        </div>
+              <div className="box-contents">
+                <p className="type-body" style={{ margin: 0 }}>
+                  {BOX_INTRO}
+                </p>
+                <ul className="box-items">
+                  {BOX_ITEMS.map((item) => (
+                    <li key={item.name} className="box-item">
+                      <Image
+                        src={item.image.src}
+                        alt={item.image.alt}
+                        width={item.image.width}
+                        height={item.image.height}
+                        sizes="120px"
+                        className="box-item-img"
+                      />
+                      <div>
+                        <h3 className="box-item-name">{item.name}</h3>
+                        <p className="type-body box-item-body">{item.body}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          }
+        />
 
         <div style={{ height: "var(--section-y)" }} />
       </Container>

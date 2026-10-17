@@ -4791,6 +4791,138 @@ html {
   gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* --- Section 03: the film and the box's contents ------------------------
+   .av-land is the landscape frame below the row, laid out empty; .av-frame
+   sits exactly on it and is moved, scaled and clipped onto .av-slot by
+   03-ApproachVideo, via the custom properties below.
+   ------------------------------------------------------------------------ */
+.av-stage {
+  position: relative;
+}
+
+.av-slot {
+  position: relative;
+  overflow: hidden;
+  background: var(--ash);
+}
+
+.av-slot .media-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* While the film runs its scroll animation it starts in the slot and leaves
+   it, so the slot is just a place: no photograph left behind. The photo is
+   the fallback when the animation is off (reduced motion, no JS). */
+.av-stage[data-animated] .av-slot {
+  background: transparent;
+}
+
+.av-stage[data-animated] .av-slot > * {
+  visibility: hidden;
+}
+
+/* One column: the copy first, then the portrait film, so the film's drop
+   to the landscape frame below never passes over text. */
+@media (max-width: 767px) {
+  .av-slot {
+    order: 2;
+  }
+}
+
+.av-land {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: clamp(3rem, 7vw, 6rem);
+}
+
+.av-frame {
+  --x: 0px;
+  --y: 0px;
+  --s: 1;
+  --ix: 0px;
+  --iy: 0px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  aspect-ratio: 16 / 9;
+  z-index: 2;
+  overflow: hidden;
+  background: var(--ash);
+  transform: translate(var(--x), var(--y)) scale(var(--s));
+  clip-path: inset(var(--iy) var(--ix));
+  will-change: transform, clip-path;
+}
+
+.av-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The mute button follows the visible frame's bottom-right corner, and is
+   counter-scaled so it stays 48px while the frame grows. */
+.sound-toggle.av-sound {
+  right: calc(var(--ix) + 16px);
+  bottom: calc(var(--iy) + 16px);
+  transform: scale(calc(1 / var(--s)));
+  transform-origin: bottom right;
+}
+
+.sound-toggle.av-sound:hover,
+.sound-toggle.av-sound:focus-visible {
+  transform: scale(calc(1.08 / var(--s)));
+}
+
+.box-contents {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.box-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.box-item {
+  display: grid;
+  grid-template-columns: clamp(76px, 8vw, 112px) 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: center;
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.box-item-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.box-item-name {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.box-item-body {
+  margin: 0;
+}
+
 @media (min-width: 768px) {
   .approach-row {
     grid-template-columns: 40% 1fr;
