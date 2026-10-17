@@ -95,28 +95,18 @@ export function Innovation() {
             />
           </Link>
 
-          {/* The bar is the exact width of the image above it. */}
-          <Link href="/collection" className="cta-bar">
+          {/* The bar is the exact width of the image above it, and carries
+              the run-out to the section's divider. */}
+          <Link
+            href="/collection"
+            className="cta-bar"
+            style={{ marginBottom: "var(--section-y)" }}
+          >
             <span>Shop the collection</span>
             <span aria-hidden className="cta-arrow">
               ↗
             </span>
           </Link>
-
-          <p
-            className="type-body prose-justified"
-            style={{
-              /* The column's own flex gap handles the space above; only the
-                 run-out to the divider is set here. */
-              marginTop: "clamp(0.75rem, 2vw, 1.5rem)",
-              marginBottom: "var(--section-y)",
-            }}
-          >
-            Caviar Bakhoor reimagines traditional bakhoor in a long-lasting,
-            highly diffusive form. Our patent-pending encapsulation technology
-            transforms its scent into pearls that release their aroma as they
-            burn.
-          </p>
         </div>
       </Container>
 
