@@ -4665,22 +4665,26 @@ html {
 }
 
 /* --- Hero sound toggle ---------------------------------------------------
-   Bottom-right of the hero. Four bars that sit flat when muted and rise into
-   an equaliser when playing, so the state is legible without a label.
+   Bottom-right corner of the hero. A frosted-glass disc with a fine-line
+   speaker: crossed out when muted; with sound on, two waves ripple outward.
    ------------------------------------------------------------------------ */
 .sound-toggle {
   position: absolute;
   right: var(--gutter);
-  bottom: 8vh;
+  bottom: clamp(1.25rem, 4vh, 2.5rem);
   z-index: 2;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(239 238 235 / 0.4);
+  padding: 0;
+  color: #fff;
+  border: 1px solid rgb(239 238 235 / 0.35);
   border-radius: 50%;
-  background: rgb(8 7 10 / 0.35);
+  background: rgb(8 7 10 / 0.25);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
   cursor: pointer;
   transition:
     background var(--dur-fast) var(--ease),
@@ -4690,43 +4694,65 @@ html {
 
 .sound-toggle:hover,
 .sound-toggle:focus-visible {
-  background: rgb(8 7 10 / 0.6);
+  background: rgb(8 7 10 / 0.5);
   border-color: rgb(239 238 235 / 0.9);
   transform: scale(1.08);
 }
 
-.sound-bars {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  height: 16px;
-}
-
-.sound-bars span {
+.sound-toggle svg {
   display: block;
-  width: 2px;
-  height: 3px;
-  background: #fff;
-  border-radius: 1px;
-  transition: height 260ms var(--ease-elastic);
+  overflow: visible;
 }
 
-/* Playing: the bars rise and idle at staggered heights. */
-.sound-toggle[aria-pressed="true"] .sound-bars span:nth-child(1) { height: 7px; }
-.sound-toggle[aria-pressed="true"] .sound-bars span:nth-child(2) { height: 14px; }
-.sound-toggle[aria-pressed="true"] .sound-bars span:nth-child(3) { height: 9px; }
-.sound-toggle[aria-pressed="true"] .sound-bars span:nth-child(4) { height: 12px; }
+.sound-toggle .sound-on,
+.sound-toggle .sound-off {
+  transition: opacity 220ms var(--ease);
+}
 
-/* Hover nudges them regardless of state, so the control feels alive. */
-.sound-toggle:hover .sound-bars span:nth-child(1) { height: 9px; }
-.sound-toggle:hover .sound-bars span:nth-child(2) { height: 16px; }
-.sound-toggle:hover .sound-bars span:nth-child(3) { height: 6px; }
-.sound-toggle:hover .sound-bars span:nth-child(4) { height: 13px; }
+.sound-toggle .sound-on {
+  opacity: 0;
+}
+
+.sound-toggle[aria-pressed="true"] .sound-on {
+  opacity: 1;
+}
+
+.sound-toggle[aria-pressed="true"] .sound-off {
+  opacity: 0;
+}
+
+/* Sound on: each wave pulses outward in turn, quietly. */
+.sound-toggle[aria-pressed="true"] .sound-wave {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: sound-wave 1.6s var(--ease) infinite;
+}
+
+.sound-toggle[aria-pressed="true"] .sound-wave--2 {
+  animation-delay: 0.25s;
+}
+
+@keyframes sound-wave {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.12);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .sound-toggle,
-  .sound-bars span {
+  .sound-toggle .sound-on,
+  .sound-toggle .sound-off {
     transition: none;
+  }
+
+  .sound-toggle[aria-pressed="true"] .sound-wave {
+    animation: none;
   }
 }
 
