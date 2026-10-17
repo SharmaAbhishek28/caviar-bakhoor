@@ -2,13 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BuyBar } from "@/components/product/BuyBar";
 import { ProductHero } from "@/components/product/ProductHero";
-import {
-  DetailsSection,
-  NotesSection,
-  ProductNav,
-  ReviewsSection,
-  StorySection,
-} from "@/components/product/ProductSections";
+import { NotesSection, ProductNav } from "@/components/product/ProductSections";
 import { getProduct, products } from "@/data/products";
 
 type Params = { handle: string };
@@ -28,10 +22,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 }
 
 /**
- * /products/[handle] — the PDP, in docs/content.md's order: the pinned hero
- * with the floating panel, the notes line, the ritual and details, the story
- * with three square images, reviews, the other fragrances, then the layout's
- * footer. The sticky buy bar lives outside the flow.
+ * /products/[handle] — the PDP, simplified (site owner, 2026-10-17): the
+ * pinned hero with the floating panel, the composition line, then the other
+ * two fragrances as collection cards, and the layout's footer. The sticky
+ * buy bar lives outside the flow.
  *
  * Server-rendered from the single data source; the product reaches every
  * component as a prop.
@@ -45,9 +39,6 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
     <>
       <ProductHero product={product} />
       <NotesSection product={product} />
-      <DetailsSection product={product} />
-      <StorySection product={product} />
-      <ReviewsSection product={product} />
       <ProductNav product={product} all={products} />
       <BuyBar product={product} />
     </>

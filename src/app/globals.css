@@ -5586,3 +5586,23 @@ html {
     max-width: 26ch;
   }
 }
+
+/* --- PDP, simplified (2026-10-17) ---------------------------------------- */
+/* What is in the box, in caps. */
+.pdp-list--caps {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8125rem;
+}
+
+/* The composition line stands alone now: no image below it. */
+.pdp-notes-section .pdp-notes-line {
+  margin-bottom: 0;
+}
+
+/* The other two fragrances: the /collection cards, side by side on wide
+   screens. The cards are 100svh there, which is a lot at the foot of a
+   product page, so they are shorter here. */
+.pdp-more .pcard {
+  min-height: 80svh;
+}

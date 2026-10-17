@@ -56,11 +56,11 @@ export function BuyBar({ product }: { product: Product }) {
           <Image src={thumb.src} alt="" width={thumb.width} height={thumb.height} sizes="72px" className="pdp-bar-thumb" />
           <div>
             <p className="pdp-bar-title">{product.title}</p>
-            <p className="pdp-bar-meta">{formatWeight(product)}</p>
+            {formatWeight(product) ? <p className="pdp-bar-meta">{formatWeight(product)}</p> : null}
           </div>
         </div>
         <div className="pdp-bar-buy">
-          <span className="pdp-bar-price">{formatPrice(product)}</span>
+          {formatPrice(product) ? <span className="pdp-bar-price">{formatPrice(product)}</span> : null}
           <button type="button" className="pdp-add" onClick={onAdd} disabled={bag === "adding"} tabIndex={shown ? 0 : -1}>
             {bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : "Add to bag"}
           </button>

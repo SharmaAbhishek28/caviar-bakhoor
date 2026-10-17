@@ -4,23 +4,26 @@ import { useState, type SyntheticEvent } from "react";
 import { MarkedProse } from "@/components/ui";
 import type { Product } from "@/data/products";
 import { addToBag } from "@/lib/cart";
-import { formatNotes, formatPrice, formatWeight } from "./format";
+import { formatPrice, formatWeight } from "./format";
 
 /**
- * The floating panel beside the hero stage: name, line, weight, price,
- * Add to bag, then the accordions — native <details>, so keyboard and
- * screen-reader behaviour is the browser's own and nothing needs JS to open.
+ * The floating panel beside the hero stage: the name, the line, the price
+ * and Add to bag, then two accordions — the scent, and what is in the box.
+ * Native <details>, so keyboard and screen-reader behaviour is the
+ * browser's own and nothing needs JS to open.
+ *
+ * Kept deliberately short (site owner, 2026-10-17): no notes pyramid, no
+ * delivery policy, and nothing the home page already explains. Price and
+ * weight render only once the client has supplied them.
  *
  * One accordion open at a time: the details share a name, which the
  * platform treats as an exclusive group, and onToggle closes the others for
  * browsers that do not yet.
- *
- * Every fact that is still the client's to confirm renders its [CONFIRM]
- * marker: price, weight, the notes, the delivery policy. The scent copy is
- * the perfumer's proposal and carries data-confirm, as everywhere else.
  */
 export function ProductPanel({ product }: { product: Product }) {
   const [bag, setBag] = useState<"idle" | "adding" | "added">("idle");
+  const price = formatPrice(product);
+  const weight = formatWeight(product);
 
   function onToggle(e: SyntheticEvent<HTMLDetailsElement>) {
     const el = e.currentTarget;
@@ -44,13 +47,13 @@ export function ProductPanel({ product }: { product: Product }) {
       <header className="pdp-panel-head">
         <div>
           <h1 className="pdp-title">{product.title}</h1>
-          <p className="pdp-line">{product.subtitle}</p>
+          <p className="pdp-line">Caviar Bakhoor</p>
         </div>
-        <p className="pdp-weight">{formatWeight(product)}</p>
+        {weight ? <p className="pdp-weight">{weight}</p> : null}
       </header>
 
       <div className="pdp-buy">
-        <span className="pdp-price">{formatPrice(product)}</span>
+        {price ? <span className="pdp-price">{price}</span> : <span />}
         <button
           type="button"
           className="pdp-add"
@@ -67,37 +70,12 @@ export function ProductPanel({ product }: { product: Product }) {
       </details>
 
       <details className="pdp-acc" name="pdp-accordion" onToggle={onToggle}>
-        <summary>Notes</summary>
-        <dl className="pdp-notes">
-          {/* The booklet gives the composition, not a pyramid: the composition
-              is stated, and the pyramid rows keep their markers until the
-              perfumer supplies them. */}
-          <dt>Composition</dt>
-          <dd>{product.accord}</dd>
-          <dt>Top</dt>
-          <dd>{formatNotes(product.notes.top)}</dd>
-          <dt>Heart</dt>
-          <dd>{formatNotes(product.notes.heart)}</dd>
-          <dt>Base</dt>
-          <dd>{formatNotes(product.notes.base)}</dd>
-        </dl>
-      </details>
-
-      <details className="pdp-acc" name="pdp-accordion" onToggle={onToggle}>
         <summary>In the box</summary>
-        <ul className="pdp-list">
+        <ul className="pdp-list pdp-list--caps">
           {product.inTheBox.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
-      </details>
-
-      <details className="pdp-acc" name="pdp-accordion" onToggle={onToggle}>
-        <summary>Delivery &amp; returns</summary>
-        <p className="pdp-acc-body">
-          [CONFIRM] Shipping regions, timings, costs and the returns policy are
-          the client&rsquo;s to supply. Nothing is stated here until they do.
-        </p>
       </details>
     </aside>
   );

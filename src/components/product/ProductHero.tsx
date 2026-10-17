@@ -138,7 +138,7 @@ export function ProductHero({ product }: { product: Product }) {
   }
 
   return (
-    <section ref={rootRef} className="pdp-hero" data-label="Collection">
+    <section ref={rootRef} className="pdp-hero">
       <div ref={pinRef} className="pdp-hero-pin">
       <div className="pdp-stage-wrap">
         <div className="pdp-rail" aria-label="Product images">
