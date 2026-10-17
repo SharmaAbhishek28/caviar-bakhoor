@@ -9,7 +9,7 @@ import {
   MarkedProse,
 } from "@/components/ui";
 import { BOX_ITEMS, BOX_PARAGRAPH, BOX_STRONG, BOX_VIDEO } from "@/data/box";
-import { ApproachVideo } from "./03-ApproachVideo";
+import { FilmReveal } from "./03-FilmReveal";
 import { BoxCollage } from "./03-BoxCollage";
 
 /**
@@ -66,38 +66,26 @@ export function Approach() {
         />
       </Container>
 
-      {/* Full-bleed: the film opens out to the whole viewport. The row inside
-          sits in its own Container. */}
-      <ApproachVideo
-        {...BOX_VIDEO}
-        slot={
-          <Image
-            src="/images/packaging/spoon-01.jpg"
-            alt="An open Caviar Bakhoor box on black, the Noir tin and its gold spoon inside"
-            width={1200}
-            height={1905}
-            sizes="(max-width: 1023px) 100vw, 40vw"
-            className="media-portrait"
-          />
-        }
-        copy={
-          /* Subhead top, the collage of the three tools, the paragraph at
-             the foot. */
+      {/* The row: the three tools as a collage on the left, what they are on
+          the right. */}
+      <Container>
+        <div className="approach-row approach-row--box">
+          <BoxCollage items={BOX_ITEMS} />
           <div className="approach-copy">
             <CapsSubhead className="approach-subhead">
               Elixir × Caviar Bakhoor
             </CapsSubhead>
-
-            <BoxCollage items={BOX_ITEMS} />
-
             <MarkedProse
               className="type-body prose-justified approach-paragraph"
               text={BOX_PARAGRAPH}
               strong={BOX_STRONG}
             />
           </div>
-        }
-      />
+        </div>
+      </Container>
+
+      {/* Then the film, full width, opening through a pearl. */}
+      <FilmReveal {...BOX_VIDEO} />
 
       <hr style={{ border: 0, borderTop: "1px solid var(--rule)", margin: 0 }} />
     </StackSection>

@@ -46,10 +46,17 @@ export const BOX_ITEMS: BoxItem[] = [
   },
 ];
 
-/** The film in the row: portrait at first, opening to full screen on scroll. */
+/** The film after the row, revealed full width through a pearl. 1080p for
+ *  wide screens, 720p for phones; AV1 first, H.264 for browsers without it.
+ *  From the client's 4K "CAVIAR ITALIAN SUBS", 7–109s, cropped above its
+ *  burned-in subtitles. */
 export const BOX_VIDEO = {
-  src: "/video/box.mp4",
-  mobileSrc: "/video/box-mobile.mp4",
+  sources: [
+    { src: "/video/box-1080.webm", type: 'video/webm; codecs="av01.0.08M.08, opus"', media: "(min-width: 768px)" },
+    { src: "/video/box-1080.mp4", type: "video/mp4", media: "(min-width: 768px)" },
+    { src: "/video/box-720.webm", type: 'video/webm; codecs="av01.0.05M.08, opus"' },
+    { src: "/video/box-720.mp4", type: "video/mp4" },
+  ],
   poster: "/video/box-poster.jpg",
   label: "Caviar Bakhoor: the four tins, the box opened, the pearls and gold, and the ritual on the burner",
 };
