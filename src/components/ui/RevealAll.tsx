@@ -114,9 +114,15 @@ export function RevealAll() {
       // rise as the page loads, hide once scrolled fully out of view, and
       // rise again when scrolled back to.
       main.querySelectorAll<HTMLElement>("[data-reveal-load]").forEach((h) => {
-        const split = SplitText.create(h, { type: "lines", mask: "lines" });
-        splits.push(split);
-        const lines = split.lines as HTMLElement[];
+        // Text is split into masked lines; a heading that is an image (the
+        // hero logotype) marks its own parts, each already inside a mask.
+        const parts = Array.from(h.querySelectorAll<HTMLElement>("[data-reveal-part]"));
+        let lines = parts;
+        if (!parts.length) {
+          const split = SplitText.create(h, { type: "lines", mask: "lines" });
+          splits.push(split);
+          lines = split.lines as HTMLElement[];
+        }
         animated.push(...lines, h);
         gsap.set(lines, { yPercent: 110 });
         gsap.set(h, { opacity: 1 });

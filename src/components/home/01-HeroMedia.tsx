@@ -121,30 +121,24 @@ export function HeroMedia({
         }}
       />
 
-      <h1
-        className="hero-caption"
-        data-reveal-load
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: "8vh",
-          margin: 0,
-          paddingInline: "var(--gutter)",
-          textAlign: "center",
-          fontFamily: "var(--font-switzer-stack)",
-          fontWeight: 900,
-          fontSize: "clamp(1.35rem, 2.6vw, 2.2rem)",
-          lineHeight: 1.15,
-          letterSpacing: "0.01em",
-          textTransform: "uppercase",
-          color: "#fff",
-          textShadow: "0 1px 24px rgb(8 7 10 / 0.45)",
-        }}
-      >
-        An innovation in bakhoor.
-        <br />
-        Caviar Bakhoor.
+      {/* The Caviar Bakhoor logotype is the headline. The words stay in the
+          h1 for search and screen readers; the mark rises out of its mask
+          (RevealAll, [data-reveal-part]). */}
+      <h1 className="hero-caption" data-reveal-load>
+        <span className="sr-only">Caviar Bakhoor — an innovation in bakhoor</span>
+        <span className="hero-logo-mask" aria-hidden>
+          {/* eslint-disable-next-line @next/next/no-img-element -- an SVG
+              logotype: next/image would only pass it through unoptimised. */}
+          <img
+            src="/images/brand/caviar-bakhoor.svg"
+            alt=""
+            width={4176}
+            height={312}
+            fetchPriority="high"
+            className="hero-logo"
+            data-reveal-part
+          />
+        </span>
       </h1>
 
       {hasVideo ? (

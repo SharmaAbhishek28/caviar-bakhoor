@@ -5156,8 +5156,42 @@ html {
    Held invisible until that takes over, so the unsplit text never flashes;
    if the script never runs, the fallback fades it in after 2.5s. */
 .hero-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8vh;
+  margin: 0;
+  padding-inline: var(--gutter);
+  display: flex;
+  justify-content: center;
   opacity: 0;
   animation: hero-caption-fallback 600ms ease 2.5s forwards;
+}
+
+/* The Caviar Bakhoor logotype (a trace of the client's artwork, gold
+   #D2AC68). The mask clips it so it can rise into place; the shadow holds
+   it on the white-marble frames of the video. */
+.hero-logo-mask {
+  display: block;
+  overflow: clip;
+  /* Room for the whole shadow inside the clip, or its edge shows as a band
+     on the light frames. */
+  padding: clamp(14px, 2vw, 28px);
+  width: min(760px, 86vw);
+}
+
+.hero-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1px 10px rgb(8 7 10 / 0.45));
+}
+
+/* Phones: clear of the sound button in the corner. */
+@media (max-width: 767px) {
+  .hero-caption {
+    bottom: calc(clamp(1.25rem, 4vh, 2.5rem) + 56px);
+  }
 }
 
 @keyframes hero-caption-fallback {
