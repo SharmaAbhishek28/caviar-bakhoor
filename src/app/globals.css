@@ -2147,18 +2147,37 @@ html {
   display: none;
 }
 
+/* Phones and tablets: the gallery is a native swipe row, so the arrow rail
+   goes, and the squares take the width it was holding. */
+@media (max-width: 1023px) {
+  .pdp-rail {
+    display: none;
+  }
+
+  .pdp-stage {
+    padding-inline: var(--gutter);
+  }
+
+  .pdp-slide {
+    flex-basis: 86%;
+  }
+}
+
 .pdp-slide {
   flex: 0 0 82%;
   margin: 0;
   scroll-snap-align: center;
 }
 
+/* Every product image is shown as a 1:1 square, cropped to cover, so the
+   gallery holds one shape whatever each photograph was shot at. */
 .pdp-slide img {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 1;
   max-height: 70svh;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .pdp-stage[data-pinned] {
@@ -2179,11 +2198,23 @@ html {
   will-change: opacity, transform;
 }
 
+/* The square is as large as the slide allows in both directions: the
+   slide is a size container, and the image takes the smaller side. */
+.pdp-stage[data-pinned] .pdp-slide-box {
+  width: 100%;
+  height: 100%;
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pdp-stage[data-pinned] .pdp-slide img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+  max-height: none;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 /* The panel and its slot. The slot is what the pin moves; the panel is the

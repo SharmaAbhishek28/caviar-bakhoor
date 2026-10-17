@@ -159,14 +159,16 @@ export function ProductHero({ product }: { product: Product }) {
         <div ref={stageRef} className="pdp-stage" data-pinned={pinned || undefined}>
           {images.map((img, i) => (
             <figure key={img.src} className="pdp-slide" aria-hidden={pinned && i !== index ? true : undefined}>
-              <Image
-                src={img.src}
-                alt={img.alt}
-                width={img.width}
-                height={img.height}
-                sizes="(max-width: 1023px) 100vw, 60vw"
-                priority={i === 0}
-              />
+              <div className="pdp-slide-box">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  sizes="(max-width: 1023px) 100vw, 60vw"
+                  priority={i === 0}
+                />
+              </div>
             </figure>
           ))}
         </div>
