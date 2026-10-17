@@ -18,10 +18,10 @@ export const ABOUT = {
   headline: ["A perfume house", "that builds", "what it sells."],
   lede: "Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive form — pearls that release their aroma as they burn.",
   opener: {
-    src: "/images/texture/pearl-macro.jpg",
-    alt: "Macro of Caviar Bakhoor pearls scattered with flakes of 24-karat gold leaf",
+    src: "/images/shoot/all-four-boxes-marble.jpg",
+    alt: "The four Caviar Bakhoor boxes on white marble",
     width: 2400,
-    height: 1600,
+    height: 1349,
   },
   house: {
     title: "The house",
@@ -52,6 +52,11 @@ export const ABOUT = {
       { src: "/images/about/gallery-06.jpg", alt: "Oud incense boxes, sticks and the holder, laid out", width: 1600, height: 1067 },
       { src: "/images/about/gallery-07.jpg", alt: "The long gift box with the gold holder", width: 1600, height: 1067 },
       { src: "/images/about/gallery-08.jpg", alt: "Caviar Bakhoor boxes and tins on a shelf", width: 1600, height: 1067 },
+      { src: "/images/shoot/oud-hulm.jpg", alt: "Elixir Hulm al Oud, a pack of oud sticks", width: 1600, height: 1067 },
+      { src: "/images/shoot/oud-dhahab.jpg", alt: "Elixir Dhahab al Oud, a pack of oud sticks", width: 1600, height: 1067 },
+      { src: "/images/shoot/oud-pack.jpg", alt: "An Elixir oud pack in black and gold", width: 1600, height: 1067 },
+      { src: "/images/shoot/four-boxes-with-tins.jpg", alt: "The four boxes, two of them open on their tins", width: 2400, height: 1600 },
+      { src: "/images/shoot/imperial-zafran-set.jpg", alt: "The Imperial Zafran box, the open tin, the spoon and a disc of foil", width: 2400, height: 1600 },
     ],
   },
   circles: [
@@ -77,7 +82,7 @@ export const ABOUT = {
       body: "Light, place, spoon, release. Each tin holds a collection of fragrant caviar pearls that reveal their character slowly as they are warmed.",
       href: "/ritual",
       cta: "See the full ritual",
-      image: { src: "/images/products/noir-open.jpg", alt: "The Noir box open, tin and spoon inside", width: 1200, height: 1200 },
+      image: { src: "/images/shoot/noir-open-overhead-square.jpg", alt: "The Noir box open, from above", width: 1200, height: 1200 },
     },
   ],
   close: {

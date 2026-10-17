@@ -34,10 +34,11 @@ export const RITUAL_STEPS: RitualStep[] = [
 
 export const RITUAL_CTA = { label: "View the ritual", href: "/ritual" };
 
-/** The background photograph. Stand-in until the burner shot exists. */
+/** The background photograph: the burner lit, smoke rising, the four tins
+ *  around it — a still from the client's own film. */
 export const RITUAL_IMAGE = {
-  src: "/images/ritual/ritual-01.jpg",
-  alt: "The Noir tin open on its box, a gold spoon lifting pearls, the mesh packet beside it",
+  src: "/images/shoot/burner-smoke-tins.jpg",
+  alt: "The white burner with smoke rising from it, the four Caviar Bakhoor tins and boxes around it",
   width: 2400,
-  height: 1600,
+  height: 1350,
 };

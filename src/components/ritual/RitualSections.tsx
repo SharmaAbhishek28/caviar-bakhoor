@@ -209,7 +209,7 @@ export function RitualBox() {
               {item.image ? (
                 <Image src={item.image.src} alt={item.image.alt} width={item.image.width} height={item.image.height} sizes="(max-width: 767px) 50vw, 25vw" className="rt-item-img" />
               ) : (
-                <div className="rt-item-blank"><span>{item.note}</span></div>
+                <div className="rt-item-blank"><span>{"note" in item ? String(item.note) : null}</span></div>
               )}
               <span className="rt-item-no">{pad(i)}</span>
               <span className="rt-item-name">{item.name}</span>

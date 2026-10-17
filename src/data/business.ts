@@ -27,12 +27,21 @@ export type CollabTheme = {
   font?: string;
 };
 
+/** Stand-ins for the four collaboration slides until the brands are
+ *  confirmed: Elixir's own oud range, from the same shoot. */
+const COLLAB_STAND_INS = [
+  { src: "/images/shoot/oud-gift-box.jpg", alt: "Elixir's oud gift box and packs", width: 2400, height: 1600 },
+  { src: "/images/shoot/oud-kalimantan-wide.jpg", alt: "Elixir Kalimantan Super Oud", width: 2400, height: 1350 },
+  { src: "/images/shoot/oud-malik-wide.jpg", alt: "Elixir Malik al Oud", width: 2400, height: 1350 },
+  { src: "/images/shoot/oud-nadir-wide.jpg", alt: "Elixir Nadir al Oud", width: 2400, height: 1350 },
+];
+
 export const BUSINESS = {
   eyebrow: "For business",
   headline: { first: "Your brand.", second: "Our innovation." },
   line: "Create your own Caviar Bakhoor with Elixir.",
   cta: "Start a project",
-  opener: { src: "/images/texture/pearl-macro.jpg", alt: "Pearls and gold leaf, close", width: 2400, height: 1600 },
+  opener: { src: "/images/shoot/pearls-macro-03.jpg", alt: "Pearls and gold leaf, close", width: 2400, height: 1600 },
 
   statement:
     "Elixir develops and manufactures Caviar Bakhoor for perfume houses, luxury brands and private label. Your idea, your brand, your vision. Our execution.",
@@ -74,9 +83,9 @@ export const BUSINESS = {
     paragraph:
       "Elixir creates Caviar Bakhoor collections for your brand from start to finish. We develop and refine your scent, create custom tins and boxes, and manage production with one point of contact throughout.",
     rows: [
-      { title: "Custom fragrance", body: "Your scent, transformed into pearls by our patent-pending encapsulation technology.", image: { src: "/images/about/circle-pearls.jpg", alt: "Pearls and gold leaf", width: 1000, height: 1000 } },
-      { title: "Custom tin", body: "The tin, its lid and its label — yours.", image: { src: "/images/about/gallery-03.jpg", alt: "The four tins fanned on their boxes", width: 1600, height: 1067 } },
-      { title: "Custom box", body: "The box and everything in it: charcoal, mesh disc, spoon, card.", image: { src: "/images/about/gallery-02.jpg", alt: "Tins and boxes, stacked", width: 1600, height: 913 } },
+      { title: "Custom fragrance", body: "Your scent, transformed into pearls by our patent-pending encapsulation technology.", image: { src: "/images/shoot/pearls-macro-02.jpg", alt: "Pearls and gold leaf", width: 1897, height: 1262 } },
+      { title: "Custom tin", body: "The tin, its lid and its label — yours.", image: { src: "/images/collection-tins-dark.jpg", alt: "The four tins, Ward Baccarat, Amber Blanc, Imperial Zafran and Noir, lit against black", width: 2400, height: 1302 } },
+      { title: "Custom box", body: "The box and everything in it: charcoal, mesh disc, spoon, card.", image: { src: "/images/shoot/four-boxes-overhead.jpg", alt: "The four boxes, from above", width: 2400, height: 1600 } },
     ],
   },
 
@@ -91,7 +100,7 @@ export const BUSINESS = {
       id: `collab-${i}`,
       brand: null as string | null,
       copy: null as string | null,
-      image: { src: `/images/about/gallery-0${i + 4}.jpg`, alt: "Stand-in photograph until the collaboration is confirmed", width: 1600, height: 1067 },
+      image: { ...COLLAB_STAND_INS[i - 1], alt: `Stand-in photograph until the collaboration is confirmed: ${COLLAB_STAND_INS[i - 1].alt}` },
       theme: { bg: "#08070A", fg: "#EFEEEB" } as CollabTheme,
     })),
   },
