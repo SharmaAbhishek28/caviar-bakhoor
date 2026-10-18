@@ -25,15 +25,13 @@ export const RITUAL_PAGE = {
     { src: "/images/packaging/spoon-01.jpg", alt: "The gold spoon lifting a measure of pearls from the tin", width: 1200, height: 1905 },
     { src: "/images/shoot/ritual-release.jpg", alt: "Smoke lifting from the burner as the pearls warm", width: 1200, height: 1500 },
   ],
-  /** Step 02 names the mesh disc; Elixir's own card says gold foil. */
-  stepConfirm: { index: 1, note: "[CONFIRM] content.md says gold mesh disc; the Directions of use card says gold foil." },
 
   box: {
     title: "In the box",
     items: [
       { name: "Caviar Bakhoor tin", image: { src: "/images/shoot/amber-blanc-front-square.jpg", alt: "The Amber Blanc box and tin, front on", width: 1200, height: 1200 } },
       { name: "Charcoal block", image: { src: "/images/shoot/ritual-charcoal-square.jpg", alt: "Gold tongs setting the charcoal block in the burner", width: 1200, height: 1200 } },
-      { name: "Gold mesh disc", image: { src: "/images/box/mesh.jpg", alt: "The gold two-tone mesh resting on the burner", width: 700, height: 700 }, confirm: "[CONFIRM] mesh disc / gold foil" },
+      { name: "Gold mesh disc", image: { src: "/images/box/mesh.jpg", alt: "The gold two-tone mesh resting on the burner", width: 700, height: 700 } },
       { name: "Gold serving spoon", image: { src: "/images/shoot/amber-blanc-spoon-square.jpg", alt: "The gold spoon with its marbled handle, beside a disc of foil", width: 1200, height: 1200 } },
       { name: "Instruction card", image: { src: "/images/ritual/card-directions.jpg", alt: "Elixir's Directions of use card", width: 1400, height: 933 } },
     ],

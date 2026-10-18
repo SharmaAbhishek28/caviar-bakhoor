@@ -22,8 +22,7 @@ export const CONTACT = {
   em: ["Your scent, your packaging, our technology."],
   email: "contact@elixirperfumery.com",
   phones: ["+91 98864 78926", "+91 63600 09375"],
-  detailsConfirm: "[CONFIRM] From the Directions of use card — are these the contacts for this site?",
-  success: "Enquiry received. Elixir will reply within [CONFIRM] working days.",
+  success: "Enquiry received. Elixir will be in touch shortly.",
   submitLabel: "Send enquiry",
 };
 

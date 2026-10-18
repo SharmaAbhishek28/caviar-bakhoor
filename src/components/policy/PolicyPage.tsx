@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Container, Eyebrow } from "@/components/ui";
 import type { Policy } from "@/data/policies";
-import { POLICIES } from "@/data/policies";
+import { PUBLISHED_POLICIES } from "@/data/policies";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 /**
@@ -18,6 +18,7 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
  * drafted here.
  */
 export function PolicyPage({ policy }: { policy: Policy }) {
+  const sections = policy.sections.filter((s) => s.body && s.body.length > 0);
   const ref = useRef<HTMLElement>(null);
   const [current, setCurrent] = useState(0);
 
@@ -50,35 +51,33 @@ export function PolicyPage({ policy }: { policy: Policy }) {
         <header className="pol-head">
           <div className="pol-eyebrow"><Eyebrow>Policies</Eyebrow></div>
           <h1 className="pol-title"><span className="pol-title-inner">{policy.title}</span></h1>
-          <p className="pol-lede" role="note">{policy.lede}</p>
-          <p className="pol-updated">{policy.updated ? `Last updated ${policy.updated}` : "Last updated [CONFIRM]"}</p>
+          {policy.lede ? <p className="pol-lede">{policy.lede}</p> : null}
+          {policy.updated ? <p className="pol-updated">Last updated {policy.updated}</p> : null}
         </header>
 
         <div className="pol-grid">
           <nav className="pol-index" aria-label="On this page">
             <ol>
-              {policy.sections.map((s, i) => (
+              {sections.map((s, i) => (
                 <li key={s.heading} data-current={i === current || undefined}>
                   <a href={`#${slug(s.heading)}`}>{s.heading}</a>
                 </li>
               ))}
             </ol>
             <ul className="pol-others">
-              {POLICIES.filter((p) => p.slug !== policy.slug).map((p) => (
+              {PUBLISHED_POLICIES.filter((p) => p.slug !== policy.slug).map((p) => (
                 <li key={p.slug}><Link href={`/${p.slug}`}>{p.title}</Link></li>
               ))}
             </ul>
           </nav>
 
           <div className="pol-body">
-            {policy.sections.map((s, i) => (
+            {sections.map((s, i) => (
               <section key={s.heading} id={slug(s.heading)} className="pol-section">
                 <span className="pol-rule" aria-hidden />
                 <h2 className="pol-section-title"><span className="pol-section-no">{String(i + 1).padStart(2, "0")}</span>{s.heading}</h2>
                 <div className="pol-section-body">
-                  {s.body ? s.body.map((p) => <p key={p} className="type-body">{p}</p>) : (
-                    <p className="type-body pol-confirm">[CONFIRM] Text for this section is the client&rsquo;s to supply.</p>
-                  )}
+                  {s.body?.map((p) => <p key={p} className="type-body">{p}</p>)}
                 </div>
               </section>
             ))}

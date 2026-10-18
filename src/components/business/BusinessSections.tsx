@@ -148,14 +148,12 @@ export function BizOffer() {
       <Container>
         <div className="biz-offer-head">
           <h2 className="biz-h2">{BUSINESS.offer.title}</h2>
-          <p className="biz-note" role="note">{BUSINESS.offer.note}</p>
         </div>
         <ul className="biz-cards">
           {BUSINESS.offer.items.map((item, i) => (
-            <li key={item} className="biz-card" data-confirm="capability">
+            <li key={item} className="biz-card">
               <span className="biz-card-no">{String(i + 1).padStart(2, "0")}</span>
               <span className="biz-card-title">{item}</span>
-              <span className="biz-card-confirm">[CONFIRM]</span>
             </li>
           ))}
         </ul>
@@ -215,7 +213,7 @@ export function BizProcess() {
                 <li key={i} className="biz-step" data-active={i <= active || undefined} data-current={i === active || undefined}>
                   <span className="biz-step-no">{String(i + 1).padStart(2, "0")}</span>
                   <span className="biz-step-name">{s.name}</span>
-                  <span className="biz-step-body">{s.body}</span>
+                  {s.body ? <span className="biz-step-body">{s.body}</span> : null}
                 </li>
               ))}
             </ol>
@@ -281,16 +279,19 @@ export function BizMade() {
    CSS: it is ordinary scrolling, so there is nothing to switch off under
    reduced motion. */
 export function BizCollabs() {
+  // Only collaborations the client has named are shown; with none named,
+  // the section is not rendered at all.
+  const named = BUSINESS.collabs.items.filter((c) => c.brand);
+  if (!named.length) return null;
   return (
     <section className="biz-collabs" data-label="Collaborations">
       <Container>
         <div className="biz-offer-head">
           <h2 className="biz-h2">{BUSINESS.collabs.title}</h2>
-          <p className="biz-note" role="note">{BUSINESS.collabs.note}</p>
         </div>
       </Container>
       <ol className="biz-stack">
-        {BUSINESS.collabs.items.map((c, i) => (
+        {named.map((c, i) => (
           <li
             key={c.id}
             className="biz-slide"
@@ -306,8 +307,8 @@ export function BizCollabs() {
             <div className="biz-slide-scrim" aria-hidden />
             <div className="biz-slide-body">
               <p className="biz-slide-meta">( Collaboration {String(i + 1).padStart(2, "0")} )</p>
-              <h3 className="biz-slide-brand">{c.brand ?? "[CONFIRM] Brand"}</h3>
-              <p className="type-body biz-slide-copy">{c.copy ?? "[CONFIRM] Two or three sentences on what Elixir built, with the brand's permission."}</p>
+              <h3 className="biz-slide-brand">{c.brand}</h3>
+              <p className="type-body biz-slide-copy">{c.copy}</p>
             </div>
           </li>
         ))}

@@ -53,7 +53,6 @@ export const BUSINESS = {
 
   offer: {
     title: "What we offer",
-    note: "[CONFIRM] Each capability stays marked until the client confirms Elixir has delivered it.",
     items: [
       "Custom fragrance development",
       "Caviar Bakhoor development",
@@ -71,10 +70,8 @@ export const BUSINESS = {
     lead: "Genuinely sequential, so numbered.",
     steps: [
       { name: "Discover or create a scent with us", body: "7 days" },
-      { name: "[CONFIRM] Step 02", body: "[CONFIRM] Duration" },
       { name: "Caviar approval", body: "14 days" },
-      { name: "Packaging approval", body: "[CONFIRM] Duration" },
-      { name: "[CONFIRM] Step 05", body: "[CONFIRM] Duration" },
+      { name: "Packaging approval", body: "" },
     ],
   },
 
@@ -91,7 +88,6 @@ export const BUSINESS = {
 
   collabs: {
     title: "Collaborations",
-    note: "[CONFIRM] All four, with written permission to name each one. Until then: slots, with stand-in photography.",
     // Each card is themed in the brand's own colours and font. Until the
     // client supplies them, every card uses the site's ash and paper and
     // falls back to Bodoni. `font` is a CSS font-family stack: add the

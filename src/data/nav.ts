@@ -1,3 +1,4 @@
+import { PUBLISHED_POLICIES } from "./policies";
 /**
  * Navigation and footer links. Verbatim from docs/content.md — a typed array
  * rather than JSX so the Shopify developer can swap it in one place.
@@ -26,12 +27,8 @@ export const MENU_NAV: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const LEGAL: NavItem[] = [
-  { label: "Shipping", href: "/shipping" },
-  { label: "Returns", href: "/returns" },
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-];
+/** Policy links: only the policies that have been published. */
+export const LEGAL: NavItem[] = PUBLISHED_POLICIES.map((p) => ({ label: p.title, href: `/${p.slug}` }));
 
 /** Category keywords for the marquee. */
 export const KEYWORDS = [

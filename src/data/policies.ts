@@ -20,18 +20,21 @@ export type PolicySection = { heading: string; body: string[] | null };
 export type Policy = {
   slug: string;
   title: string;
-  lede: string;
+  lede: string | null;
   updated: string | null;
   sections: PolicySection[];
 };
 
-const CONFIRM_LEDE = "[CONFIRM] This policy is Elixir's to supply. The structure below is ready for it.";
+/* No policy text has been supplied yet. A policy whose sections are all
+   empty is unpublished: its route 404s and its link is hidden (site owner,
+   2026-10-18 — no [CONFIRM] markers on the site). Fill `body` to publish. */
+const AWAITING = null;
 
 export const POLICIES: Policy[] = [
   {
     slug: "shipping",
     title: "Shipping",
-    lede: CONFIRM_LEDE,
+    lede: AWAITING,
     updated: null,
     sections: [
       { heading: "Where we ship", body: null },
@@ -44,7 +47,7 @@ export const POLICIES: Policy[] = [
   {
     slug: "returns",
     title: "Returns",
-    lede: CONFIRM_LEDE,
+    lede: AWAITING,
     updated: null,
     sections: [
       { heading: "Eligibility", body: null },
@@ -57,7 +60,7 @@ export const POLICIES: Policy[] = [
   {
     slug: "privacy",
     title: "Privacy",
-    lede: CONFIRM_LEDE,
+    lede: AWAITING,
     updated: null,
     sections: [
       { heading: "What we collect", body: null },
@@ -71,7 +74,7 @@ export const POLICIES: Policy[] = [
   {
     slug: "terms",
     title: "Terms",
-    lede: CONFIRM_LEDE,
+    lede: AWAITING,
     updated: null,
     sections: [
       { heading: "Use of this site", body: null },
@@ -84,4 +87,9 @@ export const POLICIES: Policy[] = [
   },
 ];
 
-export const getPolicy = (slug: string): Policy | undefined => POLICIES.find((p) => p.slug === slug);
+/** True once at least one section has text. */
+export const isPublished = (p: Policy) => p.sections.some((s) => s.body && s.body.length > 0);
+
+export const PUBLISHED_POLICIES = POLICIES.filter(isPublished);
+
+export const getPolicy = (slug: string): Policy | undefined => PUBLISHED_POLICIES.find((p) => p.slug === slug);

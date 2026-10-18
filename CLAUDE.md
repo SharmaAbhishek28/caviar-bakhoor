@@ -62,6 +62,10 @@ A different developer connects this to Shopify later. Build so that swap is one 
 - Anything marked `[CONFIRM]` is awaiting the client. Leave the marker visible in the
   UI during development so it cannot ship by accident. Do not write around it with
   something plausible.
+  **Overridden by the site owner on 2026-10-18:** no [CONFIRM] marker is shown
+  anywhere on the site. An unconfirmed fact is simply not rendered (null in
+  `src/data/`, hidden by its component; a policy with no text is unpublished).
+  Still never invent the fact — leave it null.
 - No lorem ipsum anywhere.
 - Sentence case for body and buttons. Uppercase is a deliberate display treatment,
   not a default for labels.

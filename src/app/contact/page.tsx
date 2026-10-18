@@ -51,9 +51,6 @@ export default function ContactPage() {
                 </span>
               ))}
             </p>
-            <p className="contact-confirm" role="note">
-              {CONTACT.detailsConfirm}
-            </p>
           </address>
 
           <ul className="contact-legal">

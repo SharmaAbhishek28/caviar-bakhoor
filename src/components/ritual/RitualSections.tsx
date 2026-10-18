@@ -163,7 +163,6 @@ export function RitualSteps() {
                 <span className="rt-step-kicker">Step {s.no} of {pad(n - 1)}</span>
                 <h2 className="rt-step-name">{s.name}</h2>
                 <p className="rt-step-body">{s.body}</p>
-                {i === RITUAL_PAGE.stepConfirm.index ? <p className="rt-confirm" role="note">{RITUAL_PAGE.stepConfirm.note}</p> : null}
               </li>
             ))}
           </ol>
@@ -213,7 +212,6 @@ export function RitualBox() {
               )}
               <span className="rt-item-no">{pad(i)}</span>
               <span className="rt-item-name">{item.name}</span>
-              {"confirm" in item && item.confirm ? <span className="rt-confirm">{item.confirm}</span> : null}
             </li>
           ))}
         </ul>

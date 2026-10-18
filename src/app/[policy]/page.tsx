@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PolicyPage } from "@/components/policy/PolicyPage";
-import { getPolicy, POLICIES } from "@/data/policies";
+import { getPolicy, PUBLISHED_POLICIES } from "@/data/policies";
 
 type Params = { policy: string };
 
@@ -9,7 +9,10 @@ type Params = { policy: string };
 export const dynamicParams = false;
 
 export function generateStaticParams(): Params[] {
-  return POLICIES.map((p) => ({ policy: p.slug }));
+  // Next needs at least one param with dynamicParams off; an unpublished
+  // policy 404s from the page itself.
+  const live = PUBLISHED_POLICIES.map((p) => ({ policy: p.slug }));
+  return live.length ? live : [{ policy: "shipping" }];
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {

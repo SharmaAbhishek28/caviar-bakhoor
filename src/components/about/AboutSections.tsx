@@ -45,10 +45,10 @@ export function HouseFacts() {
             <MarkedProse className="type-body ab-statement" text={ABOUT.house.statement} strong={ABOUT.house.strong} />
           </Reveal>
           <Reveal stagger className="ab-ledger">
-            {ABOUT.facts.map((f) => (
-              <div key={f.label} className="ab-ledger-row" data-confirm={f.value === null ? "client" : undefined}>
+            {ABOUT.facts.filter((f) => f.value !== null).map((f) => (
+              <div key={f.label} className="ab-ledger-row">
                 <dt>{f.label}</dt>
-                <dd>{f.value ?? "[CONFIRM]"}</dd>
+                <dd>{f.value}</dd>
               </div>
             ))}
           </Reveal>
@@ -66,35 +66,32 @@ export function HouseFacts() {
 function PersonCard({ person }: { person: Person }) {
   return (
     <li className="four-entry people-entry">
-      <h3 className="four-title">
-        <span className="four-title-the">The</span>
-        <span className="four-title-epithet">{person.epithet ?? "[Confirm]"}</span>
-      </h3>
-      <figure className="four-figure">
-        {person.portrait ? (
+      {person.epithet ? (
+        <h3 className="four-title">
+          <span className="four-title-the">The</span>
+          <span className="four-title-epithet">{person.epithet}</span>
+        </h3>
+      ) : null}
+      {person.portrait ? (
+        <figure className="four-figure">
           <Image src={person.portrait.src} alt={person.portrait.alt} width={person.portrait.width} height={person.portrait.height} sizes="(max-width: 1023px) 100vw, 45vw" className="media" />
-        ) : (
-          <div className="people-portrait" role="img" aria-label="Portrait to be supplied">
-            <span>[CONFIRM] portrait</span>
-          </div>
-        )}
-        {/* On a stand-in photograph the signature reads on dark; on a real
-            portrait it will too — the reference signs its portraits. */}
-        <figcaption className="four-signature">{person.name ?? "[CONFIRM] name"}</figcaption>
-      </figure>
-      <p className="people-role">{person.role ?? "[CONFIRM] role"}</p>
+          {/* The reference signs its portraits. */}
+          {person.name ? <figcaption className="four-signature">{person.name}</figcaption> : null}
+        </figure>
+      ) : null}
+      {person.role ? <p className="people-role">{person.role}</p> : null}
       {person.bio ? (
         <MarkedProse className="type-body prose-justified four-blurb" text={person.bio} strong={person.strong} em={person.em} />
-      ) : (
-        <p className="type-body four-blurb people-bio-empty">
-          [CONFIRM] Two or three sentences, in this person&rsquo;s own words.
-        </p>
-      )}
+      ) : null}
     </li>
   );
 }
 
 export function People() {
+  // Only people the client has named are shown; with none named, the
+  // section is not rendered.
+  const named = PEOPLE.filter((p) => p.name);
+  if (!named.length) return null;
   return (
     <section className="ab-people" data-label="People">
       <Container>
@@ -106,7 +103,7 @@ export function People() {
           <p className="type-display-sub">{PEOPLE_SUBHEAD}</p>
         </Reveal>
         <ol className="four-grid">
-          {PEOPLE.map((p) => (
+          {named.map((p) => (
             <PersonCard key={p.id} person={p} />
           ))}
         </ol>
