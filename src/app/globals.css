@@ -5657,3 +5657,435 @@ html {
     display: none;
   }
 }
+
+/* ==========================================================================
+   /innovation — the technology page. Black and white only (site owner,
+   2026-10-17). The plates borrow a lab explainer's card language: tracked
+   eyebrow, serif title, ruled tables with right-set values, arrow flows,
+   a ruled aside, a footer with the plate count.
+   ========================================================================== */
+.inv-opener-body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding-block: clamp(7rem, 16vh, 10rem) clamp(2.5rem, 5vw, 4rem);
+}
+
+.inv-answer {
+  margin: 0;
+  max-width: 44rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+}
+
+.inv-answer strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.inv-marquee {
+  border-block: 1px solid var(--rule);
+  padding-block: 1rem;
+}
+
+/* --- The plates ---------------------------------------------------------- */
+.pl-stage {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  border-top: 1px solid var(--ink);
+}
+
+.pl-track {
+  list-style: none;
+  margin: 0;
+  padding: clamp(3rem, 7vw, 5rem) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3rem);
+}
+
+.pl-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 4vw, 3.25rem);
+  background: #fbfaf8;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--ink);
+  box-shadow: 0 30px 60px -40px rgb(8 7 10 / 0.35);
+}
+
+.pl-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.9rem, 1.6vw, 1.25rem);
+  min-width: 0;
+}
+
+.pl-eyebrow {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(16 16 18 / 0.6);
+}
+
+.pl-title {
+  margin: 0;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  line-height: 1.04;
+  color: var(--ink);
+}
+
+.pl-lede {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  color: var(--ink-prose);
+}
+
+/* Bulleted list: a small ink dot, as the reference sets its points. */
+.pl-list {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.pl-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  color: var(--ink);
+}
+
+.pl-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+/* Numbered steps: the number in an ink pearl. */
+.pl-steps {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pl-step {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  color: var(--ink);
+}
+
+.pl-step-no {
+  flex: none;
+  width: 1.65rem;
+  height: 1.65rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Arrow flow: tinted boxes, arrows between, a black result bar. */
+.pl-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.3rem;
+}
+
+.pl-flow-box {
+  padding: 0.7rem 1.1rem;
+  border-radius: 6px;
+  background: rgb(16 16 18 / 0.06);
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  color: var(--ink);
+}
+
+.pl-flow-arrow {
+  align-self: center;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: rgb(16 16 18 / 0.5);
+  transform-origin: top center;
+}
+
+.pl-result {
+  margin-top: 0.15rem;
+  padding: 0.95rem 1.2rem;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  line-height: 1.2;
+}
+
+/* Ruled table: label left, value right, a hairline that draws itself. */
+.pl-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.pl-group-label {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(16 16 18 / 0.6);
+}
+
+.pl-table dl {
+  margin: 0;
+}
+
+.pl-row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.55rem 0;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+}
+
+.pl-row dt {
+  color: var(--ink);
+}
+
+.pl-row dd {
+  margin: 0;
+  text-align: right;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.pl-row-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--rule);
+  transform-origin: left center;
+}
+
+/* The highlighted row, as the reference marks its key component. */
+.pl-row--hl dt,
+.pl-row--hl dd {
+  font-weight: 700;
+}
+
+.pl-tag {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* The ruled aside: a vertical hairline, then a quiet line. */
+.pl-aside {
+  position: relative;
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-prose);
+}
+
+.pl-aside-rule {
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: 1px;
+  background: var(--ink);
+  transform-origin: top center;
+}
+
+.pl-media {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--ash);
+}
+
+.pl-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pl-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-switzer-stack);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(16 16 18 / 0.55);
+}
+
+/* Wide screens: one horizontal track, each plate a near-viewport card. */
+@media (min-width: 1024px) {
+  .pl-stage {
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .pl-track {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(2rem, 3vw, 3rem);
+    padding: 0 clamp(4rem, 8vw, 9rem);
+    will-change: transform;
+  }
+
+  .pl {
+    flex: 0 0 min(78vw, 1180px);
+  }
+
+  .pl-card {
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-rows: 1fr auto;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    row-gap: 1.25rem;
+    min-height: min(80svh, 720px);
+    max-height: 90svh;
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    box-sizing: border-box;
+  }
+
+  .pl-copy {
+    justify-content: center;
+    gap: clamp(0.6rem, 1.3vh, 1.1rem);
+  }
+
+  /* Denser on the track, so the longest plate fits a laptop screen. */
+  .pl-title {
+    font-size: clamp(1.9rem, 2.9vw, 2.9rem);
+  }
+
+  .pl-row {
+    padding: 0.4rem 0;
+  }
+
+  .pl-flow-box {
+    padding: 0.55rem 1rem;
+  }
+
+  .pl-steps {
+    gap: 0.6rem;
+  }
+
+  .pl-media {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .pl-foot {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Common questions ---------------------------------------------------- */
+.inv-faq {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--rule);
+}
+
+.inv-faq .pl-title {
+  margin-top: 0.75rem;
+}
+
+.inv-faq-list {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--ink);
+  max-width: 56rem;
+}
+
+.inv-faq-item {
+  border-bottom: 1px solid var(--rule);
+}
+
+.inv-faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  color: var(--ink);
+}
+
+.inv-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.inv-faq-item summary::after {
+  content: "+";
+  font-family: var(--font-switzer-stack);
+  font-weight: 400;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.inv-faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.inv-faq-item p {
+  margin: 0 0 1.4rem;
+  max-width: 44rem;
+}
+
+.inv-close {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
