@@ -39,12 +39,12 @@ export const RITUAL_PAGE = {
 
   heat: {
     title: "No aroma until you want it.",
-    lede: "Our patent-pending encapsulation technology transforms scent into pearls that release their aroma as they burn — long-lasting, highly diffusive.",
+    lede: "Our patent-pending encapsulation technology transforms scent into pearls that release their aroma as they burn, long-lasting and highly diffusive.",
     states: [
       { name: "Sealed", body: "Closed at room temperature." },
       { name: "On the burner", body: "Rest the gold mesh disc over the heat." },
       { name: "The pearl opens", body: "Heat opens it slowly." },
-      { name: "The scent lifts", body: "Long-lasting and highly diffusive — the aroma released as the pearls burn." },
+      { name: "The scent lifts", body: "Long-lasting and highly diffusive: the aroma released as the pearls burn." },
     ],
   },
 

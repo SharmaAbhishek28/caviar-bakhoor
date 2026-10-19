@@ -16,7 +16,7 @@
 export const ABOUT = {
   eyebrow: "Elixir Signature Scents",
   headline: ["A perfume house", "that builds", "what it sells."],
-  lede: "Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive form — pearls that release their aroma as they burn.",
+  lede: "Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive form. Pearls that release their aroma as they burn.",
   opener: {
     src: "/images/shoot/all-four-boxes-marble.jpg",
     alt: "The four Caviar Bakhoor boxes on white marble",
@@ -26,7 +26,7 @@ export const ABOUT = {
   house: {
     title: "The house",
     statement:
-      "Elixir Signature Scents makes Caviar Bakhoor: a patent-pending encapsulation technology that transforms scent into pearls, set with pure 24-karat gold. Handmade. Four Caviar’s to start — Noir, Ward Baccarat, Imperial Zafran and Amber Blanc.",
+      "Elixir Signature Scents makes Caviar Bakhoor: a patent-pending encapsulation technology that transforms scent into pearls, set with pure 24-karat gold. Handmade. Four Caviar’s to start: Noir, Ward Baccarat, Imperial Zafran and Amber Blanc.",
     strong: ["patent-pending encapsulation technology", "24-karat gold", "Handmade"],
   },
   /** The ledger. A null value renders the visible [CONFIRM] marker. */
@@ -92,7 +92,7 @@ export const ABOUT = {
     {
       title: "The collection",
       kicker: "Four Caviar’s",
-      body: "Four Caviar’s. One new category. Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — each reveals its character slowly as they are warmed.",
+      body: "Four Caviar’s. One new category. Noir, Ward Baccarat, Imperial Zafran and Amber Blanc. Each reveals its character slowly as they are warmed.",
       href: "/collection",
       cta: "Shop the collection",
       image: { src: "/images/about/circle-tins.jpg", alt: "The four tins", width: 1000, height: 1000 },

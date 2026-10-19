@@ -7,7 +7,7 @@ import { products } from "@/data/products";
 export const metadata: Metadata = {
   title: "The Collection | Caviar Bakhoor",
   description:
-    "Four Caviar’s. One new category. Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — Caviar Bakhoor, a patent-pending encapsulation technology.",
+    "Four Caviar’s. One new category. Noir, Ward Baccarat, Imperial Zafran and Amber Blanc. Caviar Bakhoor, a patent-pending encapsulation technology.",
 };
 
 /**

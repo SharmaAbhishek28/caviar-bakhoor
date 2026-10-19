@@ -6,7 +6,7 @@ import { CONTACT } from "@/data/enquiry";
 import { LEGAL } from "@/data/nav";
 
 export const metadata: Metadata = {
-  title: "Contact — Create your own Caviar Bakhoor | Elixir Signature Scents",
+  title: "Contact | Create your own Caviar Bakhoor | Elixir Signature Scents",
   description:
     "Enquire about Caviar Bakhoor for your brand: perfume houses, luxury brands, hotel groups and private label. Your scent, your packaging, our technology.",
 };

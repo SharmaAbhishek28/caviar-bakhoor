@@ -132,7 +132,7 @@ export function HeroMedia({
       ) : (
         <Image
           src={posterSrc}
-          alt="Macro of Caviar Bakhoor pearls — dark spheres of encapsulated bakhoor scattered with flakes of 24-karat gold leaf"
+          alt="Macro of Caviar Bakhoor pearls: dark spheres of encapsulated bakhoor scattered with flakes of 24-karat gold leaf"
           width={2400}
           height={1600}
           sizes="100vw"

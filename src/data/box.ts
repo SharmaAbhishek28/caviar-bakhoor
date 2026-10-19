@@ -32,7 +32,7 @@ export const BOX_INTRO_STRONG = ["75 grams of Caviar Bakhoor pearls"];
 export const BOX_ITEMS: BoxItem[] = [
   {
     name: "The spoon",
-    body: "A convenient spoon to scoop the caviar and place it on the charcoal — a perfect 0.5 gram dose per burn.",
+    body: "A convenient spoon to scoop the caviar and place it on the charcoal, a perfect 0.5 gram dose per burn.",
     strong: ["convenient spoon", "0.5 gram dose per burn"],
     image: { src: "/images/box/spoon.jpg", alt: "The gold spoon scooping pearls from the open tin", width: 1000, height: 1000 },
   },

@@ -85,7 +85,7 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
               (2026-10-17): they do not want the house mark showcased. */}
           <Link
             href="/"
-            aria-label="Caviar Bakhoor — home"
+            aria-label="Caviar Bakhoor home"
             className="home-tile"
             style={{ pointerEvents: "auto" }}
           >

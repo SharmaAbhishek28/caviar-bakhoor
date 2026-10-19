@@ -70,7 +70,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     cta: "View Noir",
     image: {
       src: "/images/products/noir-tin-overhead.jpg",
-      alt: "The Noir box — black with a gold Elixir mark and a gold-edged Noir label",
+      alt: "The Noir box, black with a gold Elixir mark and a gold-edged Noir label",
       width: 1536,
       height: 816,
     },
@@ -86,7 +86,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     cta: "View Ward Baccarat",
     image: {
       src: "/images/products/ward-baccarat-tin-overhead.jpg",
-      alt: "The Ward Baccarat box — black with a gold Elixir mark and a burgundy label",
+      alt: "The Ward Baccarat box, black with a gold Elixir mark and a burgundy label",
       width: 1536,
       height: 816,
     },
@@ -102,7 +102,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     cta: "View Imperial Zafran",
     image: {
       src: "/images/products/imperial-zafran-tin-overhead.jpg",
-      alt: "The Imperial Zafran box — black with a gold Elixir mark and a deep green label",
+      alt: "The Imperial Zafran box, black with a gold Elixir mark and a deep green label",
       width: 1536,
       height: 816,
     },
@@ -118,7 +118,7 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     cta: "View Amber Blanc",
     image: {
       src: "/images/products/amber-blanc-tin-overhead.jpg",
-      alt: "The Amber Blanc box — black with a gold Elixir mark and a white label",
+      alt: "The Amber Blanc box, black with a gold Elixir mark and a white label",
       width: 1536,
       height: 816,
     },

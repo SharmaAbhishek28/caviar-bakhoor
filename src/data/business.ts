@@ -81,7 +81,7 @@ export const BUSINESS = {
       "Elixir creates Caviar Bakhoor collections for your brand from start to finish. We develop and refine your scent, create custom tins and boxes, and manage production with one point of contact throughout.",
     rows: [
       { title: "Custom fragrance", body: "Your scent, transformed into pearls by our patent-pending encapsulation technology.", image: { src: "/images/shoot/pearls-macro-02.jpg", alt: "Pearls and gold leaf", width: 1897, height: 1262 } },
-      { title: "Custom tin", body: "The tin, its lid and its label — yours.", image: { src: "/images/collection-tins-dark.jpg", alt: "The four tins, Ward Baccarat, Amber Blanc, Imperial Zafran and Noir, lit against black", width: 2400, height: 1302 } },
+      { title: "Custom tin", body: "The tin, its lid and its label, all yours.", image: { src: "/images/collection-tins-dark.jpg", alt: "The four tins, Ward Baccarat, Amber Blanc, Imperial Zafran and Noir, lit against black", width: 2400, height: 1302 } },
       { title: "Custom box", body: "The box and everything in it: charcoal, mesh disc, spoon, card.", image: { src: "/images/shoot/four-boxes-overhead.jpg", alt: "The four boxes, from above", width: 2400, height: 1600 } },
     ],
   },

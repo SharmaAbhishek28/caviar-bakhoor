@@ -88,7 +88,7 @@ export function Innovation() {
           >
             <Image
               src="/images/collection/all-four-01.jpg"
-              alt="The four Caviar Bakhoor tins — Noir, Ward Baccarat, Imperial Zafran and Amber Blanc — arranged on marble"
+              alt="The four Caviar Bakhoor tins, Noir, Ward Baccarat, Imperial Zafran and Amber Blanc, arranged on marble"
               width={2400}
               height={1350}
               sizes="(max-width: 1023px) 100vw, 1440px"

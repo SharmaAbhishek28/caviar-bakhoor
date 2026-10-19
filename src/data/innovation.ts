@@ -30,7 +30,7 @@ export const INNOVATION = {
   subhead: "Elevating bakhoor in a groundbreaking avatar",
   /** The direct answer, first: this is what a search result pulls. */
   answer:
-    "Caviar Bakhoor is bakhoor reimagined in a long-lasting, highly diffusive form. Elixir's patent-pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat — pearls that release their aroma as they burn. Rare, natural, sustainably sourced aged oud is blended with expertly crafted natural fragrances, and pure 24-karat gold flakes are set into every batch.",
+    "Caviar Bakhoor is bakhoor reimagined in a long-lasting, highly diffusive form. Elixir's patent-pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat: pearls that release their aroma as they burn. Rare, natural, sustainably sourced aged oud is blended with expertly crafted natural fragrances, and pure 24-karat gold flakes are set into every batch.",
   answerStrong: ["patent-pending encapsulation technology", "sealed at room temperature", "opens under heat", "24-karat gold"],
   marquee: ["Patent-pending", "Encapsulation", "Aged oud", "24 Karat gold", "Slow-burn", "Highly diffusive"],
   panel: { src: "/images/texture/pearl-macro.jpg", alt: "Caviar Bakhoor pearls, close, scattered with flakes of 24-karat gold", width: 2400, height: 1600 },
@@ -66,7 +66,7 @@ export const PLATES: Plate[] = [
         ],
       },
     ],
-    aside: "Every composition begins with natural, aged oud — Assamese or Cambodian — set against a single counterpoint.",
+    aside: "Every composition begins with natural, aged oud, Assamese or Cambodian, set against a single counterpoint.",
     image: { src: "/images/collection-tins-dark.jpg", alt: "The four tins, Ward Baccarat, Amber Blanc, Imperial Zafran and Noir, lit against black", width: 2400, height: 1302 },
   },
   {
@@ -107,7 +107,7 @@ export const PLATES: Plate[] = [
     title: "The burn",
     items: [
       "Light the charcoal and let it settle",
-      "Rest the mesh — or the foil — over the charcoal",
+      "Rest the mesh or the foil over the charcoal",
       "Spoon a 0.5 gram measure of pearls onto it",
       "Heat opens the pearls",
       "The aroma lifts: slow, long-lasting, highly diffusive",
@@ -149,7 +149,7 @@ export const PLATES: Plate[] = [
     items: [
       "Flakes of pure 24-karat gold, through every tin",
       "Visible in the pearl, from the first spoon",
-      "The caviar, enriched — its royalty, enhanced",
+      "The caviar, enriched: its royalty, enhanced",
     ],
     image: { src: "/images/shoot/pearls-macro-02.jpg", alt: "Dark pearls with flakes of 24-karat gold", width: 1897, height: 1262 },
   },
@@ -178,7 +178,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "How is it different from traditional bakhoor?",
-    a: "The ritual is the same — charcoal, heat, scent. The form is new: sealed fragrant pearls of aged oud and natural fragrance, finished with pure 24-karat gold, for a slow-burn, long-lasting and highly diffusive aroma.",
+    a: "The ritual is the same: charcoal, heat, scent. The form is new: sealed fragrant pearls of aged oud and natural fragrance, finished with pure 24-karat gold, for a slow-burn, long-lasting and highly diffusive aroma.",
   },
   {
     q: "How do you use it?",
@@ -190,6 +190,6 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Can it be made for my brand?",
-    a: "Yes. Elixir develops and manufactures Caviar Bakhoor for perfume houses, luxury brands and private label — your scent, your tin and box, into production.",
+    a: "Yes. Elixir develops and manufactures Caviar Bakhoor for perfume houses, luxury brands and private label. Your scent, your tin and box, taken into production.",
   },
 ];
