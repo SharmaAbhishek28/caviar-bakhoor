@@ -54,7 +54,8 @@ export function Innovation() {
             gap: "clamp(1.5rem, 3vw, 2.5rem)",
           }}
         >
-          <Eyebrow>The innovation</Eyebrow>
+          {/* The booklet's cover line. */}
+          <Eyebrow>Revolutionizing the bakhoor experience</Eyebrow>
 
           <DisplayHeadline lines={["Bakhoor", "Reimagined"]} />
 

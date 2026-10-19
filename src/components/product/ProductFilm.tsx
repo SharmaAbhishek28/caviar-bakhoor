@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AMBIENT_VOLUME } from "@/lib/media";
 
 /**
  * The film under the composition line on the PDP: the client's ritual film
@@ -27,7 +28,9 @@ export function ProductFilm({
 
   useEffect(() => {
     const v = ref.current;
-    if (v) v.muted = muted;
+    if (!v) return;
+    v.volume = AMBIENT_VOLUME;
+    v.muted = muted;
   }, [muted]);
 
   useEffect(() => {

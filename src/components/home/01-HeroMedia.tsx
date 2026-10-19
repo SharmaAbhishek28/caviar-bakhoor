@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { preload } from "react-dom";
 import { useEffect, useRef, useState } from "react";
+import { AMBIENT_VOLUME } from "@/lib/media";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 /**
@@ -70,7 +71,9 @@ export function HeroMedia({
 
   useEffect(() => {
     const v = videoRef.current;
-    if (v) v.muted = muted;
+    if (!v) return;
+    v.volume = AMBIENT_VOLUME;
+    v.muted = muted;
   }, [muted]);
 
   // Play only while on screen, and not at all under reduced motion.

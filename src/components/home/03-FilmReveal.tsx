@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AMBIENT_VOLUME } from "@/lib/media";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 export type FilmSource = { src: string; type: string; media?: string };
@@ -38,7 +39,9 @@ export function FilmReveal({
 
   useEffect(() => {
     const v = videoRef.current;
-    if (v) v.muted = muted;
+    if (!v) return;
+    v.volume = AMBIENT_VOLUME;
+    v.muted = muted;
   }, [muted]);
 
   useEffect(() => {

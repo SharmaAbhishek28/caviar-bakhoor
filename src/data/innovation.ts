@@ -24,9 +24,10 @@ export type Plate =
   | { kind: "table"; eyebrow: string; title: string; groups: { label?: string; rows: [string, string][] }[]; highlight?: string; aside?: string; image: Img };
 
 export const INNOVATION = {
-  eyebrow: "The innovation",
+  /* The booklet's cover lines (client, printed booklet). */
+  eyebrow: "Revolutionizing the bakhoor experience",
   headline: ["What is", "Caviar Bakhoor?"],
-  subhead: "Bakhoor, encapsulated into pearls",
+  subhead: "Elevating bakhoor in a groundbreaking avatar",
   /** The direct answer, first: this is what a search result pulls. */
   answer:
     "Caviar Bakhoor is bakhoor reimagined in a long-lasting, highly diffusive form. Elixir's patent-pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat — pearls that release their aroma as they burn. Rare, natural, sustainably sourced aged oud is blended with expertly crafted natural fragrances, and pure 24-karat gold flakes are set into every batch.",
