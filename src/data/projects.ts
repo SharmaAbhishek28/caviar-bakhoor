@@ -2,7 +2,12 @@
  * src/data/projects.ts
  *
  * The four cards on the section 04 wheel. A typed array rather than JSX, per
- * the handover rules in CLAUDE.md — this becomes a Shopify metaobject later.
+ * the handover rules in CLAUDE.md, this becomes a Shopify metaobject later.
+ *
+ * The card images (public/images/cards/) are AI-generated (Higgsfield, GPT
+ * Image 2.5, 2026-10-19) from the real product photographs, one styled
+ * surface per fragrance after the client's booklet; labels checked against
+ * the real packaging.
  *
  * Derived from products.ts (same four fragrances, same handles), but kept
  * separate because a card carries presentation fields a product does not: the
@@ -69,10 +74,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     keywords: ["natural, aged Assamese oud", "saffron", "dark, seductive blend"],
     cta: "View Noir",
     image: {
-      src: "/images/products/noir-tin-overhead.jpg",
-      alt: "The Noir box, black with a gold Elixir mark and a gold-edged Noir label",
-      width: 1536,
-      height: 816,
+      src: "/images/cards/noir.jpg",
+      alt: "Noir: the open tin of pearls flecked with gold leaf, a gold spoon, the closed tin and its box, on black leather",
+      width: 1600,
+      height: 900,
     },
   },
   {
@@ -85,10 +90,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     keywords: ["rare, aged Cambodian oud", "dark truffle rose", "deep, regal aroma"],
     cta: "View Ward Baccarat",
     image: {
-      src: "/images/products/ward-baccarat-tin-overhead.jpg",
-      alt: "The Ward Baccarat box, black with a gold Elixir mark and a burgundy label",
-      width: 1536,
-      height: 816,
+      src: "/images/cards/ward-baccarat.jpg",
+      alt: "Ward Baccarat: the open tin of pearls with gold leaf, a rose-handled gold spoon, the burgundy tin and its box, on burgundy velvet with rose petals",
+      width: 1600,
+      height: 900,
     },
   },
   {
@@ -101,10 +106,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     keywords: ["natural, aged Assamese oud", "precious saffron", "rich, spiced warmth"],
     cta: "View Imperial Zafran",
     image: {
-      src: "/images/products/imperial-zafran-tin-overhead.jpg",
-      alt: "The Imperial Zafran box, black with a gold Elixir mark and a deep green label",
-      width: 1536,
-      height: 816,
+      src: "/images/cards/imperial-zafran.jpg",
+      alt: "Imperial Zafran: the open tin of pearls with gold leaf, a gold spoon, the green tin and its box, on emerald green with threads of saffron",
+      width: 1600,
+      height: 900,
     },
   },
   {
@@ -117,10 +122,10 @@ export const PROJECT_WHEEL: ProjectCard[] = [
     keywords: ["rare, aged Cambodian oud", "luminous amber", "warm play of light and dark"],
     cta: "View Amber Blanc",
     image: {
-      src: "/images/products/amber-blanc-tin-overhead.jpg",
-      alt: "The Amber Blanc box, black with a gold Elixir mark and a white label",
-      width: 1536,
-      height: 816,
+      src: "/images/cards/amber-blanc.jpg",
+      alt: "Amber Blanc: the open tin of pearls with gold leaf, a marble-handled gold spoon, the ivory tin and its box, on white feathers",
+      width: 1600,
+      height: 900,
     },
   },
 ];

@@ -246,7 +246,7 @@ export function ProjectWheel({ items }: { items: ProjectCard[] }) {
                 style={{
                   display: "block",
                   width: "100%",
-                  aspectRatio: "768 / 408",
+                  aspectRatio: "16 / 9",
                   objectFit: "cover",
                 }}
               />
