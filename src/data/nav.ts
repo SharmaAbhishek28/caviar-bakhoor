@@ -20,6 +20,7 @@ export const NAV: NavItem[] = [
  */
 export const MENU_NAV: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "The Innovation", href: "/innovation" },
   { label: "Collection", href: "/collection" },
   { label: "The Ritual", href: "/ritual" },
   { label: "For Business", href: "/for-business" },
