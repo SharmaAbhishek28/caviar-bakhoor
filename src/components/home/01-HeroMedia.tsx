@@ -93,7 +93,11 @@ export function HeroMedia({
     return () => io.disconnect();
   }, []);
 
+  // The pin host: GSAP wraps the pinned element in a pin-spacer, so React
+  // must own a parent that the spacer sits inside. Without it React cannot
+  // remove the pinned element on navigation (removeChild error).
   return (
+    <div className="pin-host">
     <section
       ref={sectionRef}
       className="on-ash"
@@ -206,5 +210,6 @@ export function HeroMedia({
         </button>
       ) : null}
     </section>
+    </div>
   );
 }

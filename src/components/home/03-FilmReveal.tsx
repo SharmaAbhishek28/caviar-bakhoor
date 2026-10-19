@@ -96,7 +96,11 @@ export function FilmReveal({
     return () => ctx.revert();
   }, []);
 
+  // The pin host: GSAP wraps the pinned element in a pin-spacer, so React
+  // must own a parent that the spacer sits inside. Without it React cannot
+  // remove the pinned element on navigation (removeChild error).
   return (
+    <div className="pin-host">
     <section ref={stageRef} className="fr-stage" data-no-reveal>
       <div ref={frameRef} className="fr-frame">
         <video
@@ -144,5 +148,6 @@ export function FilmReveal({
         </svg>
       </button>
     </section>
+    </div>
   );
 }

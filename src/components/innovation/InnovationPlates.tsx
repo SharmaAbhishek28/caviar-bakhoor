@@ -84,7 +84,11 @@ export function InnovationPlates({ plates, footer }: { plates: Plate[]; footer: 
 
   const total = String(plates.length).padStart(2, "0");
 
+  // The pin host: GSAP wraps the pinned element in a pin-spacer, so React
+  // must own a parent that the spacer sits inside. Without it React cannot
+  // remove the pinned element on navigation (removeChild error).
   return (
+    <div className="pin-host">
     <section ref={rootRef} className="pl-stage" aria-label="How Caviar Bakhoor works" data-no-reveal>
       <ol ref={trackRef} className="pl-track">
         {plates.map((p, i) => (
@@ -176,5 +180,6 @@ export function InnovationPlates({ plates, footer }: { plates: Plate[]; footer: 
         ))}
       </ol>
     </section>
+    </div>
   );
 }

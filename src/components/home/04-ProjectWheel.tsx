@@ -200,7 +200,11 @@ export function ProjectWheel({ items }: { items: ProjectCard[] }) {
     return () => mm.revert();
   }, [items.length]);
 
+  // The pin host: GSAP wraps the pinned element in a pin-spacer, so React
+  // must own a parent that the spacer sits inside. Without it React cannot
+  // remove the pinned element on navigation (removeChild error).
   return (
+    <div className="pin-host">
     <div ref={rootRef} className="wheel-root">
       {/* The giant word behind everything, running on its own clock. */}
       <div className="wheel-marquee" aria-hidden>
@@ -265,6 +269,7 @@ export function ProjectWheel({ items }: { items: ProjectCard[] }) {
           </article>
         ))}
       </div>
+    </div>
     </div>
   );
 }
