@@ -5974,9 +5974,11 @@ html {
     align-items: center;
   }
 
+  /* Every plate the height of the tallest: the track stretches its items,
+     and each card fills its item. */
   .pl-track {
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     gap: clamp(2rem, 3vw, 3rem);
     padding: 0 clamp(4rem, 8vw, 9rem);
     will-change: transform;
@@ -5984,6 +5986,11 @@ html {
 
   .pl {
     flex: 0 0 min(78vw, 1180px);
+    display: flex;
+  }
+
+  .pl > .pl-card {
+    flex: 1;
   }
 
   .pl-card {
