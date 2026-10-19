@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, MarkedProse } from "@/components/ui";
 import { Credentials } from "@/components/home/08-Credentials";
-import { EnquiryForm } from "@/components/contact/EnquiryForm";
 import { CONTACT } from "@/data/enquiry";
 import { LEGAL } from "@/data/nav";
 
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * /contact — a centred opener and the enquiry form, the contact details and
+ * /contact — a centred opener and a WhatsApp chat button (no form), the contact details and
  * legal links beneath, then the credentials strip; the layout adds the
  * footer. Follows the reference's contact page structure.
  */
@@ -37,8 +36,17 @@ export default function ContactPage() {
             />
           </div>
 
-          <div className="contact-form">
-            <EnquiryForm />
+          {/* No form: one tap opens a WhatsApp chat with a message ready. */}
+          <div className="contact-whatsapp">
+            <a
+              href={`https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(CONTACT.whatsapp.message)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-button"
+            >
+              <span>{CONTACT.whatsapp.label}</span>
+              <span aria-hidden className="cta-arrow">↗</span>
+            </a>
           </div>
 
           <address className="contact-details">

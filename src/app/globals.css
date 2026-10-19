@@ -6096,3 +6096,10 @@ html {
   gap: 1rem;
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
+
+/* /contact: the WhatsApp button in place of the form, centred. */
+.contact-whatsapp {
+  display: flex;
+  justify-content: center;
+  margin-block: clamp(2.5rem, 5vw, 4rem);
+}

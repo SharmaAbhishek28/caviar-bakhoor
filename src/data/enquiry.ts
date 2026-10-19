@@ -17,6 +17,13 @@
 
 export const CONTACT = {
   headline: ["Create your own", "Caviar Bakhoor with Elixir."],
+  /** The contact page is a WhatsApp chat, not a form (site owner,
+   *  2026-10-19). Same number as /for-business; never displayed. */
+  whatsapp: {
+    label: "Chat on WhatsApp",
+    number: "919886478926",
+    message: "Hello Elixir, I'd like to know more about Caviar Bakhoor.",
+  },
   paragraph:
     "Elixir manufactures Caviar Bakhoor for perfume houses, luxury brands, hotel groups and private label. Your scent, your packaging, our technology.",
   em: ["Your scent, your packaging, our technology."],
