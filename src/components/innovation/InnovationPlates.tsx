@@ -19,7 +19,7 @@ import { gsap, initScroll, prefersReducedMotion, ScrollTrigger } from "@/lib/scr
  * Phones and tablets: the plates stack; each animates as it scrolls in.
  * Reduced motion: stacked, still. RevealAll keeps off (data-no-reveal).
  */
-export function InnovationPlates({ plates, footer }: { plates: Plate[]; footer: string }) {
+export function InnovationPlates({ plates, footer, note }: { plates: Plate[]; footer: string; note?: string }) {
   const rootRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLOListElement>(null);
 
@@ -169,6 +169,7 @@ export function InnovationPlates({ plates, footer }: { plates: Plate[]; footer: 
                 />
               </div>
 
+              {note ? <p className="pl-note">{note}</p> : null}
               <footer className="pl-foot">
                 <span>{footer}</span>
                 <span>

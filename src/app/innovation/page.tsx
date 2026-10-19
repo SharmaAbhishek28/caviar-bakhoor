@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Credentials } from "@/components/home/08-Credentials";
 import { InnovationPlates } from "@/components/innovation/InnovationPlates";
 import { CapsSubhead, Container, DarkPanel, DisplayHeadline, Eyebrow, MarkedProse, Marquee } from "@/components/ui";
-import { FAQ, INNOVATION, PLATES } from "@/data/innovation";
+import { INNOVATION, PLATE_NOTE, PLATES } from "@/data/innovation";
 
 export const metadata: Metadata = {
   title: "What is Caviar Bakhoor? | Elixir Signature Scents",
@@ -16,16 +16,10 @@ export const metadata: Metadata = {
  *
  * Opens as every page does (CLAUDE.md): eyebrow, display headline, caps
  * subhead, marquee, dark full-bleed panel — with the direct answer in the
- * first paragraph, for search. Then the eight plates, the common questions
- * (FAQPage JSON-LD), the close and the credentials strip.
+ *  first paragraph, for search. Then the eight process plates,
+ * the close and the credentials strip. Process only (site owner, 2026-10-19).
  */
 export default function InnovationPage() {
-  const faqLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-  };
-
   return (
     <>
       <section className="inv-opener" data-label="Innovation">
@@ -43,20 +37,10 @@ export default function InnovationPage() {
         <DarkPanel {...INNOVATION.panel} minHeight="70svh" zoom />
       </section>
 
-      <InnovationPlates plates={PLATES} footer={INNOVATION.footer} />
+      <InnovationPlates plates={PLATES} footer={INNOVATION.footer} note={PLATE_NOTE} />
 
-      <section className="inv-faq" data-label="Questions">
+      <section className="inv-close-section">
         <Container>
-          <p className="pl-eyebrow">Common questions</p>
-          <h2 className="pl-title">Asked, answered.</h2>
-          <div className="inv-faq-list">
-            {FAQ.map((f) => (
-              <details key={f.q} className="inv-faq-item">
-                <summary>{f.q}</summary>
-                <p className="type-body">{f.a}</p>
-              </details>
-            ))}
-          </div>
           <div className="inv-close">
             <Link href="/collection" className="cta-button">
               <span>Shop Caviar Bakhoor</span>
@@ -68,7 +52,6 @@ export default function InnovationPage() {
             </Link>
           </div>
         </Container>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       </section>
 
       <Credentials />

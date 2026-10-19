@@ -6103,3 +6103,22 @@ html {
   justify-content: center;
   margin-block: clamp(2.5rem, 5vw, 4rem);
 }
+
+/* The plate's provenance line, above the footer: the reference marks its
+   figures as patent examples the same way. */
+.pl-note {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.75rem;
+  color: rgb(16 16 18 / 0.55);
+}
+
+@media (min-width: 1024px) {
+  .pl-note {
+    grid-column: 1 / -1;
+  }
+}
+
+.inv-close-section {
+  padding-block: var(--section-y);
+}
