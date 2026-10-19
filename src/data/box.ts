@@ -9,8 +9,11 @@
  * and two sizes, the foil's everyday use on the charcoal.
  *
  * The photographs are stills from the client's own films: the spoon and the
- * foil from "CAVIAR ITALIAN SUBS" (61.5s, 60.5s), the mesh from "VE Project
- * 5-2" (23s), cropped square above the burned-in subtitles.
+ * foil from "CAVIAR ITALIAN SUBS" (61.5s, 60.5s), cropped square above the
+ * burned-in subtitles. The mesh image is AI-generated (Higgsfield, GPT Image
+ * 2.5, 2026-10-19) from a still of the real mesh in "VE Project 5-2" (23.5s),
+ * to show its double layer and quilted pattern sharply; replace with a
+ * photograph of the mesh when one exists.
  */
 
 export type BoxItem = {
@@ -40,7 +43,7 @@ export const BOX_ITEMS: BoxItem[] = [
     name: "The mesh",
     body: "A double-layered stainless-steel mesh in a two-tone quilted pattern, made in two sizes, to ensure consistent heat dispersal for a clean, smooth and long-lasting burn.",
     strong: ["double-layered stainless-steel mesh", "two-tone quilted pattern", "two sizes"],
-    image: { src: "/images/box/mesh.jpg", alt: "The gold two-tone mesh resting on the burner", width: 700, height: 700 },
+    image: { src: "/images/box/mesh-studio.jpg", alt: "The double-layered mesh, gold and silver in a quilted pattern, resting on the burner", width: 1200, height: 1200 },
   },
   {
     name: "The foil",
