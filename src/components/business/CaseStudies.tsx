@@ -53,6 +53,9 @@ const pad = (n: number) => String(n).padStart(2, "0");
 function Project({ project: p, index, total }: { project: CaseStudy; index: number; total: number }) {
   const ref = useRef<HTMLElement>(null);
   const [current, setCurrent] = useState(1);
+  const name = p.title ?? p.client;
+  const longName = name.length > 8;
+  const wideCover = p.cover.width > p.cover.height * 1.15;
   const gallery = p.gallery ?? [];
   const twoRows = gallery.length > 12;
   const rows = twoRows
@@ -155,19 +158,26 @@ function Project({ project: p, index, total }: { project: CaseStudy; index: numb
   }, [gallery.length]);
 
   return (
-    <article ref={ref} className="cs-project" aria-label={`${p.client}, ${p.line}`}>
+    <article ref={ref} className="cs-project" aria-label={`${name}, ${p.line}`}>
       {/* Cover */}
       <div className="pin-host">
         <div className="cs-cover on-ash">
           <div className="cs-cover-grid">
             <div className="cs-cover-text">
               <p className="cs-index">
-                ( {pad(index + 1)} / {pad(total)} ) · {p.origin}
+                ( {pad(index + 1)} / {pad(total)} ){p.origin ? ` · ${p.origin}` : ""}
               </p>
-              <h3 className={`cs-client${p.keepCase ? " cs-client--as-is" : ""}`} aria-label={p.client}>
-                {Array.from(p.client).map((ch, i) => (
-                  <span key={i} className="cs-char-mask" aria-hidden>
-                    <span className="cs-char">{ch}</span>
+              <h3
+                className={`cs-client${p.keepCase ? " cs-client--as-is" : ""}${longName ? " cs-client--long" : ""}`}
+                aria-label={name}
+              >
+                {name.split(" ").map((word, wi) => (
+                  <span key={wi} className="cs-word" aria-hidden>
+                    {Array.from(word).map((ch, i) => (
+                      <span key={i} className="cs-char-mask">
+                        <span className="cs-char">{ch}</span>
+                      </span>
+                    ))}
                   </span>
                 ))}
               </h3>
@@ -182,7 +192,7 @@ function Project({ project: p, index, total }: { project: CaseStudy; index: numb
                 ))}
               </dl>
             </div>
-            <div className="cs-cover-media">
+            <div className={`cs-cover-media${wideCover ? " cs-cover-media--wide" : ""}`}>
               <Image src={p.cover.src} alt={p.cover.alt} width={p.cover.width} height={p.cover.height} sizes="(max-width: 1023px) 100vw, 50vw" />
             </div>
           </div>

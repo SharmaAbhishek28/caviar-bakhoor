@@ -19,9 +19,13 @@ type Img = { src: string; alt: string; width: number; height: number };
 export type CaseStudy = {
   id: string;
   client: string;
+  /** The name set large on the cover, when it is not the client's (an
+   *  unnamed client is shown by its product line). Defaults to `client`. */
+  title?: string;
   /** Set the name as the client writes it (e.g. "tripleA"), not in caps. */
   keepCase?: boolean;
-  origin: string;
+  /** Left out where it would identify an unnamed client. */
+  origin?: string;
   /** The client's product line. */
   line: string;
   summary: string;
@@ -130,5 +134,27 @@ export const COLLABORATIONS: CaseStudy[] = [
       tripleA("oud-back", "The back of the Oud box"),
       tripleA("saffron-back", "The back of the Saffron box"),
     ],
+  },
+  {
+    /* The client is not named, at the site owner's direction (2026-10-21);
+       its name is blurred out of the photograph. */
+    id: "oud-gourmet",
+    client: "Undisclosed",
+    title: "Oud Gourmet",
+    line: "Vibrance Vue Bakhoor",
+    summary:
+      "For a fragrance house, unnamed here, Elixir made Oud Gourmet, Vibrance Vue Bakhoor: Caviar Bakhoor under the line \"a new era of oud\", in a black tin and a white gift box embossed with OUD, finished in black and white.",
+    strong: ["Oud Gourmet, Vibrance Vue Bakhoor", "a new era of oud"],
+    facts: [
+      { label: "Client", value: "Undisclosed" },
+      { label: "Line", value: "Oud Gourmet" },
+      { label: "Product", value: "Vibrance Vue Bakhoor" },
+    ],
+    cover: {
+      src: "/images/projects/oud-gourmet/set.jpg",
+      alt: "Oud Gourmet, Vibrance Vue Bakhoor: a white gift box embossed with OUD, its sleeve, and an open black tin of pearls",
+      width: 1024,
+      height: 724,
+    },
   },
 ];

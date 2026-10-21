@@ -6483,3 +6483,29 @@ html {
 .cs-client--as-is {
   text-transform: none;
 }
+
+/* Names of more than one word wrap by word; long ones set smaller. */
+.cs-client {
+  flex-wrap: wrap;
+  column-gap: 0.22em;
+}
+
+.cs-word {
+  display: inline-flex;
+}
+
+.cs-client--long {
+  font-size: clamp(2.75rem, 6vw, 6rem);
+}
+
+/* A landscape cover keeps its shape instead of cropping to a square. */
+.cs-cover-media--wide {
+  aspect-ratio: auto;
+}
+
+@media (min-width: 1024px) {
+  .cs-cover-media--wide {
+    width: 100%;
+    max-height: none;
+  }
+}
