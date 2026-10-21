@@ -1,3 +1,4 @@
+import { BookletPlate } from "@/components/collection/BookletPlate";
 import type { Metadata } from "next";
 import { Catalogue } from "@/components/collection/Catalogue";
 import { CollectionHero } from "@/components/collection/CollectionHero";
@@ -19,6 +20,7 @@ export default function CollectionPage() {
   return (
     <>
       <CollectionHero products={products} />
+      <BookletPlate />
       <Catalogue products={products} />
       <Story products={products} />
     </>

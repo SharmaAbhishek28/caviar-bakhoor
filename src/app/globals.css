@@ -6122,3 +6122,25 @@ html {
 .inv-close-section {
   padding-block: var(--section-y);
 }
+
+/* /collection: the booklet spread, full bleed on black. */
+.booklet-plate {
+  background: var(--ash);
+  line-height: 0;
+}
+
+.booklet-plate-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Phones: the left page only (the cover lines and the four lids), so it
+   reads at a usable size. */
+@media (max-width: 767px) {
+  .booklet-plate-img {
+    aspect-ratio: 1260 / 1357;
+    object-fit: cover;
+    object-position: left center;
+  }
+}
