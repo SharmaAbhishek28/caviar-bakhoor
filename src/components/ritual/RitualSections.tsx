@@ -319,7 +319,6 @@ export function RitualClose() {
           </h2>
           <div className="ab-close-actions">
             <Link href={RITUAL_PAGE.close.primary.href} className="cta-button"><span>{RITUAL_PAGE.close.primary.label}</span><span aria-hidden className="cta-arrow">↗</span></Link>
-            <Link href={RITUAL_PAGE.close.secondary.href} className="cta-button cta-button--ghost"><span>{RITUAL_PAGE.close.secondary.label}</span><span aria-hidden className="cta-arrow">↗</span></Link>
           </div>
         </div>
       </Container>

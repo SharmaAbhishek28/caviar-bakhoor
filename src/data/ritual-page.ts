@@ -73,6 +73,5 @@ export const RITUAL_PAGE = {
     lead: "Ready to try",
     line: "the new bakhoor?",
     primary: { label: "Shop Caviar Bakhoor", href: "/collection" },
-    secondary: { label: "The four fragrances", href: "/collection#noir" },
   },
 };
