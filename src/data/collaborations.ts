@@ -63,6 +63,13 @@ const tripleA = (file: string, alt: string, square = false): Img => ({
   height: square ? 800 : 1200,
 });
 
+const fanAlOud = (file: string, alt: string, width: number, height: number): Img => ({
+  src: `/images/projects/fan-al-oud/${file}.jpg`,
+  alt,
+  width,
+  height,
+});
+
 export const COLLABORATIONS: CaseStudy[] = [
   {
     id: "sarib",
@@ -156,5 +163,35 @@ export const COLLABORATIONS: CaseStudy[] = [
       width: 1024,
       height: 724,
     },
+  },
+  {
+    id: "fan-al-oud",
+    client: "Fan Al Oud",
+    origin: "United Arab Emirates",
+    line: "Caviar Collection",
+    summary:
+      "For Fan Al Oud, the Emirati oud house, Elixir made the Caviar Collection: Caviar Bakhoor in two compositions, Oud Khas and Oud Amiri, each tin set with a gold spoon and a mesh disc in a black and gold gift box, an illustrated card inside showing the ritual.",
+    strong: ["Caviar Collection", "Oud Khas and Oud Amiri"],
+    facts: [
+      { label: "Client", value: "Fan Al Oud" },
+      { label: "Origin", value: "United Arab Emirates" },
+      { label: "Line", value: "Caviar Collection" },
+      { label: "Compositions", value: "Oud Khas · Oud Amiri" },
+    ],
+    cover: fanAlOud("amiri-lava", "Fan Al Oud Oud Amiri: an open tin of pearls on volcanic stone, smoke rising, a gold spoon beside it", 959, 1600),
+    feature: fanAlOud("amiri-hands", "Hands holding a Fan Al Oud Oud Amiri tin, a burner and the gift box on the table", 947, 1600),
+    variants: [
+      { name: "Oud Khas", color: "#1d4a3a", image: fanAlOud("khas-kit", "The Oud Khas set: the tin, a gold spoon with a green handle, a mesh disc and a small black box", 1080, 1080), show: "photo" },
+      { name: "Oud Amiri", color: "#a8834a", image: fanAlOud("amiri-kit", "The Oud Amiri set: the tin, a gold spoon with a black handle, a mesh disc and a small black box", 1080, 1080), show: "photo" },
+    ],
+    gallery: [
+      fanAlOud("khas-spoon", "A gold spoon lifting pearls from the Oud Khas tin, on slate", 952, 1600),
+      fanAlOud("gift-box-open", "The Fan Al Oud gift box open: the tin, spoon and mesh disc, the ritual card in the lid", 1080, 1080),
+      fanAlOud("khas-marble", "Oud Khas on marble, beside a piece of agarwood, smoke rising", 899, 1599),
+      fanAlOud("ritual", "A man tending a burner, smoke rising", 1080, 1440),
+      fanAlOud("khas-satin", "Two Oud Khas tins on black satin, one open", 964, 1600),
+      fanAlOud("gift-box-table", "A woman with the Fan Al Oud gift box and an open tin", 1076, 1344),
+      fanAlOud("khas-burner", "Oud Khas on dark marble before a brass burner", 1080, 1428),
+    ],
   },
 ];
