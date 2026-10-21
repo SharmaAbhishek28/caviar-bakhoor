@@ -7076,6 +7076,8 @@ html {
 }
 
 .cta-button.ah-part-cta {
+  /* .cta-button sets align-self: flex-start; this close is centred. */
+  align-self: center;
   margin-top: clamp(2rem, 4vw, 3rem);
   background: #efeeeb;
   color: #101012;
