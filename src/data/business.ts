@@ -65,13 +65,15 @@ export const BUSINESS = {
 
   // Steps 01 and 03 and their durations are the site owner's (2026-10-15).
   // Step 02, step 05 and the packaging duration are awaiting the client.
+  // The client's timeline (site owner, 2026-10-21), rephrased.
   process: {
     title: "Timeline",
-    lead: "Genuinely sequential, so numbered.",
+    lead: "From first brief to commercial dispatch in thirty days.",
     steps: [
-      { name: "Discover or create a scent with us", body: "7 days" },
-      { name: "Caviar approval", body: "14 days" },
-      { name: "Packaging approval", body: "" },
+      { name: "Discover your scent", body: "Days 0 to 7. Create or refine your fragrance with our master perfumers." },
+      { name: "Sample and evaluate", body: "Days 7 to 10. Receive your Caviar Bakhoor samples and assess them in use." },
+      { name: "Design and approve", body: "Days 10 to 15. Develop your tin and packaging, and sign off each detail." },
+      { name: "Confirm and dispatch", body: "Days 15 to 30. Final confirmation, then commercial production and dispatch." },
     ],
   },
 
