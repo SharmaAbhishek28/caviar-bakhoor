@@ -15,8 +15,11 @@
 
 export const ABOUT = {
   eyebrow: "Elixir Signature Scents",
-  headline: ["A perfume house", "that builds", "what it sells."],
-  lede: "Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive form. Pearls that release their aroma as they burn.",
+  /* Site owner, 2026-10-21: manufacturing capability with a technology
+     background, an integrated fragrance R&D facility, responsibly sourced
+     pure agarwood, in-house oud grading. */
+  headline: ["Fragrance,", "engineered", "in-house."],
+  lede: "A fragrance manufacturer with a technology background, committed to creating unique fragrant products.",
   opener: {
     src: "/images/shoot/all-four-boxes-marble.jpg",
     alt: "The four Caviar Bakhoor boxes on white marble",
@@ -26,8 +29,8 @@ export const ABOUT = {
   house: {
     title: "The house",
     statement:
-      "Elixir Signature Scents makes Caviar Bakhoor: a patent-pending encapsulation technology that transforms scent into pearls, set with pure 24-karat gold. Handmade. Four Caviar’s to start: Noir, Ward Baccarat, Imperial Zafran and Amber Blanc.",
-    strong: ["patent-pending encapsulation technology", "24-karat gold", "Handmade"],
+      "Elixir Signature Scents develops and manufactures fragrance with the discipline of a laboratory. Every formulation is built in our fully integrated fragrance R&D facility, from pure agarwood we source responsibly and grade in-house. Caviar Bakhoor is the result: a patent-pending encapsulation technology that transforms scent into pearls, set with pure 24-karat gold.",
+    strong: ["fully integrated fragrance R&D facility", "source responsibly and grade in-house", "patent-pending encapsulation technology"],
   },
   /** The ledger. A null value renders the visible [CONFIRM] marker. */
   facts: [
@@ -35,10 +38,11 @@ export const ABOUT = {
     { label: "Category", value: "Caviar Bakhoor" },
     { label: "Product line", value: "Caviar Bakhoor" },
     { label: "Technology", value: "Patent-pending encapsulation" },
+    { label: "R&D", value: "Fully integrated fragrance R&D facility" },
+    { label: "Raw material", value: "Pure agarwood, responsibly sourced" },
+    { label: "Oud grading", value: "In-house" },
     { label: "Fragrances", value: "Noir · Ward Baccarat · Imperial Zafran · Amber Blanc" },
     { label: "Founded", value: null },
-    { label: "Facility", value: null },
-    { label: "In-house R&D", value: null },
     { label: "Certifications", value: null },
   ] as { label: string; value: string | null }[],
   gallery: {

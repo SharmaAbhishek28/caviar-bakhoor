@@ -5,9 +5,9 @@ import { ShootGallery } from "@/components/about/ShootGallery";
 import { Credentials } from "@/components/home/08-Credentials";
 
 export const metadata: Metadata = {
-  title: "About Elixir: a perfume house that builds what it sells | Caviar Bakhoor",
+  title: "About Elixir: fragrance, engineered in-house | Caviar Bakhoor",
   description:
-    "Elixir Signature Scents makes Caviar Bakhoor: a patent-pending encapsulation technology that transforms scent into pearls. Four Caviar’s, one new category.",
+    "Elixir Signature Scents: a fragrance manufacturer with a fully integrated R&D facility, responsibly sourced pure agarwood and in-house oud grading. Makers of Caviar Bakhoor.",
 };
 
 /**
