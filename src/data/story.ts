@@ -16,7 +16,6 @@
 
 export const STORY = {
   title: "The story",
-  lede: "What is Caviar Bakhoor?",
   paragraphs: [
     "Caviar Bakhoor reimagines traditional bakhoor in a long-lasting, highly diffusive form. Our patent-pending encapsulation technology transforms its scent into pearls that release their aroma as they burn.",
     "We are proud to introduce Caviar Bakhoor, a unique and revolutionary product that transforms the traditional Bakhoor into a long-lasting and highly diffusive form. Our patent-pending encapsulation technology allows you to enjoy the fragrance of Bakhoor in the form of caviar, infused with the allure of pure 24 Karat Gold. It's our way of bringing a touch of extravagance into your daily life.",

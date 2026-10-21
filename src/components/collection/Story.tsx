@@ -22,7 +22,6 @@ export function Story({ products }: { products: Product[] }) {
     <section className="story" data-label="Story">
       <Container>
         <h2 className="story-title">{STORY.title}</h2>
-        <p className="story-lede">{STORY.lede}</p>
         <div className="story-copy">
           {STORY.paragraphs.map((p) => (
             <p key={p} className="type-body">
