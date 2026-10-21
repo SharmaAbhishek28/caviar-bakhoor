@@ -11,8 +11,7 @@
  *
  * Clients are named, with their photography, at the site owner's direction
  * (2026-10-21). Add a project by adding an entry here and its images under
- * public/images/projects/<id>/. Companies 2, 3 and 4 follow when their
- * images are supplied.
+ * public/images/projects/<id>/.
  */
 
 type Img = { src: string; alt: string; width: number; height: number };
@@ -20,6 +19,8 @@ type Img = { src: string; alt: string; width: number; height: number };
 export type CaseStudy = {
   id: string;
   client: string;
+  /** Set the name as the client writes it (e.g. "tripleA"), not in caps. */
+  keepCase?: boolean;
   origin: string;
   /** The client's product line. */
   line: string;
@@ -32,7 +33,14 @@ export type CaseStudy = {
   /** A second photograph beside the summary. */
   feature?: Img;
   /** The compositions, each shown as its lid, with its label colour. */
-  variants?: { name: string; color: string; image: Img }[];
+  variants?: {
+    name: string;
+    color: string;
+    image: Img;
+    /** "label": a front-on lid, clipped to its outline on a black disc.
+     *  "photo": the whole tin, on a white disc. Default "label". */
+    show?: "label" | "photo";
+  }[];
   /** Everything else, on a scrolling track. */
   gallery?: Img[];
 };
@@ -42,6 +50,13 @@ const sarib = (file: string, alt: string, size = 750): Img => ({
   alt,
   width: size,
   height: size,
+});
+
+const tripleA = (file: string, alt: string, square = false): Img => ({
+  src: `/images/projects/triple-a/${file}.jpg`,
+  alt,
+  width: square ? 800 : 900,
+  height: square ? 800 : 1200,
 });
 
 export const COLLABORATIONS: CaseStudy[] = [
@@ -76,6 +91,44 @@ export const COLLABORATIONS: CaseStudy[] = [
       sarib("oud-nights-spoon", "A gold spoon lifting pearls from the Oud Nights tin"),
       sarib("oud-nights-box", "The Remal Oud Nights gift box"),
       sarib("oud-nights-open", "The Oud Nights tin, open"),
+    ],
+  },
+  {
+    id: "triple-a",
+    client: "tripleA",
+    keepCase: true,
+    origin: "United Arab Emirates",
+    line: "Caviar Incense Collection",
+    summary:
+      "For tripleA Perfumes, the Emirati fragrance house, Elixir made the Caviar Incense Collection: Caviar Bakhoor in three compositions, Amber, Oud and Saffron, a hundred grams to each tin, presented in tripleA's burgundy gift box with a gold spoon.",
+    strong: ["Caviar Incense Collection", "Amber, Oud and Saffron"],
+    facts: [
+      { label: "Client", value: "tripleA Perfumes" },
+      { label: "Origin", value: "United Arab Emirates" },
+      { label: "Line", value: "Caviar Incense Collection" },
+      { label: "Compositions", value: "Amber · Oud · Saffron" },
+    ],
+    cover: tripleA("oud-set", "tripleA Caviar Incense, Oud: the burgundy gift box, the tin and a gold spoon"),
+    feature: tripleA("saffron-set", "tripleA Caviar Incense, Saffron: the gift box, the gold tin and a gold spoon"),
+    variants: [
+      { name: "Amber", color: "#8e8fa3", image: tripleA("amber-lid", "The tripleA Amber tin", true), show: "photo" },
+      { name: "Oud", color: "#22232b", image: tripleA("oud-lid", "The tripleA Oud tin", true), show: "photo" },
+      { name: "Saffron", color: "#b08a3a", image: tripleA("saffron-lid", "The tripleA Saffron tin", true), show: "photo" },
+    ],
+    gallery: [
+      tripleA("amber-box", "The Amber gift box with its silver label"),
+      tripleA("oud-box", "The Oud gift box with its black label"),
+      tripleA("saffron-box", "The Saffron gift box with its gold label"),
+      tripleA("amber-open", "The Amber gift box open, the tin and spoon inside"),
+      tripleA("oud-open", "The Oud gift box open, the tin and spoon inside"),
+      tripleA("saffron-open", "The Saffron gift box open, the tin and spoon inside"),
+      tripleA("amber-set", "The Amber tin and spoon before its gift box"),
+      tripleA("amber-box-front", "The tripleA gift box, front"),
+      tripleA("oud-box-front", "The tripleA gift box with the Oud band"),
+      tripleA("saffron-box-front", "The tripleA gift box with the Saffron band"),
+      tripleA("amber-back", "The back of the Amber box: ingredients and directions of use"),
+      tripleA("oud-back", "The back of the Oud box"),
+      tripleA("saffron-back", "The back of the Saffron box"),
     ],
   },
 ];

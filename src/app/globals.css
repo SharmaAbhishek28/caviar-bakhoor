@@ -6457,3 +6457,29 @@ html {
     object-position: left center;
   }
 }
+
+/* A variant shown as the whole tin, on a white disc. */
+.cs-lid--photo {
+  background: #ffffff;
+}
+
+.cs-lid--photo img {
+  clip-path: none;
+  transform: none;
+}
+
+/* Three variants in a row on wide screens. */
+@media (min-width: 1024px) {
+  .cs-variants:has(.cs-variant:nth-child(3)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cs-variants:has(.cs-variant:nth-child(3)) .cs-variant {
+    width: 100%;
+    max-width: 22rem;
+  }
+}
+
+.cs-client--as-is {
+  text-transform: none;
+}

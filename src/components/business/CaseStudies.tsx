@@ -164,7 +164,7 @@ function Project({ project: p, index, total }: { project: CaseStudy; index: numb
               <p className="cs-index">
                 ( {pad(index + 1)} / {pad(total)} ) · {p.origin}
               </p>
-              <h3 className="cs-client" aria-label={p.client}>
+              <h3 className={`cs-client${p.keepCase ? " cs-client--as-is" : ""}`} aria-label={p.client}>
                 {Array.from(p.client).map((ch, i) => (
                   <span key={i} className="cs-char-mask" aria-hidden>
                     <span className="cs-char">{ch}</span>
@@ -213,7 +213,7 @@ function Project({ project: p, index, total }: { project: CaseStudy; index: numb
           <ul className="cs-variants">
             {p.variants.map((v) => (
               <li key={v.name} className="cs-variant">
-                <div className="cs-lid">
+                <div className={`cs-lid${v.show === "photo" ? " cs-lid--photo" : ""}`}>
                   <Image src={v.image.src} alt={v.image.alt} width={v.image.width} height={v.image.height} sizes="(max-width: 767px) 70vw, 30vw" />
                 </div>
                 <p className="cs-variant-name">
