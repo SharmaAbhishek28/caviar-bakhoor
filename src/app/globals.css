@@ -6001,6 +6001,8 @@ html {
 }
 
 /* --- The plates ---------------------------------------------------------- */
+/* The client's technical deck, as seven plates on a pinned sideways track
+   (InnovationPlates.tsx). Light and dark plates alternate. */
 .pl-stage {
   position: relative;
   overflow: hidden;
@@ -6017,192 +6019,137 @@ html {
   gap: clamp(2rem, 5vw, 3rem);
 }
 
+.pl {
+  --pl-fg: #101012;
+  --pl-muted: rgb(16 16 18 / 0.6);
+  --pl-rule: rgb(16 16 18 / 0.14);
+  --pl-bg: #f7f5f1;
+}
+
+.pl--dark {
+  --pl-fg: #efeeeb;
+  --pl-muted: rgb(239 238 235 / 0.62);
+  --pl-rule: rgb(239 238 235 / 0.16);
+  --pl-bg: #0b0a0c;
+}
+
 .pl-card {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding: clamp(1.5rem, 4vw, 3.25rem);
-  background: #fbfaf8;
-  border: 1px solid var(--rule);
-  border-top: 3px solid var(--ink);
-  box-shadow: 0 30px 60px -40px rgb(8 7 10 / 0.35);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 4vw, 2.75rem);
+  background: var(--pl-bg);
+  color: var(--pl-fg);
+  border: 1px solid var(--pl-rule);
+  box-shadow: 0 30px 60px -40px rgb(8 7 10 / 0.4);
+}
+
+.pl-headrow,
+.pl-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pl-muted);
+}
+
+.pl-eyebrow {
+  display: block;
+}
+
+.pl-count {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.pl-foot {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--pl-rule);
 }
 
 .pl-copy {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.9rem, 1.6vw, 1.25rem);
+  gap: clamp(1.1rem, 2.2vw, 1.75rem);
   min-width: 0;
 }
 
-.pl-eyebrow {
-  margin: 0;
-  font-family: var(--font-switzer-stack);
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgb(16 16 18 / 0.6);
+.pl-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .pl-title {
   margin: 0;
   font-family: var(--font-bodoni-stack);
   font-variation-settings: "opsz" 11;
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(2rem, 3.4vw, 3.25rem);
   line-height: 1.04;
-  color: var(--ink);
+  color: var(--pl-fg);
+}
+
+.pl-title-mask {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.06em;
+}
+
+.pl-title-line {
+  display: block;
 }
 
 .pl-lede {
   margin: 0;
+  max-width: 34rem;
   font-family: var(--font-switzer-stack);
-  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-  color: var(--ink-prose);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--pl-muted);
 }
 
-/* Bulleted list: a small ink dot, as the reference sets its points. */
-.pl-list {
-  list-style: none;
-  margin: 0.25rem 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.pl-list li {
-  position: relative;
-  padding-left: 1.4rem;
-  font-family: var(--font-switzer-stack);
-  font-size: clamp(1rem, 1.15vw, 1.1rem);
-  color: var(--ink);
-}
-
-.pl-list li::before {
-  content: "";
-  position: absolute;
-  left: 0.15rem;
-  top: 0.55em;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ink);
-}
-
-/* Numbered steps: the number in an ink pearl. */
-.pl-steps {
-  list-style: none;
-  margin: 0.25rem 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.pl-step {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  font-family: var(--font-switzer-stack);
-  font-size: clamp(1rem, 1.15vw, 1.1rem);
-  color: var(--ink);
-}
-
-.pl-step-no {
-  flex: none;
-  width: 1.65rem;
-  height: 1.65rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-/* Arrow flow: tinted boxes, arrows between, a black result bar. */
-.pl-flow {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.3rem;
-}
-
-.pl-flow-box {
-  padding: 0.7rem 1.1rem;
-  border-radius: 6px;
-  background: rgb(16 16 18 / 0.06);
-  font-family: var(--font-switzer-stack);
-  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-  color: var(--ink);
-}
-
-.pl-flow-arrow {
-  align-self: center;
-  font-size: 0.85rem;
-  line-height: 1;
-  color: rgb(16 16 18 / 0.5);
-  transform-origin: top center;
-}
-
-.pl-result {
-  margin-top: 0.15rem;
-  padding: 0.95rem 1.2rem;
-  border-radius: 6px;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-bodoni-stack);
-  font-variation-settings: "opsz" 11;
-  font-weight: 600;
-  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
-  line-height: 1.2;
-}
-
-/* Ruled table: label left, value right, a hairline that draws itself. */
-.pl-table {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.pl-group-label {
-  margin: 0 0 0.35rem;
+/* Small tracked caps: row labels, stage names, marks. */
+.pl-specs dt,
+.pl-step-label,
+.pl-stage-label,
+.pl-mark,
+.pl-callout dt,
+.pl-phase-label,
+.pl-inset figcaption {
   font-family: var(--font-switzer-stack);
   font-weight: 600;
   font-size: 0.7rem;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgb(16 16 18 / 0.6);
+  color: var(--pl-fg);
 }
 
-.pl-table dl {
+/* specs: label and value, ruled */
+.pl-specs {
   margin: 0;
 }
 
 .pl-row {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 0.55rem 0;
-  font-family: var(--font-switzer-stack);
-  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
 }
 
-.pl-row dt {
-  color: var(--ink);
+.pl-specs .pl-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.2rem;
+  padding: 0.7rem 0;
 }
 
-.pl-row dd {
+.pl-specs dd {
   margin: 0;
-  text-align: right;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.95rem;
+  color: var(--pl-muted);
 }
 
 .pl-row-rule {
@@ -6211,71 +6158,290 @@ html {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: var(--rule);
+  background: var(--pl-rule);
   transform-origin: left center;
 }
 
-/* The highlighted row, as the reference marks its key component. */
-.pl-row--hl dt,
-.pl-row--hl dd {
-  font-weight: 700;
-}
-
-.pl-tag {
-  margin: 0.4rem 0 0;
-  font-family: var(--font-switzer-stack);
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-
-/* The ruled aside: a vertical hairline, then a quiet line. */
-.pl-aside {
+/* steps: numbered rings on a drawn line */
+.pl-steps {
   position: relative;
-  margin: 0.4rem 0 0;
-  padding-left: 1.1rem;
-  font-family: var(--font-switzer-stack);
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--ink-prose);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
 }
 
-.pl-aside-rule {
+.pl-step-line {
   position: absolute;
-  left: 0;
-  top: 0.15em;
-  bottom: 0.15em;
+  left: 1.05rem;
+  top: 1rem;
+  bottom: 1rem;
   width: 1px;
-  background: var(--ink);
+  background: var(--pl-rule);
   transform-origin: top center;
 }
 
-.pl-media {
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background: var(--ash);
+.pl-step {
+  display: grid;
+  grid-template-columns: 2.1rem 1fr;
+  gap: 1rem;
+  align-items: center;
 }
 
-.pl-media img {
+.pl-step-no {
+  position: relative;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--pl-fg);
+  background: var(--pl-bg);
+  font-family: var(--font-switzer-stack);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--pl-fg);
+}
+
+.pl-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.pl-step-value {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.95rem;
+  color: var(--pl-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.pl-step-note {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.875rem;
+  color: var(--pl-muted);
+}
+
+/* stages: round figures, wood to pearl */
+.pl-stages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem 1rem;
+}
+
+.pl-stage-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.pl-stage-disc,
+.pl-phase-disc {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #d9d4cc;
+}
+
+.pl-stage-disc img,
+.pl-phase-disc img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.pl-foot {
+.pl-stage-text {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid var(--rule);
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pl-stage-caption {
   font-family: var(--font-switzer-stack);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgb(16 16 18 / 0.55);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--pl-muted);
+}
+
+.pl-stage-arrow {
+  display: none;
+}
+
+.pl-marks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--pl-rule);
+}
+
+.pl-mark {
+  padding: 0.9rem 0.75rem 0.25rem 0;
+  font-size: 0.64rem;
+  line-height: 1.5;
+}
+
+.pl-mark::before {
+  content: "";
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-bottom: 0.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--pl-fg);
+}
+
+/* anatomy: leader-ruled callouts beside the pearl in section */
+.pl-callouts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.pl-callout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-left: 3.25rem;
+}
+
+.pl-callout-rule {
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--pl-fg);
+  transform-origin: left center;
+}
+
+.pl-callout-rule::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pl-fg);
+}
+
+.pl-callout dd {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.95rem;
+  color: var(--pl-muted);
+}
+
+/* phases: number, round figure, text */
+.pl-phases {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pl-phase {
+  display: grid;
+  grid-template-columns: 1.5rem 4rem 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--pl-rule);
+}
+
+.pl-phase:first-child {
+  border-top: 1px solid var(--pl-rule);
+}
+
+.pl-phase-no {
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  color: var(--pl-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pl-phase-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pl-phase-body {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.925rem;
+  line-height: 1.5;
+  color: var(--pl-muted);
+}
+
+/* media: the main photograph, an optional inset figure under it */
+.pl-media {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 0;
+}
+
+.pl-media-main {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--ash);
+}
+
+.pl-media-main img,
+.pl-inset img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Wider than its frame, so the drift on the track never shows an edge. */
+.pl-media-main img {
+  width: 114%;
+  max-width: none;
+  margin-left: -7%;
+}
+
+.pl-inset {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.pl-inset img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.pl-inset figcaption {
+  font-size: 0.62rem;
+  color: var(--pl-muted);
+}
+
+@media (min-width: 640px) {
+  .pl-stages,
+  .pl-marks {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .pl-phase {
+    grid-template-columns: 3rem 6.5rem 1fr;
+    gap: 1.5rem;
+  }
 }
 
 /* Wide screens: one horizontal track, each plate a near-viewport card. */
@@ -6287,8 +6453,6 @@ html {
     align-items: center;
   }
 
-  /* Every plate the height of the tallest: the track stretches its items,
-     and each card fills its item. */
   .pl-track {
     flex-direction: row;
     align-items: stretch;
@@ -6302,50 +6466,129 @@ html {
     display: flex;
   }
 
+  .pl--stages {
+    flex-basis: min(90vw, 1320px);
+  }
+
   .pl > .pl-card {
     flex: 1;
   }
 
   .pl-card {
-    grid-template-columns: 1.1fr 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     column-gap: clamp(2rem, 4vw, 3.5rem);
-    row-gap: 1.25rem;
-    min-height: min(80svh, 720px);
-    max-height: 90svh;
-    padding: clamp(1.75rem, 3vw, 2.75rem);
+    row-gap: clamp(0.9rem, 2vh, 1.4rem);
+    height: min(86svh, 780px);
+    padding: clamp(1.5rem, 2.6vw, 2.5rem);
     box-sizing: border-box;
+  }
+
+  .pl-headrow,
+  .pl-foot {
+    grid-column: 1 / -1;
   }
 
   .pl-copy {
     justify-content: center;
-    gap: clamp(0.6rem, 1.3vh, 1.1rem);
+    gap: clamp(0.9rem, 2vh, 1.5rem);
+    min-height: 0;
   }
 
-  /* Denser on the track, so the longest plate fits a laptop screen. */
   .pl-title {
-    font-size: clamp(1.9rem, 2.9vw, 2.9rem);
+    font-size: clamp(2rem, 3.1vw, 3.1rem);
   }
 
-  .pl-row {
-    padding: 0.4rem 0;
-  }
-
-  .pl-flow-box {
-    padding: 0.55rem 1rem;
+  .pl-specs .pl-row {
+    grid-template-columns: 1fr 1.25fr;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.6rem 0;
   }
 
   .pl-steps {
-    gap: 0.6rem;
+    gap: clamp(0.5rem, 1.2vh, 0.9rem);
   }
 
-  .pl-media {
+  .pl-media-main {
+    flex: 1;
     aspect-ratio: auto;
-    height: 100%;
+    min-height: 0;
   }
 
-  .pl-foot {
-    grid-column: 1 / -1;
+  .pl-inset {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .pl-inset img {
+    max-height: 22svh;
+  }
+
+  .pl-inset figcaption {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  /* stages: one row across the whole plate, arrows between */
+  .pl--stages .pl-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pl--stages .pl-head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    gap: 3rem;
+  }
+
+  .pl--stages .pl-lede {
+    max-width: 26rem;
+  }
+
+  .pl-stages {
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: start;
+    gap: 1.25rem;
+  }
+
+  .pl-stage-disc {
+    width: min(100%, 28svh);
+  }
+
+  .pl-stage-arrow {
+    display: block;
+    padding-top: 13svh;
+    font-family: var(--font-switzer-stack);
+    color: var(--pl-muted);
+    transform-origin: left center;
+  }
+
+  /* anatomy: the pearl first, the callouts beside it */
+  .pl--anatomy .pl-media {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .pl--anatomy .pl-copy {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* phases: the head beside the list */
+  .pl--phases .pl-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pl--phases .pl-copy {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+
+  .pl-phase-disc {
+    width: min(100%, 15svh);
   }
 }
 
@@ -6415,21 +6658,6 @@ html {
   display: flex;
   justify-content: center;
   margin-block: clamp(2.5rem, 5vw, 4rem);
-}
-
-/* The plate's provenance line, above the footer: the reference marks its
-   figures as patent examples the same way. */
-.pl-note {
-  margin: 0;
-  font-family: var(--font-switzer-stack);
-  font-size: 0.75rem;
-  color: rgb(16 16 18 / 0.55);
-}
-
-@media (min-width: 1024px) {
-  .pl-note {
-    grid-column: 1 / -1;
-  }
 }
 
 .inv-close-section {
