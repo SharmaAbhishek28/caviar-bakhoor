@@ -15,26 +15,6 @@
  * "worldwide" is a claim nobody has confirmed.
  */
 
-/** A collaboration card's look, in the brand's own identity. */
-export type CollabTheme = {
-  /** Card background, under the photograph. */
-  bg: string;
-  /** Brand name and copy. */
-  fg: string;
-  /** The meta line. Defaults to `fg`. */
-  accent?: string;
-  /** Font-family stack for the brand name. Defaults to Bodoni. */
-  font?: string;
-};
-
-/** Stand-ins for the four collaboration slides until the brands are
- *  confirmed: Elixir's own oud range, from the same shoot. */
-const COLLAB_STAND_INS = [
-  { src: "/images/shoot/oud-gift-box.jpg", alt: "Elixir's oud gift box and packs", width: 2400, height: 1600 },
-  { src: "/images/shoot/oud-kalimantan-wide.jpg", alt: "Elixir Kalimantan Super Oud", width: 2400, height: 1350 },
-  { src: "/images/shoot/oud-malik-wide.jpg", alt: "Elixir Malik al Oud", width: 2400, height: 1350 },
-  { src: "/images/shoot/oud-nadir-wide.jpg", alt: "Elixir Nadir al Oud", width: 2400, height: 1350 },
-];
 
 export const BUSINESS = {
   eyebrow: "For business",
@@ -86,21 +66,6 @@ export const BUSINESS = {
       { title: "Custom tin", body: "The tin, its lid and its label, all yours.", image: { src: "/images/collection-tins-dark.jpg", alt: "The four tins, Ward Baccarat, Amber Blanc, Imperial Zafran and Noir, lit against black", width: 2400, height: 1302 } },
       { title: "Custom box", body: "The box and everything in it: charcoal, mesh disc, spoon, card.", image: { src: "/images/shoot/four-boxes-overhead.jpg", alt: "The four boxes, from above", width: 2400, height: 1600 } },
     ],
-  },
-
-  collabs: {
-    title: "Collaborations",
-    // Each card is themed in the brand's own colours and font. Until the
-    // client supplies them, every card uses the site's ash and paper and
-    // falls back to Bodoni. `font` is a CSS font-family stack: add the
-    // brand's face to app/fonts.ts (self-hosted) and reference its variable.
-    items: [1, 2, 3, 4].map((i) => ({
-      id: `collab-${i}`,
-      brand: null as string | null,
-      copy: null as string | null,
-      image: { ...COLLAB_STAND_INS[i - 1], alt: `Stand-in photograph until the collaboration is confirmed: ${COLLAB_STAND_INS[i - 1].alt}` },
-      theme: { bg: "#08070A", fg: "#EFEEEB" } as CollabTheme,
-    })),
   },
 
   enquiry: { title: "Start a project", line: "Tell us about the brand, the brief and the market." },

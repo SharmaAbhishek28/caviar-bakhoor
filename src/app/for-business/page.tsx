@@ -1,5 +1,7 @@
+import { CaseStudies } from "@/components/business/CaseStudies";
+import { COLLABORATIONS } from "@/data/collaborations";
 import type { Metadata } from "next";
-import { BizClients, BizCollabs, BizMade, BizOffer, BizOpener, BizProcess, BizStatement } from "@/components/business/BusinessSections";
+import { BizClients, BizMade, BizOffer, BizOpener, BizProcess, BizStatement } from "@/components/business/BusinessSections";
 import { Credentials } from "@/components/home/08-Credentials";
 import { Container, Reveal } from "@/components/ui";
 import { BUSINESS } from "@/data/business";
@@ -25,7 +27,7 @@ export default function ForBusinessPage() {
       <BizOffer />
       <BizProcess />
       <BizMade />
-      <BizCollabs />
+      <CaseStudies projects={COLLABORATIONS} />
       <section id="enquire" className="biz-enquiry" data-label="Enquire">
         <Container>
           <Reveal className="biz-enquiry-head">

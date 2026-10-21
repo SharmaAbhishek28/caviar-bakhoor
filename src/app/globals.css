@@ -3584,85 +3584,398 @@ html {
   color: var(--ink);
 }
 
-/* 7 — collaborations: full-viewport brand cards that stack as they scroll.
-   Each card is sticky and exactly one viewport tall; the next, a z-index
-   higher, slides up over it. Colours and font come from the card's theme. */
-.biz-collabs {
-  padding-top: var(--section-y);
+/* 7 — collaborations: one case study per client (CaseStudies.tsx). Dark
+   pinned cover, a lit-up summary beside a parallax photograph, the lids
+   rolling in, then a pinned sideways gallery of white cards. */
+.cs {
   border-top: 1px solid var(--rule);
 }
 
-.biz-collabs .biz-offer-head {
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
-}
-
-.biz-stack {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.biz-slide {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  /* The seam stays visible when two dark cards meet. */
-  border-top: 1px solid rgb(255 255 255 / 0.14);
-}
-
-.biz-slide-img {
-  object-fit: cover;
-}
-
-.biz-slide-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 0.2), rgb(0 0 0 / 0.6));
-}
-
-.biz-slide-body {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 56rem;
-  padding-inline: 1.5rem;
+.cs-head {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  padding-block: var(--section-y) clamp(3rem, 6vw, 5rem);
 }
 
-.biz-slide-meta {
+.cs-eyebrow,
+.cs-index,
+.cs-gallery-head {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.cs-eyebrow {
+  color: rgb(16 16 18 / 0.6);
+}
+
+.cs-headline {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-display);
+  font-weight: var(--bodoni-wght);
+  font-size: var(--text-display-xl);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.cs-headline-italic {
+  font-style: italic;
+}
+
+.cs-sub {
   margin: 0;
   font-family: var(--font-switzer-stack);
   font-weight: 900;
-  font-size: 0.75rem;
+  font-size: clamp(0.875rem, 1.4vw, 1.25rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.cs-project + .cs-project {
+  border-top: 1px solid var(--rule);
+}
+
+/* Cover */
+.cs-cover {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: clamp(5rem, 10vh, 7rem) clamp(2.5rem, 6vh, 4rem);
+  box-sizing: border-box;
+}
+
+.cs-cover-grid {
+  width: var(--nav-width);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.cs-cover-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.5rem);
+}
+
+.cs-index {
+  color: rgb(239 238 235 / 0.6);
+}
+
+.cs-client {
+  margin: 0;
+  display: flex;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-on-ash, 6);
+  font-weight: var(--bodoni-wght);
+  font-size: clamp(4rem, 13vw, 12rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: #efeeeb;
+}
+
+.cs-char-mask {
+  display: inline-block;
+  overflow: clip;
+  padding-bottom: 0.04em;
+}
+
+.cs-char {
+  display: inline-block;
+}
+
+.cs-line {
+  margin: 0;
+  font-family: var(--font-bodoni-stack);
+  font-style: italic;
+  font-weight: 500;
+  font-variation-settings: "opsz" 11;
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
+  color: #efeeeb;
+}
+
+.cs-facts {
+  margin: clamp(0.5rem, 2vh, 1.5rem) 0 0;
+  max-width: 30rem;
+}
+
+.cs-fact {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.7rem 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.9375rem;
+}
+
+.cs-fact dt {
+  color: rgb(239 238 235 / 0.55);
+}
+
+.cs-fact dd {
+  margin: 0;
+  text-align: right;
+  color: #efeeeb;
+}
+
+.cs-fact-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgb(239 238 235 / 0.18);
+  transform-origin: left center;
+}
+
+.cs-cover-media {
+  overflow: hidden;
+  aspect-ratio: 1;
+  clip-path: circle(72% at 50% 50%);
+  will-change: clip-path;
+}
+
+.cs-cover-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Story */
+.cs-story {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: var(--section-y);
+}
+
+.cs-summary {
+  margin: 0;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.cs-summary strong {
+  font-weight: 700;
+}
+
+.cs-feature {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--ash);
+}
+
+.cs-feature img {
+  display: block;
+  width: 100%;
+  height: 124%;
+  margin-top: -12%;
+  object-fit: cover;
+}
+
+/* Variants: the lids, round. */
+.cs-variants {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 var(--section-y);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  justify-items: center;
+  overflow: hidden;
+}
+
+.cs-variant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: min(80vw, 26rem);
+}
+
+.cs-lid {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #0b0b0d;
+  box-shadow: 0 30px 60px -30px rgb(8 7 10 / 0.5);
+}
+
+.cs-lid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Only the lid: the photo is clipped to the lid's own outline (measured:
+     63% x 57% of the frame, centred at 50% / 51.3%) and enlarged to fill
+     the disc, so no studio white shows and nothing is cut. */
+  clip-path: ellipse(31.8% 28.8% at 50% 51.3%);
+  transform: scale(1.56);
+  transform-origin: 50% 51.3%;
+}
+
+.cs-variant-name {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-switzer-stack);
+  font-weight: 900;
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--collab-accent, currentColor);
+  color: var(--ink);
 }
 
-.biz-slide-brand {
-  margin: 0;
-  font-family: var(--collab-font, var(--font-bodoni-stack));
-  font-variation-settings: "opsz" var(--opsz-display);
-  font-weight: var(--bodoni-wght);
-  font-size: clamp(2.5rem, 8vw, 7rem);
-  line-height: 1;
-  text-transform: uppercase;
-  overflow-wrap: anywhere;
+.cs-swatch {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
 }
 
-.biz-slide-copy {
-  margin: 0;
-  max-width: 44ch;
-  color: inherit;
+/* Gallery */
+.cs-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.5rem);
+  padding-block: clamp(2rem, 6vh, 4rem);
+  background: var(--paper);
+  overflow: hidden;
 }
+
+.cs-gallery-head {
+  width: var(--nav-width);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(16 16 18 / 0.6);
+}
+
+.cs-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cs-track {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--gutter);
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.cs-track::-webkit-scrollbar {
+  display: none;
+}
+
+.cs-card {
+  flex: 0 0 75vw;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #ffffff;
+  scroll-snap-align: center;
+}
+
+.cs-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs-progress {
+  width: var(--nav-width);
+  margin-inline: auto;
+  height: 1px;
+  background: var(--rule);
+}
+
+.cs-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left center;
+}
+
+@media (min-width: 768px) {
+  .cs-story {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .cs-story--solo {
+    grid-template-columns: 1fr;
+    max-width: 52rem;
+  }
+
+  .cs-variants {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cs-card {
+    flex-basis: 40vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cs-cover-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cs-cover-media {
+    max-height: 80svh;
+    justify-self: end;
+    width: min(100%, 80svh);
+  }
+
+  .cs-gallery {
+    height: 100vh;
+    height: 100svh;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* Pinned: the scroll drives the track, so no native scroller. */
+  .cs-track {
+    overflow: visible;
+    scroll-snap-type: none;
+    will-change: transform;
+  }
+
+  .cs-card {
+    flex-basis: auto;
+    height: min(56svh, 30vw);
+  }
+
+  /* Two tracks share the height. */
+  .cs-tracks:has(.cs-track + .cs-track) .cs-card {
+    height: min(32svh, 18vw);
+  }
+}
+
 
 /* 8 — enquiry */
 .biz-enquiry {
