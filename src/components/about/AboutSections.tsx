@@ -136,29 +136,3 @@ export function WhatWeMake() {
     </section>
   );
 }
-
-/** The close: the composition, two buttons. */
-export function AboutClose() {
-  return (
-    <section className="ab-close" data-label="Contact">
-      <Container>
-        <Reveal stagger className="ab-close-inner">
-          <h2 className="ab-close-h">
-            <span className="type-counter-xl ab-close-lead">{ABOUT.close.lead}</span>
-            <span className="type-display-xl ab-close-line">{ABOUT.close.line}</span>
-          </h2>
-          <div className="ab-close-actions">
-            <Link href={ABOUT.close.primary.href} className="cta-button">
-              <span>{ABOUT.close.primary.label}</span>
-              <span aria-hidden className="cta-arrow">↗</span>
-            </Link>
-            <Link href={ABOUT.close.secondary.href} className="cta-button cta-button--ghost">
-              <span>{ABOUT.close.secondary.label}</span>
-              <span aria-hidden className="cta-arrow">↗</span>
-            </Link>
-          </div>
-        </Reveal>
-      </Container>
-    </section>
-  );
-}

@@ -28,7 +28,7 @@ export function AboutOpener() {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
       tl.from(".ab-eyebrow", { opacity: 0, y: 12, duration: 0.8 })
         .from(".ab-line-inner", { yPercent: 110, duration: 1.2, stagger: 0.12 }, "-=0.5")
-        .from(".ab-lede", { opacity: 0, y: 16, duration: 0.9 }, "-=0.7")
+        .from(".ab-lede, .ab-signature", { opacity: 0, y: 16, duration: 0.9, stagger: 0.12 }, "-=0.7")
         .from(".ab-opener-img", { scale: 1.15, duration: 1.8, ease: "power2.out" }, 0);
 
       // Parallax: the photo drifts up more slowly than the page.
@@ -57,6 +57,11 @@ export function AboutOpener() {
             ))}
           </h1>
           <p className="ab-lede type-body">{ABOUT.lede}</p>
+          <p className="ab-signature">
+            <span>{ABOUT.signature.house}</span>
+            <span className="ab-signature-rule" aria-hidden />
+            <span>{ABOUT.signature.founded}</span>
+          </p>
         </div>
       </Container>
 

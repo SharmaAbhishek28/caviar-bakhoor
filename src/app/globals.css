@@ -3101,39 +3101,6 @@ html {
 }
 
 /* --- /about: close ----------------------------------------------------------- */
-.ab-close {
-  padding-block: var(--section-y);
-  border-top: 1px solid var(--rule);
-}
-
-.ab-close-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-}
-
-.ab-close-h {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-
-.ab-close-lead {
-  font-size: calc(var(--text-display-xl) * 0.42);
-  margin-bottom: 0.15em;
-  margin-left: 0.1em;
-}
-
-.ab-close-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
 .cta-button.cta-button--ghost {
   background: transparent;
   color: var(--ink);
@@ -6735,5 +6702,364 @@ html {
   .cs-cover-media--wide {
     width: 100%;
     max-height: none;
+  }
+}
+
+/* --- /about: the house, after the concept (AboutHouse.tsx) ----------------- */
+.ab-signature {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ab-signature span {
+  white-space: nowrap;
+}
+
+.ab-signature-rule {
+  flex: none;
+  width: clamp(1.5rem, 4vw, 3rem);
+  height: 1px;
+  background: var(--ink);
+}
+
+.ah-eyebrow {
+  margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(16 16 18 / 0.6);
+}
+
+.on-ash .ah-eyebrow {
+  color: rgb(239 238 235 / 0.6);
+}
+
+.ah-line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.ah-line-inner {
+  display: block;
+}
+
+.ah-line--italic .ah-line-inner,
+.ah-line-inner em {
+  font-style: italic;
+}
+
+.ah-phil-h,
+.ah-disc-h,
+.ah-approach-h,
+.ah-int-h,
+.ah-part-h {
+  margin: 0;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+/* Philosophy: dark, full bleed */
+.ah-phil {
+  padding-block: var(--section-y);
+  background: var(--ash);
+  color: #efeeeb;
+}
+
+.ah-phil-h {
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  color: #efeeeb;
+}
+
+.ah-phil-body {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  max-width: 46rem;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.6;
+  color: rgb(239 238 235 / 0.72);
+}
+
+/* Disciplines: six ruled rows */
+.ah-disc {
+  padding-block: var(--section-y);
+}
+
+.ah-disc-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1.5rem 3rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.ah-disc-h {
+  font-size: clamp(3rem, 7vw, 7rem);
+  color: var(--ink);
+}
+
+.ah-disc-lede {
+  margin: 0;
+  max-width: 22rem;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--ink-prose);
+}
+
+.ah-disc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ah-disc-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  padding: clamp(1.4rem, 3vw, 2.4rem) 0;
+}
+
+.ah-disc-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--rule);
+  transform-origin: left center;
+}
+
+.ah-disc-end {
+  display: block;
+  height: 1px;
+  background: var(--rule);
+}
+
+.ah-disc-no {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: rgb(16 16 18 / 0.55);
+}
+
+.ah-disc-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.4vw, 3.25rem);
+  line-height: 1.1;
+  color: var(--ink);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* The pearl marker: a dot that swells on hover. */
+.ah-disc-pearl {
+  flex: none;
+  width: 0;
+  height: 0.42em;
+  margin-right: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  transition: width 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), margin 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.ah-disc-body {
+  grid-column: 2;
+  margin: 0;
+  max-width: 24rem;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-prose);
+}
+
+@media (hover: hover) {
+  .ah-disc-row:hover .ah-disc-pearl {
+    width: 0.42em;
+    margin-right: 0.35em;
+  }
+}
+
+/* Approach, then the integrated house */
+.ah-approach {
+  padding-block: var(--section-y);
+  text-align: center;
+  background: #e7e3dc;
+}
+
+.ah-approach-h {
+  font-size: clamp(2.4rem, 5.4vw, 5.25rem);
+  color: var(--ink);
+}
+
+.ah-approach-rule {
+  display: block;
+  width: 7rem;
+  height: 1px;
+  margin: clamp(1.75rem, 3vw, 2.5rem) auto;
+  background: var(--ink);
+}
+
+.ah-approach-body {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--ink-prose);
+}
+
+.ah-int {
+  padding-block: var(--section-y);
+}
+
+.ah-int-h {
+  font-size: clamp(2.4rem, 5vw, 4.75rem);
+  color: var(--ink);
+}
+
+.ah-int-frame {
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  padding-top: 3px;
+}
+
+.ah-int-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--ink);
+  transform-origin: left center;
+}
+
+.ah-int-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-left: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
+}
+
+.ah-int-cell {
+  --lit: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: clamp(8rem, 14vw, 11rem);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  color: color-mix(in srgb, #efeeeb calc(var(--lit) * 100%), #101012);
+}
+
+/* The current stage fills from below. */
+.ah-int-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleY(var(--lit));
+  transform-origin: bottom center;
+}
+
+.ah-int-no,
+.ah-int-name {
+  position: relative;
+}
+
+.ah-int-no {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+.ah-int-name {
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  line-height: 1.05;
+}
+
+/* Partnership: dark, centred */
+.ah-part {
+  padding-block: var(--section-y);
+  background: var(--ash);
+  color: #efeeeb;
+  text-align: center;
+}
+
+.ah-part-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ah-part-h {
+  font-size: clamp(2.4rem, 5.4vw, 5.25rem);
+  color: #efeeeb;
+}
+
+.cta-button.ah-part-cta {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  background: #efeeeb;
+  color: #101012;
+  border-color: #efeeeb;
+}
+
+.ah-part-sign {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(239 238 235 / 0.55);
+}
+
+@media (min-width: 768px) {
+  .ah-disc-row {
+    grid-template-columns: 4rem 1.3fr 1fr;
+    align-items: center;
+  }
+
+  .ah-disc-body {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .ah-int-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (hover: hover) and (min-width: 768px) {
+  .ah-disc-row:hover .ah-disc-title {
+    transform: translateX(0.5rem);
   }
 }
