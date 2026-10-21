@@ -19,11 +19,13 @@ import { HeroMedia } from "./01-HeroMedia";
  *   hero-1080.mp4   H.264 -crf 22 -maxrate 1.5M   wide screens, no AV1
  *   hero-720.webm   AV1  -crf 36, Opus 48k        phones
  *   hero-720.mp4    H.264 -crf 24 -maxrate 800k   phones, no AV1
- *   hero-poster.jpg  the frame at 1s (the Elixir mark), so the poster
+ *   hero-poster.jpg  the "Presenting" card, so the poster
  *                    and the video's first frames match.
  * All with -preset slow -movflags +faststart.
  *
- * NOTE: the clip's title card (≈2–4s) reads "Presenting CAVIAR DE PARFUM",
+ * Trimmed 3.4s to 44.3s (site owner, 2026-10-21): the Elixir logo card at
+ * the start and the end is cut, so it opens on "Presenting". NOTE: that card
+ * reads "Presenting CAVIAR DE PARFUM",
  * the name the client retired on 2026-09-17. The site owner chose to ship
  * the video exactly as supplied (2026-10-17).
  */
