@@ -39,17 +39,25 @@ export default function InnovationPage() {
 
       <InnovationPlates plates={PLATES} footer={INNOVATION.footer} />
 
-      <section className="inv-close-section">
+      <section className="ab-close" data-label="Shop">
         <Container>
-          <div className="inv-close">
-            <Link href="/collection" className="cta-button">
-              <span>Shop Caviar Bakhoor</span>
-              <span aria-hidden className="cta-arrow">↗</span>
-            </Link>
-            <Link href="/for-business" className="cta-button">
-              <span>Create with us</span>
-              <span aria-hidden className="cta-arrow">↗</span>
-            </Link>
+          <div className="ab-close-inner">
+            <Eyebrow>{INNOVATION.close.eyebrow}</Eyebrow>
+            <h2 className="ab-close-h">
+              <span className="type-counter-xl ab-close-lead">{INNOVATION.close.lead}</span>
+              <span className="type-display-xl ab-close-line">{INNOVATION.close.line}</span>
+            </h2>
+            <p className="ab-close-sub">{INNOVATION.close.sub}</p>
+            <div className="ab-close-actions">
+              <Link href={INNOVATION.close.primary.href} className="cta-button">
+                <span>{INNOVATION.close.primary.label}</span>
+                <span aria-hidden className="cta-arrow">↗</span>
+              </Link>
+              <Link href={INNOVATION.close.secondary.href} className="cta-button cta-button--ghost">
+                <span>{INNOVATION.close.secondary.label}</span>
+                <span aria-hidden className="cta-arrow">↗</span>
+              </Link>
+            </div>
           </div>
         </Container>
       </section>

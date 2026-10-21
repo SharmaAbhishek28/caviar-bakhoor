@@ -1067,7 +1067,8 @@ html {
    Two classes: .marquee sets the mask and is declared later in this file,
    so a single-class override lost on cascade order — measured. */
 .marquee.four-marquee {
-  mask-image: none;
+  /* Soft ends, like the keyword band: a hard cut at the column edges read
+     as a clipped, broken line. */
 }
 
 .four-marquee .type-marquee {
@@ -3101,6 +3102,49 @@ html {
 }
 
 /* --- /about: close ----------------------------------------------------------- */
+/* The closing composition: /ritual and /innovation. */
+.ab-close {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--rule);
+}
+
+.ab-close-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.ab-close-h {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.ab-close-lead {
+  font-size: calc(var(--text-display-xl) * 0.42);
+  margin-bottom: 0.15em;
+  margin-left: 0.1em;
+}
+
+.ab-close-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ab-close-sub {
+  margin: 0;
+  max-width: 36rem;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.55;
+  color: var(--ink-prose);
+}
+
 .cta-button.cta-button--ghost {
   background: transparent;
   color: var(--ink);
@@ -4116,7 +4160,6 @@ html {
 
 .rt-h1-line {
   display: block;
-  white-space: nowrap;
 }
 
 .rt-h1-line--italic {
@@ -6636,23 +6679,6 @@ html {
   max-width: 44rem;
 }
 
-.inv-close {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-}
-
-/* /contact: the WhatsApp button in place of the form, centred. */
-.contact-whatsapp {
-  display: flex;
-  justify-content: center;
-  margin-block: clamp(2.5rem, 5vw, 4rem);
-}
-
-.inv-close-section {
-  padding-block: var(--section-y);
-}
 
 /* /collection: the booklet spread, full bleed on black. */
 .booklet-plate {
@@ -7084,5 +7110,26 @@ html {
 @media (hover: hover) and (min-width: 768px) {
   .ah-disc-row:hover .ah-disc-title {
     transform: translateX(0.5rem);
+  }
+}
+
+/* /ritual opener: words keep their letters together; lines wrap between words. */
+.rt-word-inner {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* /contact: the WhatsApp button in place of the form, centred. */
+.contact-whatsapp {
+  display: flex;
+  justify-content: center;
+  margin-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* /for-business: "Development" is one long word; at the phone display size
+   (12vw) it ran past the screen edge. */
+@media (max-width: 767px) {
+  .biz-made-h .type-display-xl {
+    font-size: 10vw;
   }
 }

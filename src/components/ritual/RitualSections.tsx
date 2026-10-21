@@ -54,8 +54,17 @@ export function RitualOpener() {
     return () => ctx.revert();
   }, []);
 
-  const chars = (line: string) => line.split("").map((c, i) => (
-    <span key={i} className="rt-mask"><span className="rt-char">{c === " " ? " " : c}</span></span>
+  // Letters are grouped by word, with ordinary spaces between the words,
+  // so a line can wrap on a narrow screen instead of running off it.
+  const chars = (line: string) => line.split(" ").map((word, w) => (
+    <span key={w} className="rt-word">
+      {w ? " " : null}
+      <span className="rt-word-inner">
+        {word.split("").map((c, i) => (
+          <span key={i} className="rt-mask"><span className="rt-char">{c}</span></span>
+        ))}
+      </span>
+    </span>
   ));
 
   return (

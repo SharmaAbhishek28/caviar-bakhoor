@@ -53,6 +53,15 @@ export const INNOVATION = {
   marquee: ["Hojai, Assam", "Selection protocol", "Cryogenic micro-refinement", "200 µm", "Down to −100 °C", "Cold process", "Encapsulation", "Thermal release"],
   panel: { src: "/images/texture/pearl-macro.jpg", alt: "Caviar Bakhoor pearls, close, scattered with flakes of 24-karat gold", width: 2400, height: 1600 },
   footer: "Caviar Bakhoor",
+  /** The close: content.md § Closing, with the booklet's line under it. */
+  close: {
+    eyebrow: "Caviar Bakhoor",
+    lead: "Ready to try",
+    line: "the new bakhoor?",
+    sub: "A groundbreaking and luxurious way of Bakhoor, in the avatar of Caviar.",
+    primary: { label: "Shop Caviar Bakhoor", href: "/collection" },
+    secondary: { label: "Create with us", href: "/for-business" },
+  },
 };
 
 const img = (file: string, alt: string, width = 1600, height = 2000): Img => ({
