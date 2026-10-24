@@ -22,7 +22,7 @@ import { FOUR_CLOSE, FOUR_OPENER } from "@/data/four";
  */
 export function Four() {
   return (
-    <StackSection index={6} label="Collection" surface="paper" className="four">
+    <StackSection index={7} label="Collection" surface="paper" className="four">
       <Container>
         {/* WHERE CAVIAR / BECOMES BAKHOOR — two lines in reading order,
             three faces sharing a baseline. data-no-reveal: the line-splitting

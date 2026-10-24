@@ -7347,3 +7347,257 @@ html {
     padding-bottom: 1rem;
   }
 }
+
+/* --- Home 05b: the royal visit (05b-Visit.tsx) ------------------------------ */
+.vs-stage {
+  padding-block: var(--section-y);
+  color: #efeeeb;
+}
+
+.vs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.vs-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.5rem);
+}
+
+.vs-eyebrow {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(239 238 235 / 0.6);
+}
+
+.vs-title {
+  margin: 0;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.6vw, 4.75rem);
+  line-height: 1.02;
+  color: #efeeeb;
+}
+
+.vs-line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.vs-line-inner {
+  display: block;
+}
+
+.vs-line--italic {
+  font-style: italic;
+}
+
+.vs-body {
+  margin: 0;
+  max-width: 34rem;
+  font-family: var(--font-switzer-stack);
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.6;
+  color: rgb(239 238 235 / 0.72);
+}
+
+.vs-body strong {
+  font-weight: 600;
+  color: #efeeeb;
+}
+
+.vs-notes {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  max-width: 30rem;
+}
+
+.vs-note {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgb(239 238 235 / 0.16);
+}
+
+.vs-note-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: #efeeeb;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.vs-note-no {
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-size: 1.25rem;
+  color: rgb(239 238 235 / 0.6);
+}
+
+.vs-note-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.vs-note-label {
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #efeeeb;
+}
+
+.vs-note-body {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.95rem;
+  color: rgb(239 238 235 / 0.72);
+}
+
+.vs-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: 30rem;
+  margin-top: 0.5rem;
+}
+
+.vs-link {
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #efeeeb;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.vs-credit {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.75rem;
+  color: rgb(239 238 235 / 0.5);
+}
+
+.vs-figure {
+  margin: 0;
+}
+
+.vs-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 720 / 920;
+  background: #000;
+}
+
+.vs-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.vs-shade {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vs-mark {
+  position: absolute;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: -2.25rem 0 0 -2.25rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 6px rgb(255 255 255 / 0.18), 0 6px 24px rgb(0 0 0 / 0.45);
+}
+
+.vs-mark-no,
+.vs-band-no {
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+}
+
+.vs-mark-no {
+  position: absolute;
+  left: 100%;
+  top: -0.6rem;
+  margin-left: 0.4rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-shadow: 0 1px 6px rgb(0 0 0 / 0.7);
+}
+
+.vs-band {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.vs-band-line {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.3;
+  stroke-dasharray: 1;
+}
+
+.vs-band-no {
+  font-size: 2.6px;
+  letter-spacing: 0.1px;
+  fill: #fff;
+}
+
+@media (min-width: 1024px) {
+  /* Pinned: the stage is one screen, the photograph its full height. */
+  .vs-stage {
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(4rem, 9vh, 6rem) clamp(2rem, 5vh, 3rem);
+    box-sizing: border-box;
+  }
+
+  .vs-stage > div {
+    width: 100%;
+  }
+
+  .vs-grid {
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    column-gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  .vs-frame {
+    height: min(78svh, 46rem);
+    width: auto;
+    margin-left: auto;
+  }
+}

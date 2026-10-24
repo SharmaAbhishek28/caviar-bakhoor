@@ -4,6 +4,7 @@ import { Innovation } from "@/components/home/02-Innovation";
 import { Approach } from "@/components/home/03-Approach";
 import { Projects } from "@/components/home/04-Projects";
 import { Ritual } from "@/components/home/05-Ritual";
+import { Visit } from "@/components/home/05b-Visit";
 import { Four } from "@/components/home/06-Four";
 import { Credentials } from "@/components/home/08-Credentials";
 
@@ -24,6 +25,7 @@ export default function Home() {
       <Approach />
       <Projects />
       <Ritual />
+      <Visit />
       <Four />
       {/* 07 Closing follows here. */}
       <Credentials />

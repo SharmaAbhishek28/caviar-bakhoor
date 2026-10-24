@@ -158,7 +158,7 @@ function Project({ project: p, index, total }: { project: CaseStudy; index: numb
   }, [gallery.length]);
 
   return (
-    <article ref={ref} className="cs-project" aria-label={`${name}, ${p.line}`}>
+    <article ref={ref} id={p.id} className="cs-project" aria-label={`${name}, ${p.line}`}>
       {/* Cover */}
       <div className="pin-host">
         <div className="cs-cover on-ash">
