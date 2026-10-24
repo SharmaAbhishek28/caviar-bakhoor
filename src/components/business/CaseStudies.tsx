@@ -166,6 +166,16 @@ function Project({ project: p, index, total }: { project: CaseStudy; index: numb
             <div className="cs-cover-text">
               <p className="cs-index">
                 ( {pad(index + 1)} / {pad(total)} ){p.origin ? ` · ${p.origin}` : ""}
+                {p.origin && p.flag ? (
+                  <Image
+                    src={`/images/flags/${p.flag}.svg`}
+                    alt=""
+                    width={20}
+                    height={15}
+                    unoptimized
+                    className="cs-flag"
+                  />
+                ) : null}
               </p>
               <h3
                 className={`cs-client${p.keepCase ? " cs-client--as-is" : ""}${longName ? " cs-client--long" : ""}`}

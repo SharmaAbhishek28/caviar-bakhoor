@@ -26,6 +26,9 @@ export type CaseStudy = {
   keepCase?: boolean;
   /** Left out where it would identify an unnamed client. */
   origin?: string;
+  /** Two-letter country code: the flag shown beside the origin, from
+   *  public/images/flags/<code>.svg (flag-icons, MIT). */
+  flag?: string;
   /** The client's product line. */
   line: string;
   summary: string;
@@ -75,6 +78,7 @@ export const COLLABORATIONS: CaseStudy[] = [
     id: "sarib",
     client: "Sarib",
     origin: "Saudi Arabia",
+    flag: "sa",
     line: "Remal Caviar Bakhoor",
     summary:
       "For Sarib, the Arabian perfume house, Elixir made Remal: Sarib's own Caviar Bakhoor. Encapsulated bakhoor finished with pure 24-karat gold flakes, in two compositions, Black Oud and Oud Nights, dressed in Sarib's calligraphic identity.",
@@ -109,6 +113,7 @@ export const COLLABORATIONS: CaseStudy[] = [
     client: "tripleA",
     keepCase: true,
     origin: "United Arab Emirates",
+    flag: "ae",
     line: "Caviar Incense Collection",
     summary:
       "For tripleA Perfumes, the Emirati fragrance house, Elixir made the Caviar Incense Collection: Caviar Bakhoor in three compositions, Amber, Oud and Saffron, a hundred grams to each tin, presented in tripleA's burgundy gift box with a gold spoon.",
@@ -143,18 +148,17 @@ export const COLLABORATIONS: CaseStudy[] = [
     ],
   },
   {
-    /* The client is not named, at the site owner's direction (2026-10-21);
-       its name is blurred out of the photograph. */
+    /* Shown as Oud Gourmet, at the site owner's direction (2026-10-24); the
+       house's own name stays blurred out of the photograph. */
     id: "oud-gourmet",
-    client: "Undisclosed",
-    title: "Oud Gourmet",
+    client: "Oud Gourmet",
     line: "Vibrance Vue Bakhoor",
     summary:
-      "For a fragrance house, unnamed here, Elixir made Oud Gourmet, Vibrance Vue Bakhoor: Caviar Bakhoor under the line \"a new era of oud\", in a black tin and a white gift box embossed with OUD, finished in black and white.",
-    strong: ["Oud Gourmet, Vibrance Vue Bakhoor", "a new era of oud"],
+      "For Oud Gourmet, Elixir made Vibrance Vue Bakhoor: Caviar Bakhoor under the line \"a new era of oud\", in a black tin and a white gift box embossed with OUD, finished in black and white.",
+    strong: ["Vibrance Vue Bakhoor", "a new era of oud"],
     facts: [
-      { label: "Client", value: "Undisclosed" },
-      { label: "Line", value: "Oud Gourmet" },
+      { label: "Client", value: "Oud Gourmet" },
+      { label: "Line", value: "Caviar Bakhoor" },
       { label: "Product", value: "Vibrance Vue Bakhoor" },
     ],
     cover: {
@@ -168,6 +172,7 @@ export const COLLABORATIONS: CaseStudy[] = [
     id: "fan-al-oud",
     client: "Fan Al Oud",
     origin: "United Arab Emirates",
+    flag: "ae",
     line: "Caviar Collection",
     summary:
       "For Fan Al Oud, the Emirati oud house, Elixir made the Caviar Collection: Caviar Bakhoor in two compositions, Oud Khas and Oud Amiri, each tin set with a gold spoon and a mesh disc in a black and gold gift box, an illustrated card inside showing the ritual.",

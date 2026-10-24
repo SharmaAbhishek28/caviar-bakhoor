@@ -3682,7 +3682,21 @@ html {
 }
 
 .cs-index {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
   color: rgb(239 238 235 / 0.6);
+}
+
+/* The flag beside the origin: small, a hairline frame so white bands hold
+   their edge on the dark cover. */
+.cs-flag {
+  display: block;
+  width: 1.9em;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgb(239 238 235 / 0.25);
 }
 
 .cs-client {
