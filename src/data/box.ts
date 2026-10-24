@@ -10,10 +10,10 @@
  *
  * The photographs are stills from the client's own films: the spoon and the
  * foil from "CAVIAR ITALIAN SUBS" (61.5s, 60.5s), cropped square above the
- * burned-in subtitles. The mesh image is AI-generated (Higgsfield, GPT Image
- * 2.5, 2026-10-19) from a still of the real mesh in "VE Project 5-2" (23.5s),
- * to show its double layer and quilted pattern sharply; replace with a
- * photograph of the mesh when one exists.
+ * burned-in subtitles. The mesh and foil images are AI studio shots
+ * (Higgsfield, GPT Image 2.5, 2026-10-24) made from the site owner's
+ * photographs of the real mesh disc and foil disc, set on the burner to
+ * match the spoon card.
  */
 
 export type BoxItem = {
@@ -43,13 +43,13 @@ export const BOX_ITEMS: BoxItem[] = [
     name: "The mesh",
     body: "A double-layered stainless-steel mesh in a two-tone quilted pattern, made in two sizes, to ensure consistent heat dispersal for a clean, smooth and long-lasting burn.",
     strong: ["double-layered stainless-steel mesh", "two-tone quilted pattern", "two sizes"],
-    image: { src: "/images/box/mesh-studio-round.jpg", alt: "The round, double-layered mesh disc, gold and silver in a quilted pattern, resting on the burner", width: 1200, height: 1200 },
+    image: { src: "/images/box/mesh-disc.jpg", alt: "The round mesh disc, a gold rim around fine stainless steel mesh, resting on the burner", width: 1200, height: 1200 },
   },
   {
     name: "The foil",
     body: "Extra-thick aluminium foil for everyday burning, placed directly on the charcoal.",
     strong: ["Extra-thick aluminium foil", "everyday burning"],
-    image: { src: "/images/box/foil.jpg", alt: "A disc of thick aluminium foil on the charcoal in the burner", width: 1000, height: 1000 },
+    image: { src: "/images/box/foil-disc.jpg", alt: "A round disc of brushed aluminium foil resting on the burner", width: 1200, height: 1200 },
   },
 ];
 
