@@ -132,6 +132,8 @@ export const COLLABORATIONS: CaseStudy[] = [
       { name: "Saffron", color: "#b08a3a", image: tripleA("saffron-lid", "The tripleA Saffron tin", true), show: "photo" },
     ],
     gallery: [
+      tripleA("gift-set", "The tripleA gift chest in gold lacquer, open: the Saffron, Amber and Oud tins, a black burner, three gold spoons, a mesh disc and the card"),
+      tripleA("saffron-case", "The Saffron case in burgundy lacquer, open: the tin, a gold spoon, a mesh disc and a cloth"),
       tripleA("amber-box", "The Amber gift box with its silver label"),
       tripleA("oud-box", "The Oud gift box with its black label"),
       tripleA("saffron-box", "The Saffron gift box with its gold label"),

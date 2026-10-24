@@ -29,16 +29,6 @@ export const UGC: {
   items: [
     { kind: "video", id: "saffron-unboxing", title: "Unboxing the Saffron tin", credit: null, src: "/video/ugc/saffron-unboxing.mp4", poster: "/video/ugc/saffron-unboxing-poster.jpg" },
     { kind: "video", id: "in-store", title: "At the counter", credit: "@wowviruae", src: "/video/ugc/in-store.mp4", poster: "/video/ugc/in-store-poster.jpg" },
-    {
-      kind: "image",
-      id: "booth-01",
-      title: "At the booth",
-      credit: null,
-      src: "/images/ugc/booth-01.jpg",
-      alt: "At the Elixir booth, visitors look on as Caviar Bakhoor is shown beside its boxes, tins and white burners",
-      width: 1600,
-      height: 1067,
-    },
     { kind: "video", id: "collection-reel", title: "The collection, on film", credit: "@bawwabah.bykaya", src: "/video/ugc/collection-reel.mp4", poster: "/video/ugc/collection-reel-poster.jpg" },
     { kind: "video", id: "fan-al-oud-film", title: "Fan Al Oud, on film", credit: null, src: "/video/ugc/fan-al-oud-film.mp4", poster: "/video/ugc/fan-al-oud-film-poster.jpg" },
     {

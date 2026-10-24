@@ -9,13 +9,13 @@ import type { Product } from "@/data/products";
  * findable for whoever fills them in.
  */
 
+/** "Rs. 25,000 · USD 250". Written out rather than with the rupee sign,
+ *  which Switzer does not draw. */
 export function formatPrice(product: Product): string | null {
   if (product.priceMinor === null) return null;
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: product.currency,
-    maximumFractionDigits: 0,
-  }).format(product.priceMinor / 100);
+  const n = (minor: number, locale: string) => new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(minor / 100);
+  const inr = `Rs. ${n(product.priceMinor, "en-IN")}`;
+  return product.priceUsdMinor === null ? inr : `${inr} · USD ${n(product.priceUsdMinor, "en-US")}`;
 }
 
 export function formatWeight(product: Product): string | null {

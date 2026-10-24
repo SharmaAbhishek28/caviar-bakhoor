@@ -35,8 +35,10 @@ export type Product = {
   title: string;
   /** Shown under the title on the PDP. Constant across the line. */
   subtitle: string;
-  /** Minor units, INR. Formatted at render. CONFIRM all four. */
+  /** Minor units, INR (paise). Formatted at render. */
   priceMinor: number | null;
+  /** Minor units, USD (cents), shown beside the INR price. */
+  priceUsdMinor: number | null;
   currency: 'INR';
   available: boolean;
   /** Net weight of pearls. CONFIRM. */
@@ -76,7 +78,8 @@ export const products: Product[] = [
     handle: 'noir',
     title: 'Noir',
     subtitle: 'Scented Bakhoor · Caviar Bakhoor',
-    priceMinor: null, // CONFIRM
+    priceMinor: 2500000, // Rs. 25,000 (site owner, 2026-10-24)
+    priceUsdMinor: 25000, // USD 250
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
@@ -131,7 +134,8 @@ export const products: Product[] = [
     handle: 'ward-baccarat',
     title: 'Ward Baccarat',
     subtitle: 'Scented Bakhoor · Caviar Bakhoor',
-    priceMinor: null, // CONFIRM
+    priceMinor: 2500000, // Rs. 25,000 (site owner, 2026-10-24)
+    priceUsdMinor: 25000, // USD 250
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
@@ -185,7 +189,8 @@ export const products: Product[] = [
     handle: 'imperial-zafran',
     title: 'Imperial Zafran',
     subtitle: 'Scented Bakhoor · Caviar Bakhoor',
-    priceMinor: null, // CONFIRM
+    priceMinor: 2500000, // Rs. 25,000 (site owner, 2026-10-24)
+    priceUsdMinor: 25000, // USD 250
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
@@ -240,7 +245,8 @@ export const products: Product[] = [
     handle: 'amber-blanc',
     title: 'Amber Blanc',
     subtitle: 'Scented Bakhoor · Caviar Bakhoor',
-    priceMinor: null, // CONFIRM
+    priceMinor: 2500000, // Rs. 25,000 (site owner, 2026-10-24)
+    priceUsdMinor: 25000, // USD 250
     currency: 'INR',
     available: true,
     weightGrams: null, // CONFIRM
