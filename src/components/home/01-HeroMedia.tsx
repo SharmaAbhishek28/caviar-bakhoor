@@ -20,9 +20,15 @@ import { HeroLogo } from "./HeroLogo";
  * faststart, so playback begins before the download ends. The video pauses
  * while the hero is off screen, and never plays under reduced motion.
  *
- * SOUND: browsers block autoplay with audio, so the video starts muted and
- * the toggle unmutes on request. Muted also has to be set on the element
- * directly, not only as an attribute, or Safari ignores it.
+ * SOUND (site owner, 2026-10-24): the film's sound is on from the start.
+ * Browsers only allow sound without a gesture where the visitor has
+ * engaged with the site before, so the page tries to play with sound; if
+ * the browser refuses, the film plays muted and the sound comes on at the
+ * visitor's first click, tap or key. Scrolling the hero mostly off screen
+ * mutes it; scrolling back brings the sound back. The toggle is the
+ * visitor's own choice and overrides both: once off, it stays off. Muted is
+ * set on the element directly, not only as an attribute, or Safari
+ * ignores it.
  */
 export function HeroMedia({
   hasVideo,
@@ -66,7 +72,13 @@ export function HeroMedia({
     }, section);
     return () => ctx.revert();
   }, []);
-  const [muted, setMuted] = useState(true);
+  /** The visitor's choice: sound on unless they turn it off. */
+  const [wanted, setWanted] = useState(true);
+  /** Whether the browser will let the film play with sound yet. */
+  const [unlocked, setUnlocked] = useState(false);
+  /** Whether at least half of the hero is on screen. */
+  const [inView, setInView] = useState(true);
+  const audible = wanted && unlocked && inView;
 
   if (hasVideo) preload(posterSrc, { as: "image", fetchPriority: "high" });
 
@@ -74,8 +86,44 @@ export function HeroMedia({
     const v = videoRef.current;
     if (!v) return;
     v.volume = AMBIENT_VOLUME;
-    v.muted = muted;
-  }, [muted]);
+    v.muted = !audible;
+  }, [audible]);
+
+  // Try sound straight away; if the browser refuses, unlock it at the
+  // first gesture anywhere on the page.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let done = false;
+    const unlock = () => {
+      if (done) return;
+      done = true;
+      setUnlocked(true);
+      off();
+    };
+    const events = ["pointerdown", "keydown", "touchstart"] as const;
+    const off = () => events.forEach((e) => window.removeEventListener(e, unlock, true));
+    v.volume = AMBIENT_VOLUME;
+    v.muted = false;
+    v.play()
+      .then(() => unlock())
+      .catch(() => {
+        // Refused with sound: play muted, wait for a gesture.
+        v.muted = true;
+        v.play().catch(() => {});
+        events.forEach((e) => window.addEventListener(e, unlock, { capture: true, passive: true }));
+      });
+    return off;
+  }, []);
+
+  // Mute once the hero is mostly scrolled away.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const io = new IntersectionObserver(([e]) => setInView(e.intersectionRatio >= 0.5), { threshold: [0, 0.5, 1] });
+    io.observe(section);
+    return () => io.disconnect();
+  }, []);
 
   // Play only while on screen, and not at all under reduced motion.
   useEffect(() => {
@@ -178,10 +226,14 @@ export function HeroMedia({
       {hasVideo ? (
         <button
           type="button"
-          onClick={() => setMuted((m) => !m)}
+          onClick={() => {
+            // The click is itself a gesture, so sound can always start here.
+            setUnlocked(true);
+            setWanted(!audible);
+          }}
           className="sound-toggle hero-sound"
-          aria-pressed={!muted}
-          aria-label={muted ? "Turn sound on" : "Turn sound off"}
+          aria-pressed={audible}
+          aria-label={audible ? "Turn sound off" : "Turn sound on"}
         >
           {/* A fine-line speaker. Muted: crossed out. On: two waves that
               ripple outward. */}
