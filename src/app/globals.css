@@ -7185,3 +7185,26 @@ html {
     font-size: 10vw;
   }
 }
+
+/* Home 06: Tailored collection development, centred under the opener, then
+   the row of pearls that separates it from the close. */
+.four-tailored {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 1.5vw, 1.5rem);
+  margin-top: clamp(3rem, 7vw, 6rem);
+  text-align: center;
+}
+
+.four-tailored .cta-button {
+  align-self: center;
+}
+
+.four-tailored-copy {
+  max-width: 58ch;
+}
+
+.four-pearls {
+  margin-top: clamp(3rem, 7vw, 6rem);
+}

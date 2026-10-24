@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   Container,
   Eyebrow,
@@ -15,8 +14,9 @@ import { ProjectWheel } from "./04-ProjectWheel";
  *
  * Opens with the display headline, then pins: four cards ride a wheel that
  * turns as the page scrolls, one card facing front at a time, over a giant
- * time-based marquee. When the fourth card has had its turn the pin releases
- * and the closing block scrolls normally.
+ * time-based marquee. When the fourth card has had its turn the pin releases.
+ * The Tailored collection development block that closed this section moved
+ * to section 06, under Where caviar becomes bakhoor (site owner, 2026-10-24).
  *
  * Card proportions are taken from the reference, measured rather than guessed:
  * its project image renders 403 x 576 at a 1440px viewport, so roughly 28% of
@@ -45,47 +45,9 @@ export function Projects() {
 
       <ProjectWheel items={PROJECT_WHEEL} />
 
-      {/* The closing block: left-aligned, as the reference's section ends.
-          A step down from the section opener — display-md, and the block's
-          own rhythm tighter than the opener's, so it reads as a coda. A row
-          of pearls separates it from the wheel. */}
-      <Container>
-        <div
-          className="pearl-rule"
-          aria-hidden
-          style={{ marginTop: "clamp(3rem, 7vw, 6rem)" }}
-        />
-        <Reveal
-          stagger
-          className="flex flex-col"
-          style={{
-            paddingTop: "clamp(3rem, 7vw, 6rem)",
-            paddingBottom: "var(--section-y)",
-            gap: "clamp(1rem, 1.5vw, 1.5rem)",
-            alignItems: "flex-start",
-          }}
-        >
-          <DisplayHeadline
-            lines={["Tailored collection", "Development"]}
-            italicLine={0}
-            style={{ maxWidth: "18ch", fontSize: "var(--text-display-md)" }}
-          />
-
-          <p className="type-body" style={{ maxWidth: "58ch" }}>
-            Elixir creates Caviar Bakhoor collections for your brand{" "}
-            <strong>from start to finish</strong>. We develop and refine your
-            scent, create custom tins and boxes, and manage production with{" "}
-            <strong>one point of contact</strong> throughout.
-          </p>
-
-          <Link href="/for-business" className="cta-button">
-            <span>Start a project</span>
-            <span aria-hidden className="cta-arrow">
-              ↗
-            </span>
-          </Link>
-        </Reveal>
-      </Container>
+      {/* Room after the last card before the section ends, now that the
+          Tailored block no longer closes it. */}
+      <div aria-hidden style={{ height: "clamp(3rem, 7vw, 6rem)" }} />
 
       <hr style={{ border: 0, borderTop: "1px solid var(--rule)", margin: 0 }} />
     </StackSection>

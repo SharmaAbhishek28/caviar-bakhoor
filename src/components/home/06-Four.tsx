@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Container, MarkedProse, Marquee, StackSection } from "@/components/ui";
+import { Container, DisplayHeadline, MarkedProse, Marquee, Reveal, StackSection } from "@/components/ui";
 import { FOUR_CLOSE, FOUR_OPENER } from "@/data/four";
 
 /**
@@ -37,6 +37,30 @@ export function Four() {
             <span className="four-opener-bakhoor">{FOUR_OPENER.second}</span>
           </span>
         </h2>
+
+        {/* Tailored collection development, moved here from section 04
+            (site owner, 2026-10-24), centred under the opener; a row of
+            pearls after its button separates it from the close. */}
+        <Reveal stagger className="four-tailored">
+          <DisplayHeadline
+            lines={["Tailored collection", "Development"]}
+            italicLine={0}
+            style={{ fontSize: "var(--text-display-md)" }}
+          />
+          <p className="type-body four-tailored-copy">
+            Elixir creates Caviar Bakhoor collections for your brand{" "}
+            <strong>from start to finish</strong>. We develop and refine your
+            scent, create custom tins and boxes, and manage production with{" "}
+            <strong>one point of contact</strong> throughout.
+          </p>
+          <Link href="/for-business" className="cta-button">
+            <span>Start a project</span>
+            <span aria-hidden className="cta-arrow">
+              ↗
+            </span>
+          </Link>
+        </Reveal>
+        <div className="pearl-rule four-pearls" aria-hidden />
       </Container>
 
       <div className="four-close">

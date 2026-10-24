@@ -48,7 +48,7 @@ export const INNOVATION = {
   subhead: "Elevating bakhoor in a groundbreaking avatar",
   /** The direct answer, first: this is what a search result pulls. */
   answer:
-    "Caviar Bakhoor is bakhoor reimagined in a long-lasting, highly diffusive form. Elixir's patent-pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat: pearls that release their aroma as they burn.",
+    "Caviar Bakhoor is bakhoor reimagined in a long-lasting, highly diffusive form. Elixir's patent-pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat, pearls that release their aroma as they burn.",
   answerStrong: ["patent-pending encapsulation technology", "sealed at room temperature", "opens under heat"],
   marquee: ["Hojai, Assam", "Selection protocol", "Cryogenic micro-refinement", "200 µm", "Down to −100 °C", "Cold process", "Encapsulation", "Thermal release"],
   panel: { src: "/images/texture/pearl-macro.jpg", alt: "Caviar Bakhoor pearls, close, scattered with flakes of 24-karat gold", width: 2400, height: 1600 },
