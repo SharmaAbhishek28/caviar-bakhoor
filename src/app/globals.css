@@ -7553,18 +7553,40 @@ html {
   }
 }
 
-/* --- Home 05c: In their hands, three creator videos (05c-Ugc.tsx) ---------- */
+/* --- Home 05c: In their hands, a sideways track (05c-Ugc.tsx) ------------- */
 .ugc {
-  padding-block: var(--section-y);
   overflow: hidden;
 }
 
-.ugc-head {
+.ugc-stage {
+  padding-block: var(--section-y);
+}
+
+/* Phones: the heading, then a swipe row. */
+.ugc-track {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.5rem 1rem;
+  scroll-padding-inline: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.ugc-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ugc-intro {
+  flex: 0 0 84vw;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: clamp(0.9rem, 1.8vw, 1.4rem);
-  text-align: center;
+  gap: 1rem;
+  align-self: center;
 }
 
 .ugc-eyebrow {
@@ -7605,48 +7627,42 @@ html {
 
 .ugc-copy {
   margin: 0;
-  max-width: 34rem;
+  max-width: 26rem;
   font-family: var(--font-switzer-stack);
   font-size: clamp(1rem, 1.2vw, 1.15rem);
   line-height: 1.55;
   color: var(--ink-prose);
 }
 
-/* Phones: a swipe row. */
-.ugc-deck {
-  list-style: none;
-  margin: clamp(2.5rem, 6vw, 5rem) 0 0;
-  padding: 0 var(--gutter, 1.5rem) 1rem;
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.ugc-deck::-webkit-scrollbar {
-  display: none;
-}
-
 .ugc-card {
-  flex: 0 0 min(72vw, 18rem);
+  flex: 0 0 auto;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
 }
 
-.ugc-phone {
-  position: relative;
+.ugc-card--video .ugc-media {
+  width: min(66vw, 17rem);
   aspect-ratio: 9 / 16;
+}
+
+.ugc-card--image .ugc-media {
+  /* Phones: the photograph keeps its own 3:2. */
+  width: min(84vw, 26rem);
+  aspect-ratio: 3 / 2;
+}
+
+.ugc-media {
+  position: relative;
   border-radius: 1.5rem;
   overflow: hidden;
   background: var(--ash);
   box-shadow: 0 30px 60px -30px rgb(8 7 10 / 0.55);
-  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.ugc-video {
+.ugc-video,
+.ugc-photo {
   display: block;
   width: 100%;
   height: 100%;
@@ -7710,23 +7726,73 @@ html {
   color: rgb(16 16 18 / 0.55);
 }
 
-/* Wide screens: the fan. Rotation and offset come from GSAP; at rest
-   (reduced motion, no JS) the CSS custom property holds the fan. */
+.ugc-meter {
+  display: none;
+}
+
+/* Wide screens: pinned; the scroll drives the track sideways. */
 @media (min-width: 1024px) {
-  .ugc-deck {
-    overflow: visible;
+  .ugc-stage {
+    height: 100vh;
+    height: 100svh;
+    box-sizing: border-box;
+    padding-block: clamp(4rem, 9vh, 6rem) clamp(3rem, 7vh, 4.5rem);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: clamp(1.5rem, 3vw, 3rem);
-    padding: 3rem var(--gutter, 2rem) 2rem;
+    gap: clamp(1.5rem, 3vh, 2.5rem);
   }
 
-  .ugc-card {
-    flex: 0 0 clamp(15rem, 21vw, 20rem);
-    transform: rotate(var(--r, 0deg));
+  .ugc-track {
+    overflow: visible;
+    scroll-snap-type: none;
+    align-items: center;
+    gap: clamp(2rem, 3.5vw, 3.5rem);
+    /* Clear of the side labels at the screen edges. */
+    padding: 0 clamp(7rem, 12vw, 12rem);
+    width: max-content;
+    will-change: transform;
   }
 
-  .ugc-card:hover .ugc-phone {
-    transform: rotate(calc(var(--r, 0deg) * -1)) translateY(-0.75rem) scale(1.03);
-    box-shadow: 0 40px 70px -30px rgb(8 7 10 / 0.6);
+  .ugc-intro {
+    flex: 0 0 clamp(20rem, 30vw, 30rem);
+  }
+
+  .ugc-card--video .ugc-media {
+    width: auto;
+    height: min(62svh, 36rem);
+  }
+
+  .ugc-card--image .ugc-media {
+    width: auto;
+    height: min(62svh, 36rem);
+  }
+
+  .ugc-meter {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: var(--nav-width);
+    margin-inline: auto;
+    font-family: var(--font-switzer-stack);
+    font-weight: 600;
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.2em;
+    color: rgb(16 16 18 / 0.6);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ugc-progress {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .ugc-progress-fill {
+    display: block;
+    height: 100%;
+    background: var(--ink);
+    transform-origin: left center;
+    transform: scaleX(0);
   }
 }

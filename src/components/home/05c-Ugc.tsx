@@ -1,46 +1,42 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Container, StackSection } from "@/components/ui";
+import { StackSection } from "@/components/ui";
 import { UGC } from "@/data/ugc";
 import { AMBIENT_VOLUME } from "@/lib/media";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 /**
- * 05c — In their hands: three creator videos, after the royal visit.
+ * 05c — In their hands: videos and photographs on one sideways track.
  *
- * Wide screens: the three phone-shaped cards are dealt out of one stack
- * into a loose fan as the section scrolls in (scrubbed), the headline
- * rising with them; then the middle card drifts against the scroll.
- * Hovering a card straightens and lifts it. Phones: a swipe row.
+ * Wide screens: the section pins and the scroll drives the track right to
+ * left; the heading is its first panel. Cards sit at alternating tilts and
+ * straighten as they cross the middle of the screen; a counter and a
+ * progress rule keep place. No edge labels: the cards cross the whole
+ * screen. Phones: a native swipe row.
  *
- * All three play, muted, together while the deck is on screen. A card's sound
- * button unmutes it and mutes the others. Reduced motion: no autoplay and
- * no dealing; the posters show and a tap plays.
+ * The videos play, muted, together while the section is on screen. A
+ * card's sound button unmutes it (ambient volume) and mutes the others.
+ * Reduced motion: no autoplay, native controls, no tilt.
  */
-const FAN = [
-  { r: -7, y: 40 },
-  { r: 0, y: -10 },
-  { r: 7, y: 40 },
-];
+const TILT = [-4, 3, -2, 4, -3, 2];
 
 export function Ugc() {
   const ref = useRef<HTMLElement>(null);
   const videos = useRef<(HTMLVideoElement | null)[]>([]);
   const [sound, setSound] = useState<number | null>(null);
+  const [current, setCurrent] = useState(1);
+  const total = UGC.items.length;
 
-  // Play only on screen; never autoplay under reduced motion.
+  // All the videos play together while the track is on screen.
   useEffect(() => {
-    // Reduced motion: no autoplay; the native controls let a tap play.
     if (prefersReducedMotion()) {
       videos.current.forEach((v) => v && (v.controls = true));
       return;
     }
-    // All three play together while the deck is on screen (site owner,
-    // 2026-10-24), including the cards off to the side of the phone swipe
-    // row; all pause when it leaves.
-    const deck = ref.current?.querySelector(".ugc-deck");
-    if (!deck) return;
+    const track = ref.current?.querySelector(".ugc-track");
+    if (!track) return;
     const io = new IntersectionObserver(
       ([e]) =>
         videos.current.forEach((v) => {
@@ -50,7 +46,7 @@ export function Ugc() {
         }),
       { threshold: 0.2 },
     );
-    io.observe(deck);
+    io.observe(track);
     return () => io.disconnect();
   }, []);
 
@@ -71,94 +67,133 @@ export function Ugc() {
     const q = gsap.utils.selector(root);
     const mm = gsap.matchMedia(root);
     mm.add("(min-width: 1024px)", () => {
-      const cards = q(".ugc-card");
-      // Dealt from one stack at the centre into the fan.
-      const tl = gsap.timeline({
-        defaults: { ease: "power3.out" },
-        scrollTrigger: { trigger: q(".ugc-deck")[0], start: "top 85%", end: "top 25%", scrub: 0.8 },
+      const track = q(".ugc-track")[0] as HTMLElement;
+      const stage = q(".ugc-stage")[0];
+      const travel = () => Math.max(0, track.scrollWidth - window.innerWidth);
+      const slide = gsap.to(track, {
+        x: () => -travel(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: stage,
+          start: "top top",
+          end: () => `+=${travel()}`,
+          pin: true,
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+          onUpdate: (st) => setCurrent(Math.min(total, 1 + Math.floor(st.progress * total))),
+        },
       });
-      cards.forEach((c, i) => {
-        const dx = (1 - i) * (c as HTMLElement).offsetWidth * 1.06;
-        tl.fromTo(c, { x: dx, y: 160, rotation: (i - 1) * -3, autoAlpha: 0 }, { x: 0, y: FAN[i].y, rotation: FAN[i].r, autoAlpha: 1, duration: 1 }, i === 1 ? 0 : 0.25);
+      gsap.fromTo(q(".ugc-progress-fill"), { scaleX: 0 }, {
+        scaleX: 1, ease: "none",
+        scrollTrigger: { trigger: stage, start: "top top", end: () => `+=${travel()}`, scrub: true, invalidateOnRefresh: true },
       });
-      tl.fromTo(q(".ugc-line-inner"), { yPercent: 110 }, { yPercent: 0, stagger: 0.15, duration: 0.8 }, 0);
-      // After the deal, the middle card drifts against the page.
-      gsap.to(cards[1], {
-        yPercent: -8, ease: "none",
-        scrollTrigger: { trigger: q(".ugc-deck")[0], start: "top 25%", end: "bottom top", scrub: true },
+      // Each card straightens as it crosses the middle of the screen.
+      q(".ugc-card").forEach((card, i) => {
+        const r = TILT[i % TILT.length];
+        gsap.timeline({
+          scrollTrigger: { trigger: card, containerAnimation: slide, start: "left right", end: "right left", scrub: true },
+        })
+          .fromTo(card, { rotation: r, y: 30 }, { rotation: 0, y: 0, ease: "power1.out", duration: 1 })
+          .to(card, { rotation: -r, y: 30, ease: "power1.in", duration: 1 });
+      });
+      // The heading panel's lines rise as the section arrives.
+      gsap.fromTo(q(".ugc-line-inner"), { yPercent: 110 }, {
+        yPercent: 0, stagger: 0.15, duration: 1, ease: "expo.out",
+        scrollTrigger: { trigger: stage, start: "top 70%", toggleActions: "play none none reverse" },
       });
     });
     mm.add("(max-width: 1023px)", () => {
       gsap.fromTo(q(".ugc-card"), { y: 40, autoAlpha: 0 }, {
-        y: 0, autoAlpha: 1, stagger: 0.12, duration: 0.9, ease: "expo.out",
-        scrollTrigger: { trigger: q(".ugc-deck")[0], start: "top 85%", toggleActions: "play none none reverse" },
+        y: 0, autoAlpha: 1, stagger: 0.1, duration: 0.9, ease: "expo.out",
+        scrollTrigger: { trigger: q(".ugc-track")[0], start: "top 85%", toggleActions: "play none none reverse" },
       });
     });
     return () => mm.revert();
-  }, []);
+  }, [total]);
+
+  // Each video's position among the videos, for its ref and its sound.
+  const videoIndex = UGC.items.map((_, i) => UGC.items.slice(0, i + 1).filter((x) => x.kind === "video").length - 1);
 
   return (
-    <StackSection index={7} label="In their hands" surface="paper" className="ugc">
+    <StackSection index={7} surface="paper" className="ugc">
       <section ref={ref} aria-labelledby="ugc-title" data-no-reveal>
-        <Container>
-          <header className="ugc-head">
-            <p className="ugc-eyebrow">{UGC.eyebrow}</p>
-            <h2 id="ugc-title" className="ugc-title">
-              {UGC.headline.map((l, i) => (
-                <span key={l} className={`ugc-line${i === 1 ? " ugc-line--italic" : ""}`}>
-                  <span className="ugc-line-inner">{l}</span>
-                </span>
-              ))}
-            </h2>
-            <p className="ugc-copy">{UGC.line}</p>
-          </header>
-        </Container>
-
-        <ol className="ugc-deck">
-          {UGC.videos.map((v, i) => (
-            <li key={v.id} className="ugc-card" style={{ "--r": `${FAN[i].r}deg` } as React.CSSProperties}>
-              <div className="ugc-phone">
-                <video
-                  ref={(el) => {
-                    videos.current[i] = el;
-                  }}
-                  className="ugc-video"
-                  src={v.src}
-                  poster={v.poster}
-                  muted
-                  loop
-                  playsInline
-                  preload="none"
-                  aria-label={v.title}
-                />
-                <button
-                  type="button"
-                  className="ugc-sound"
-                  aria-pressed={sound === i}
-                  aria-label={sound === i ? `Turn sound off: ${v.title}` : `Turn sound on: ${v.title}`}
-                  onClick={() => setSound((s) => (s === i ? null : i))}
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
-                    {sound === i ? (
-                      <>
-                        <path d="M15.5 9a4 4 0 0 1 0 6" />
-                        <path d="M18 6.5a7.5 7.5 0 0 1 0 11" />
-                      </>
-                    ) : (
-                      <path d="M16 9.5l5 5M21 9.5l-5 5" />
-                    )}
-                  </svg>
-                </button>
-              </div>
-              <p className="ugc-caption">
-                <span className="ugc-caption-no">{String(i + 1).padStart(2, "0")}</span>
-                <span className="ugc-caption-title">{v.title}</span>
-                {v.credit ? <span className="ugc-caption-credit">{v.credit}</span> : null}
-              </p>
-            </li>
-          ))}
-        </ol>
+        <div className="pin-host">
+          <div className="ugc-stage">
+            <ol className="ugc-track">
+              <li className="ugc-intro">
+                <p className="ugc-eyebrow">{UGC.eyebrow}</p>
+                <h2 id="ugc-title" className="ugc-title">
+                  {UGC.headline.map((l, i) => (
+                    <span key={l} className={`ugc-line${i === 1 ? " ugc-line--italic" : ""}`}>
+                      <span className="ugc-line-inner">{l}</span>
+                    </span>
+                  ))}
+                </h2>
+                <p className="ugc-copy">{UGC.line}</p>
+              </li>
+              {UGC.items.map((it, i) => {
+                const vi = videoIndex[i];
+                return (
+                  <li key={it.id} className={`ugc-card ugc-card--${it.kind}`}>
+                    <div className="ugc-media">
+                      {it.kind === "video" ? (
+                        <>
+                          <video
+                            ref={(el) => {
+                              videos.current[vi] = el;
+                            }}
+                            className="ugc-video"
+                            src={it.src}
+                            poster={it.poster}
+                            muted
+                            loop
+                            playsInline
+                            preload="none"
+                            aria-label={it.title}
+                          />
+                          <button
+                            type="button"
+                            className="ugc-sound"
+                            aria-pressed={sound === vi}
+                            aria-label={sound === vi ? `Turn sound off: ${it.title}` : `Turn sound on: ${it.title}`}
+                            onClick={() => setSound((s) => (s === vi ? null : vi))}
+                          >
+                            <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+                              {sound === vi ? (
+                                <>
+                                  <path d="M15.5 9a4 4 0 0 1 0 6" />
+                                  <path d="M18 6.5a7.5 7.5 0 0 1 0 11" />
+                                </>
+                              ) : (
+                                <path d="M16 9.5l5 5M21 9.5l-5 5" />
+                              )}
+                            </svg>
+                          </button>
+                        </>
+                      ) : (
+                        <Image src={it.src} alt={it.alt} width={it.width} height={it.height} sizes="(max-width: 1023px) 90vw, 60vw" className="ugc-photo" />
+                      )}
+                    </div>
+                    <p className="ugc-caption">
+                      <span className="ugc-caption-no">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="ugc-caption-title">{it.title}</span>
+                      {it.credit ? <span className="ugc-caption-credit">{it.credit}</span> : null}
+                    </p>
+                  </li>
+                );
+              })}
+            </ol>
+            <div className="ugc-meter" aria-hidden>
+              <span className="ugc-count">
+                {String(current).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </span>
+              <span className="ugc-progress">
+                <span className="ugc-progress-fill" />
+              </span>
+            </div>
+          </div>
+        </div>
       </section>
     </StackSection>
   );

@@ -1,34 +1,56 @@
 /**
  * src/data/ugc.ts
  *
- * Creator videos of the tripleA Caviar Incense Collection (Caviar Bakhoor
- * made by Elixir), for the home page (site owner, 2026-10-24). Supplied as
- * WhatsApp videos; two were screen recordings of Instagram and are cropped
- * to the film alone (public/video/ugc/).
+ * "In their hands" on the home page (site owner, 2026-10-24): creator
+ * videos, partner films and photographs of Caviar Bakhoor out in the world,
+ * on one sideways track. Add an item by adding an entry here: a video
+ * (9:16, public/video/ugc/) or a photograph (public/images/ugc/).
  *
- * Credits are only what the recordings themselves show. Before launch:
- * permission from tripleA and from each creator to reuse their videos.
+ * Supplied as WhatsApp files; the Instagram screen recordings are cropped to
+ * the film alone. Credits are only what the files themselves show. Before
+ * launch: permission from tripleA, Fan Al Oud and each creator to reuse
+ * their films, and from the people in the booth photographs.
  *
  * Typed data, per CLAUDE.md: each entry becomes a Shopify metaobject.
  */
 
-export type UgcVideo = {
-  id: string;
-  /** What the film shows, in a few words. */
-  title: string;
-  /** Who made it, as the recording shows; null when it does not. */
-  credit: string | null;
-  src: string;
-  poster: string;
-};
+export type UgcItem =
+  | { kind: "video"; id: string; title: string; credit: string | null; src: string; poster: string }
+  | { kind: "image"; id: string; title: string; credit: string | null; src: string; alt: string; width: number; height: number };
 
-export const UGC = {
+export const UGC: {
+  eyebrow: string;
+  headline: string[];
+  line: string;
+  items: UgcItem[];
+} = {
   eyebrow: "Caviar Bakhoor, out in the world",
   headline: ["In their", "hands."],
-  line: "The Caviar Incense Collection, made by Elixir for tripleA Perfumes, as its first customers film it.",
-  videos: [
-    { id: "saffron-unboxing", title: "Unboxing the Saffron tin", credit: null, src: "/video/ugc/saffron-unboxing.mp4", poster: "/video/ugc/saffron-unboxing-poster.jpg" },
-    { id: "in-store", title: "At the counter", credit: "@wowviruae", src: "/video/ugc/in-store.mp4", poster: "/video/ugc/in-store-poster.jpg" },
-    { id: "collection-reel", title: "The collection, on film", credit: "@bawwabah.bykaya", src: "/video/ugc/collection-reel.mp4", poster: "/video/ugc/collection-reel-poster.jpg" },
-  ] satisfies UgcVideo[],
+  line: "Filmed by its first customers, shown by the houses it is made for, presented at the booth.",
+  items: [
+    { kind: "video", id: "saffron-unboxing", title: "Unboxing the Saffron tin", credit: null, src: "/video/ugc/saffron-unboxing.mp4", poster: "/video/ugc/saffron-unboxing-poster.jpg" },
+    { kind: "video", id: "in-store", title: "At the counter", credit: "@wowviruae", src: "/video/ugc/in-store.mp4", poster: "/video/ugc/in-store-poster.jpg" },
+    {
+      kind: "image",
+      id: "booth-01",
+      title: "At the booth",
+      credit: null,
+      src: "/images/ugc/booth-01.jpg",
+      alt: "At the Elixir booth, visitors look on as Caviar Bakhoor is shown beside its boxes, tins and white burners",
+      width: 1600,
+      height: 1067,
+    },
+    { kind: "video", id: "collection-reel", title: "The collection, on film", credit: "@bawwabah.bykaya", src: "/video/ugc/collection-reel.mp4", poster: "/video/ugc/collection-reel-poster.jpg" },
+    { kind: "video", id: "fan-al-oud-film", title: "Fan Al Oud, on film", credit: null, src: "/video/ugc/fan-al-oud-film.mp4", poster: "/video/ugc/fan-al-oud-film-poster.jpg" },
+    {
+      kind: "image",
+      id: "booth-02",
+      title: "In conversation",
+      credit: null,
+      src: "/images/ugc/booth-02.jpg",
+      alt: "At the Elixir booth, Caviar Bakhoor explained to visitors over the boxes and burners",
+      width: 1600,
+      height: 1067,
+    },
+  ],
 };
