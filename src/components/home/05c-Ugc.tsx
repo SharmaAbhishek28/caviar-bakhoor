@@ -14,7 +14,7 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
  * rising with them; then the middle card drifts against the scroll.
  * Hovering a card straightens and lifts it. Phones: a swipe row.
  *
- * Each video plays, muted, only while it is on screen. A card's sound
+ * All three play, muted, together while the deck is on screen. A card's sound
  * button unmutes it and mutes the others. Reduced motion: no autoplay and
  * no dealing; the posters show and a tap plays.
  */
@@ -36,16 +36,21 @@ export function Ugc() {
       videos.current.forEach((v) => v && (v.controls = true));
       return;
     }
+    // All three play together while the deck is on screen (site owner,
+    // 2026-10-24), including the cards off to the side of the phone swipe
+    // row; all pause when it leaves.
+    const deck = ref.current?.querySelector(".ugc-deck");
+    if (!deck) return;
     const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          const v = e.target as HTMLVideoElement;
+      ([e]) =>
+        videos.current.forEach((v) => {
+          if (!v) return;
           if (e.isIntersecting) v.play().catch(() => {});
           else v.pause();
         }),
-      { threshold: 0.35 },
+      { threshold: 0.2 },
     );
-    videos.current.forEach((v) => v && io.observe(v));
+    io.observe(deck);
     return () => io.disconnect();
   }, []);
 
