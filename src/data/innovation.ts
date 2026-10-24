@@ -55,7 +55,7 @@ export const INNOVATION = {
   answer:
     "Caviar Bakhoor is bakhoor reimagined in a long lasting, highly diffusive form. Elixir's patent pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat, pearls that release their aroma as they burn.",
   answerStrong: ["patent pending encapsulation technology", "sealed at room temperature", "opens under heat"],
-  marquee: ["Hojai, Assam", "Selection protocol", "Cryogenic micro refinement", "200 µm", "Down to −100 °C", "Cold process", "Encapsulation", "Thermal release"],
+  marquee: ["Hojai, Assam", "Selection protocol", "Cryogenic micro refinement", "200 micron", "Down to −100 °C", "Cold process", "Encapsulation", "Thermal release"],
   panel: { src: "/images/texture/pearl-macro.jpg", alt: "Caviar Bakhoor pearls, close, scattered with flakes of 24 karat gold", width: 2400, height: 1600 },
   footer: "Caviar Bakhoor",
   /** The close: content.md § Closing, with the booklet's line under it. */
@@ -118,7 +118,7 @@ export const PLATES: Plate[] = [
     rows: [
       { label: "Cryogenic preconditioning", value: "Stabilize material at low temperature" },
       { label: "Specialized micronization", value: "Convert to ultra fine particles" },
-      { label: "Particle classification", value: "100 to 500 µm (target ~200 µm)" },
+      { label: "Particle classification", value: "100 to 500 micron (target ~200 micron)" },
       { label: "Low temperature stabilization", value: "Preserve volatile aromatic compounds" },
     ],
     tag: "Particle engineering",
@@ -134,7 +134,7 @@ export const PLATES: Plate[] = [
     rows: [
       { label: "Primary conditioning", value: "−10 °C to −40 °C" },
       { label: "Secondary cryogenic processing", value: "−40 °C to −100 °C (liquid nitrogen)" },
-      { label: "Particle classification", value: "100 to 500 µm" },
+      { label: "Particle classification", value: "100 to 500 micron" },
       { label: "Controlled pressing", value: "0 °C ± 5 °C" },
       { label: "Secondary freezing & suspension", value: "Freeze again, suspend in water, press" },
       { label: "Filtration & concentration", value: "Centrifugal filtration without heating" },
@@ -150,8 +150,8 @@ export const PLATES: Plate[] = [
     lede: "A precision engineered process from wood to fragrance encapsulated micro pearls.",
     stages: [
       { label: "Naturally aged agarwood", caption: "Hojai, Assam, India", image: disc("stage-wood", "A piece of naturally aged agarwood") },
-      { label: "Cryogenic micro refinement", caption: "Ultra fine particles (~200 µm)", image: disc("stage-powder", "A mound of ultra fine agarwood powder") },
-      { label: "Water → cryoextract → oil", caption: "Refined agarwood extract with proprietary formulation", image: disc("stage-oil", "A falling drop of golden agarwood oil") },
+      { label: "Cryogenic micro refinement", caption: "Ultra fine particles (~200 micron)", image: disc("stage-powder", "A mound of ultra fine agarwood powder") },
+      { label: "Water to cryoextract to oil", caption: "Refined agarwood extract with proprietary formulation", image: disc("stage-oil", "A falling drop of golden agarwood oil") },
       { label: "Biotechnological encapsulation", caption: "Fragrance encapsulated bakhoor spheres", image: disc("stage-pearls", "Glossy black pearls flecked with gold") },
     ],
     marks: ["No direct maceration", "No heat extraction", "No loss of aromatic integrity", "Engineered encapsulation"],

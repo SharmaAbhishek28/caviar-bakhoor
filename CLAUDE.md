@@ -83,6 +83,10 @@ Full system in `docs/design-system.md`. The short version:
   tracking 0. Keep opsz low: high values render the hairlines sub-pixel and they ghost.
   Switzer Black for caps subheads and the marquee; Switzer Regular for body and
   eyebrows. Gambetta is gone.
+  **Overridden by the site owner on 2026-10-24:** Switzer is Regular and Medium
+  only. Every heavier use (caps subheads, the marquee, labels, buttons,
+  <strong>) renders Medium; `src/app/fonts.ts` maps 500 to 900 to the Medium
+  file.
 - **Gold is rare.** `--gold-deep` is the only gold, at most once per section. Never on
   a label or an eyebrow — those are `--ink` at 60%. Never body copy: it is 4.14:1.
 - **Every page opens the same way:** eyebrow → display headline → caps subhead →

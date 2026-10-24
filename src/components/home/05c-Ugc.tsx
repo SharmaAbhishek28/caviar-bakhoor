@@ -129,7 +129,7 @@ export function Ugc() {
                     </span>
                   ))}
                 </h2>
-                <p className="ugc-copy">{UGC.line}</p>
+                {UGC.line ? <p className="ugc-copy">{UGC.line}</p> : null}
               </li>
               {UGC.items.map((it, i) => {
                 const vi = videoIndex[i];

@@ -29,9 +29,10 @@ export const bodoni = localFont({
 /**
  * Switzer — counterpoint words, labels, body, UI.
  *
- * Static weight files, so each weight is declared explicitly: no faux-bolding.
- * Black (900) carries both counterpoint tokens; Regular and Medium carry body
- * and meta.
+ * Two weights only (site owner, 2026-10-24): Regular, and Medium for every
+ * heavier use. The Medium file is declared across 500 to 900, so anything
+ * set semibold, bold or black in Switzer (labels, buttons, caps subheads,
+ * the marquee, <strong> in body) renders Medium, with no faux-bolding.
  */
 export const switzer = localFont({
   src: [
@@ -39,15 +40,8 @@ export const switzer = localFont({
     /* True italics at body weights: without these an <em> in body copy fell
        back to Black Italic, the only italic face loaded, and read as bold. */
     { path: "../fonts/Switzer-Italic.woff2", weight: "400", style: "italic" },
-    { path: "../fonts/Switzer-MediumItalic.woff2", weight: "500", style: "italic" },
-    { path: "../fonts/Switzer-Medium.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/Switzer-Semibold.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/Switzer-Black.woff2", weight: "900", style: "normal" },
-    {
-      path: "../fonts/Switzer-BlackItalic.woff2",
-      weight: "900",
-      style: "italic",
-    },
+    { path: "../fonts/Switzer-Medium.woff2", weight: "500 900", style: "normal" },
+    { path: "../fonts/Switzer-MediumItalic.woff2", weight: "500 900", style: "italic" },
   ],
   variable: "--font-switzer",
   display: "swap",

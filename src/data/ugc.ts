@@ -21,12 +21,11 @@ export type UgcItem =
 export const UGC: {
   eyebrow: string;
   headline: string[];
-  line: string;
+  line?: string;
   items: UgcItem[];
 } = {
   eyebrow: "Caviar Bakhoor, out in the world",
   headline: ["In their", "hands."],
-  line: "Filmed by its first customers, shown by the houses it is made for, presented at the booth.",
   items: [
     { kind: "video", id: "saffron-unboxing", title: "Unboxing the Saffron tin", credit: null, src: "/video/ugc/saffron-unboxing.mp4", poster: "/video/ugc/saffron-unboxing-poster.jpg" },
     { kind: "video", id: "in-store", title: "At the counter", credit: "@wowviruae", src: "/video/ugc/in-store.mp4", poster: "/video/ugc/in-store-poster.jpg" },
