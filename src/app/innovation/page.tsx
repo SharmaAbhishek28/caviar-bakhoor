@@ -8,7 +8,7 @@ import { INNOVATION, PLATES } from "@/data/innovation";
 export const metadata: Metadata = {
   title: "What is Caviar Bakhoor? | Elixir Signature Scents",
   description:
-    "Caviar Bakhoor is bakhoor encapsulated into pearls: a patent-pending technology that seals fragrance in spheres which open under heat, with aged oud and pure 24-karat gold.",
+    "Caviar Bakhoor is bakhoor encapsulated into pearls: a patent pending technology that seals fragrance in spheres which open under heat, with aged oud and pure 24 karat gold.",
 };
 
 /**

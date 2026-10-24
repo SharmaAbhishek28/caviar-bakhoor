@@ -8,7 +8,7 @@
  * process, the encapsulation and its thermal release. Their copy is the
  * deck's, with two corrections: the encapsulation is patent-pending (the
  * deck says "patented"; CLAUDE.md records patent-pending), and no ™ on
- * "Cryogenic Micro-Refinement" until a trademark is confirmed.
+ * "Cryogenic Micro Refinement" until a trademark is confirmed.
  *
  * Photographs on the plates are AI-generated illustrations (Higgsfield),
  * not photographs of Elixir's facility.
@@ -37,7 +37,12 @@ export type Plate = PlateBase &
     | { kind: "specs"; rows: { label: string; value: string }[] }
     | { kind: "steps"; rows: { label: string; value: string; note?: string }[] }
     | { kind: "stages"; stages: { label: string; caption: string; image: Img }[]; marks: string[] }
-    | { kind: "anatomy"; callouts: { label: string; lines: string[] }[] }
+    | {
+        kind: "anatomy";
+        /** Each callout points at a spot on the photograph: `at` is [x, y] in
+         *  percent of the frame; `y` is where its label sits, in percent. */
+        callouts: { label: string; lines: string[]; at: [number, number]; y: number }[];
+      }
     | { kind: "phases"; phases: { label: string; body: string; image: Img }[] }
   );
 
@@ -48,10 +53,10 @@ export const INNOVATION = {
   subhead: "Elevating bakhoor in a groundbreaking avatar",
   /** The direct answer, first: this is what a search result pulls. */
   answer:
-    "Caviar Bakhoor is bakhoor reimagined in a long-lasting, highly diffusive form. Elixir's patent-pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat, pearls that release their aroma as they burn.",
-  answerStrong: ["patent-pending encapsulation technology", "sealed at room temperature", "opens under heat"],
-  marquee: ["Hojai, Assam", "Selection protocol", "Cryogenic micro-refinement", "200 µm", "Down to −100 °C", "Cold process", "Encapsulation", "Thermal release"],
-  panel: { src: "/images/texture/pearl-macro.jpg", alt: "Caviar Bakhoor pearls, close, scattered with flakes of 24-karat gold", width: 2400, height: 1600 },
+    "Caviar Bakhoor is bakhoor reimagined in a long lasting, highly diffusive form. Elixir's patent pending encapsulation technology suspends fragrance inside a sphere that stays sealed at room temperature and opens under heat, pearls that release their aroma as they burn.",
+  answerStrong: ["patent pending encapsulation technology", "sealed at room temperature", "opens under heat"],
+  marquee: ["Hojai, Assam", "Selection protocol", "Cryogenic micro refinement", "200 µm", "Down to −100 °C", "Cold process", "Encapsulation", "Thermal release"],
+  panel: { src: "/images/texture/pearl-macro.jpg", alt: "Caviar Bakhoor pearls, close, scattered with flakes of 24 karat gold", width: 2400, height: 1600 },
   footer: "Caviar Bakhoor",
   /** The close: content.md § Closing, with the booklet's line under it. */
   close: {
@@ -76,13 +81,13 @@ export const PLATES: Plate[] = [
   {
     kind: "specs",
     eyebrow: "The innovation",
-    title: ["Agarwood", "Micro-Pearls"],
-    lede: "From naturally aged agarwood to fragrance-encapsulated bakhoor spheres.",
+    title: ["Agarwood", "Micro Pearls"],
+    lede: "From naturally aged agarwood to fragrance encapsulated bakhoor spheres.",
     rows: [
       { label: "Origin", value: "Hojai, Assam, India" },
-      { label: "Procurement", value: "Contract-based sourcing" },
+      { label: "Procurement", value: "Contract based sourcing" },
       { label: "Selection", value: "High resin, high density" },
-      { label: "Ultra-fine refinement", value: "200 micron class" },
+      { label: "Ultra fine refinement", value: "200 micron class" },
       { label: "Cryogenic processing", value: "Down to −100 °C" },
       { label: "Encapsulation", value: "Fragrance within agarwood" },
     ],
@@ -94,7 +99,7 @@ export const PLATES: Plate[] = [
     tone: "dark",
     eyebrow: "Raw material science",
     title: ["The", "Selection Protocol"],
-    lede: "Only the finest, resin-rich agarwood advances to our process.",
+    lede: "Only the finest, resin rich agarwood advances to our process.",
     rows: [
       { label: "Origin", value: "Hojai, Assam, India", note: "The heart of the world's agarwood" },
       { label: "Procurement", value: "Responsibly sourced", note: "through farmer contracts" },
@@ -103,29 +108,29 @@ export const PLATES: Plate[] = [
       { label: "Final selection", value: "Premium grade agarwood", note: "with highest natural oil content" },
     ],
     tag: "Material selection",
-    image: img("resin-agarwood", "Resin-rich agarwood, close, dark resin running through the grain"),
+    image: img("resin-agarwood", "Resin rich agarwood, close, dark resin running through the grain"),
   },
   {
     kind: "specs",
     eyebrow: "Particle engineering",
-    title: ["Cryogenic", "Micro-Refinement"],
-    lede: "Transforming aged agarwood into ultra-fine particles without harming the oil content.",
+    title: ["Cryogenic", "Micro Refinement"],
+    lede: "Transforming aged agarwood into ultra fine particles without harming the oil content.",
     rows: [
       { label: "Cryogenic preconditioning", value: "Stabilize material at low temperature" },
-      { label: "Specialized micronization", value: "Convert to ultra-fine particles" },
+      { label: "Specialized micronization", value: "Convert to ultra fine particles" },
       { label: "Particle classification", value: "100 to 500 µm (target ~200 µm)" },
-      { label: "Low-temperature stabilization", value: "Preserve volatile aromatic compounds" },
+      { label: "Low temperature stabilization", value: "Preserve volatile aromatic compounds" },
     ],
     tag: "Particle engineering",
-    image: img("micronization", "A brass spatula pouring ultra-fine agarwood powder into a glass dish"),
+    image: img("micronization", "A brass spatula pouring ultra fine agarwood powder into a glass dish"),
     inset: { ...img("sieves", "Agarwood powder on a stack of test sieves", 1920, 1080), caption: "Classification by particle size" },
   },
   {
     kind: "steps",
     tone: "dark",
-    eyebrow: "Low-temperature processing",
+    eyebrow: "Low temperature processing",
     title: ["The Cold Process"],
-    lede: "A multi-stage, low-temperature process designed to protect the natural aromatic integrity of agarwood.",
+    lede: "A multi stage, low temperature process designed to protect the natural aromatic integrity of agarwood.",
     rows: [
       { label: "Primary conditioning", value: "−10 °C to −40 °C" },
       { label: "Secondary cryogenic processing", value: "−40 °C to −100 °C (liquid nitrogen)" },
@@ -142,12 +147,12 @@ export const PLATES: Plate[] = [
     kind: "stages",
     eyebrow: "Advanced material transformation",
     title: ["Not Classical Bakhoor."],
-    lede: "A precision-engineered process from wood to fragrance-encapsulated micro-pearls.",
+    lede: "A precision engineered process from wood to fragrance encapsulated micro pearls.",
     stages: [
       { label: "Naturally aged agarwood", caption: "Hojai, Assam, India", image: disc("stage-wood", "A piece of naturally aged agarwood") },
-      { label: "Cryogenic micro-refinement", caption: "Ultra-fine particles (~200 µm)", image: disc("stage-powder", "A mound of ultra-fine agarwood powder") },
+      { label: "Cryogenic micro refinement", caption: "Ultra fine particles (~200 µm)", image: disc("stage-powder", "A mound of ultra fine agarwood powder") },
       { label: "Water → cryoextract → oil", caption: "Refined agarwood extract with proprietary formulation", image: disc("stage-oil", "A falling drop of golden agarwood oil") },
-      { label: "Biotechnological encapsulation", caption: "Fragrance-encapsulated bakhoor spheres", image: disc("stage-pearls", "Glossy black pearls flecked with gold") },
+      { label: "Biotechnological encapsulation", caption: "Fragrance encapsulated bakhoor spheres", image: disc("stage-pearls", "Glossy black pearls flecked with gold") },
     ],
     marks: ["No direct maceration", "No heat extraction", "No loss of aromatic integrity", "Engineered encapsulation"],
     tag: "Process differentiation",
@@ -157,15 +162,18 @@ export const PLATES: Plate[] = [
     tone: "dark",
     eyebrow: "Encapsulation technology",
     title: ["The Encapsulation", "Architecture"],
-    lede: "An engineered micro-sphere with a dual-phase fragrance system.",
+    lede: "An engineered micro sphere with a dual phase fragrance system.",
     callouts: [
-      { label: "Outer layer", lines: ["Refined agarwood matrix", "High-resin, aromatic shell"] },
-      { label: "Inner core", lines: ["Concentrated fragrance", "composition"] },
-      { label: "Encapsulation matrix", lines: ["Patent-pending technology", "Biotechnological synthesis"] },
-      { label: "Result", lines: ["Controlled release during", "thermal activation"] },
+      { label: "Outer layer", lines: ["Refined agarwood matrix", "High resin, aromatic shell"], at: [44.5, 21], y: 22 },
+      { label: "Inner core", lines: ["Concentrated fragrance", "composition"], at: [36, 44], y: 41 },
+      { label: "Encapsulation matrix", lines: ["Patent pending technology", "Biotechnological synthesis"], at: [44.5, 58], y: 60 },
+      { label: "Result", lines: ["Controlled release during", "thermal activation"], at: [41, 77], y: 79 },
     ],
     tag: "Encapsulation architecture",
-    image: img("architecture", "A pearl cut in half: an agarwood shell around an amber fragrance core"),
+    /* The pearl in section, after the client's reference (2026-10-24):
+       a wedge cut away to show the agarwood shell, the matrix and the
+       amber core. AI illustration (Higgsfield); labels are live text. */
+    image: img("architecture-section", "A black pearl flecked with gold, a wedge cut away: a crystalline agarwood shell around a glowing amber fragrance core", 1920, 1080),
   },
   {
     kind: "phases",
@@ -175,7 +183,7 @@ export const PLATES: Plate[] = [
     phases: [
       { label: "The agarwood awakens", body: "The outer agarwood layer warms, releasing its rich, resinous character.", image: disc("phase-awakens", "A pearl on a mesh over a glowing ember, a first wisp of smoke") },
       { label: "The fragrance unfolds", body: "Heat activates the encapsulated core, releasing the fragrance composition like a blooming wave.", image: disc("phase-unfolds", "Smoke blooming from a pearl as it opens over heat") },
-      { label: "A layered olfactory experience", body: "A harmonious fusion of natural agarwood and the encapsulated fragrance, creating a deep, long-lasting aromatic experience.", image: disc("phase-layered", "Ribbons of smoke rising and intertwining") },
+      { label: "A layered olfactory experience", body: "A harmonious fusion of natural agarwood and the encapsulated fragrance, creating a deep, long lasting aromatic experience.", image: disc("phase-layered", "Ribbons of smoke rising and intertwining") },
     ],
     tag: "Thermal fragrance delivery",
   },

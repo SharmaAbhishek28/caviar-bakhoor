@@ -1,20 +1,18 @@
 import Image from "next/image";
 
 /**
- * The client's booklet spread, between the collection's opener and its cards:
- * the house mark, the cover lines and all four lids and boxes on one black
- * page. AI-recreated (Higgsfield, GPT Image 2.5, 2026-10-21) from a phone
- * photograph of the printed booklet, flattened and cleaned, with the retired
- * "Caviar de Parfum" title set as "Caviar Bakhoor".
+ * Between the collection's opener and its cards: the four fragrances
+ * together, from the product shoot. Replaced the AI-recreated booklet spread
+ * (site owner, 2026-10-24: real photography, not the AI image).
  */
 export function BookletPlate() {
   return (
     <section className="booklet-plate on-ash" aria-label="The four Caviar Bakhoor fragrances">
       <Image
-        src="/images/brand/booklet-spread.jpg"
-        alt="Elixir Signature Scents presenting Caviar Bakhoor: the four tins, Ward Baccarat, Amber Blanc, Imperial Zafran and Noir, with their boxes, in gold on black"
+        src="/images/shoot/four-boxes-with-tins.jpg"
+        alt="The four Caviar Bakhoor boxes, Noir, Ward Baccarat, Imperial Zafran and Amber Blanc, two of them open on their tins"
         width={2400}
-        height={1357}
+        height={1600}
         sizes="100vw"
         className="booklet-plate-img"
       />

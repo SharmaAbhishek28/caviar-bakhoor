@@ -16,7 +16,8 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
  *            number fills as the line reaches it
  *   stages   four round figures joined by arrows, wood to pearl, then a
  *            row of process marks
- *   anatomy  the pearl in section, with leader-ruled callouts
+ *   anatomy  the pearl in section across the plate, leader lines drawn
+ *            from points on it out to the labels (the client's reference)
  *   phases   three numbered phases, each with a round figure
  *
  * Wide screens: the photograph holds (sticky) beside the copy while it
@@ -78,12 +79,14 @@ export function InnovationPlates({ plates, footer }: { plates: Plate[]; footer: 
           gsap.fromTo(q(".pl-mark"), { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.08, ease: "expo.out", scrollTrigger: once(q(".pl-marks")[0], "top 92%") });
         }
 
-        q(".pl-callout").forEach((c) =>
+        const anat = q(".pl-anat")[0];
+        if (anat) {
           gsap
-            .timeline({ scrollTrigger: once(c, "top 88%"), defaults: { ease: "expo.out" } })
-            .fromTo(c.querySelector(".pl-callout-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.inOut" })
-            .fromTo(c.querySelectorAll("dt, dd"), { x: 20, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.8, stagger: 0.06 }, 0.3),
-        );
+            .timeline({ scrollTrigger: once(anat, "top 70%"), defaults: { ease: "expo.out" } })
+            .fromTo(q(".pl-anat-dot"), { scale: 0 }, { scale: 1, duration: 0.6, stagger: 0.15, ease: "back.out(3)" })
+            .fromTo(q(".pl-anat-line"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1, stagger: 0.15, ease: "power2.inOut" }, 0.15)
+            .fromTo(q(".pl-anat-label"), { x: 24, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.9, stagger: 0.15 }, 0.7);
+        }
 
         q(".pl-phase").forEach((ph) =>
           gsap
@@ -188,19 +191,7 @@ export function InnovationPlates({ plates, footer }: { plates: Plate[]; footer: 
                   </>
                 ) : null}
 
-                {p.kind === "anatomy" ? (
-                  <dl className="pl-callouts">
-                    {p.callouts.map((c) => (
-                      <div key={c.label} className="pl-callout">
-                        <span className="pl-callout-rule" aria-hidden />
-                        <dt>{c.label}</dt>
-                        {c.lines.map((l) => (
-                          <dd key={l}>{l}</dd>
-                        ))}
-                      </div>
-                    ))}
-                  </dl>
-                ) : null}
+{/* anatomy: drawn over the photograph, below */}
 
                 {p.kind === "phases" ? (
                   <ol className="pl-phases">
@@ -220,7 +211,38 @@ export function InnovationPlates({ plates, footer }: { plates: Plate[]; footer: 
                 ) : null}
               </div>
 
-              {p.image ? (
+              {p.kind === "anatomy" && p.image ? (
+                <figure className="pl-anat">
+                  <div className="pl-anat-stage">
+                    <Image src={p.image.src} alt={p.image.alt} width={p.image.width} height={p.image.height} sizes="(max-width: 1023px) 100vw, 1200px" className="pl-anat-img" />
+                    {/* Leader lines: from the point on the pearl out to the
+                        label, as in the client's reference. */}
+                    <svg className="pl-anat-lines" viewBox="0 0 160 90" aria-hidden>
+                      {p.callouts.map((co) => (
+                        <polyline
+                          key={co.label}
+                          className="pl-anat-line"
+                          points={`${co.at[0] * 1.6},${co.at[1] * 0.9} ${54 * 1.6},${co.y * 0.9} ${61 * 1.6},${co.y * 0.9}`}
+                          pathLength={1}
+                        />
+                      ))}
+                    </svg>
+                    {p.callouts.map((co) => (
+                      <span key={co.label} className="pl-anat-dot" style={{ left: `${co.at[0]}%`, top: `${co.at[1]}%` }} aria-hidden />
+                    ))}
+                    <dl className="pl-anat-labels">
+                      {p.callouts.map((co) => (
+                        <div key={co.label} className="pl-anat-label" style={{ top: `${co.y}%` }}>
+                          <dt>{co.label}</dt>
+                          {co.lines.map((l) => (
+                            <dd key={l}>{l}</dd>
+                          ))}
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                </figure>
+              ) : p.image ? (
                 <div className="pl-media">
                   <div className="pl-media-main">
                     <Image src={p.image.src} alt={p.image.alt} width={p.image.width} height={p.image.height} sizes="(max-width: 1023px) 100vw, 45vw" />

@@ -6643,17 +6643,6 @@ html {
     transform-origin: left center;
   }
 
-  /* anatomy: the pearl first, the callouts beside it */
-  .pl--anatomy .pl-media {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .pl--anatomy .pl-copy {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
   /* phases: the head beside the list */
   .pl--phases .pl-card {
     grid-template-columns: 1fr;
@@ -7207,4 +7196,120 @@ html {
 
 .four-pearls {
   margin-top: clamp(3rem, 7vw, 6rem);
+}
+
+/* Innovation plate 06: the pearl in section with leader-line callouts
+   (InnovationPlates.tsx). Phones and tablets: the photograph, then the
+   labels as a list. Wide: the labels sit over the dark right of the
+   photograph, each line drawn from its point on the pearl. */
+.pl--anatomy .pl-card {
+  grid-template-columns: 1fr;
+}
+
+.pl-anat {
+  margin: 0;
+}
+
+.pl-anat-stage {
+  position: relative;
+}
+
+.pl-anat-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pl-anat-lines,
+.pl-anat-dot {
+  display: none;
+}
+
+.pl-anat-labels {
+  margin: 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.pl-anat-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pl-anat-label dt {
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pl-fg);
+}
+
+.pl-anat-label dd {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--pl-muted);
+}
+
+@media (min-width: 640px) {
+  .pl-anat-labels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pl-anat-lines {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* The viewBox is the photograph's own 16:9 (160 by 90), so the drawing
+     never stretches: 0.14 units is a hairline at this width. */
+  .pl-anat-line {
+    fill: none;
+    stroke: rgb(239 238 235 / 0.7);
+    stroke-width: 0.14;
+    stroke-dasharray: 1;
+  }
+
+  .pl-anat-head {
+    margin-bottom: 0.5rem;
+  }
+
+  .pl-anat-dot {
+    display: block;
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    margin: -4.5px 0 0 -4.5px;
+    border-radius: 50%;
+    background: #efeeeb;
+    box-shadow: 0 0 0 3px rgb(239 238 235 / 0.2);
+  }
+
+  .pl-anat-labels {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: block;
+  }
+
+  .pl-anat-label {
+    position: absolute;
+    left: 62%;
+    right: 3%;
+    transform: translateY(-0.7em);
+  }
+
+  .pl-anat-label dd {
+    color: rgb(239 238 235 / 0.85);
+  }
 }
