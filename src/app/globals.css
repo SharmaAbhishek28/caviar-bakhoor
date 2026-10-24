@@ -59,7 +59,9 @@
      sit under an -xl in the same section and must not compete with it. */
   --text-display-md: 4vw;
   --text-display-sub: 1.55vw;
-  --text-eyebrow: 0.85vw;
+  /* Eyebrows: floor 14px so they read on a laptop, about 16px on a 16-inch
+     screen (site owner, 2026-10-24: they were 11 to 12px). */
+  --text-eyebrow: clamp(0.875rem, 0.95vw, 1.0625rem);
   --text-fragrance: clamp(2rem, 4vw, 3.5rem);
   --text-marquee: 1.5rem;
   --text-body: 1rem;
@@ -137,7 +139,7 @@
     --text-display-xl: 12vw;
     --text-display-md: 9vw;
     --text-display-sub: 0.875rem;
-    --text-eyebrow: 0.75rem;
+    --text-eyebrow: 0.8125rem;
   }
 }
 
@@ -3062,7 +3064,7 @@ html {
 .ab-circle-kicker {
   margin: 0;
   font-family: var(--font-switzer-stack);
-  font-size: 0.6875rem;
+  font-size: var(--text-eyebrow);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--smoke);
@@ -3615,7 +3617,7 @@ html {
   margin: 0;
   font-family: var(--font-switzer-stack);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: var(--text-eyebrow);
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
@@ -4304,7 +4306,7 @@ html {
 
 .rt-step-kicker {
   font-family: var(--font-switzer-stack);
-  font-size: 0.6875rem;
+  font-size: var(--text-eyebrow);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgb(239 238 235 / 0.6);
@@ -6114,7 +6116,7 @@ html {
   justify-content: space-between;
   gap: 1rem;
   font-family: var(--font-switzer-stack);
-  font-size: 0.68rem;
+  font-size: var(--text-eyebrow);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--pl-muted);
@@ -6186,7 +6188,7 @@ html {
 .pl-inset figcaption {
   font-family: var(--font-switzer-stack);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--pl-fg);
@@ -6348,7 +6350,7 @@ html {
 
 .pl-mark {
   padding: 0.9rem 0.75rem 0.25rem 0;
-  font-size: 0.64rem;
+  font-size: 0.72rem;
   line-height: 1.5;
 }
 
@@ -6485,7 +6487,7 @@ html {
 }
 
 .pl-inset figcaption {
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   color: var(--pl-muted);
 }
 
@@ -6794,10 +6796,11 @@ html {
 .ab-signature {
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem 1rem;
   font-family: var(--font-switzer-stack);
-  font-size: 0.75rem;
+  font-size: var(--text-eyebrow);
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ink);
@@ -6818,7 +6821,7 @@ html {
   margin: 0 0 clamp(1rem, 2vw, 1.5rem);
   font-family: var(--font-switzer-stack);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: var(--text-eyebrow);
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgb(16 16 18 / 0.6);
@@ -7123,7 +7126,7 @@ html {
 .ah-part-sign {
   margin: clamp(2.5rem, 5vw, 4rem) 0 0;
   font-family: var(--font-switzer-stack);
-  font-size: 0.7rem;
+  font-size: var(--text-eyebrow);
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgb(239 238 235 / 0.55);
