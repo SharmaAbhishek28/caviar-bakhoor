@@ -19,7 +19,7 @@
 export const BUSINESS = {
   eyebrow: "For business",
   headline: { first: "Your brand.", second: "Our innovation." },
-  line: "Create your own Caviar Bakhoor with Elixir.",
+  line: "Create your own Caviar Bakhoor with us.",
   cta: "Start a project",
   opener: { src: "/images/shoot/pearls-macro-03.jpg", alt: "Pearls and gold leaf, close", width: 2400, height: 1600 },
 
