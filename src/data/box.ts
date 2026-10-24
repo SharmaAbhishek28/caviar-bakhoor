@@ -43,7 +43,7 @@ export const BOX_ITEMS: BoxItem[] = [
     name: "The mesh",
     body: "A double-layered stainless-steel mesh in a two-tone quilted pattern, made in two sizes, to ensure consistent heat dispersal for a clean, smooth and long-lasting burn.",
     strong: ["double-layered stainless-steel mesh", "two-tone quilted pattern", "two sizes"],
-    image: { src: "/images/box/mesh-studio.jpg", alt: "The double-layered mesh, gold and silver in a quilted pattern, resting on the burner", width: 1200, height: 1200 },
+    image: { src: "/images/box/mesh-studio-round.jpg", alt: "The round, double-layered mesh disc, gold and silver in a quilted pattern, resting on the burner", width: 1200, height: 1200 },
   },
   {
     name: "The foil",

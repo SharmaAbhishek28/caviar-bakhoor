@@ -31,7 +31,7 @@ export const RITUAL_PAGE = {
     items: [
       { name: "Caviar Bakhoor tin", image: { src: "/images/shoot/amber-blanc-front-square.jpg", alt: "The Amber Blanc box and tin, front on", width: 1200, height: 1200 } },
       { name: "Charcoal block", image: { src: "/images/shoot/ritual-charcoal-square.jpg", alt: "Gold tongs setting the charcoal block in the burner", width: 1200, height: 1200 } },
-      { name: "Gold mesh disc", image: { src: "/images/box/mesh-studio.jpg", alt: "The double-layered mesh, gold and silver in a quilted pattern, resting on the burner", width: 1200, height: 1200 } },
+      { name: "Gold mesh disc", image: { src: "/images/box/mesh-studio-round.jpg", alt: "The round, double-layered mesh disc, gold and silver in a quilted pattern, resting on the burner", width: 1200, height: 1200 } },
       { name: "Gold serving spoon", image: { src: "/images/shoot/amber-blanc-spoon-square.jpg", alt: "The gold spoon with its marbled handle, beside a disc of foil", width: 1200, height: 1200 } },
       { name: "Instruction card", image: { src: "/images/ritual/card-directions.jpg", alt: "Elixir's Directions of use card", width: 1400, height: 933 } },
     ],
