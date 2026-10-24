@@ -5,6 +5,7 @@ import { preload } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import { AMBIENT_VOLUME } from "@/lib/media";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
+import { HeroLogo } from "./HeroLogo";
 
 /**
  * The hero's media layer and its sound control.
@@ -170,13 +171,7 @@ export function HeroMedia({
             <span className="hero-line">An innovation in bakhoor.</span>
           </span>
           <span className="sr-only"> Caviar Bakhoor.</span>
-          <span className="hero-logo-mask" aria-hidden>
-            <span className="hero-logo" />
-            <span className="hero-logo-split">
-              <span className="hero-logo-word hero-logo-word--1" />
-              <span className="hero-logo-word hero-logo-word--2" />
-            </span>
-          </span>
+          <HeroLogo />
         </h1>
       </div>
 
