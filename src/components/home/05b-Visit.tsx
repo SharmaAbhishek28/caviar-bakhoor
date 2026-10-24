@@ -13,9 +13,8 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
  * Wide screens: the section pins and the scroll plays it as a camera move.
  * The photograph opens out of a tight window on His Highness at the counter
  * (a clip and a zoom both easing out) to the whole scene; the headline rises
- * with it. Then the eye is led: a ring settles on the counter and its note
- * lights in the copy; an oval draws around the tins at the foot of the frame
- * and the second note lights. The link and the credit come last.
+ * with it, then the body and the two notes light in turn, then the link and
+ * the credit. Nothing is drawn on the photograph (site owner, 2026-10-24).
  *
  * Phones and tablets: no pin; the same beats play once as the section
  * scrolls in. Reduced motion: everything at rest. RevealAll keeps off.
@@ -45,16 +44,12 @@ export function Visit() {
           .to(q(".vs-note--1 .vs-note-rule"), { scaleX: 1, duration: 0.5 }, notesAt[1])
           .fromTo(q(".vs-foot"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5 }, footAt);
 
-      // The photograph's beats: the camera opens out, then the two marks.
+      // The photograph's beat: the camera opens out. No marks on it.
       const photo = (tl: gsap.core.Timeline, at = 0) =>
         tl
           .fromTo(q(".vs-frame"), { clipPath: "inset(24% 18% 40% 26% round 999px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 1.4, ease: "power2.inOut" }, at)
           .fromTo(q(".vs-img"), { scale: 2.1 }, { scale: 1, duration: 1.6, ease: "power2.out" }, at)
-          .fromTo(q(".vs-shade"), { opacity: 0.55 }, { opacity: 0, duration: 1.2 }, at + 0.2)
-          .fromTo(q(".vs-mark--0"), { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.5, ease: "back.out(2.5)" }, at + 1.6)
-          .fromTo(q(".vs-band-line"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, at + 2.3)
-          .fromTo(q(".vs-band-no"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, at + 2.7)
-          .to(q(".vs-mark--0"), { autoAlpha: 0.35, duration: 0.4 }, at + 2.4);
+          .fromTo(q(".vs-shade"), { opacity: 0.55 }, { opacity: 0, duration: 1.2 }, at + 0.2);
 
       if (desktop) {
         // One pinned, scrubbed timeline: copy and photograph in step.
@@ -74,8 +69,6 @@ export function Visit() {
     });
     return () => mm.revert();
   }, []);
-
-  const [counter, tins] = VISIT.marks;
 
   return (
     <StackSection index={6} label="Visit" surface="ash" className="vs">
@@ -97,7 +90,6 @@ export function Visit() {
                   <ol className="vs-notes">
                     {VISIT.marks.map((m, i) => (
                       <li key={m.label} className={`vs-note vs-note--${i}`}>
-                        <span className="vs-note-no">{String(i + 1).padStart(2, "0")}</span>
                         <span className="vs-note-text">
                           <span className="vs-note-label">{m.label}</span>
                           <span className="vs-note-body">{m.note}</span>
@@ -126,16 +118,6 @@ export function Visit() {
                       style={{ transformOrigin: `${VISIT.focus.x}% ${VISIT.focus.y}%` }}
                     />
                     <span className="vs-shade" aria-hidden />
-                    {/* 01: a ring on the counter. */}
-                    <span className="vs-mark vs-mark--0" style={{ left: `${counter.x}%`, top: `${counter.y}%` }} aria-hidden>
-                      <span className="vs-mark-no">01</span>
-                    </span>
-                    {/* 02: an oval drawn around the tins. The viewBox is the
-                        photograph's own 72 by 92, so it never stretches. */}
-                    <svg className="vs-band" viewBox="0 0 72 92" aria-hidden>
-                      <ellipse className="vs-band-line" cx={tins.x * 0.72} cy={tins.y * 0.92} rx="34" ry="6" pathLength={1} />
-                      <text className="vs-band-no" x={tins.x * 0.72 - 33} y={tins.y * 0.92 - 7.4}>02</text>
-                    </svg>
                   </div>
                 </figure>
               </div>

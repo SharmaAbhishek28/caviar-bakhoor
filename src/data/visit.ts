@@ -13,8 +13,8 @@
  * permission from tripleA to reuse their photograph, and clearance for using
  * His Highness's image on a commercial site.
  *
- * `marks` are points on the photograph, in percent of its frame, each
- * paired with a note in the copy.
+ * `marks` are the two notes beside the photograph (the counter, and the
+ * collection on it). Nothing is drawn on the photograph itself.
  */
 
 export const VISIT = {
@@ -23,8 +23,8 @@ export const VISIT = {
   body: "His Highness Sheikh Mohammed bin Rashid Al Maktoum, Vice President and Prime Minister of the UAE and Ruler of Dubai, visited the tripleA Perfumes branch at Avenue Mall, where the Caviar Incense Collection, made by Elixir, is presented.",
   strong: ["His Highness Sheikh Mohammed bin Rashid Al Maktoum", "Caviar Incense Collection, made by Elixir"],
   marks: [
-    { label: "The counter", note: "tripleA Perfumes, Avenue Mall", x: 24, y: 37, kind: "dot" as const },
-    { label: "On it", note: "The Caviar Incense Collection, made by Elixir", x: 50, y: 91, kind: "band" as const },
+    { label: "The counter", note: "tripleA Perfumes, Avenue Mall" },
+    { label: "On it", note: "The Caviar Incense Collection, made by Elixir" },
   ],
   link: { label: "See the tripleA collaboration", href: "/for-business#triple-a" },
   credit: "Photograph: tripleA Perfumes",
