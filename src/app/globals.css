@@ -4151,7 +4151,7 @@ html {
   position: absolute;
   inset: 0;
   background: var(--ash);
-  clip-path: circle(20px at 50% 50%);
+  clip-path: circle(0 at 50% 50%);
 }
 
 .rt-opener-copy {
@@ -4189,13 +4189,20 @@ html {
   display: block;
 }
 
+@media (min-width: 768px) {
+  .rt-h1-line {
+    white-space: nowrap;
+  }
+}
+
 .rt-h1-line--italic {
   font-style: italic;
 }
 
 .rt-mask {
   display: inline-block;
-  overflow: hidden;
+  overflow: visible;
+  clip-path: inset(-0.5em -0.5em 0 -0.5em);
   vertical-align: top;
   padding-bottom: 0.08em;
   margin-bottom: -0.08em;

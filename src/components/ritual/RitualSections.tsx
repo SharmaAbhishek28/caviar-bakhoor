@@ -45,7 +45,20 @@ export function RitualOpener() {
       // element, so the edge is crisp at every size; the copy sits on it
       // with mix-blend-mode: difference, so it inverts exactly where the
       // circle covers it and nowhere else.
-      gsap.fromTo(".rt-pearl", { clipPath: "circle(20px at 50% 50%)" }, {
+      // Where the dot starts: in the clear space beside the lede, under the
+      // headline (clear of the letters and the side labels), or on a phone
+      // (no room beside it) the space under the lede.
+      const start = () => {
+        const sticky = root.querySelector(".rt-opener-sticky")!.getBoundingClientRect();
+        const h1 = root.querySelector(".rt-h1")!.getBoundingClientRect();
+        const lede = root.querySelector(".rt-lede")!.getBoundingClientRect();
+        const gap = sticky.right - h1.right;
+        const [x, y] = gap > 120
+          ? [Math.max(lede.right + 80, h1.left + h1.width * 0.72), lede.top + lede.height / 2]
+          : [sticky.left + sticky.width / 2, Math.min(sticky.bottom - 40, lede.bottom + (sticky.bottom - lede.bottom) / 2)];
+        return `circle(14px at ${((x - sticky.left) / sticky.width) * 100}% ${((y - sticky.top) / sticky.height) * 100}%)`;
+      };
+      gsap.fromTo(".rt-pearl", { clipPath: start }, {
         clipPath: () => "circle(" + Math.hypot(window.innerWidth, window.innerHeight) * 0.52 + "px at 50% 50%)",
         ease: "power2.in",
         scrollTrigger: { trigger: root, start: "top top", end: "bottom bottom", scrub: true, invalidateOnRefresh: true },

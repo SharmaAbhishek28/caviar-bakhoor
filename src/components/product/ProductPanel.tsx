@@ -53,7 +53,8 @@ export function ProductPanel({ product }: { product: Product }) {
       </header>
 
       <div className="pdp-buy">
-        {price ? <span className="pdp-price">{price}</span> : <span />}
+        {/* No price yet: no placeholder, so the button sits on the left. */}
+        {price ? <span className="pdp-price">{price}</span> : null}
         <button
           type="button"
           className="pdp-add"
