@@ -75,18 +75,7 @@ export const ABOUT = {
     { label: "Founded", value: "1947" },
     { label: "Certifications", value: null },
   ] as { label: string; value: string | null }[],
-  gallery: {
-    title: "The shoot",
-    items: [
-      { src: "/images/about/gallery-01.jpg", alt: "Pearls and gold leaf, close", width: 1600, height: 1067 },
-      { src: "/images/about/gallery-02.jpg", alt: "Caviar Bakhoor tins and boxes, stacked", width: 1600, height: 1067 },
-      { src: "/images/about/gallery-03.jpg", alt: "The four tins fanned on their boxes", width: 1600, height: 1067 },
-      { src: "/images/about/gallery-04.jpg", alt: "Tins resting on the boxes, from above", width: 1600, height: 1067 },
-      { src: "/images/about/gallery-08.jpg", alt: "Caviar Bakhoor boxes and tins on a shelf", width: 1600, height: 1067 },
-      { src: "/images/shoot/four-boxes-with-tins.jpg", alt: "The four boxes, two of them open on their tins", width: 2400, height: 1600 },
-      { src: "/images/shoot/imperial-zafran-set.jpg", alt: "The Imperial Zafran box, the open tin, the spoon and a disc of foil", width: 2400, height: 1600 },
-    ],
-  },
+
   /** The booklet's second spread, recreated: three gold-framed photographs
    *  with its captions, verbatim ("complimenting" corrected to
    *  "complementing"). The photographs are the same shots the booklet uses,

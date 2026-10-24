@@ -1,3 +1,4 @@
+import { SHOOT_BOXES } from "./shoot";
 /**
  * src/data/ritual-page.ts
  *
@@ -52,7 +53,7 @@ export const RITUAL_PAGE = {
     title: "The objects",
     columns: [
       [
-        { src: "/images/shoot/pearls-macro-03.jpg", alt: "Pearls and gold leaf", width: 2400, height: 1600 },
+        SHOOT_BOXES.stacked,
         { src: "/images/shoot/ward-baccarat-open-overhead.jpg", alt: "The Ward Baccarat box open, from above", width: 2400, height: 1600 },
         { src: "/images/shoot/amber-blanc-set.jpg", alt: "The Amber Blanc box, the open tin, the spoon and a disc of foil", width: 2400, height: 1600 },
       ],
@@ -62,7 +63,7 @@ export const RITUAL_PAGE = {
         { src: "/images/ritual/card-front.jpg", alt: "The card, front", width: 1400, height: 933 },
       ],
       [
-        { src: "/images/shoot/four-boxes-overhead.jpg", alt: "The four boxes, from above", width: 2400, height: 1600 },
+        SHOOT_BOXES.fanned,
         { src: "/images/shoot/amber-blanc-open-overhead.jpg", alt: "The Amber Blanc box open, from above", width: 2400, height: 1600 },
         { src: "/images/shoot/imperial-zafran-open-overhead.jpg", alt: "The Imperial Zafran box open, from above", width: 2400, height: 1600 },
       ],

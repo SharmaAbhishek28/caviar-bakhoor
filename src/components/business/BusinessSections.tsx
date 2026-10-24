@@ -228,6 +228,8 @@ export function BizProcess() {
 export function BizMade() {
   const ref = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  const [shot, setShot] = useState(0);
+  const shots = BUSINESS.made.images;
   useEffect(() => {
     const root = ref.current;
     if (!root || motionOff()) return;
@@ -236,9 +238,16 @@ export function BizMade() {
       gsap.utils.toArray<HTMLElement>(".biz-made-row", root).forEach((row, i) => {
         gsap.to({}, { scrollTrigger: { trigger: row, start: "top 55%", end: "bottom 55%", onEnter: () => setActive(i), onEnterBack: () => setActive(i) } });
       });
+      // The picture steps through every photograph across the rows' run.
+      gsap.to({}, {
+        scrollTrigger: {
+          trigger: ".biz-made-rows", start: "top 60%", end: "bottom 50%",
+          onUpdate: (st) => setShot(Math.min(shots.length - 1, Math.floor(st.progress * shots.length))),
+        },
+      });
     }, root);
     return () => ctx.revert();
-  }, []);
+  }, [shots.length]);
   return (
     <section ref={ref} className="biz-made" data-label="Made">
       <Container>
@@ -252,8 +261,8 @@ export function BizMade() {
         <div className="biz-made-grid">
           <div className="biz-made-col">
             <div className="biz-made-sticky">
-              {BUSINESS.made.rows.map((r, i) => (
-                <Image key={r.image.src} src={r.image.src} alt={r.image.alt} width={r.image.width} height={r.image.height} sizes="(max-width: 1023px) 100vw, 45vw" className="biz-made-img" data-active={i === active || undefined} />
+              {shots.map((img, i) => (
+                <Image key={img.src} src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(max-width: 1023px) 100vw, 45vw" className="biz-made-img" data-active={i === shot || undefined} />
               ))}
             </div>
           </div>

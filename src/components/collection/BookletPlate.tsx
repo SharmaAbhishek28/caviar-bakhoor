@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SHOOT_BOXES } from "@/data/shoot";
 
 /**
  * Between the collection's opener and its cards: the four fragrances
@@ -9,10 +10,10 @@ export function BookletPlate() {
   return (
     <section className="booklet-plate on-ash" aria-label="The four Caviar Bakhoor fragrances">
       <Image
-        src="/images/shoot/four-boxes-with-tins.jpg"
-        alt="The four Caviar Bakhoor boxes, Noir, Ward Baccarat, Imperial Zafran and Amber Blanc, two of them open on their tins"
-        width={2400}
-        height={1600}
+        src={SHOOT_BOXES.fourOpen.src}
+        alt={SHOOT_BOXES.fourOpen.alt}
+        width={SHOOT_BOXES.fourOpen.width}
+        height={SHOOT_BOXES.fourOpen.height}
         sizes="100vw"
         className="booklet-plate-img"
       />

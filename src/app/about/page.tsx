@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { AboutOpener } from "@/components/about/AboutOpener";
 import { Approach, Disciplines, Partnership, Philosophy } from "@/components/about/AboutHouse";
-import { BookletSpread, HouseFacts, People, WhatWeMake } from "@/components/about/AboutSections";
-import { ShootGallery } from "@/components/about/ShootGallery";
+import { HouseFacts } from "@/components/about/AboutSections";
 import { Credentials } from "@/components/home/08-Credentials";
 
 export const metadata: Metadata = {
@@ -13,10 +12,11 @@ export const metadata: Metadata = {
 
 /**
  * /about, after the About page concept (2026-10-21): the opener, the
- * philosophy, the disciplines, the approach and the integrated house; then
- * the house's facts, the booklet spread, the shoot, the people, what we
- * make, the partnership close and the credentials strip. The layout adds
- * the footer.
+ * philosophy, the disciplines, the approach and the integrated house; the
+ * house's facts, then the partnership close and the credentials strip
+ * (the booklet spread, the shoot, the people and the circles removed,
+ * site owner 2026-10-24; the shoot's box photographs live on in
+ * data/shoot.ts). The layout adds the footer.
  */
 export default function AboutPage() {
   return (
@@ -26,10 +26,6 @@ export default function AboutPage() {
       <Disciplines />
       <Approach />
       <HouseFacts />
-      <BookletSpread />
-      <ShootGallery />
-      <People />
-      <WhatWeMake />
       <Partnership />
       <Credentials />
     </>

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Container, MarkedProse } from "@/components/ui";
 import { Credentials } from "@/components/home/08-Credentials";
 import { CONTACT } from "@/data/enquiry";
+import { SHOOT_BOXES } from "@/data/shoot";
+import Image from "next/image";
 import { LEGAL } from "@/data/nav";
 
 export const metadata: Metadata = {
@@ -72,6 +74,16 @@ export default function ContactPage() {
         </Container>
       </section>
 
+      {/* The tins among their boxes, from the shoot. */}
+      <figure className="contact-photo on-ash">
+        <Image
+          src={SHOOT_BOXES.overhead.src}
+          alt={SHOOT_BOXES.overhead.alt}
+          width={SHOOT_BOXES.overhead.width}
+          height={SHOOT_BOXES.overhead.height}
+          sizes="100vw"
+        />
+      </figure>
       <Credentials />
     </>
   );
