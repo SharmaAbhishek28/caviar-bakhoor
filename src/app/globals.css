@@ -569,6 +569,17 @@ html {
   color: var(--smoke);
 }
 
+/* The index stays on one line; a long label ("Ward Baccarat, The Truffle
+   Rose / Caviar Bakhoor") wraps on its own side, right-aligned. */
+.wheel-card-meta > span:first-child {
+  flex: none;
+  white-space: nowrap;
+}
+
+.wheel-card-meta > span:last-child {
+  text-align: right;
+}
+
 /* The image, lifted off the card with a soft drop shadow — the one place on
    the page a shadow is used, and only because the reference's card has it. */
 .wheel-card-figure {
