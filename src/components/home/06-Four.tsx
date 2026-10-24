@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Container, MarkedProse, Marquee, StackSection } from "@/components/ui";
-import { FOUR, FOUR_CLOSE, FOUR_OPENER } from "@/data/four";
+import { FOUR_CLOSE, FOUR_OPENER } from "@/data/four";
 
 /**
  * 06 — The Four.
@@ -13,6 +12,10 @@ import { FOUR, FOUR_CLOSE, FOUR_OPENER } from "@/data/four";
  * epithet titles and marked-up paragraphs, then a scroll-linked marquee line,
  * a paragraph and a button. The four fragrances stand in for the four people.
  * The docs pass should bring § 06 in line with this.
+ *
+ * The four portraits were removed (site owner, 2026-10-24): the opener now
+ * leads straight into the close. Their photographs live on as the section
+ * 04 cards.
  *
  * Slides over section 05's fixed photograph: it carries its own paper
  * surface, so the image is covered as this rises.
@@ -34,41 +37,6 @@ export function Four() {
             <span className="four-opener-bakhoor">{FOUR_OPENER.second}</span>
           </span>
         </h2>
-
-        <ol className="four-grid">
-          {FOUR.map((entry, i) => (
-            <li key={entry.handle} className="four-entry">
-              <h3 className="four-title">
-                <span className="four-title-the">The</span>
-                <span className="four-title-epithet">{entry.epithet}</span>
-              </h3>
-
-              <figure className="four-figure">
-                <Link href={`/products/${entry.handle}`} aria-label={`View ${entry.title}`}>
-                  <Image
-                    src={entry.image.src}
-                    alt={entry.image.alt}
-                    width={entry.image.width}
-                    height={entry.image.height}
-                    sizes="(max-width: 1023px) 100vw, 45vw"
-                    className="media"
-                    /* The first two are near the fold of the section. */
-                    loading={i < 2 ? "eager" : "lazy"}
-                  />
-                </Link>
-                {/* Where the reference signs the portrait. */}
-                <figcaption className="four-signature">{entry.title}</figcaption>
-              </figure>
-
-              <MarkedProse
-                className="type-body prose-justified four-blurb"
-                text={entry.blurb}
-                strong={entry.strong}
-                em={entry.em}
-              />
-            </li>
-          ))}
-        </ol>
       </Container>
 
       <div className="four-close">
