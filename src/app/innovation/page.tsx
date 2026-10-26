@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Credentials } from "@/components/home/08-Credentials";
 import { InnovationPlates } from "@/components/innovation/InnovationPlates";
 import { CapsSubhead, Container, DarkPanel, DisplayHeadline, Eyebrow, MarkedProse, Marquee } from "@/components/ui";
-import { INNOVATION, PLATES } from "@/data/innovation";
+import { INNOVATION, PLATES, WHY } from "@/data/innovation";
+import { WhyItExists } from "@/components/innovation/WhyItExists";
 
 export const metadata: Metadata = {
   title: "What is Caviar Bakhoor? | Elixir Signature Scents",
@@ -38,6 +39,8 @@ export default function InnovationPage() {
       </section>
 
       <InnovationPlates plates={PLATES} footer={INNOVATION.footer} />
+
+      <WhyItExists {...WHY} />
 
       <section className="ab-close" data-label="Shop">
         <Container>

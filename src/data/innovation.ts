@@ -188,3 +188,55 @@ export const PLATES: Plate[] = [
     tag: "Thermal fragrance delivery",
   },
 ];
+
+/**
+ * Why Caviar Bakhoor needed to exist: the questions a thoughtful buyer and
+ * a perfume house ask (site owner's feedback, 2026-10-26), answered only
+ * from facts the site already states: sealed at room temperature, opens
+ * under heat; the two-phase release; 75 grams to a box and a 0.5 gram dose
+ * per burn (so about 150 burns); the tools in the box; patent-pending; the
+ * 30-day development timeline.
+ *
+ * An answer left null is not shown. "Who conceived it, and why" waits for
+ * the client: never invent a founder or an origin story.
+ */
+export type WhyItem = { q: string; a: string | null; strong?: string[] };
+
+export const WHY = {
+  eyebrow: "The case for it",
+  headline: ["Why it needed", "to exist."],
+  lede: "What a pearl changes about bakhoor, in plain answers.",
+  items: [
+    {
+      q: "Is it a better way to experience bakhoor, or a more expensive one?",
+      a: "It changes three things traditional bakhoor leaves to chance: what happens to the fragrance before it burns, how much goes on the coal, and the order in which the scent opens. The pearl stays sealed at room temperature, the spoon measures each dose, and on heat the agarwood warms first and the fragrance follows. The price pays for natural, aged oud, pure 24 karat gold and a patent pending process, across about 150 measured burns a tin.",
+      strong: ["sealed at room temperature", "measures each dose", "about 150 measured burns"],
+    },
+    {
+      q: "What does encapsulation achieve that traditional bakhoor cannot?",
+      a: "It keeps the fragrance closed until heat opens it, and it gives the scent two phases instead of one. The outer layer of refined agarwood warms first and releases its resinous character; then heat opens the core and the fragrance unfolds over it. The release is controlled by the heat, not by the air the bakhoor has been sitting in.",
+      strong: ["closed until heat opens it", "two phases instead of one"],
+    },
+    {
+      q: "Why does the fragrance need to be inside a pearl?",
+      a: "Because a sealed sphere is what holds the fragrance still until it meets heat, and because a pearl is a unit. Pearls pour, spoon and measure; a tin of them doses the same way every time, which a block or chips of soaked wood cannot.",
+      strong: ["holds the fragrance still until it meets heat", "doses the same way every time"],
+    },
+    {
+      q: "Do I need a special burner?",
+      a: "No. It burns on any charcoal bakhoor burner. Everything else is in the box: the charcoal, a gold mesh disc made in two sizes to sit over the heat, extra-thick foil for everyday burning, and the spoon.",
+      strong: ["any charcoal bakhoor burner", "Everything else is in the box"],
+    },
+    {
+      q: "How many uses does one tin give?",
+      a: "Each tin holds 75 grams of pearls, and the spoon measures a 0.5 gram dose per burn: about 150 burns.",
+      strong: ["75 grams", "about 150 burns"],
+    },
+    {
+      q: "Why would a perfume house launch it as a separate category?",
+      a: "Because it is not a variant of something already on the shelf. Caviar Bakhoor is a new format with its own ritual, a patent pending process behind it, and nothing like it beside it. A house can make it in its own fragrance, tin and box, from first brief to commercial dispatch in thirty days.",
+      strong: ["a new format with its own ritual", "in its own fragrance, tin and box"],
+    },
+    { q: "Who conceived it, and what was the purpose?", a: null },
+  ] as WhyItem[],
+};
