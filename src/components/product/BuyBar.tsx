@@ -62,8 +62,8 @@ export function BuyBar({ product }: { product: Product }) {
         </div>
         <div className="pdp-bar-buy">
           {formatPrice(product) ? <span className="pdp-bar-price">{formatPrice(product)}</span> : null}
-          <button type="button" className="pdp-add" onClick={onAdd} disabled={bag === "adding"} tabIndex={shown ? 0 : -1}>
-            {bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : bag === "failed" ? "Not available, try again" : "Add to bag"}
+          <button type="button" className="pdp-add" onClick={onAdd} disabled={!product.available || bag === "adding"} tabIndex={shown ? 0 : -1}>
+            {!product.available ? "Sold out" : bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : bag === "failed" ? "Not available, try again" : "Add to bag"}
           </button>
         </div>
       </div>

@@ -4,6 +4,10 @@ import { BuyBar } from "@/components/product/BuyBar";
 import { ProductHero } from "@/components/product/ProductHero";
 import { NotesSection, ProductNav } from "@/components/product/ProductSections";
 import { getProduct, products } from "@/data/products";
+import { withShopifyPrice } from "@/lib/shopify-products";
+
+/** Shopify price and availability refresh every 5 minutes. */
+export const revalidate = 300;
 
 type Params = { handle: string };
 
@@ -32,8 +36,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
  */
 export default async function ProductPage({ params }: { params: Promise<Params> }) {
   const { handle } = await params;
-  const product = getProduct(handle);
-  if (!product) notFound();
+  const base = getProduct(handle);
+  if (!base) notFound();
+  const product = await withShopifyPrice(base);
 
   return (
     <>

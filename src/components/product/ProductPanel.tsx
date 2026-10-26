@@ -60,9 +60,9 @@ export function ProductPanel({ product }: { product: Product }) {
           type="button"
           className="pdp-add"
           onClick={onAdd}
-          disabled={bag === "adding"}
+          disabled={!product.available || bag === "adding"}
         >
-          {bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : bag === "failed" ? "Not available, try again" : "Add to bag"}
+          {!product.available ? "Sold out" : bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : bag === "failed" ? "Not available, try again" : "Add to bag"}
         </button>
       </div>
 
