@@ -10,7 +10,7 @@ export const NAV: NavItem[] = [
   { label: "Caviar Bakhoor", href: "/innovation" },
   { label: "Collection", href: "/collection" },
   { label: "The Ritual", href: "/ritual" },
-  { label: "For Business", href: "/for-business" },
+  { label: "Private Label", href: "/for-business" },
   { label: "About", href: "/about" },
 ];
 
@@ -23,7 +23,7 @@ export const MENU_NAV: NavItem[] = [
   { label: "The Innovation", href: "/innovation" },
   { label: "Collection", href: "/collection" },
   { label: "The Ritual", href: "/ritual" },
-  { label: "For Business", href: "/for-business" },
+  { label: "Private Label", href: "/for-business" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

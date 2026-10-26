@@ -9,13 +9,12 @@ import type { Product } from "@/data/products";
  * findable for whoever fills them in.
  */
 
-/** "Rs. 25,000 · USD 250". Written out rather than with the rupee sign,
- *  which Switzer does not draw. */
+/** The price shown on the site: USD only (site owner, 2026-10-26: no
+ *  rupee price on the PDP). Shopify still charges in its store currency at
+ *  checkout. Falls back to nothing when no USD price is set. */
 export function formatPrice(product: Product): string | null {
-  if (product.priceMinor === null) return null;
-  const n = (minor: number, locale: string) => new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(minor / 100);
-  const inr = `Rs. ${n(product.priceMinor, "en-IN")}`;
-  return product.priceUsdMinor === null ? inr : `${inr} · USD ${n(product.priceUsdMinor, "en-US")}`;
+  if (product.priceUsdMinor === null) return null;
+  return `USD ${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(product.priceUsdMinor / 100)}`;
 }
 
 export function formatWeight(product: Product): string | null {

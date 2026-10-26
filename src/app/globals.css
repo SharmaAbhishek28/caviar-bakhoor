@@ -7425,7 +7425,7 @@ html {
 .vs-note {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 2.5rem 1fr;
   gap: 1rem;
   padding: 0.9rem 0;
   border-top: 1px solid rgb(239 238 235 / 0.16);
@@ -7442,6 +7442,12 @@ html {
   transform-origin: left center;
 }
 
+.vs-note-no {
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-size: 1.25rem;
+  color: rgb(239 238 235 / 0.6);
+}
 
 .vs-note-text {
   display: flex;
@@ -7519,11 +7525,54 @@ html {
   pointer-events: none;
 }
 
+.vs-mark {
+  position: absolute;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: -2.25rem 0 0 -2.25rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 6px rgb(255 255 255 / 0.18), 0 6px 24px rgb(0 0 0 / 0.45);
+}
 
+.vs-mark-no,
+.vs-band-no {
+  font-family: var(--font-switzer-stack);
+  font-weight: 600;
+}
 
+.vs-mark-no {
+  position: absolute;
+  left: 100%;
+  top: -0.6rem;
+  margin-left: 0.4rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-shadow: 0 1px 6px rgb(0 0 0 / 0.7);
+}
 
+.vs-band {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
 
+.vs-band-line {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.3;
+  stroke-dasharray: 1;
+}
 
+.vs-band-no {
+  font-size: 2.6px;
+  letter-spacing: 0.1px;
+  fill: #fff;
+}
 
 @media (min-width: 1024px) {
   /* Pinned: the stage is one screen, the photograph its full height. */

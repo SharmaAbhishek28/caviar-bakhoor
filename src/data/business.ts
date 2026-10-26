@@ -18,7 +18,7 @@ import { SHOOT_BOX_SEQUENCE } from "./shoot";
 
 
 export const BUSINESS = {
-  eyebrow: "For business",
+  eyebrow: "Private label",
   headline: { first: "Your brand.", second: "Our innovation." },
   line: "Create your own Caviar Bakhoor with us.",
   cta: "Start a project",
