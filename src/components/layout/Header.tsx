@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useCart } from "@/lib/cart";
 import { Menu } from "./Menu";
 
 /**
@@ -16,7 +17,8 @@ import { Menu } from "./Menu";
  * ref rather than state so the listener itself never triggers a render — only
  * a genuine change of direction does.
  */
-export function Header({ cartCount = 0 }: { cartCount?: number }) {
+export function Header() {
+  const { count: cartCount, checkoutUrl } = useCart();
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastY = useRef(0);
@@ -112,12 +114,23 @@ export function Header({ cartCount = 0 }: { cartCount?: number }) {
           >
             {/* On the hamburger's paper tile, so it reads over dark heroes
                 as well as the paper canvas. */}
-            <span
-              className="type-meta bag-chip"
-              aria-label={`Bag, ${cartCount} item${cartCount === 1 ? "" : "s"}`}
-            >
-              Bag ({cartCount})
-            </span>
+            {/* With items in a Shopify cart, the chip goes to its checkout. */}
+            {checkoutUrl && cartCount > 0 ? (
+              <a
+                href={checkoutUrl}
+                className="type-meta bag-chip"
+                aria-label={`Bag, ${cartCount} item${cartCount === 1 ? "" : "s"}: go to checkout`}
+              >
+                Bag ({cartCount})
+              </a>
+            ) : (
+              <span
+                className="type-meta bag-chip"
+                aria-label={`Bag, ${cartCount} item${cartCount === 1 ? "" : "s"}`}
+              >
+                Bag ({cartCount})
+              </span>
+            )}
 
             <button
               type="button"
