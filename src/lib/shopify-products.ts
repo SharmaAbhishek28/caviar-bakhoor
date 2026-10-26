@@ -1,7 +1,7 @@
 /**
  * src/lib/shopify-products.ts
  *
- * Server-side: lays Shopify's live price and availability over a product
+ * Server-side: lays Shopify's live price (USD or INR) and availability over a product
  * from data/products.ts, matched by handle. The story (descriptions,
  * images, notes) stays in data/products.ts; Shopify is the authority for
  * what a customer pays and whether they can buy.
@@ -40,12 +40,14 @@ export async function withShopifyPrice(product: Product): Promise<Product> {
     if (!res.ok) return product;
     const { data } = (await res.json()) as { data?: Live };
     const v = data?.product?.variants.nodes[0];
-    if (!data?.product || !v || v.price.currencyCode !== "INR") return product;
-    return {
-      ...product,
-      priceMinor: Math.round(parseFloat(v.price.amount) * 100),
-      available: data.product.availableForSale,
-    };
+    if (!data?.product || !v) return product;
+    // The store may price in USD (shown on the site) or INR; take whichever
+    // Shopify sends, and keep the file's value for the other.
+    const minor = Math.round(parseFloat(v.price.amount) * 100);
+    const price =
+      v.price.currencyCode === "USD" ? { priceUsdMinor: minor } :
+      v.price.currencyCode === "INR" ? { priceMinor: minor } : {};
+    return { ...product, ...price, available: data.product.availableForSale };
   } catch {
     return product;
   }
