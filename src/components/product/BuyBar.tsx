@@ -16,7 +16,7 @@ import { formatPrice, formatWeight } from "./format";
  */
 export function BuyBar({ product }: { product: Product }) {
   const [shown, setShown] = useState(false);
-  const [bag, setBag] = useState<"idle" | "adding" | "added">("idle");
+  const [bag, setBag] = useState<"idle" | "adding" | "added" | "failed">("idle");
 
   useEffect(() => {
     const hero = document.querySelector<HTMLElement>(".pdp-hero");
@@ -43,8 +43,9 @@ export function BuyBar({ product }: { product: Product }) {
   async function onAdd() {
     setBag("adding");
     const r = await addToBag(product.handle);
-    setBag(r.ok ? "added" : "idle");
-    if (r.ok) setTimeout(() => setBag("idle"), 2000);
+    // A failed add says so, then the button returns.
+    setBag(r.ok ? "added" : "failed");
+    setTimeout(() => setBag("idle"), r.ok ? 2000 : 3000);
   }
 
   const thumb = product.images[0];
@@ -62,7 +63,7 @@ export function BuyBar({ product }: { product: Product }) {
         <div className="pdp-bar-buy">
           {formatPrice(product) ? <span className="pdp-bar-price">{formatPrice(product)}</span> : null}
           <button type="button" className="pdp-add" onClick={onAdd} disabled={bag === "adding"} tabIndex={shown ? 0 : -1}>
-            {bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : "Add to bag"}
+            {bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : bag === "failed" ? "Not available, try again" : "Add to bag"}
           </button>
         </div>
       </div>

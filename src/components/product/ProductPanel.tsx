@@ -21,7 +21,7 @@ import { formatPrice, formatWeight } from "./format";
  * browsers that do not yet.
  */
 export function ProductPanel({ product }: { product: Product }) {
-  const [bag, setBag] = useState<"idle" | "adding" | "added">("idle");
+  const [bag, setBag] = useState<"idle" | "adding" | "added" | "failed">("idle");
   const price = formatPrice(product);
   const weight = formatWeight(product);
 
@@ -38,8 +38,9 @@ export function ProductPanel({ product }: { product: Product }) {
   async function onAdd() {
     setBag("adding");
     const r = await addToBag(product.handle);
-    setBag(r.ok ? "added" : "idle");
-    if (r.ok) setTimeout(() => setBag("idle"), 2000);
+    // A failed add says so, then the button returns.
+    setBag(r.ok ? "added" : "failed");
+    setTimeout(() => setBag("idle"), r.ok ? 2000 : 3000);
   }
 
   return (
@@ -61,7 +62,7 @@ export function ProductPanel({ product }: { product: Product }) {
           onClick={onAdd}
           disabled={bag === "adding"}
         >
-          {bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : "Add to bag"}
+          {bag === "added" ? "Added to bag" : bag === "adding" ? "Adding…" : bag === "failed" ? "Not available, try again" : "Add to bag"}
         </button>
       </div>
 
