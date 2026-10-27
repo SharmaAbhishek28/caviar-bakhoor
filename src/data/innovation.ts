@@ -197,8 +197,8 @@ export const PLATES: Plate[] = [
  * per burn (so about 150 burns); the tools in the box; patent-pending; the
  * 30-day development timeline.
  *
- * An answer left null is not shown. "Who conceived it, and why" waits for
- * the client: never invent a founder or an origin story.
+ * An answer left null is not shown. "Who conceived it" quotes the
+ * founder's own note (site owner, 2026-10-27); never invent beyond it.
  */
 export type WhyItem = { q: string; a: string | null; strong?: string[] };
 
@@ -237,6 +237,10 @@ export const WHY = {
       a: "Because it is not a variant of something already on the shelf. Caviar Bakhoor is a new format with its own ritual, a patent pending process behind it, and nothing like it beside it. A house can make it in its own fragrance, tin and box, from first brief to commercial dispatch in thirty days.",
       strong: ["a new format with its own ritual", "in its own fragrance, tin and box"],
     },
-    { q: "Who conceived it, and what was the purpose?", a: null },
+    {
+      q: "Who conceived it, and what was the purpose?",
+      a: "Swaraj R. Sunku, founder of Caviar Bakhoor. In his words: \"I didn't set out to make another bakhoor. I wanted to change what bakhoor could become.\" A more opulent experience, a new way to enjoy bakhoor, and a category that belongs in perfumery houses around the world.",
+      strong: ["Swaraj R. Sunku", "change what bakhoor could become"],
+    },
   ] as WhyItem[],
 };

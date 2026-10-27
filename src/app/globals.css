@@ -7931,3 +7931,165 @@ html {
     top: 7rem;
   }
 }
+
+/* --- /about: a note from the founder (FounderNote.tsx) --------------------- */
+.fn {
+  position: relative;
+  background: var(--ash);
+  color: #efeeeb;
+  overflow: hidden;
+}
+
+.fn-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  padding: var(--section-y) var(--gutter, 1.5rem);
+}
+
+/* A warm light behind the letter, picked up from the photograph. */
+.fn-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 70% at 30% 45%, rgb(150 96 40 / 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+.fn-portrait {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  background: #000;
+}
+
+.fn-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.fn-letter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vh, 2.25rem);
+}
+
+.fn-eyebrow {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 500;
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(239 238 235 / 0.6);
+}
+
+.fn-opening {
+  margin: 0;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" var(--opsz-on-ash, 6);
+  font-weight: var(--bodoni-wght);
+  font-size: clamp(2.6rem, 6vw, 6.5rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+  color: #efeeeb;
+}
+
+.fn-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 36rem;
+}
+
+.fn-para,
+.fn-closing {
+  margin: 0;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+  line-height: 1.35;
+  color: #efeeeb;
+}
+
+.fn-closing {
+  font-style: italic;
+}
+
+.fn-sign {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.fn-name {
+  margin: 0;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  font-family: var(--font-bodoni-stack);
+  font-variation-settings: "opsz" 11;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 2.8vw, 2.75rem);
+  color: #efeeeb;
+}
+
+.fn-name-inner {
+  display: block;
+}
+
+.fn-rule {
+  display: block;
+  width: 7rem;
+  height: 1px;
+  background: #efeeeb;
+  transform-origin: left center;
+}
+
+.fn-role {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 500;
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(239 238 235 / 0.6);
+}
+
+@media (min-width: 1024px) {
+  .fn-stage {
+    height: 100vh;
+    height: 100svh;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: center;
+    column-gap: clamp(3rem, 6vw, 7rem);
+    padding: clamp(4.5rem, 9vh, 6rem) clamp(4rem, 9vw, 10rem) clamp(2.5rem, 5vh, 3.5rem);
+  }
+
+  .fn-portrait {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .fn-letter {
+    gap: clamp(1rem, 2.4vh, 1.75rem);
+  }
+
+  .fn-opening {
+    font-size: clamp(2.8rem, 5.2vw, 6rem);
+  }
+
+  .fn-para,
+  .fn-closing {
+    font-size: clamp(1.1rem, 1.55vw, 1.6rem);
+  }
+}

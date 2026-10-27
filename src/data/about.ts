@@ -15,6 +15,28 @@ export const ABOUT = {
   headline: ["Rooted in tradition.", "Driven by discovery."],
   lede: "An extraordinary understanding of oriental aromatics. An uncompromising pursuit of fragrance innovation.",
   signature: { house: "Elixir Signature Scents", founded: "Est. 1947" },
+  /** The founder's note (site owner, 2026-10-27), verbatim; "Caviar Bakhoo"
+   *  in the supplied title corrected to "Caviar Bakhoor". The portrait is
+   *  the supplied photograph, resized only: nothing about the person is
+   *  altered. */
+  founder: {
+    eyebrow: "A note from the founder",
+    opening: "Bakhoor deserves much more.",
+    paragraphs: [
+      "I didn't set out to make another bakhoor. I wanted to change what bakhoor could become.",
+      "A more opulent experience. A new way to enjoy bakhoor. A category that belongs in perfumery houses around the world.",
+      "I envision a future where every perfumery house has a dedicated Caviar Bakhoor collection of its own.",
+    ],
+    closing: "Caviar Bakhoor is ready for the world.",
+    name: "Swaraj R. Sunku",
+    role: "Founder, Caviar Bakhoor",
+    image: {
+      src: "/images/about/founder.jpg",
+      alt: "Swaraj R. Sunku, founder of Caviar Bakhoor, eyes closed over smouldering agarwood, smoke rising, pieces of agarwood beside him",
+      width: 1600,
+      height: 2400,
+    },
+  },
   philosophy: {
     eyebrow: "Our philosophy",
     lines: ["We understand the past.", "We engineer what comes next."],

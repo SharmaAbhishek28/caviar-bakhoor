@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AboutOpener } from "@/components/about/AboutOpener";
 import { Approach, Disciplines, Partnership, Philosophy } from "@/components/about/AboutHouse";
 import { HouseFacts } from "@/components/about/AboutSections";
+import { FounderNote } from "@/components/about/FounderNote";
 import { Credentials } from "@/components/home/08-Credentials";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function AboutPage() {
       <AboutOpener />
       <Philosophy />
       <Disciplines />
+      <FounderNote />
       <Approach />
       <HouseFacts />
       <Partnership />
