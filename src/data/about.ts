@@ -33,8 +33,8 @@ export const ABOUT = {
     image: {
       src: "/images/about/founder.jpg",
       alt: "Swaraj R. Sunku, founder of Caviar Bakhoor, eyes closed over smouldering agarwood, smoke rising, pieces of agarwood beside him",
-      width: 1600,
-      height: 2400,
+      width: 2000,
+      height: 3000,
     },
   },
   philosophy: {
