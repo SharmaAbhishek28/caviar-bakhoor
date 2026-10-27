@@ -61,7 +61,7 @@ export function FounderFilm() {
         });
         tl.fromTo(q(".ff-portrait img"), { scale: 1.18, filter: "brightness(0.65)" }, { scale: 1, filter: "brightness(1)", duration: n * 1.2 }, 0)
           .fromTo(q(".ff-eyebrow, .ff-count"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0)
-          .fromTo(q(".ff-progress-fill"), { scaleY: 0 }, { scaleY: 1, duration: n * 1.2 }, 0);
+          .fromTo(q(".ff-progress-fill"), { scaleX: 0 }, { scaleX: 1, duration: n * 1.2 }, 0);
         words.forEach((w, i) => {
           const at = i * 1.2;
           const line = q(".ff-line")[i];

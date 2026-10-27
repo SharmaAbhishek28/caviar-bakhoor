@@ -8414,26 +8414,24 @@ html {
     line-height: 1.02;
   }
 
+  /* Bottom left, under the copy, horizontal: clear of the edge labels. */
   .ff-count {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 1rem;
     position: absolute;
-    right: clamp(1.5rem, 3vw, 3rem);
-    top: 50%;
-    transform: translateY(-50%);
+    left: clamp(4rem, 8vw, 9rem);
+    bottom: clamp(2rem, 6vh, 3.5rem);
     font-family: var(--font-switzer-stack);
     font-size: var(--text-eyebrow);
     letter-spacing: 0.18em;
     color: rgb(239 238 235 / 0.6);
     font-variant-numeric: tabular-nums;
-    writing-mode: vertical-rl;
   }
 
   .ff-progress {
-    width: 1px;
-    height: 7rem;
+    width: 7rem;
+    height: 1px;
     background: rgb(239 238 235 / 0.18);
   }
 
@@ -8442,6 +8440,6 @@ html {
     width: 100%;
     height: 100%;
     background: #efeeeb;
-    transform-origin: top center;
+    transform-origin: left center;
   }
 }
