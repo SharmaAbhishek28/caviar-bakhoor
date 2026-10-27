@@ -43,24 +43,30 @@ export const ABOUT = {
     /** Set in italic within its line. */
     em: "engineer",
     body: "Our foundation is built on generations of agarwood expertise. Our future is shaped by master perfumery, research-led innovation and precision manufacturing.",
+    image: { src: "/images/shoot/burner-smoke-tins.jpg", alt: "The white burner with smoke rising, the four Caviar Bakhoor tins and boxes around it", width: 2400, height: 1350 },
   },
   disciplines: {
     eyebrow: "What defines us",
     title: "Our Disciplines.",
     lede: "Expertise across every stage of fragrance creation.",
     items: [
-      { title: "Agarwood Heritage", body: "Generations of expertise in rare and resinous aromatics." },
-      { title: "Master Perfumery", body: "In-house fragrance creation and olfactory development." },
-      { title: "Research & Development", body: "Dedicated laboratories and formulation expertise." },
-      { title: "Biotechnological Innovation", body: "Advanced fragrance processing and encapsulation research." },
-      { title: "Precision Manufacturing", body: "Integrated facilities engineered for consistency and scale." },
-      { title: "Bespoke Development", body: "End-to-end fragrance and product creation for partners." },
+      { title: "Agarwood Heritage", body: "Generations of expertise in rare and resinous aromatics.", image: { src: "/images/innovation/resin-agarwood.jpg", alt: "Resin-rich agarwood, close", width: 1600, height: 2000 } },
+      { title: "Master Perfumery", body: "In-house fragrance creation and olfactory development.", image: { src: "/images/innovation/stage-oil.jpg", alt: "A drop of golden agarwood oil", width: 1200, height: 1200 } },
+      { title: "Research & Development", body: "Dedicated laboratories and formulation expertise.", image: { src: "/images/innovation/micronization.jpg", alt: "Agarwood powder poured into a glass dish", width: 1600, height: 2000 } },
+      { title: "Biotechnological Innovation", body: "Advanced fragrance processing and encapsulation research.", image: { src: "/images/innovation/architecture.jpg", alt: "A pearl cut in half: shell and fragrance core", width: 1600, height: 2000 } },
+      { title: "Precision Manufacturing", body: "Integrated facilities engineered for consistency and scale.", image: { src: "/images/shoot/four-boxes-overhead.jpg", alt: "The four Caviar Bakhoor boxes, from above", width: 2400, height: 1600 } },
+      { title: "Bespoke Development", body: "End-to-end fragrance and product creation for partners.", image: { src: "/images/projects/triple-a/gift-set.jpg", alt: "A bespoke gift chest made for tripleA Perfumes", width: 900, height: 1200 } },
     ],
   },
   approach: {
     eyebrow: "Our approach",
     lines: ["Not just fragrance makers.", "Creators of possibility."],
     body: ["From the first formulation to the final creation.", "All under one house."],
+    images: [
+      { src: "/images/shoot/ritual-light.jpg", alt: "Lighting the charcoal in the white burner", width: 1200, height: 1500 },
+      { src: "/images/shoot/pearls-macro-03.jpg", alt: "Caviar Bakhoor pearls with flakes of gold, close", width: 2400, height: 1600 },
+      { src: "/images/shoot/noir-open-single-portrait.jpg", alt: "The Noir box open, the tin inside", width: 1200, height: 1600 },
+    ],
   },
   integrated: {
     eyebrow: "The integrated house",
@@ -71,6 +77,7 @@ export const ABOUT = {
     eyebrow: "A partnership in innovation",
     lines: ["Your vision.", "Our expertise.", "One extraordinary creation."],
     cta: { label: "Create with us", href: "/for-business" },
+    image: { src: "/images/shoot/four-boxes-with-tins.jpg", alt: "", width: 2400, height: 1600 },
   },
   opener: {
     src: "/images/shoot/all-four-boxes-marble.jpg",

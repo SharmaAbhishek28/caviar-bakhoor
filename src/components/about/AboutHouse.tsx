@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useEffect, useRef, type RefObject } from "react";
 import { Container } from "@/components/ui";
@@ -66,6 +67,10 @@ export function Philosophy() {
       autoAlpha: 1, y: 0, duration: 1, ease: "expo.out",
       scrollTrigger: { trigger: q(".ah-phil-body")[0], start: "top 88%", toggleActions: "play none none reverse" },
     });
+    const media = q(".ah-phil-media")[0];
+    gsap.timeline({ scrollTrigger: { trigger: media, start: "top 90%", end: "bottom 40%", scrub: 0.6 } })
+      .fromTo(media, { clipPath: "inset(12% 22% 12% 22%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "power2.out" }, 0)
+      .fromTo(media.querySelector("img"), { scale: 1.3 }, { scale: 1, ease: "none" }, 0);
   });
   return (
     <section ref={ref} className="ah-phil on-ash" data-label="Philosophy" data-no-reveal>
@@ -79,6 +84,9 @@ export function Philosophy() {
           ))}
         </h2>
         <p className="ah-phil-body">{p.body}</p>
+        <figure className="ah-phil-media">
+          <Image src={p.image.src} alt={p.image.alt} width={p.image.width} height={p.image.height} sizes="(max-width: 1023px) 100vw, 1200px" />
+        </figure>
       </Container>
     </section>
   );
@@ -101,6 +109,44 @@ export function Disciplines() {
     });
   });
   const no = (n: number) => String(n).padStart(2, "0");
+  const preview = useRef<HTMLDivElement>(null);
+  // The preview follows the pointer over the list and shows the hovered
+  // row's image. Fine pointers only; phones show each row's thumbnail.
+  useEffect(() => {
+    const root = ref.current;
+    const box = preview.current;
+    if (!root || !box || prefersReducedMotion()) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const list = root.querySelector<HTMLElement>(".ah-disc-list");
+    if (!list) return;
+    const xTo = gsap.quickTo(box, "x", { duration: 0.6, ease: "power3.out" });
+    const yTo = gsap.quickTo(box, "y", { duration: 0.6, ease: "power3.out" });
+    const imgs = Array.from(box.querySelectorAll<HTMLElement>(".ah-disc-shot"));
+    const move = (e: PointerEvent) => {
+      const r = list.getBoundingClientRect();
+      xTo(e.clientX - r.left);
+      yTo(e.clientY - r.top);
+    };
+    const show = (i: number) => {
+      imgs.forEach((img, k) => gsap.to(img, { autoAlpha: k === i ? 1 : 0, scale: k === i ? 1 : 1.12, duration: 0.5, ease: "power3.out", overwrite: "auto" }));
+      gsap.to(box, { autoAlpha: 1, scale: 1, rotation: (i % 2 ? 4 : -4), duration: 0.5, ease: "power3.out", overwrite: "auto" });
+    };
+    const hide = () => gsap.to(box, { autoAlpha: 0, scale: 0.85, duration: 0.4, ease: "power3.out", overwrite: "auto" });
+    const rows = Array.from(list.querySelectorAll<HTMLElement>(".ah-disc-row"));
+    const enters = rows.map((row, i) => {
+      const fn = () => show(i);
+      row.addEventListener("pointerenter", fn);
+      return [row, fn] as const;
+    });
+    gsap.set(box, { autoAlpha: 0, scale: 0.85, xPercent: -50, yPercent: -50 });
+    list.addEventListener("pointermove", move);
+    list.addEventListener("pointerleave", hide);
+    return () => {
+      enters.forEach(([row, fn]) => row.removeEventListener("pointerenter", fn));
+      list.removeEventListener("pointermove", move);
+      list.removeEventListener("pointerleave", hide);
+    };
+  }, []);
   return (
     <section ref={ref} className="ah-disc" data-label="Disciplines" data-no-reveal>
       <Container>
@@ -124,10 +170,20 @@ export function Disciplines() {
                 <span className="ah-disc-pearl" aria-hidden />
                 {it.title}
               </h3>
+              <span className="ah-disc-thumb" aria-hidden>
+                <Image src={it.image.src} alt="" width={it.image.width} height={it.image.height} sizes="96px" />
+              </span>
               <p className="ah-disc-body">{it.body}</p>
             </li>
           ))}
           <li className="ah-disc-end" aria-hidden />
+          <li className="ah-disc-preview-host" aria-hidden>
+            <div ref={preview} className="ah-disc-preview">
+              {d.items.map((it) => (
+                <Image key={it.title} src={it.image.src} alt="" width={it.image.width} height={it.image.height} sizes="320px" className="ah-disc-shot" />
+              ))}
+            </div>
+          </li>
         </ol>
       </Container>
     </section>
@@ -141,6 +197,17 @@ export function Approach() {
   useMotion(ref, (q, root) => {
     rise(q, ".ah-approach .ah-line-inner", q(".ah-approach")[0] ?? root);
     gsap.fromTo(q(".ah-approach-rule"), { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: "power3.inOut", scrollTrigger: { trigger: q(".ah-approach-rule")[0], start: "top 85%", toggleActions: "play none none reverse" } });
+    q(".ah-approach-shot").forEach((el, i) => {
+      // Drift at its own rate with the scroll; fade in once, quickly.
+      gsap.fromTo(el, { yPercent: [30, 10, 45][i] ?? 20 }, {
+        yPercent: [-10, -25, -5][i] ?? -10, ease: "none",
+        scrollTrigger: { trigger: q(".ah-approach-gallery")[0], start: "top 95%", end: "bottom 20%", scrub: 0.8 },
+      });
+      gsap.fromTo(el, { autoAlpha: 0 }, {
+        autoAlpha: 1, duration: 0.9, delay: i * 0.12, ease: "power2.out",
+        scrollTrigger: { trigger: q(".ah-approach-gallery")[0], start: "top 85%", toggleActions: "play none none reverse" },
+      });
+    });
     gsap.fromTo(q(".ah-approach-body"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.9, ease: "expo.out", scrollTrigger: { trigger: q(".ah-approach-body")[0], start: "top 90%", toggleActions: "play none none reverse" } });
 
     const grid = q(".ah-int-grid")[0];
@@ -178,6 +245,13 @@ export function Approach() {
               </Fragment>
             ))}
           </p>
+          <div className="ah-approach-gallery">
+            {a.images.map((img, i) => (
+              <figure key={img.src} className={`ah-approach-shot ah-approach-shot--${i}`}>
+                <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(max-width: 767px) 50vw, 30vw" />
+              </figure>
+            ))}
+          </div>
         </Container>
       </div>
       <div className="ah-int">
@@ -212,10 +286,14 @@ export function Partnership() {
   const p = ABOUT.partnership;
   useMotion(ref, (q, root) => {
     rise(q, ".ah-line-inner", root);
+    gsap.fromTo(q(".ah-part-bg img"), { scale: 1.2, yPercent: -6 }, { scale: 1, yPercent: 6, ease: "none", scrollTrigger: { trigger: root, start: "top bottom", end: "bottom top", scrub: true } });
     gsap.fromTo(q(".ah-part-cta, .ah-part-sign"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: q(".ah-part-cta")[0], start: "top 92%", toggleActions: "play none none reverse" } });
   });
   return (
     <section ref={ref} className="ah-part on-ash" data-label="Partnership" data-no-reveal>
+      <div className="ah-part-bg" aria-hidden>
+        <Image src={p.image.src} alt="" width={p.image.width} height={p.image.height} sizes="100vw" />
+      </div>
       <Container>
         <div className="ah-part-inner">
           <p className="ah-eyebrow">{p.eyebrow}</p>

@@ -8078,18 +8078,167 @@ html {
   .fn-portrait {
     aspect-ratio: auto;
     height: 100%;
+    order: 2;
+  }
+
+  .fn-letter {
+    order: 1;
+  }
+
+  .fn-glow {
+    background: radial-gradient(60% 70% at 72% 45%, rgb(150 96 40 / 0.22), transparent 70%);
   }
 
   .fn-letter {
     gap: clamp(1rem, 2.4vh, 1.75rem);
   }
 
+  /* Sized by the screen's height as well as its width, so the whole
+     letter and the signature always fit the pinned screen. */
   .fn-opening {
-    font-size: clamp(2.8rem, 5.2vw, 6rem);
+    font-size: clamp(2.4rem, min(5.2vw, 8.2vh), 6rem);
   }
 
   .fn-para,
   .fn-closing {
-    font-size: clamp(1.1rem, 1.55vw, 1.6rem);
+    font-size: clamp(1rem, min(1.5vw, 2.45vh), 1.6rem);
   }
+
+  .fn-body {
+    gap: min(1.1rem, 1.6vh);
+  }
+
+  .fn-name {
+    font-size: clamp(1.5rem, min(2.6vw, 4.2vh), 2.75rem);
+  }
+}
+
+/* /about photographs (AboutHouse.tsx) ---------------------------------------- */
+.ah-phil-media {
+  margin: clamp(2.5rem, 6vw, 5rem) 0 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.ah-phil-media img,
+.ah-approach-shot img,
+.ah-part-bg img,
+.ah-disc-thumb img,
+.ah-disc-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ah-phil-media img {
+  will-change: transform;
+}
+
+/* Disciplines: a round thumbnail per row on phones; a cursor preview on
+   wide screens with a fine pointer. */
+.ah-disc-list {
+  position: relative;
+}
+
+.ah-disc-thumb {
+  grid-column: 2;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--ash);
+}
+
+.ah-disc-preview-host {
+  list-style: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ah-disc-preview {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .ah-disc-thumb {
+    display: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .ah-disc-preview {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(14rem, 20vw, 20rem);
+    aspect-ratio: 4 / 5;
+    border-radius: 999px 999px 0 0;
+    overflow: hidden;
+    background: var(--ash);
+    box-shadow: 0 30px 60px -25px rgb(8 7 10 / 0.5);
+    visibility: hidden;
+  }
+
+  .ah-disc-shot {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+}
+
+/* Approach: three photographs at different heights. */
+.ah-approach-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  align-items: start;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  margin-top: clamp(3rem, 7vw, 6rem);
+}
+
+.ah-approach-shot {
+  margin: 0;
+  overflow: hidden;
+  background: var(--ash);
+}
+
+.ah-approach-shot--0 {
+  aspect-ratio: 4 / 5;
+  margin-top: 18%;
+}
+
+.ah-approach-shot--1 {
+  aspect-ratio: 3 / 4;
+}
+
+.ah-approach-shot--2 {
+  aspect-ratio: 3 / 4;
+  margin-top: 30%;
+}
+
+/* Partnership: a faint photograph behind the close. */
+.ah-part {
+  position: relative;
+  overflow: hidden;
+}
+
+.ah-part-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+}
+
+.ah-part-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgb(8 7 10 / 0.2), rgb(8 7 10 / 0.9));
+}
+
+.ah-part > :not(.ah-part-bg) {
+  position: relative;
 }
