@@ -6,11 +6,9 @@ import {
   CapsSubhead,
   StackSection,
   Reveal,
-  MarkedProse,
 } from "@/components/ui";
-import { BOX_INTRO, BOX_INTRO_STRONG, BOX_ITEMS, BOX_VIDEO } from "@/data/box";
+import { BOX_VIDEO } from "@/data/box";
 import { FilmReveal } from "./03-FilmReveal";
-import { BoxRows } from "./03-BoxRows";
 
 /**
  * 03 — Encapsulated Technology (approach).
@@ -24,8 +22,8 @@ import { BoxRows } from "./03-BoxRows";
  * space above it deliberately empty. Its caps subhead is top-aligned in the
  * same column, so the emptiness sits between them.
  *
- * Copy verbatim from docs/homepage.md § 03. The row's right column is the
- * box's contents (src/data/box.ts); its left column is a film that opens
+ * Copy verbatim from docs/homepage.md § 03. The box's contents moved to
+ * 04b-InTheBox, after the collection (site owner, 2026-10-27); its left column is a film that opens
  * from the portrait slot into a landscape frame below as the page scrolls
  * (03-ApproachVideo).
  */
@@ -64,16 +62,6 @@ export function Approach() {
           sizes="(max-width: 1023px) 100vw, 1440px"
           className="media"
         />
-      </Container>
-
-      {/* What is in the box: the subhead and the line, then the three tools,
-          one row each, alternating sides. */}
-      <Container>
-        <div className="br-head">
-          <CapsSubhead>Elixir × Caviar Bakhoor</CapsSubhead>
-          <MarkedProse className="type-body br-intro" text={BOX_INTRO} strong={BOX_INTRO_STRONG} />
-        </div>
-        <BoxRows items={BOX_ITEMS} />
       </Container>
 
       {/* Then the film, full width, opening through a pearl. */}

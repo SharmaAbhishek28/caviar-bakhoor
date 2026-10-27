@@ -3,6 +3,7 @@ import { TrustStrip } from "@/components/home/01b-TrustStrip";
 import { Innovation } from "@/components/home/02-Innovation";
 import { Approach } from "@/components/home/03-Approach";
 import { Projects } from "@/components/home/04-Projects";
+import { InTheBox } from "@/components/home/04b-InTheBox";
 import { Ritual } from "@/components/home/05-Ritual";
 import { Visit } from "@/components/home/05b-Visit";
 import { Ugc } from "@/components/home/05c-Ugc";
@@ -25,6 +26,7 @@ export default function Home() {
       <Innovation />
       <Approach />
       <Projects />
+      <InTheBox />
       <Ritual />
       <Visit />
       <Ugc />
