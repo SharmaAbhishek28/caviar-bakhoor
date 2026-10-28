@@ -3,7 +3,6 @@ import { AboutOpener } from "@/components/about/AboutOpener";
 import { Approach, Disciplines, Partnership, Philosophy } from "@/components/about/AboutHouse";
 import { HouseFacts } from "@/components/about/AboutSections";
 import { FounderNote } from "@/components/about/FounderNote";
-import { FounderFilm } from "@/components/about/FounderFilm";
 import { Credentials } from "@/components/home/08-Credentials";
 
 export const metadata: Metadata = {
@@ -28,7 +27,6 @@ export default function AboutPage() {
       <Disciplines />
       <FounderNote />
       {/* Second design, for comparison with FounderNote (site owner, 2026-10-27). */}
-      <FounderFilm />
       <Approach />
       <HouseFacts />
       <Partnership />
