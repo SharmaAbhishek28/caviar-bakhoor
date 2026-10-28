@@ -272,7 +272,8 @@ body {
    which pushes the document scroll width past the viewport at 375px. The glyph
    boxes sit inside the gutter — only the ink overhangs — so contain it at the
    root rather than clipping the headline itself, which cuts real letters. */
-html {
+html,
+body {
   overflow-x: clip;
 }
 
@@ -712,6 +713,42 @@ html {
 
 }
 
+/* A phone on its side: a full-width 16:9 photo alone is taller than the
+   screen, so the pinned card lost its paragraph and button below the fold.
+   Photo left, words right, and the whole card fits under the header. */
+@media (max-width: 1023px) and (orientation: landscape) and (max-height: 560px) {
+  .wheel-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 1.5rem;
+    row-gap: 0.75rem;
+    align-items: start;
+  }
+
+  .wheel-card-meta {
+    grid-column: 1 / -1;
+  }
+
+  .wheel-card-figure {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+
+  .wheel-card-blurb {
+    grid-column: 2;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .wheel-card .wheel-card-cta {
+    grid-column: 2;
+    align-self: start;
+    justify-self: start;
+    margin-top: 0;
+  }
+}
+
 /* Reduced motion, at any width: no pin, no track, no arc — a vertical list. */
 @media (prefers-reduced-motion: reduce) {
   .wheel-root {
@@ -859,8 +896,10 @@ html {
   text-decoration-thickness: 1px;
 }
 
-.ritual-link:hover {
-  text-decoration-thickness: 2px;
+@media (hover: hover) {
+  .ritual-link:hover {
+    text-decoration-thickness: 2px;
+  }
 }
 
 /* Tablet: two columns. */
@@ -1275,8 +1314,10 @@ html {
   transition: transform var(--dur) var(--ease);
 }
 
-.footer-nav a:hover .footer-arrow {
-  transform: translate(2px, -2px);
+@media (hover: hover) {
+  .footer-nav a:hover .footer-arrow {
+    transform: translate(2px, -2px);
+  }
 }
 
 /* Paragraph left, legal links small at the right, on one row. */
@@ -1446,9 +1487,11 @@ html {
   text-decoration: none;
 }
 
-.chero-jump a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+@media (hover: hover) {
+  .chero-jump a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
 }
 
 .chero-jump-sep {
@@ -1489,8 +1532,10 @@ html {
   transition: transform 900ms var(--ease);
 }
 
-.pcard:hover .pcard-img {
-  transform: scale(1.03);
+@media (hover: hover) {
+  .pcard:hover .pcard-img {
+    transform: scale(1.03);
+  }
 }
 
 .pcard-scrim {
@@ -1537,10 +1582,16 @@ html {
   margin-top: 0.5rem;
 }
 
-.cta-button.cta-button--paper:hover,
 .cta-button.cta-button--paper:focus-visible {
   background: var(--ash);
   color: var(--paper);
+}
+
+@media (hover: hover) {
+  .cta-button.cta-button--paper:hover {
+    background: var(--ash);
+    color: var(--paper);
+  }
 }
 
 @media (min-width: 768px) {
@@ -1681,7 +1732,8 @@ html {
   font-size: 0.9375rem;
 }
 
-@media (min-width: 768px) {
+/* Two columns from a Surface Duo or an open fold, not only from tablets. */
+@media (min-width: 520px) {
   .story-line {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1944,11 +1996,18 @@ html {
     color 160ms var(--ease);
 }
 
-.enquiry-submit:hover,
 .enquiry-submit:focus-visible {
   background: var(--paper);
   color: var(--ash);
   outline: none;
+}
+
+@media (hover: hover) {
+  .enquiry-submit:hover {
+    background: var(--paper);
+    color: var(--ash);
+    outline: none;
+  }
 }
 
 .enquiry-submit:disabled {
@@ -2023,9 +2082,11 @@ html {
   text-decoration: none;
 }
 
-.contact-legal a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+@media (hover: hover) {
+  .contact-legal a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
 }
 
 @media (min-width: 640px) {
@@ -2086,9 +2147,11 @@ html {
   transition: background-color 160ms var(--ease), color 160ms var(--ease);
 }
 
-.pdp-rail-btn:hover:not(:disabled) {
-  background: var(--ink);
-  color: var(--paper);
+@media (hover: hover) {
+  .pdp-rail-btn:hover:not(:disabled) {
+    background: var(--ink);
+    color: var(--paper);
+  }
 }
 
 .pdp-rail-btn:disabled {
@@ -2284,11 +2347,18 @@ html {
   transition: background-color 160ms var(--ease), color 160ms var(--ease);
 }
 
-.pdp-add:hover:not(:disabled),
 .pdp-add:focus-visible {
   background: var(--paper);
   color: var(--ash);
   outline: none;
+}
+
+@media (hover: hover) {
+  .pdp-add:hover:not(:disabled) {
+    background: var(--paper);
+    color: var(--ash);
+    outline: none;
+  }
 }
 
 .pdp-add:disabled {
@@ -2632,10 +2702,12 @@ html {
   transition: background-color 160ms var(--ease), color 160ms var(--ease);
 }
 
-.pdp-review-btn:hover {
-  background: var(--paper);
-  color: var(--ash);
-  box-shadow: inset 0 0 0 1px var(--ash);
+@media (hover: hover) {
+  .pdp-review-btn:hover {
+    background: var(--paper);
+    color: var(--ash);
+    box-shadow: inset 0 0 0 1px var(--ash);
+  }
 }
 
 .pdp-reviews-empty {
@@ -2673,9 +2745,11 @@ html {
   transition: transform 900ms var(--ease), opacity 400ms var(--ease);
 }
 
-.pdp-nav-link:hover .pdp-nav-img {
-  transform: scale(1.03);
-  opacity: 0.9;
+@media (hover: hover) {
+  .pdp-nav-link:hover .pdp-nav-img {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
 }
 
 .pdp-nav-body {
@@ -3064,12 +3138,16 @@ html {
   transition: transform 900ms var(--ease);
 }
 
-.ab-circle:hover .ab-circle-img {
-  transform: rotate(-4deg);
+@media (hover: hover) {
+  .ab-circle:hover .ab-circle-img {
+    transform: rotate(-4deg);
+  }
 }
 
-.ab-circle:hover .ab-circle-img img {
-  transform: scale(1.06);
+@media (hover: hover) {
+  .ab-circle:hover .ab-circle-img img {
+    transform: scale(1.06);
+  }
 }
 
 .ab-circle-kicker {
@@ -3164,10 +3242,16 @@ html {
   border-color: var(--ink);
 }
 
-.cta-button.cta-button--ghost:hover,
 .cta-button.cta-button--ghost:focus-visible {
   background: var(--ink);
   color: var(--paper);
+}
+
+@media (hover: hover) {
+  .cta-button.cta-button--ghost:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
 }
 
 /* --- /for-business ------------------------------------------------------- */
@@ -3308,9 +3392,11 @@ html {
   will-change: transform, opacity;
 }
 
-.biz-row:hover {
-  background: var(--ink);
-  color: var(--paper);
+@media (hover: hover) {
+  .biz-row:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
 }
 
 .biz-row-inner {
@@ -4758,9 +4844,14 @@ html {
   transition: transform 320ms var(--ease);
 }
 
-.pol-index li[data-current] a,
-.pol-index li a:hover {
+.pol-index li[data-current] a {
   color: var(--ink);
+}
+
+@media (hover: hover) {
+  .pol-index li a:hover {
+    color: var(--ink);
+  }
 }
 
 .pol-index li[data-current] a::after {
@@ -4785,10 +4876,12 @@ html {
   text-decoration: none;
 }
 
-.pol-others a:hover {
-  color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+@media (hover: hover) {
+  .pol-others a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
 }
 
 .pol-body {
@@ -5050,11 +5143,18 @@ html {
     transform 320ms var(--ease-elastic);
 }
 
-.sound-toggle:hover,
 .sound-toggle:focus-visible {
   background: rgb(8 7 10 / 0.5);
   border-color: rgb(239 238 235 / 0.9);
   transform: scale(1.08);
+}
+
+@media (hover: hover) {
+  .sound-toggle:hover {
+    background: rgb(8 7 10 / 0.5);
+    border-color: rgb(239 238 235 / 0.9);
+    transform: scale(1.08);
+  }
 }
 
 .sound-toggle svg {
@@ -5261,15 +5361,26 @@ html {
     color var(--dur-fast) var(--ease);
 }
 
-.cta-button:hover,
 .cta-button:focus-visible {
   background: var(--paper);
   color: var(--ash);
 }
 
-.cta-button:hover .cta-arrow,
+@media (hover: hover) {
+  .cta-button:hover {
+    background: var(--paper);
+    color: var(--ash);
+  }
+}
+
 .cta-button:focus-visible .cta-arrow {
   transform: translate(0.35em, -0.35em);
+}
+
+@media (hover: hover) {
+  .cta-button:hover .cta-arrow {
+    transform: translate(0.35em, -0.35em);
+  }
 }
 
 .cta-bar {
@@ -5294,10 +5405,16 @@ html {
     color var(--dur-fast) var(--ease);
 }
 
-.cta-bar:hover,
 .cta-bar:focus-visible {
   background: var(--paper);
   color: var(--ash);
+}
+
+@media (hover: hover) {
+  .cta-bar:hover {
+    background: var(--paper);
+    color: var(--ash);
+  }
 }
 
 .cta-arrow {
@@ -5305,9 +5422,14 @@ html {
   transition: transform 320ms var(--ease-elastic);
 }
 
-.cta-bar:hover .cta-arrow,
 .cta-bar:focus-visible .cta-arrow {
   transform: translate(0.35em, -0.35em);
+}
+
+@media (hover: hover) {
+  .cta-bar:hover .cta-arrow {
+    transform: translate(0.35em, -0.35em);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5343,9 +5465,14 @@ html {
   transition: background var(--dur-fast) var(--ease);
 }
 
-.home-tile:hover,
 .home-tile:focus-visible {
   background: color-mix(in srgb, var(--ink) 12%, var(--paper));
+}
+
+@media (hover: hover) {
+  .home-tile:hover {
+    background: color-mix(in srgb, var(--ink) 12%, var(--paper));
+  }
 }
 
 /* --- Hamburger ----------------------------------------------------------- */
@@ -5385,21 +5512,36 @@ html {
   transition: width 320ms var(--ease-elastic);
 }
 
-.hamburger:hover,
 .hamburger:focus-visible {
   background: color-mix(in srgb, var(--ink) 12%, var(--paper));
 }
 
+@media (hover: hover) {
+  .hamburger:hover {
+    background: color-mix(in srgb, var(--ink) 12%, var(--paper));
+  }
+}
+
 /* The two lines shrink by different amounts, so the shrink reads as movement
    rather than a uniform scale. */
-.hamburger:hover span:not(.sr-only):nth-of-type(2),
 .hamburger:focus-visible span:not(.sr-only):nth-of-type(2) {
   width: 12px;
 }
 
-.hamburger:hover span:not(.sr-only):nth-of-type(3),
+@media (hover: hover) {
+  .hamburger:hover span:not(.sr-only):nth-of-type(2) {
+    width: 12px;
+  }
+}
+
 .hamburger:focus-visible span:not(.sr-only):nth-of-type(3) {
   width: 16px;
+}
+
+@media (hover: hover) {
+  .hamburger:hover span:not(.sr-only):nth-of-type(3) {
+    width: 16px;
+  }
 }
 
 /* --- Close mark ---------------------------------------------------------- */
@@ -5432,9 +5574,14 @@ html {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.menu-close:hover,
 .menu-close:focus-visible {
   transform: rotate(90deg);
+}
+
+@media (hover: hover) {
+  .menu-close:hover {
+    transform: rotate(90deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5493,11 +5640,18 @@ html {
     color 160ms var(--ease);
 }
 
-.menu-link:hover,
 .menu-link:focus-visible {
   color: var(--paper);
   background-size: 100% 100%;
   outline: none;
+}
+
+@media (hover: hover) {
+  .menu-link:hover {
+    color: var(--paper);
+    background-size: 100% 100%;
+    outline: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5535,8 +5689,10 @@ html {
   animation: marquee-scroll 45s linear infinite;
 }
 
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes marquee-scroll {
@@ -7099,7 +7255,8 @@ html {
   font-family: var(--font-bodoni-stack);
   font-variation-settings: "opsz" 11;
   font-weight: 500;
-  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  /* Capped at 6vw so "Engineering" fits a half-width cell on a 320px phone. */
+  font-size: min(clamp(1.5rem, 2.6vw, 2.5rem), 6vw);
   line-height: 1.05;
 }
 
@@ -7327,6 +7484,9 @@ html {
   margin: 0;
   background: var(--ash);
   line-height: 0;
+  /* The scroll reveal starts the photo at 106%; unclipped, that widened the
+     layout viewport on phones and let the page drift sideways. */
+  overflow: hidden;
 }
 
 .contact-photo img {
@@ -7777,6 +7937,22 @@ html {
 
 .ugc-meter {
   display: none;
+}
+
+/* Tablets, open folds and the Duo: the heading takes under half the row, so
+   the first films sit beside it instead of one peeking in at the edge. */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .ugc-intro {
+    flex-basis: 44vw;
+  }
+
+  .ugc-card--video .ugc-media {
+    width: min(38vw, 17rem);
+  }
+
+  .ugc-card--image .ugc-media {
+    width: min(64vw, 30rem);
+  }
 }
 
 /* Wide screens: pinned; the scroll drives the track sideways. */
