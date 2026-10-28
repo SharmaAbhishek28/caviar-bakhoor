@@ -34,6 +34,7 @@ export const UGC: {
     { kind: "video", id: "saffron-burner", title: "Saffron, on the burner", credit: null, src: "/video/ugc/saffron-burner.mp4", poster: "/video/ugc/saffron-burner-poster.jpg" },
     { kind: "video", id: "fan-al-oud-booth", title: "At the Fan Al Oud booth", credit: "@fanaloud", src: "/video/ugc/fan-al-oud-booth.mp4", poster: "/video/ugc/fan-al-oud-booth-poster.jpg" },
     { kind: "video", id: "golden-scent-film", title: "Golden Scent, on film", credit: null, src: "/video/ugc/golden-scent-film.mp4", poster: "/video/ugc/golden-scent-film-poster.jpg" },
+    { kind: "video", id: "tin-to-smoke", title: "From the tin to the smoke", credit: "@fanaloud26", src: "/video/ugc/tin-to-smoke.mp4", poster: "/video/ugc/tin-to-smoke-poster.jpg" },
     { kind: "video", id: "exhibition-tin", title: "Opening the gold tin", credit: null, src: "/video/ugc/exhibition-tin.mp4", poster: "/video/ugc/exhibition-tin-poster.jpg" },
     { kind: "video", id: "fan-al-oud-g103", title: "Fan Al Oud, booth G103", credit: "@nammoola", src: "/video/ugc/fan-al-oud-g103.mp4", poster: "/video/ugc/fan-al-oud-g103-poster.jpg" },
     {
