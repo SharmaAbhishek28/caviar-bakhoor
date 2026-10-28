@@ -6,9 +6,10 @@
  * images, notes) stays in data/products.ts; Shopify is the authority for
  * what a customer pays and whether they can buy.
  *
- * Pages that use this revalidate every 5 minutes, so a price changed in the
- * Shopify admin reaches the site within that time, with no redeploy. If the
- * store is not configured or does not answer, the file's values stand.
+ * Read at build time: the site is static (Cloudflare Pages), and a product
+ * saved in the Shopify admin triggers a rebuild through a webhook, so a new
+ * price reaches the site in about two minutes (docs/deploy-cloudflare.md).
+ * If the store is not configured or does not answer, the file's values stand.
  */
 
 import type { Product } from "@/data/products";
@@ -16,7 +17,6 @@ import { shopifyEnabled } from "./shopify";
 
 const DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
 const TOKEN = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN;
-export const PRICE_REVALIDATE_SECONDS = 300;
 
 type Live = {
   product: {
@@ -35,7 +35,6 @@ export async function withShopifyPrice(product: Product): Promise<Product> {
         query: `query($handle: String!) { product(handle: $handle) { availableForSale variants(first: 1) { nodes { price { amount currencyCode } } } } }`,
         variables: { handle: product.handle },
       }),
-      next: { revalidate: PRICE_REVALIDATE_SECONDS, tags: [`shopify:${product.handle}`] },
     });
     if (!res.ok) return product;
     const { data } = (await res.json()) as { data?: Live };

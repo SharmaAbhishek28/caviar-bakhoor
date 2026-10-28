@@ -2,9 +2,9 @@
  * src/lib/shopify.ts
  *
  * The one connection to Shopify: the Storefront API (headless). The site
- * stays on Vercel; Shopify holds the products, the cart and the checkout.
+ * is static, on Cloudflare Pages; Shopify holds the products, the cart and the checkout.
  *
- * Configured by two public environment variables, set in Vercel:
+ * Configured by two public environment variables, set in the host's build settings:
  *   NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN       e.g. caviar-bakhoor.myshopify.com
  *   NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN   the Headless channel's public
  *                                          Storefront access token

@@ -6,8 +6,8 @@ import { NotesSection, ProductNav } from "@/components/product/ProductSections";
 import { getProduct, products } from "@/data/products";
 import { withShopifyPrice } from "@/lib/shopify-products";
 
-/** Shopify price and availability refresh every 5 minutes. */
-export const revalidate = 300;
+/** Shopify price and availability are read at build time; a product saved in
+ * Shopify triggers a rebuild (docs/deploy-cloudflare.md). */
 
 type Params = { handle: string };
 

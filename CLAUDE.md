@@ -35,7 +35,9 @@ The four fragrances are **Noir**, **Ward Baccarat**, **Imperial Zafran**, **Ambe
 - GSAP + ScrollTrigger for scroll-driven motion
 - Lenis for smooth scroll
 - Fonts self-hosted via `next/font/local` — Switzer (Fontshare) and Bodoni Moda
-- Deploys to Vercel
+- Deploys to Cloudflare Pages as a static export (`output: "export"`, site owner,
+  2026-10-28). Every page is still full HTML at build time, so the SEO goal
+  holds; nothing may need a request-time server. See `docs/deploy-cloudflare.md`.
 
 ## Handover rules — these matter more than they look
 
