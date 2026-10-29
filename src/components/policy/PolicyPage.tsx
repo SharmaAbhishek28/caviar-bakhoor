@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Container, Eyebrow } from "@/components/ui";
 import type { Policy, PolicyBlock } from "@/data/policies";
 import { PUBLISHED_POLICIES } from "@/data/policies";
+import { CAREER_FORM } from "@/data/career";
+import { CareerForm } from "./CareerForm";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 /**
@@ -62,6 +64,11 @@ export function PolicyPage({ policy }: { policy: Policy }) {
                   <a href={`#${slug(s.heading)}`}>{s.heading}</a>
                 </li>
               ))}
+              {policy.form === "career" ? (
+                <li>
+                  <a href="#career-apply">{CAREER_FORM.heading}</a>
+                </li>
+              ) : null}
             </ol>
             <ul className="pol-others">
               {PUBLISHED_POLICIES.filter((p) => p.slug !== policy.slug).map((p) => (
@@ -80,6 +87,7 @@ export function PolicyPage({ policy }: { policy: Policy }) {
                 </div>
               </section>
             ))}
+            {policy.form === "career" ? <CareerForm /> : null}
           </div>
         </div>
       </Container>

@@ -5094,6 +5094,76 @@ body {
   background: var(--ink);
 }
 
+/* /career: the application form, under the text, on the same rules. */
+.career-form {
+  max-width: 44rem;
+}
+
+.career-intro {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .career-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* The CV field: the native input hidden but focusable; a button-like
+   label and the chosen file's name beside it. */
+.career-cv {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.career-cv input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.career-cv-button {
+  display: inline-flex;
+  align-items: center;
+  height: var(--button-h);
+  padding: 0 1.25rem;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  font-family: var(--font-switzer-stack);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition:
+    background-color 160ms var(--ease),
+    color 160ms var(--ease);
+}
+
+.career-cv:has(input:focus-visible) .career-cv-button {
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+@media (hover: hover) {
+  .career-cv:hover .career-cv-button {
+    background: var(--ink);
+    color: var(--paper);
+  }
+}
+
+.career-cv-name {
+  font-family: var(--font-switzer-stack);
+  font-size: 0.875rem;
+  color: var(--smoke);
+  overflow-wrap: anywhere;
+}
+
 /* Phones: the footer carries the other pages; the index keeps to this one. */
 @media (max-width: 1023px) {
   .pol-others {

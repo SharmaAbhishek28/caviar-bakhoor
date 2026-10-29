@@ -24,9 +24,24 @@ export type EnquiryPayload = {
   contactBy: string[];
 };
 
+/** An application from the /career form. */
+export type CareerPayload = {
+  kind: "career";
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  role: string;
+  /** Portfolio or LinkedIn. */
+  link: string;
+  message: string;
+  /** The attached CV, sent as a file by whatever replaces the stub. */
+  cv: File | null;
+};
+
 export type EnquiryResult = { ok: true } | { ok: false; error: string };
 
-export async function submitEnquiry(payload: EnquiryPayload): Promise<EnquiryResult> {
+export async function submitEnquiry(payload: EnquiryPayload | CareerPayload): Promise<EnquiryResult> {
   if (process.env.NODE_ENV !== "production") {
     console.info("[submitEnquiry] stub received", payload);
   }

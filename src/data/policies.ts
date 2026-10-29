@@ -29,6 +29,8 @@ export type Policy = {
   eyebrow?: string;
   /** The short word in the side labels. Defaults to "Policies". */
   label?: string;
+  /** A form after the sections. */
+  form?: "career";
   lede: string | null;
   updated: string | null;
   sections: PolicySection[];
@@ -155,6 +157,7 @@ export const POLICIES: Policy[] = [
     title: "Career",
     eyebrow: "Be a part of Caviar Bakhoor",
     label: "Career",
+    form: "career",
     lede: null,
     updated: null,
     sections: [
