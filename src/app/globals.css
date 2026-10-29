@@ -1322,7 +1322,7 @@ body {
 
 /* Paragraph left, legal links small at the right, on one row. */
 .footer-body {
-  margin-top: clamp(3rem, 6.5vw, 6.5rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -1348,6 +1348,55 @@ body {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1.5rem;
+}
+
+/* Customer links: two columns of four on phones (read down), as the
+   parent house's footer has them; two rows of four from tablets. */
+.footer-links {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  border-top: 1px solid rgb(239 238 235 / 0.14);
+}
+
+.footer-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
+  gap: 0.25rem 1.5rem;
+}
+
+.footer-links a {
+  display: inline-block;
+  padding-block: 0.6rem;
+  font-family: var(--font-switzer-stack);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+
+.footer-links a:focus-visible {
+  color: var(--ink);
+}
+
+@media (hover: hover) {
+  .footer-links a:hover {
+    color: var(--ink);
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-links ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
 }
 
 /* No published policies yet: an empty list would still take a gap. */
@@ -5020,8 +5069,60 @@ body {
   max-width: 62ch;
 }
 
-.pol-confirm {
-  color: var(--smoke);
+/* Bullets as short rules, so a long list reads as the page's own type. */
+.pol-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pol-list li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.pol-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--ink);
+}
+
+/* Phones: the footer carries the other pages; the index keeps to this one. */
+@media (max-width: 1023px) {
+  .pol-others {
+    display: none;
+  }
+}
+
+.pol-qa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pol-q {
+  margin: 0;
+  font-family: var(--font-switzer-stack);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.pol-section-body a,
+.pol-lede a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 1024px) {

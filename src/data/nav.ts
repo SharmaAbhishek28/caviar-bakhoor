@@ -31,6 +31,20 @@ export const MENU_NAV: NavItem[] = [
 /** Policy links: only the policies that have been published. */
 export const LEGAL: NavItem[] = PUBLISHED_POLICIES.map((p) => ({ label: p.title, href: `/${p.slug}` }));
 
+/**
+ * The footer's customer links, in the parent house's footer order
+ * (elixirperfumery.com): read down the first column, then the second.
+ * A policy not yet published drops out.
+ */
+const FOOTER_ORDER = ["shipping", "returns", "payment-methods", "career", "privacy", "terms", "help-centre"];
+export const FOOTER_LINKS: NavItem[] = [
+  ...FOOTER_ORDER.flatMap((slug) => {
+    const p = PUBLISHED_POLICIES.find((x) => x.slug === slug);
+    return p ? [{ label: p.title, href: `/${p.slug}` }] : [];
+  }),
+  { label: "Contact us", href: "/contact" },
+];
+
 /** Category keywords for the marquee. */
 export const KEYWORDS = [
   "Caviar Bakhoor",

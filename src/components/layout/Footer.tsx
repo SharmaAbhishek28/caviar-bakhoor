@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MarkedProse } from "@/components/ui";
-import { LEGAL, MENU_NAV } from "@/data/nav";
+import { FOOTER_LINKS, MENU_NAV } from "@/data/nav";
 import { FOOTER } from "@/data/footer";
 import { FooterWordmark } from "./FooterWordmark";
 import { FooterCredit } from "./FooterCredit";
@@ -55,6 +55,17 @@ export function Footer() {
           </nav>
         </div>
 
+        {/* Customer pages: shipping, returns, policies, help, contact. */}
+        <nav aria-label="Customer care" className="footer-links">
+          <ul>
+            {FOOTER_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <div className="footer-body">
           <MarkedProse
             className="type-body footer-copy"
@@ -64,13 +75,6 @@ export function Footer() {
           />
 
           <div className="footer-legal">
-            <ul>
-              {LEGAL.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}>{item.label}</Link>
-                </li>
-              ))}
-            </ul>
             <p>
               © {new Date().getFullYear()} {FOOTER.house}
             </p>

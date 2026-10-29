@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Container, Eyebrow } from "@/components/ui";
-import type { Policy } from "@/data/policies";
+import type { Policy, PolicyBlock } from "@/data/policies";
 import { PUBLISHED_POLICIES } from "@/data/policies";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
@@ -14,8 +14,8 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
  * index lines stagger in; on scroll a thin progress line at the top of the
  * page fills, and each section's hairline draws across as it enters.
  *
- * A null body renders the [CONFIRM] marker — the client's text is not
- * drafted here.
+ * A body is paragraphs, bullet lists and question-and-answer pairs (see
+ * PolicyBlock); [text](url) inside any of them becomes a link.
  */
 export function PolicyPage({ policy }: { policy: Policy }) {
   const sections = policy.sections.filter((s) => s.body && s.body.length > 0);
@@ -45,13 +45,13 @@ export function PolicyPage({ policy }: { policy: Policy }) {
   }, []);
 
   return (
-    <article ref={ref} className="pol" data-label={policy.title}>
+    <article ref={ref} className="pol" data-label={policy.label ?? "Policies"}>
       <span className="pol-progress" aria-hidden />
       <Container>
         <header className="pol-head">
-          <div className="pol-eyebrow"><Eyebrow>Policies</Eyebrow></div>
+          <div className="pol-eyebrow"><Eyebrow>{policy.eyebrow ?? "Policies"}</Eyebrow></div>
           <h1 className="pol-title"><span className="pol-title-inner">{policy.title}</span></h1>
-          {policy.lede ? <p className="pol-lede">{policy.lede}</p> : null}
+          {policy.lede ? <p className="pol-lede"><Inline text={policy.lede} /></p> : null}
           {policy.updated ? <p className="pol-updated">Last updated {policy.updated}</p> : null}
         </header>
 
@@ -77,7 +77,7 @@ export function PolicyPage({ policy }: { policy: Policy }) {
                 <span className="pol-rule" aria-hidden />
                 <h2 className="pol-section-title"><span className="pol-section-no">{String(i + 1).padStart(2, "0")}</span>{s.heading}</h2>
                 <div className="pol-section-body">
-                  {s.body?.map((p) => <p key={p} className="type-body">{p}</p>)}
+                  {s.body?.map((b, j) => <Block key={j} block={b} />)}
                 </div>
               </section>
             ))}
@@ -89,3 +89,42 @@ export function PolicyPage({ policy }: { policy: Policy }) {
 }
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+/** A paragraph, a bullet list, or a question with its answer. */
+function Block({ block }: { block: PolicyBlock }) {
+  if (typeof block === "string") return <p className="type-body"><Inline text={block} /></p>;
+  if (Array.isArray(block)) {
+    return (
+      <ul className="pol-list">
+        {block.map((item) => <li key={item} className="type-body"><Inline text={item} /></li>)}
+      </ul>
+    );
+  }
+  return (
+    <div className="pol-qa">
+      <h3 className="pol-q">{block.q}</h3>
+      <p className="type-body"><Inline text={block.a} /></p>
+    </div>
+  );
+}
+
+/** Text with [label](url) links. Site paths use Link; others open as plain anchors. */
+function Inline({ text }: { text: string }) {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const m = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
+        if (!m) return part;
+        const [, label, href] = m;
+        if (href.startsWith("/")) return <Link key={i} href={href}>{label}</Link>;
+        const external = href.startsWith("http");
+        return (
+          <a key={i} href={href} {...(external ? { target: "_blank", rel: "noopener" } : {})}>
+            {label}
+          </a>
+        );
+      })}
+    </>
+  );
+}
