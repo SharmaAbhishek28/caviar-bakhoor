@@ -77,6 +77,19 @@ export function Footer() {
       </div>
 
       <FooterWordmark text={FOOTER.wordmark} />
+
+      {/* The studio credit, under the wordmark. */}
+      <div className="footer-credit">
+        <a
+          href={FOOTER.credit.href}
+          target="_blank"
+          rel="noopener"
+          className="footer-credit-link"
+        >
+          <span>{FOOTER.credit.by}</span>
+          <span className="footer-credit-mark">{FOOTER.credit.studio}</span>
+        </a>
+      </div>
     </footer>
   );
 }

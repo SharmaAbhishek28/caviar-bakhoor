@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { switzer, bodoni } from "./fonts";
+import { switzer, bodoni, monument } from "./fonts";
 import { Cursor, RevealAll, SmoothScroll, SectionLabel } from "@/components/ui";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${switzer.variable} ${bodoni.variable} h-full antialiased`}
+      className={`${switzer.variable} ${bodoni.variable} ${monument.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SmoothScroll />

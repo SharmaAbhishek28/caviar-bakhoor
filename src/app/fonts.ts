@@ -47,3 +47,16 @@ export const switzer = localFont({
   display: "swap",
   fallback: ["system-ui", "Segoe UI", "Helvetica Neue", "Arial", "sans-serif"],
 });
+
+/**
+ * Monument Extended — the FRAGMENT wordmark in the footer credit, nothing
+ * else. A subset holding only those letters (1 KB), the same file the studio
+ * uses on its other sites. Not preloaded: it sits at the foot of every page.
+ */
+export const monument = localFont({
+  src: [{ path: "../fonts/MonumentExtended-Fragment.woff2", weight: "400", style: "normal" }],
+  variable: "--font-monument",
+  display: "swap",
+  preload: false,
+  fallback: ["Arial Black", "sans-serif"],
+});

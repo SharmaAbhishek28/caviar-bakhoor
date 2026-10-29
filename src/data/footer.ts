@@ -18,4 +18,6 @@ export const FOOTER = {
   /** The giant clipped wordmark. Lowercase by design. */
   wordmark: "caviar bakhoor",
   house: "Elixir Signature Scents",
+  /** The studio that built the site, at the very foot. */
+  credit: { by: "Website by", studio: "FRAGMENT", href: "https://fragmenthq.com/" },
 };

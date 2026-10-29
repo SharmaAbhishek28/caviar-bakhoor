@@ -1350,6 +1350,11 @@ body {
   gap: 0.75rem 1.5rem;
 }
 
+/* No published policies yet: an empty list would still take a gap. */
+.footer-legal ul:empty {
+  display: none;
+}
+
 .footer-legal ul {
   list-style: none;
   margin: 0;
@@ -1389,6 +1394,56 @@ body {
   white-space: nowrap;
   color: var(--ink);
   user-select: none;
+}
+
+/* "Website by FRAGMENT": below the wordmark, on a hairline, in the
+   paragraph font with the studio's own Monument Extended mark. */
+.footer-credit {
+  position: relative;
+  z-index: 2;
+  width: var(--nav-width);
+  margin-inline: auto;
+  /* The wordmark's letters hang below its 0.74 line box; this clears them. */
+  padding-block: calc(0.75rem + 2.4vw) 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-credit-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  min-height: 44px;
+  align-items: center;
+  font-family: var(--font-switzer-stack);
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--smoke);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+
+.footer-credit-mark {
+  font-family: var(--font-monument), "Arial Black", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.footer-credit-link:focus-visible {
+  color: var(--ink);
+}
+
+@media (hover: hover) {
+  .footer-credit-link:hover {
+    color: var(--ink);
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-credit {
+    justify-content: flex-end;
+  }
 }
 
 /* One span per letter so each can rise on its own; see FooterWordmark. */
