@@ -3,6 +3,7 @@ import { MarkedProse } from "@/components/ui";
 import { LEGAL, MENU_NAV } from "@/data/nav";
 import { FOOTER } from "@/data/footer";
 import { FooterWordmark } from "./FooterWordmark";
+import { FooterCredit } from "./FooterCredit";
 
 /**
  * 09 — Footer, per docs/homepage.md § 09 and the reference.
@@ -76,15 +77,7 @@ export function Footer() {
           </div>
 
           {/* The studio credit, at the end of the same line. */}
-          <a
-            href={FOOTER.credit.href}
-            target="_blank"
-            rel="noopener"
-            className="footer-credit-link"
-          >
-            <span>{FOOTER.credit.by}</span>
-            <span className="footer-credit-mark">{FOOTER.credit.studio}</span>
-          </a>
+          <FooterCredit {...FOOTER.credit} />
         </div>
       </div>
 

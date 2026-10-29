@@ -61,6 +61,9 @@ export function Approach() {
           height={1600}
           sizes="(max-width: 1023px) 100vw, 1440px"
           className="media"
+          /* Paper between the photograph and the dark film below, so the
+             two do not run together. */
+          style={{ marginBottom: "clamp(2.5rem, 7vw, 5rem)" }}
         />
       </Container>
 

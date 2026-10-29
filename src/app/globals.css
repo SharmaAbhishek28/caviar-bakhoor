@@ -1409,7 +1409,9 @@ body {
   font-size: 0.875rem;
   color: var(--smoke);
   text-decoration: none;
-  transition: color var(--dur) var(--ease);
+  /* Quiet until asked for: lit on hover, or in view on touch screens. */
+  opacity: 0.35;
+  transition: opacity 500ms var(--ease);
 }
 
 .footer-credit-mark {
@@ -1418,15 +1420,26 @@ body {
   font-size: 1rem;
   letter-spacing: 0.02em;
   color: var(--ink);
+  transition: text-shadow 500ms var(--ease);
 }
 
-.footer-credit-link:focus-visible {
-  color: var(--ink);
+.footer-credit-link:focus-visible,
+.footer-credit-link[data-inview] {
+  opacity: 1;
+}
+
+.footer-credit-link:focus-visible .footer-credit-mark,
+.footer-credit-link[data-inview] .footer-credit-mark {
+  text-shadow: 0 0 18px rgb(239 238 235 / 0.45);
 }
 
 @media (hover: hover) {
   .footer-credit-link:hover {
-    color: var(--ink);
+    opacity: 1;
+  }
+
+  .footer-credit-link:hover .footer-credit-mark {
+    text-shadow: 0 0 18px rgb(239 238 235 / 0.45);
   }
 }
 
@@ -7566,18 +7579,6 @@ body {
   object-fit: cover;
 }
 
-/* /for-business Made, phones: the picture holds under the header while the
-   rows pass beneath it, so its five photographs are seen changing. */
-@media (max-width: 1023px) {
-  .biz-made-col {
-    position: sticky;
-    top: 4.5rem;
-    z-index: 2;
-    background: var(--paper);
-    padding-bottom: 1rem;
-  }
-}
-
 /* --- Home 05b: the royal visit (05b-Visit.tsx) ------------------------------ */
 .vs-stage {
   padding-block: var(--section-y);
@@ -7837,16 +7838,27 @@ body {
   overflow: hidden;
 }
 
-.ugc-stage {
-  padding-block: var(--section-y);
+/* The heading: centred, in the page's normal flow. It scrolls away; only
+   the films below pin. */
+.ugc-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: var(--section-y) var(--gutter) clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
 }
 
-/* Phones: the heading, then a swipe row. */
+/* Without motion (reduced motion, or before the script): a swipe row. */
+.ugc-pin {
+  padding-bottom: var(--section-y);
+}
+
 .ugc-track {
   list-style: none;
   margin: 0;
-  padding: 0 1.5rem 1rem;
-  scroll-padding-inline: 1.5rem;
+  padding: 0 var(--gutter) 1rem;
+  scroll-padding-inline: var(--gutter);
   display: flex;
   align-items: flex-start;
   gap: 1rem;
@@ -7857,14 +7869,6 @@ body {
 
 .ugc-track::-webkit-scrollbar {
   display: none;
-}
-
-.ugc-intro {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-inline: 1.5rem;
-  margin-bottom: clamp(1.75rem, 5vw, 2.5rem);
 }
 
 .ugc-eyebrow {
@@ -7905,7 +7909,7 @@ body {
 
 .ugc-copy {
   margin: 0;
-  max-width: 26rem;
+  max-width: 34rem;
   font-family: var(--font-switzer-stack);
   font-size: clamp(1rem, 1.2vw, 1.15rem);
   line-height: 1.55;
@@ -8008,70 +8012,46 @@ body {
   display: none;
 }
 
-/* Tablets, open folds and the Duo: more films across the row. */
-@media (min-width: 600px) and (max-width: 1023px) {
-  .ugc-card--video .ugc-media {
-    width: min(38vw, 17rem);
-  }
-
-  .ugc-card--image .ugc-media {
-    width: min(64vw, 30rem);
-  }
-}
-
-/* Wide screens: pinned; the scroll drives the track sideways. */
-@media (min-width: 1024px) {
-  .ugc-stage {
+/* With motion, at every width: the film row pins for a screen and the
+   scroll drives it right to left. Cards are sized by height so a whole
+   card, caption included, fits the pinned screen. */
+@media (prefers-reduced-motion: no-preference) {
+  .ugc-pin {
     height: 100vh;
     height: 100svh;
     box-sizing: border-box;
-    padding-block: clamp(4rem, 9vh, 6rem) clamp(3rem, 7vh, 4.5rem);
+    /* Clear of the header when it returns on an upward scroll. */
+    padding-block: clamp(4.5rem, 10vh, 6rem) clamp(1.5rem, 5vh, 3.5rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: clamp(1.5rem, 3vh, 2.5rem);
-  }
-
-  /* The heading and the track move as one; GSAP slides the rail. */
-  .ugc-rail {
-    --ugc-edge: clamp(7rem, 12vw, 12rem);
-    --ugc-intro-w: clamp(20rem, 30vw, 30rem);
-    --ugc-gap: clamp(2rem, 3.5vw, 3.5rem);
-    position: relative;
-    will-change: transform;
+    gap: clamp(1.25rem, 3vh, 2.5rem);
   }
 
   .ugc-track {
     overflow: visible;
     scroll-snap-type: none;
     align-items: center;
-    gap: var(--ugc-gap);
-    /* Clear of the side labels at the screen edges, and of the heading
-       panel laid over the start of the rail. */
-    padding: 0 var(--ugc-edge) 0
-      calc(var(--ugc-edge) + var(--ugc-intro-w) + var(--ugc-gap));
+    gap: clamp(1rem, 3.5vw, 3.5rem);
+    padding-bottom: 0;
     width: max-content;
+    will-change: transform;
   }
 
-  .ugc-intro {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: var(--ugc-edge);
-    width: var(--ugc-intro-w);
-    justify-content: center;
-    padding: 0;
-    margin: 0;
+  /* Width stated, not left to aspect-ratio: a landscape film's own size
+     otherwise widened its card past 9:16. */
+  .ugc-card {
+    --ugc-h: min(56svh, 36rem);
   }
 
   .ugc-card--video .ugc-media {
-    width: auto;
-    height: min(62svh, 36rem);
+    height: var(--ugc-h);
+    width: calc(var(--ugc-h) * 9 / 16);
   }
 
   .ugc-card--image .ugc-media {
-    width: auto;
-    height: min(62svh, 36rem);
+    height: var(--ugc-h);
+    width: calc(var(--ugc-h) * 3 / 2);
   }
 
   .ugc-meter {
@@ -8100,6 +8080,13 @@ body {
     background: var(--ink);
     transform-origin: left center;
     transform: scaleX(0);
+  }
+}
+
+/* Wide screens: the row starts and ends clear of the side labels. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .ugc-track {
+    padding-inline: clamp(7rem, 12vw, 12rem);
   }
 }
 

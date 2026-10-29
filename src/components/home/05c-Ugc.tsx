@@ -10,11 +10,11 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 /**
  * 05c — In their hands: videos and photographs on one sideways track.
  *
- * Wide screens: the section pins and the scroll drives the track right to
- * left; the heading is its first panel, carried on the same rail. Cards sit at alternating tilts and
- * straighten as they cross the middle of the screen; a counter and a
- * progress rule keep place. No edge labels: the cards cross the whole
- * screen. Phones: the heading, then a native swipe row of the films.
+ * The heading sits centred above and scrolls with the page. Below it the
+ * film row pins for a screen and the scroll drives it right to left, at
+ * every width; a counter and a progress rule keep place. Wide screens add
+ * alternating tilts that straighten as each card crosses the middle.
+ * Reduced motion: no pin, a native swipe row.
  *
  * The videos play, muted, together while the section is on screen. A
  * card's sound button unmutes it (ambient volume) and mutes the others.
@@ -66,47 +66,46 @@ export function Ugc() {
     initScroll();
     const q = gsap.utils.selector(root);
     const mm = gsap.matchMedia(root);
-    mm.add("(min-width: 1024px)", () => {
+    /* The callback runs only while one condition matches, so the motion
+       query is listed too: it is what holds at phone widths. */
+    mm.add({ desktop: "(min-width: 1024px)", motionOk: "(prefers-reduced-motion: no-preference)" }, (ctx) => {
+      const { desktop } = ctx.conditions as { desktop: boolean };
       const track = q(".ugc-track")[0] as HTMLElement;
-      const rail = q(".ugc-rail")[0] as HTMLElement;
-      const stage = q(".ugc-stage")[0];
+      const pin = q(".ugc-pin")[0];
       const travel = () => Math.max(0, track.scrollWidth - window.innerWidth);
-      const slide = gsap.to(rail, {
+      const slide = gsap.to(track, {
         x: () => -travel(),
         ease: "none",
         scrollTrigger: {
-          trigger: stage,
+          trigger: pin,
           start: "top top",
           end: () => `+=${travel()}`,
           pin: true,
-          scrub: 0.6,
+          /* Direct on touch, so the row moves with the thumb. */
+          scrub: desktop ? 0.6 : true,
           invalidateOnRefresh: true,
           onUpdate: (st) => setCurrent(Math.min(total, 1 + Math.floor(st.progress * total))),
         },
       });
       gsap.fromTo(q(".ugc-progress-fill"), { scaleX: 0 }, {
         scaleX: 1, ease: "none",
-        scrollTrigger: { trigger: stage, start: "top top", end: () => `+=${travel()}`, scrub: true, invalidateOnRefresh: true },
+        scrollTrigger: { trigger: pin, start: "top top", end: () => `+=${travel()}`, scrub: true, invalidateOnRefresh: true },
       });
-      // Each card straightens as it crosses the middle of the screen.
-      q(".ugc-card").forEach((card, i) => {
-        const r = TILT[i % TILT.length];
-        gsap.timeline({
-          scrollTrigger: { trigger: card, containerAnimation: slide, start: "left right", end: "right left", scrub: true },
-        })
-          .fromTo(card, { rotation: r, y: 30 }, { rotation: 0, y: 0, ease: "power1.out", duration: 1 })
-          .to(card, { rotation: -r, y: 30, ease: "power1.in", duration: 1 });
-      });
-      // The heading panel's lines rise as the section arrives.
+      // Wide screens: each card straightens as it crosses the middle.
+      if (desktop) {
+        q(".ugc-card").forEach((card, i) => {
+          const r = TILT[i % TILT.length];
+          gsap.timeline({
+            scrollTrigger: { trigger: card, containerAnimation: slide, start: "left right", end: "right left", scrub: true },
+          })
+            .fromTo(card, { rotation: r, y: 30 }, { rotation: 0, y: 0, ease: "power1.out", duration: 1 })
+            .to(card, { rotation: -r, y: 30, ease: "power1.in", duration: 1 });
+        });
+      }
+      // The heading's lines rise as it arrives.
       gsap.fromTo(q(".ugc-line-inner"), { yPercent: 110 }, {
         yPercent: 0, stagger: 0.15, duration: 1, ease: "expo.out",
-        scrollTrigger: { trigger: stage, start: "top 70%", toggleActions: "play none none reverse" },
-      });
-    });
-    mm.add("(max-width: 1023px)", () => {
-      gsap.fromTo(q(".ugc-card"), { y: 40, autoAlpha: 0 }, {
-        y: 0, autoAlpha: 1, stagger: 0.1, duration: 0.9, ease: "expo.out",
-        scrollTrigger: { trigger: q(".ugc-track")[0], start: "top 85%", toggleActions: "play none none reverse" },
+        scrollTrigger: { trigger: q(".ugc-intro")[0], start: "top 80%", toggleActions: "play none none reverse" },
       });
     });
     return () => mm.revert();
@@ -118,23 +117,20 @@ export function Ugc() {
   return (
     <StackSection index={7} surface="paper" className="ugc">
       <section ref={ref} aria-labelledby="ugc-title" data-no-reveal>
+        {/* The heading scrolls with the page; only the films pin. */}
+        <div className="ugc-intro">
+          <p className="ugc-eyebrow">{UGC.eyebrow}</p>
+          <h2 id="ugc-title" className="ugc-title">
+            {UGC.headline.map((l, i) => (
+              <span key={l} className={`ugc-line${i === 1 ? " ugc-line--italic" : ""}`}>
+                <span className="ugc-line-inner">{l}</span>
+              </span>
+            ))}
+          </h2>
+          {UGC.line ? <p className="ugc-copy">{UGC.line}</p> : null}
+        </div>
         <div className="pin-host">
-          <div className="ugc-stage">
-            {/* The rail carries the heading and the track together, so on wide
-                screens the heading slides away as the first panel. On phones
-                the heading sits above and the films start at the gutter. */}
-            <div className="ugc-rail">
-            <div className="ugc-intro">
-              <p className="ugc-eyebrow">{UGC.eyebrow}</p>
-              <h2 id="ugc-title" className="ugc-title">
-                {UGC.headline.map((l, i) => (
-                  <span key={l} className={`ugc-line${i === 1 ? " ugc-line--italic" : ""}`}>
-                    <span className="ugc-line-inner">{l}</span>
-                  </span>
-                ))}
-              </h2>
-              {UGC.line ? <p className="ugc-copy">{UGC.line}</p> : null}
-            </div>
+          <div className="ugc-pin">
             <ol className="ugc-track">
               {UGC.items.map((it, i) => {
                 const vi = videoIndex[i];
@@ -189,7 +185,6 @@ export function Ugc() {
                 );
               })}
             </ol>
-            </div>
             <div className="ugc-meter" aria-hidden>
               <span className="ugc-count">
                 {String(current).padStart(2, "0")} / {String(total).padStart(2, "0")}
