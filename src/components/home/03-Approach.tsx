@@ -63,7 +63,7 @@ export function Approach() {
           className="media"
           /* Paper between the photograph and the dark film below, so the
              two do not run together. */
-          style={{ marginBottom: "clamp(2.5rem, 7vw, 5rem)" }}
+          style={{ marginBottom: "clamp(2.5rem, 7vw, 7.5rem)" }}
         />
       </Container>
 
