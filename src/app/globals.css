@@ -7918,6 +7918,9 @@ body {
 
 .ugc-card {
   flex: 0 0 auto;
+  /* As wide as the film, never the caption: a long title or credit laid
+     out on one line widened its card and opened an uneven gap. */
+  width: min-content;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
