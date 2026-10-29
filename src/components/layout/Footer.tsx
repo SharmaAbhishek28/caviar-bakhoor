@@ -12,7 +12,8 @@ import { FooterWordmark } from "./FooterWordmark";
  *
  * Top row: the two-line headline left, the nav in one row right, each item
  * followed by an arrow. Then the paragraph at ~42% width with the legal
- * links small at the right end of the same row. Then the wordmark: Switzer
+ * links and copyright centred on the same row, and the studio credit at
+ * its right end. Then the wordmark: Switzer
  * Black lowercase, sized to the viewport, its baseline pushed below the
  * footer's bottom edge so the top two-thirds of the letters show and the
  * rest is clipped.
@@ -73,23 +74,21 @@ export function Footer() {
               © {new Date().getFullYear()} {FOOTER.house}
             </p>
           </div>
+
+          {/* The studio credit, at the end of the same line. */}
+          <a
+            href={FOOTER.credit.href}
+            target="_blank"
+            rel="noopener"
+            className="footer-credit-link"
+          >
+            <span>{FOOTER.credit.by}</span>
+            <span className="footer-credit-mark">{FOOTER.credit.studio}</span>
+          </a>
         </div>
       </div>
 
       <FooterWordmark text={FOOTER.wordmark} />
-
-      {/* The studio credit, under the wordmark. */}
-      <div className="footer-credit">
-        <a
-          href={FOOTER.credit.href}
-          target="_blank"
-          rel="noopener"
-          className="footer-credit-link"
-        >
-          <span>{FOOTER.credit.by}</span>
-          <span className="footer-credit-mark">{FOOTER.credit.studio}</span>
-        </a>
-      </div>
     </footer>
   );
 }

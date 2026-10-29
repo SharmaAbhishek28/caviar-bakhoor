@@ -1396,21 +1396,11 @@ body {
   user-select: none;
 }
 
-/* "Website by FRAGMENT": below the wordmark, on a hairline, in the
-   paragraph font with the studio's own Monument Extended mark. */
-.footer-credit {
-  position: relative;
-  z-index: 2;
-  width: var(--nav-width);
-  margin-inline: auto;
-  /* The wordmark's letters hang below its 0.74 line box; this clears them. */
-  padding-block: calc(0.75rem + 2.4vw) 1.25rem;
-  display: flex;
-  justify-content: center;
-}
-
+/* "Website by FRAGMENT": the paragraph font, with the studio's own
+   Monument Extended mark. */
 .footer-credit-link {
   display: inline-flex;
+  align-self: flex-start;
   gap: 0.5rem;
   min-height: 44px;
   align-items: center;
@@ -1437,12 +1427,6 @@ body {
 @media (hover: hover) {
   .footer-credit-link:hover {
     color: var(--ink);
-  }
-}
-
-@media (min-width: 768px) {
-  .footer-credit {
-    justify-content: flex-end;
   }
 }
 
@@ -1482,14 +1466,26 @@ body {
     justify-content: space-between;
   }
 
+  /* One line: the paragraph left, the copyright centred on the page, the
+     studio credit right. Equal outer columns keep the middle truly centred. */
   .footer-body {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 2rem;
+  }
+
+  .footer-copy {
+    max-width: none;
   }
 
   .footer-legal {
-    justify-content: flex-end;
+    justify-content: center;
+  }
+
+  .footer-credit-link {
+    justify-self: end;
+    align-self: center;
   }
 }
 
