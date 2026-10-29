@@ -11,10 +11,10 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
  * 05c — In their hands: videos and photographs on one sideways track.
  *
  * Wide screens: the section pins and the scroll drives the track right to
- * left; the heading is its first panel. Cards sit at alternating tilts and
+ * left; the heading is its first panel, carried on the same rail. Cards sit at alternating tilts and
  * straighten as they cross the middle of the screen; a counter and a
  * progress rule keep place. No edge labels: the cards cross the whole
- * screen. Phones: a native swipe row.
+ * screen. Phones: the heading, then a native swipe row of the films.
  *
  * The videos play, muted, together while the section is on screen. A
  * card's sound button unmutes it (ambient volume) and mutes the others.
@@ -68,9 +68,10 @@ export function Ugc() {
     const mm = gsap.matchMedia(root);
     mm.add("(min-width: 1024px)", () => {
       const track = q(".ugc-track")[0] as HTMLElement;
+      const rail = q(".ugc-rail")[0] as HTMLElement;
       const stage = q(".ugc-stage")[0];
       const travel = () => Math.max(0, track.scrollWidth - window.innerWidth);
-      const slide = gsap.to(track, {
+      const slide = gsap.to(rail, {
         x: () => -travel(),
         ease: "none",
         scrollTrigger: {
@@ -119,18 +120,22 @@ export function Ugc() {
       <section ref={ref} aria-labelledby="ugc-title" data-no-reveal>
         <div className="pin-host">
           <div className="ugc-stage">
+            {/* The rail carries the heading and the track together, so on wide
+                screens the heading slides away as the first panel. On phones
+                the heading sits above and the films start at the gutter. */}
+            <div className="ugc-rail">
+            <div className="ugc-intro">
+              <p className="ugc-eyebrow">{UGC.eyebrow}</p>
+              <h2 id="ugc-title" className="ugc-title">
+                {UGC.headline.map((l, i) => (
+                  <span key={l} className={`ugc-line${i === 1 ? " ugc-line--italic" : ""}`}>
+                    <span className="ugc-line-inner">{l}</span>
+                  </span>
+                ))}
+              </h2>
+              {UGC.line ? <p className="ugc-copy">{UGC.line}</p> : null}
+            </div>
             <ol className="ugc-track">
-              <li className="ugc-intro">
-                <p className="ugc-eyebrow">{UGC.eyebrow}</p>
-                <h2 id="ugc-title" className="ugc-title">
-                  {UGC.headline.map((l, i) => (
-                    <span key={l} className={`ugc-line${i === 1 ? " ugc-line--italic" : ""}`}>
-                      <span className="ugc-line-inner">{l}</span>
-                    </span>
-                  ))}
-                </h2>
-                {UGC.line ? <p className="ugc-copy">{UGC.line}</p> : null}
-              </li>
               {UGC.items.map((it, i) => {
                 const vi = videoIndex[i];
                 return (
@@ -184,6 +189,7 @@ export function Ugc() {
                 );
               })}
             </ol>
+            </div>
             <div className="ugc-meter" aria-hidden>
               <span className="ugc-count">
                 {String(current).padStart(2, "0")} / {String(total).padStart(2, "0")}

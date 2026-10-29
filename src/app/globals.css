@@ -1550,6 +1550,25 @@ body {
   color: var(--smoke);
 }
 
+/* Phones: the four names two by two, no rules. In one wrapping row the
+   last name dropped to a line of its own behind a stray rule. */
+@media (max-width: 639px) {
+  .chero-jump {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 0.25rem 2rem;
+  }
+
+  .chero-jump a {
+    display: inline-block;
+    padding-block: 0.4rem;
+  }
+
+  .chero-jump-sep {
+    display: none;
+  }
+}
+
 /* --- /collection: catalogue ---------------------------------------------
    Two by two, flush: the reference's split screens, stacked.
    ------------------------------------------------------------------------ */
@@ -6945,13 +6964,13 @@ body {
   height: auto;
 }
 
-/* Phones: the left page only (the cover lines and the four lids), so it
-   reads at a usable size. */
+/* Phones: a squarer crop around the four boxes, which sit right of the
+   frame's centre, so they read larger without losing any of them. */
 @media (max-width: 767px) {
   .booklet-plate-img {
-    aspect-ratio: 1260 / 1357;
+    aspect-ratio: 5 / 4;
     object-fit: cover;
-    object-position: left center;
+    object-position: 72% 50%;
   }
 }
 
@@ -7841,12 +7860,11 @@ body {
 }
 
 .ugc-intro {
-  flex: 0 0 84vw;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-self: center;
+  padding-inline: 1.5rem;
+  margin-bottom: clamp(1.75rem, 5vw, 2.5rem);
 }
 
 .ugc-eyebrow {
@@ -7990,13 +8008,8 @@ body {
   display: none;
 }
 
-/* Tablets, open folds and the Duo: the heading takes under half the row, so
-   the first films sit beside it instead of one peeking in at the edge. */
+/* Tablets, open folds and the Duo: more films across the row. */
 @media (min-width: 600px) and (max-width: 1023px) {
-  .ugc-intro {
-    flex-basis: 44vw;
-  }
-
   .ugc-card--video .ugc-media {
     width: min(38vw, 17rem);
   }
@@ -8019,19 +8032,36 @@ body {
     gap: clamp(1.5rem, 3vh, 2.5rem);
   }
 
+  /* The heading and the track move as one; GSAP slides the rail. */
+  .ugc-rail {
+    --ugc-edge: clamp(7rem, 12vw, 12rem);
+    --ugc-intro-w: clamp(20rem, 30vw, 30rem);
+    --ugc-gap: clamp(2rem, 3.5vw, 3.5rem);
+    position: relative;
+    will-change: transform;
+  }
+
   .ugc-track {
     overflow: visible;
     scroll-snap-type: none;
     align-items: center;
-    gap: clamp(2rem, 3.5vw, 3.5rem);
-    /* Clear of the side labels at the screen edges. */
-    padding: 0 clamp(7rem, 12vw, 12rem);
+    gap: var(--ugc-gap);
+    /* Clear of the side labels at the screen edges, and of the heading
+       panel laid over the start of the rail. */
+    padding: 0 var(--ugc-edge) 0
+      calc(var(--ugc-edge) + var(--ugc-intro-w) + var(--ugc-gap));
     width: max-content;
-    will-change: transform;
   }
 
   .ugc-intro {
-    flex: 0 0 clamp(20rem, 30vw, 30rem);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--ugc-edge);
+    width: var(--ugc-intro-w);
+    justify-content: center;
+    padding: 0;
+    margin: 0;
   }
 
   .ugc-card--video .ugc-media {
