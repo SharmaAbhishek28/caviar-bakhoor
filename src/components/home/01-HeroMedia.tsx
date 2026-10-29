@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { preload } from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import { AMBIENT_VOLUME } from "@/lib/media";
+import { AMBIENT_VOLUME, usePageLoaded } from "@/lib/media";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 import { HeroLogo } from "./HeroLogo";
 
@@ -15,7 +15,10 @@ import { HeroLogo } from "./HeroLogo";
  * sound toggle appear together, and neither can exist without the other.
  *
  * LOADING: the poster is preloaded at high priority, so the first frame is
- * on screen before the video has downloaded (it is the LCP image). Phones get
+ * on screen before the video has downloaded (it is the LCP image). The
+ * film's sources are added only once the page has finished loading: with
+ * autoplay on, the browser fetched it at once and its megabytes held up
+ * the scripts for seconds on a slow connection. Phones get
  * a 540p file (~1.1MB), wider screens the 720p one (~1.9MB); both are
  * faststart, so playback begins before the download ends. The video pauses
  * while the hero is off screen, and never plays under reduced motion.
@@ -81,6 +84,8 @@ export function HeroMedia({
   const audible = wanted && unlocked && inView;
 
   if (hasVideo) preload(posterSrc, { as: "image", fetchPriority: "high" });
+  /** The film's sources wait for the page to finish loading. */
+  const ready = usePageLoaded();
 
   useEffect(() => {
     const v = videoRef.current;
@@ -93,7 +98,9 @@ export function HeroMedia({
   // first gesture anywhere on the page.
   useEffect(() => {
     const v = videoRef.current;
-    if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!v || !ready || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // The sources have just been added; load them before the first play.
+    v.load();
     let done = false;
     const unlock = () => {
       if (done) return;
@@ -114,7 +121,7 @@ export function HeroMedia({
         events.forEach((e) => window.addEventListener(e, unlock, { capture: true, passive: true }));
       });
     return off;
-  }, []);
+  }, [ready]);
 
   // Mute once the hero is mostly scrolled away.
   useEffect(() => {
@@ -128,10 +135,9 @@ export function HeroMedia({
   // Play only while on screen, and not at all under reduced motion.
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !ready) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       v.pause();
-      v.removeAttribute("autoplay");
       return;
     }
     const io = new IntersectionObserver(
@@ -143,7 +149,7 @@ export function HeroMedia({
     );
     io.observe(v);
     return () => io.disconnect();
-  }, []);
+  }, [ready]);
 
   // The pin host: GSAP wraps the pinned element in a pin-spacer, so React
   // must own a parent that the spacer sits inside. Without it React cannot
@@ -159,7 +165,6 @@ export function HeroMedia({
         <video
           ref={videoRef}
           className="hero-still"
-          autoPlay
           loop
           playsInline
           muted
@@ -174,9 +179,9 @@ export function HeroMedia({
             objectFit: "cover",
           }}
         >
-          {sources.map((s) => (
-            <source key={s.src} src={s.src} type={s.type} media={s.media} />
-          ))}
+          {ready
+            ? sources.map((s) => <source key={s.src} src={s.src} type={s.type} media={s.media} />)
+            : null}
         </video>
       ) : (
         <Image

@@ -60,7 +60,10 @@ export function Footer() {
           <ul>
             {FOOTER_LINKS.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                {/* A plain link: a full page load is certain on any static
+                    host. A client-side Link here hung on Vercel for a page
+                    that had not been prefetched. */}
+                <a href={item.href}>{item.label}</a>
               </li>
             ))}
           </ul>

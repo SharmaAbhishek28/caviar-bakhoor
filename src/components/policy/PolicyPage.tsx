@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Container, Eyebrow } from "@/components/ui";
 import type { Policy, PolicyBlock } from "@/data/policies";
@@ -66,7 +65,7 @@ export function PolicyPage({ policy }: { policy: Policy }) {
             </ol>
             <ul className="pol-others">
               {PUBLISHED_POLICIES.filter((p) => p.slug !== policy.slug).map((p) => (
-                <li key={p.slug}><Link href={`/${p.slug}`}>{p.title}</Link></li>
+                <li key={p.slug}><a href={`/${p.slug}`}>{p.title}</a></li>
               ))}
             </ul>
           </nav>
@@ -108,7 +107,7 @@ function Block({ block }: { block: PolicyBlock }) {
   );
 }
 
-/** Text with [label](url) links. Site paths use Link; others open as plain anchors. */
+/** Text with [label](url) links, as plain anchors; outside links open in a new tab. */
 function Inline({ text }: { text: string }) {
   const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
   return (
@@ -117,7 +116,6 @@ function Inline({ text }: { text: string }) {
         const m = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
         if (!m) return part;
         const [, label, href] = m;
-        if (href.startsWith("/")) return <Link key={i} href={href}>{label}</Link>;
         const external = href.startsWith("http");
         return (
           <a key={i} href={href} {...(external ? { target: "_blank", rel: "noopener" } : {})}>

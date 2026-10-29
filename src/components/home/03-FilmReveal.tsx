@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AMBIENT_VOLUME } from "@/lib/media";
+import { AMBIENT_VOLUME, useNear } from "@/lib/media";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 export type FilmSource = { src: string; type: string; media?: string };
@@ -19,8 +19,8 @@ export type FilmSource = { src: string; type: string; media?: string };
  * circle, not a wipe. clip-path, transform and filter only: nothing reflows.
  *
  * Sources are listed AV1 first, then H.264, each at 1080p for wide screens
- * and 720p for phones — the browser plays the first it can. preload="none"
- * behind the poster; plays only on screen; no motion under reduced motion,
+ * and 720p for phones — the browser plays the first it can. The poster and
+ * sources are set only as the stage nears the screen; plays only on screen; no motion under reduced motion,
  * where the film simply sits full width.
  */
 export function FilmReveal({
@@ -36,6 +36,12 @@ export function FilmReveal({
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const near = useNear(stageRef);
+
+  // Sources added after mount are not picked up until the element reloads.
+  useEffect(() => {
+    if (near) videoRef.current?.load();
+  }, [near]);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -113,12 +119,12 @@ export function FilmReveal({
           playsInline
           muted
           preload="none"
-          poster={poster}
+          poster={near ? poster : undefined}
           aria-label={label}
         >
-          {sources.map((s) => (
-            <source key={s.src} src={s.src} type={s.type} media={s.media} />
-          ))}
+          {near
+            ? sources.map((s) => <source key={s.src} src={s.src} type={s.type} media={s.media} />)
+            : null}
         </video>
       </div>
 

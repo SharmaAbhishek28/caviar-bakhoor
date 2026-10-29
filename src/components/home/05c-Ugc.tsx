@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { StackSection } from "@/components/ui";
 import { UGC } from "@/data/ugc";
-import { AMBIENT_VOLUME } from "@/lib/media";
+import { AMBIENT_VOLUME, useNear } from "@/lib/media";
 import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
 
 /**
@@ -16,7 +16,7 @@ import { gsap, initScroll, prefersReducedMotion } from "@/lib/scroll";
  * alternating tilts that straighten as each card crosses the middle.
  * Reduced motion: no pin, a native swipe row.
  *
- * The videos play, muted, together while the section is on screen. A
+ * The videos play, muted, each while it is on screen. A
  * card's sound button unmutes it (ambient volume) and mutes the others.
  * Reduced motion: no autoplay, native controls, no tilt.
  */
@@ -28,27 +28,31 @@ export function Ugc() {
   const [sound, setSound] = useState<number | null>(null);
   const [current, setCurrent] = useState(1);
   const total = UGC.items.length;
+  /* The films' posters and files load only as the section nears the
+     screen: eleven posters at page load held up the first screen. */
+  const near = useNear(ref);
 
-  // All the videos play together while the track is on screen.
+  // The films play while on screen.
   useEffect(() => {
     if (prefersReducedMotion()) {
       videos.current.forEach((v) => v && (v.controls = true));
       return;
     }
-    const track = ref.current?.querySelector(".ugc-track");
-    if (!track) return;
+    if (!near) return;
+    // Each film plays only while it is itself on screen, so the track never
+    // downloads all eleven at once.
     const io = new IntersectionObserver(
-      ([e]) =>
-        videos.current.forEach((v) => {
-          if (!v) return;
+      (entries) =>
+        entries.forEach((e) => {
+          const v = e.target as HTMLVideoElement;
           if (e.isIntersecting) v.play().catch(() => {});
           else v.pause();
         }),
       { threshold: 0.2 },
     );
-    io.observe(track);
+    videos.current.forEach((v) => v && io.observe(v));
     return () => io.disconnect();
-  }, []);
+  }, [near]);
 
   // One voice at a time.
   useEffect(() => {
@@ -144,8 +148,8 @@ export function Ugc() {
                               videos.current[vi] = el;
                             }}
                             className="ugc-video"
-                            src={it.src}
-                            poster={it.poster}
+                            src={near ? it.src : undefined}
+                            poster={near ? it.poster : undefined}
                             muted
                             loop
                             playsInline

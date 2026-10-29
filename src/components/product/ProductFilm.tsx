@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AMBIENT_VOLUME } from "@/lib/media";
+import { AMBIENT_VOLUME, useNear } from "@/lib/media";
 
 /**
  * The film under the composition line on the PDP: the client's ritual film
  * (the hero's earlier video), in a 16:9 frame, muted, looping, with the
  * same sound toggle as the hero.
  *
- * preload="none" and the poster carry it until it is near the screen; it
+ * The poster and sources are set only as it nears the screen; it
  * plays only while on screen and never under reduced motion, where the
  * poster stands.
  */
@@ -25,6 +25,11 @@ export function ProductFilm({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const near = useNear(ref);
+
+  useEffect(() => {
+    if (near) ref.current?.load();
+  }, [near]);
 
   useEffect(() => {
     const v = ref.current;
@@ -56,11 +61,15 @@ export function ProductFilm({
         playsInline
         muted
         preload="none"
-        poster={poster}
+        poster={near ? poster : undefined}
         aria-label={label}
       >
-        <source src={mobileSrc} type="video/mp4" media="(max-width: 767px)" />
-        <source src={src} type="video/mp4" />
+        {near ? (
+          <>
+            <source src={mobileSrc} type="video/mp4" media="(max-width: 767px)" />
+            <source src={src} type="video/mp4" />
+          </>
+        ) : null}
       </video>
 
       <button
