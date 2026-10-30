@@ -37,6 +37,9 @@ const SKIP_COMMON = [
   "header",
   "footer",
   "[data-no-reveal]",
+  /* A closed <details> has no layout, so a reveal trigger measured while it
+     was shut never fired once opened: the answer stayed invisible. */
+  "details",
   ".wheel-root",
   ".ab-opener",
   ".ab-gallery",
